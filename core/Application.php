@@ -2,13 +2,26 @@
 
 namespace App\Core;
 
+use App\Core\Database\Database;
+
 class Application {
     public static string $ROOT_DIR;
     public static Application $APPLICATION;
+    public Database $database;
     public Router $router;
     public Request $request;
     public Response $response;
     public Controller $controller;
+
+    public function __construct(string $rootPath, array $config)
+    {
+        self::$ROOT_DIR = $rootPath;
+        self::$APPLICATION = $this;
+        $this->request = new Request();
+        $this->response = new Response();
+        $this->router = new Router($this->request, $this->response);
+        $this->database = new Database($config['db']);
+    }
 
     /**
      * @return Controller
@@ -24,15 +37,6 @@ class Application {
     public function set_controller(Controller $controller): void
     {
         $this->controller = $controller;
-    }
-
-    public function __construct(string $rootPath)
-    {
-        self::$ROOT_DIR = $rootPath;
-        self::$APPLICATION = $this;
-        $this->request = new Request();
-        $this->response = new Response();
-        $this->router = new Router($this->request, $this->response);
     }
 
     public function run() {
