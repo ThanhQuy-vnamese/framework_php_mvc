@@ -2,7 +2,6 @@
 //declare(strict_types=1);
 namespace App\Controllers;
 
-use App\Core\Application;
 use App\Core\Controller;
 
 /**

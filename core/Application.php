@@ -4,10 +4,27 @@ namespace App\Core;
 
 class Application {
     public static string $ROOT_DIR;
+    public static Application $APPLICATION;
     public Router $router;
     public Request $request;
     public Response $response;
-    public static Application $APPLICATION;
+    public Controller $controller;
+
+    /**
+     * @return Controller
+     */
+    public function get_controller(): Controller
+    {
+        return $this->controller;
+    }
+
+    /**
+     * @param  Controller  $controller
+     */
+    public function set_controller(Controller $controller): void
+    {
+        $this->controller = $controller;
+    }
 
     public function __construct(string $rootPath)
     {
