@@ -16,7 +16,8 @@ abstract class Model
 
     abstract public function rules(): array;
 
-    public function loadData(array $data) {
+    public function loadData(array $data)
+    {
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->{$key} = $value;
@@ -24,20 +25,21 @@ abstract class Model
         }
     }
 
-    public function validate() {
+    public function validate(): bool
+    {
         foreach ($this->rules() as $attribute => $rules) {
             $value = $this->{$attribute};
             foreach ($rules as $rule) {
                 $ruleName = $rule;
-                if (!is_string($ruleName)) {
+                if ( ! is_string($ruleName)) {
                     $ruleName = $rule[0];
                 }
 
-                if ($ruleName === self::RULE_REQUIRED && !$value) {
+                if ($ruleName === self::RULE_REQUIRED && ! $value) {
                     $this->addError($attribute, self::RULE_REQUIRED);
                 }
 
-                if ($ruleName === self::RULE_EMAIl && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                if ($ruleName === self::RULE_EMAIl && ! filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     $this->addError($attribute, self::RULE_EMAIl);
                 }
 
@@ -54,10 +56,12 @@ abstract class Model
                 }
             }
         }
+
         return empty($this->errors);
     }
 
-    public function addError(string $attribute, string $rule, $params = []) {
+    public function addError(string $attribute, string $rule, $params = [])
+    {
         $message = $this->errorMessage()[$rule] ?? '';
         foreach ($params as $key => $value) {
             $message = str_replace("{{$key}}", $value, $message);
@@ -65,21 +69,24 @@ abstract class Model
         $this->errors[$attribute][] = $message;
     }
 
-    public function errorMessage(): array {
-        return[
+    public function errorMessage(): array
+    {
+        return [
             self::RULE_REQUIRED => 'This is field is required',
-            self::RULE_EMAIl => 'This is field is an email',
-            self::RULE_MIN => 'Min length of field mus be {min}',
-            self::RULE_MAX => 'Min length of field mus be {max}',
-            self::RULE_MATCH => 'This is field must be same as {match}',
+            self::RULE_EMAIl    => 'This is field is an email',
+            self::RULE_MIN      => 'Min length of field mus be {min}',
+            self::RULE_MAX      => 'Min length of field mus be {max}',
+            self::RULE_MATCH    => 'This is field must be same as {match}',
         ];
     }
 
-    public function hasError($attribute): bool {
-        return !empty($this->errors[$attribute]);
+    public function hasError($attribute): bool
+    {
+        return ! empty($this->errors[$attribute]);
     }
 
-    public function getError($attribute): string {
+    public function getError($attribute): string
+    {
         return $this->errors[$attribute][0] ?? '';
     }
 }

@@ -1,13 +1,18 @@
 <?php
 namespace App\Models;
 
-use App\Core\Model;
+use App\Core\Database\DBModel;
 
-class RegisterModel extends Model
+class User extends DBModel
 {
+    public const STATUS_INACTIVE = 0;
+    public const STATUS_ACTIVE= 1;
+    public const STATUS_DELETED= 2;
+
     public string $firstname = '';
     public string $lastname = '';
     public string $email = '';
+    public int $status = self::STATUS_ACTIVE;
     public string $password = '';
     public string $passwordRepeat = '';
 
@@ -22,7 +27,20 @@ class RegisterModel extends Model
         ];
     }
 
-    public function register(): bool {
-        return false;
+    public function register(): bool
+    {
+        $this->status = self::STATUS_ACTIVE;
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        return $this->save();
+    }
+
+    function tableName(): string
+    {
+        return 'users';
+    }
+
+    function attributes(): array
+    {
+        return ['firstname', 'lastname', 'email', 'password', 'status'];
     }
 }

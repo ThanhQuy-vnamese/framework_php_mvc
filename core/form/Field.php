@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Core\Form;
 
 
@@ -35,14 +33,14 @@ class Field
             '
                <div class="mb-3">
                     <label>%s</label>
-                    <input type="%s"  name="%s" id="email" value="%s" class="form-control%s">
+                    <input type="%s"  name="%s" id="email" value="%s" class="form-control%s" />
                     <div class="invalid-feedback">
                         %s
                     </div>
                 </div>',
             $this->attribute,
-            $this->attribute,
             $this->type,
+            $this->attribute,
             $this->model->{$this->attribute},
             $this->model->hasError($this->attribute) ? ' is-invalid' : '',
             $this->model->getError($this->attribute),
