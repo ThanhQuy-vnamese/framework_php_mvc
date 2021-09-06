@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core;
 
 class Router
@@ -9,20 +10,27 @@ class Router
 
     public function __construct(Request $request, Response $response)
     {
-        $this->request = $request;
+        $this->request  = $request;
         $this->response = $response;
     }
 
-    public function get($path, $callback) {
+    public function get($path, $callback)
+    {
         $this->router['get'][$path] = $callback;
     }
 
-    public function post($path, $callback) {
+    public function post($path, $callback)
+    {
         $this->router['post'][$path] = $callback;
     }
 
-    public function resolve() {
-        $path = $this->request->getPath();
+    public function resolve()
+    {
+        $path   = $this->request->getPath();
+        $pos = strpos($path, '/public');
+        if ($pos !== false) {
+            $path = substr($path, $pos + strlen('/public'));
+        }
         $method = $this->request->getMethod();
         // TODO: Refactor
         $callback = $this->router[$method][$path] ?? false;
@@ -35,36 +43,45 @@ class Router
         }
         if (is_array($callback)) {
             Application::$APPLICATION->controller = new $callback[0]();
-            $callback[0] = new $callback[0]();
+            $callback[0]                          = new $callback[0]();
         }
 
         return call_user_func($callback, $this->request);
     }
 
-    public function renderView($view, $params = []) {
+    public function renderView($view, $params = [])
+    {
         $layoutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyView($view, $params);
+        $viewContent   = $this->renderOnlyView($view, $params);
+
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    public function renderContent($viewContent) {
+    public function renderContent($viewContent)
+    {
         $layoutContent = $this->layoutContent();
+
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    protected function layoutContent() {
+    protected function layoutContent()
+    {
+        debug_print_backtrace();
         $layout = Application::$APPLICATION->controller->layout;
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/${layout}.php";
+
         return ob_get_clean();
     }
 
-    protected function renderOnlyView($view, $params = []) {
+    protected function renderOnlyView($view, $params = [])
+    {
         foreach ($params as $key => $value) {
             $$key = $value;
         }
         ob_start();
         include_once Application::$ROOT_DIR . "/views/${view}.php";
+
         return ob_get_clean();
     }
 }

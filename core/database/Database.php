@@ -17,35 +17,37 @@ class Database
         $this->mysql = mysqli_connect($host, $username, $password, $database);
     }
 
-    public function applyMigrations() {
+    public function applyMigrations()
+    {
         $this->createMigrationsTable();
-        $appliedMigrations = $this->getApplyMigrations();
-        $migrationConverted = $this->covertMigrations($appliedMigrations);
-        $newMigrations = [];
-        $files = scandir(Application::$ROOT_DIR.'/migrations');
+        $appliedMigrations   = $this->getApplyMigrations();
+        $migrationConverted  = $this->covertMigrations($appliedMigrations);
+        $newMigrations       = [];
+        $files               = scandir(Application::$ROOT_DIR . '/migrations');
         $toAppliedMigrations = array_diff($files, $migrationConverted);
         foreach ($toAppliedMigrations as $migration) {
             if ($migration === '.' || $migration === '..') {
                 continue;
             }
 
-            require_once Application::$ROOT_DIR.'/migrations/'.$migration;
+            require_once Application::$ROOT_DIR . '/migrations/' . $migration;
             $classname = pathinfo($migration, PATHINFO_FILENAME);
-            $instance = new $classname();
+            $instance  = new $classname();
             $this->log("Apply migration $migration");
             $instance->up();
             $this->log("Apply migration $migration");
             $newMigrations[] = $migration;
         }
 
-        if (!empty($newMigrations)) {
+        if ( ! empty($newMigrations)) {
             $this->saveMigration($newMigrations);
         } else {
             $this->log('All migration are applied');
         }
     }
 
-    public function covertMigrations(array $migrations): array {
+    public function covertMigrations(array $migrations): array
+    {
         $result = [];
         foreach ($migrations as $migration) {
             $result[] = $migration[0];
@@ -62,25 +64,30 @@ class Database
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 ) ENGINE=INNODB;";
         $this->mysql->query($query);
-
     }
 
     public function getApplyMigrations(): ?array
     {
-        $query = "SELECT migration FROM migrations";
+        $query  = "SELECT migration FROM migrations";
         $result = $this->mysql->query($query);
 
         return $result->fetch_all();
     }
 
-    public function saveMigration(array $migrations) {
+    public function saveMigration(array $migrations)
+    {
         $migrations = array_map(fn($m) => "('$m')", $migrations);
-        $values = implode(',', $migrations);
-        $query = "INSERT INTO migrations (migration) VALUES $values";
+        $values     = implode(',', $migrations);
+        $query      = "INSERT INTO migrations (migration) VALUES $values";
         $this->mysql->query($query);
     }
 
-    protected function log(string $message) {
+    protected function log(string $message)
+    {
         echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
     }
+
+//    public function query(string $query) {
+//        return $this->query($query);
+//    }
 }

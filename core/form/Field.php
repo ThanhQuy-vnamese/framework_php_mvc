@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Core\Form;
 
 
@@ -47,13 +48,17 @@ class Field
         );
     }
 
-    public function passwordField(): Field {
+    public function passwordField(): Field
+    {
         $this->type = self::TYPE_PASSWORD;
+
         return $this;
     }
 
-    public function emailField(): Field {
+    public function emailField(): Field
+    {
         $this->type = self::TYPE_EMAIL;
+
         return $this;
     }
 }

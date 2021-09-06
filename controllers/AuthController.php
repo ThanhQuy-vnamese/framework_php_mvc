@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Controllers;
 
+use App\Core\Application;
 use App\Core\Controller;
 use App\Core\Request;
 use App\Models\User;
@@ -13,7 +15,8 @@ class AuthController extends Controller
         $this->setLayout('auth');
     }
 
-    public function login() {
+    public function login()
+    {
 //        $this->setLayout('auth');
         return $this->render('login');
     }
@@ -26,13 +29,16 @@ class AuthController extends Controller
         if ($request->isPost()) {
             $user->loadData($request->getBody());
             if ($user->validate() && $user->register()) {
-                return 'success';
+                Application::$APPLICATION->session->setFlash('success', 'Thank for register!!');
+                Application::$APPLICATION->response->redirect('/');
+                exit();
             }
 //            echo '<pre>';
 //            var_dump($user->errors);
 //            die;
-            return $this->render('user', ['model' => $user]);
+            return $this->render('register', ['model' => $user]);
         }
-        return $this->render('user', ['model' => $user]);
+
+        return $this->render('register', ['model' => $user]);
     }
 }
