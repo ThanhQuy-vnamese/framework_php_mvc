@@ -2,22 +2,23 @@
 namespace App\Core;
 
 use App\Core\Middlewares\BaseMiddleware;
+use App\Core\Views\Twig;
 
 class Controller
 {
     protected Request $request;
     public string $layout = 'main';
     public string $action = '';
+    public Twig $twig;
     /**
      * @var BaseMiddleware[]
      */
     public array $middlewares = [];
 
-//    public function __construct(Request $request)
-//    {
-//        $this->request = $request;
-//        $this->setLayout('main');
-//    }
+    public function __construct(Twig $twig)
+    {
+        $this->twig = $twig;
+    }
 
     public function setLayout($layout) {
         $this->layout = $layout;

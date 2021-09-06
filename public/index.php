@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controllers\AuthController;
 use App\Core\Application;
 use App\Controllers\SiteController;
+use App\Core\Views\Twig;
 use App\Models\User;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -20,11 +21,21 @@ $config = [
     ]
 ];
 
-$app = new Application(dirname(__DIR__), $config);
+$pathViews = dirname(__DIR__).'/views';
+$pathCache = dirname(__DIR__).'/cache';
 
-$app->on(Application::EVENT_BEFORE_REQUEST, function() {
-    echo 'Before request';
-});
+$options = [
+    'cache' => $pathCache,
+    'debug' => $_ENV['APP_DEBUG'],
+];
+
+$twig = new Twig($pathViews, $options);
+
+$app = new Application($twig, dirname(__DIR__), $config);
+
+//$app->on(Application::EVENT_BEFORE_REQUEST, function() {
+//    echo 'Before request';
+//});
 
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/contact', [SiteController::class, 'contact']);

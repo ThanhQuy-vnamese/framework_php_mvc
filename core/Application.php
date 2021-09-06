@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Core\Database\Database;
 use App\Core\Database\DBModel;
+use App\Core\Views\Twig;
 use App\Models\User;
 
 class Application {
@@ -21,10 +22,11 @@ class Application {
     public Request $request;
     public Response $response;
     public Session $session;
+    public Twig $twig;
     public ?DBModel $user;
     public ?Controller $controller = null;
 
-    public function __construct(string $rootPath, array $config)
+    public function __construct(Twig $twig, string $rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
         self::$APPLICATION = $this;
@@ -32,6 +34,7 @@ class Application {
         $this->request = new Request();
         $this->response = new Response();
         $this->session = new Session();
+        $this->twig = $twig;
         $this->router = new Router($this->request, $this->response);
         $this->database = new Database($config['db']);
 

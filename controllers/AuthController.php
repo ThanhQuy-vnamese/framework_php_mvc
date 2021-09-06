@@ -7,16 +7,18 @@ use App\Core\Controller;
 use App\Core\Middlewares\AuthMiddleware;
 use App\Core\Request;
 use App\Core\Response;
+use App\Core\Views\Twig;
 use App\Models\LoginForm;
 use App\Models\User;
 
 class AuthController extends Controller
 {
     // TODO: Refactor
-    public function __construct()
+    public function __construct(Twig $twig)
     {
+        parent::__construct($twig);
 //        $this->setLayout('auth');
-        $this->registerMiddleware(new AuthMiddleware(['profile']));
+        $this->registerMiddleware(new AuthMiddleware(['']));
     }
 
     public function login(Request $request, Response $response)
@@ -45,16 +47,14 @@ class AuthController extends Controller
                 Application::$APPLICATION->response->redirect('/');
                 exit();
             }
-//            echo '<pre>';
-//            var_dump($user->errors);
-//            die;
             return $this->render('register', ['model' => $user]);
         }
 
         return $this->render('register', ['model' => $user]);
     }
 
-    public function profile() {
-        return $this->render('profile');
+    public function profile(): string
+    {
+        return $this->twig->render('profile');
     }
 }

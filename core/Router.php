@@ -44,7 +44,7 @@ class Router
         }
         if (is_array($callback)) {
             /**@var Controller $controller*/
-            $controller                           = new $callback[0]();
+            $controller                           = new $callback[0](Application::$APPLICATION->twig);
             Application::$APPLICATION->controller = $controller;
             $controller->action                   = $callback[1];
             $callback[0] = $controller;
