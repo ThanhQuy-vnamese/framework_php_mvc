@@ -1,5 +1,9 @@
 <?php
 use App\Core\Form\Form;
+
+/**
+ * @var $model App\Core\Model
+ */
 ?>
 <h1>Register</h1>
 <?php $form =  Form::begin('', 'post') ?>

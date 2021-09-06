@@ -28,6 +28,19 @@ class Session
 
     public function getFlash(string $key)
     {
+        return $_SESSION[self::FLASH_MESSAGE][$key]['value'] ?? false;
+    }
+
+    public function set($key, $value) {
+        $_SESSION[$key] = $value;
+    }
+
+    public function get($key) {
+        return $_SESSION[$key] ?? '';
+    }
+
+    public function remove($key) {
+        unset($_SESSION[$key]);
     }
 
     public function __destruct()
@@ -38,8 +51,6 @@ class Session
                 unset($flashMessages[$key]);
             }
         }
-        var_dump($flashMessages);
-//        die;
         $_SESSION[self::FLASH_MESSAGE] = $flashMessages;
     }
 }

@@ -34,4 +34,20 @@ use App\Core\Model;
 
         return implode(',', $values);
     }
+
+    public function findOne($where) {
+        $index    = array_keys($where);
+        $lastIndex  = end($index);
+        $tableName = static::tableName();
+        $condition = '';
+        foreach ($where as $key => $value) {
+            $condition .= "$key = '$value'";
+            if ($key !== $lastIndex) {
+                $condition .= ' AND ';
+            }
+        }
+        $query = "SELECT * FROM $tableName WHERE $condition";
+        $result = Application::$APPLICATION->database->mysql->query($query);
+        return $result->fetch_object();
+    }
 }

@@ -4,7 +4,10 @@ namespace App\Controllers;
 
 use App\Core\Application;
 use App\Core\Controller;
+use App\Core\Middlewares\AuthMiddleware;
 use App\Core\Request;
+use App\Core\Response;
+use App\Models\LoginForm;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -12,13 +15,22 @@ class AuthController extends Controller
     // TODO: Refactor
     public function __construct()
     {
-        $this->setLayout('auth');
+//        $this->setLayout('auth');
+        $this->registerMiddleware(new AuthMiddleware(['profile']));
     }
 
-    public function login()
+    public function login(Request $request, Response $response)
     {
 //        $this->setLayout('auth');
-        return $this->render('login');
+        $loginForm = new LoginForm();
+        if ($request->isPost()) {
+            $loginForm->loadData($request->getBody());
+            if ($loginForm->validate() && $loginForm->login()) {
+                $response->redirect('/');
+                return ;
+            }
+        }
+        return $this->render('login', ['model' => $loginForm]);
     }
 
     //TODO: Refactor move inject Request to construct
@@ -40,5 +52,9 @@ class AuthController extends Controller
         }
 
         return $this->render('register', ['model' => $user]);
+    }
+
+    public function profile() {
+        return $this->render('profile');
     }
 }

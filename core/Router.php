@@ -26,8 +26,8 @@ class Router
 
     public function resolve()
     {
-        $path   = $this->request->getPath();
-        $pos = strpos($path, '/public');
+        $path = $this->request->getPath();
+        $pos  = strpos($path, '/public');
         if ($pos !== false) {
             $path = substr($path, $pos + strlen('/public'));
         }
@@ -36,17 +36,25 @@ class Router
         $callback = $this->router[$method][$path] ?? false;
         if ($callback === false) {
             $this->response->setStatusCode(404);
+
             return $this->renderView('_404');
         }
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
         if (is_array($callback)) {
-            Application::$APPLICATION->controller = new $callback[0]();
-            $callback[0]                          = new $callback[0]();
+            /**@var Controller $controller*/
+            $controller                           = new $callback[0]();
+            Application::$APPLICATION->controller = $controller;
+            $controller->action                   = $callback[1];
+            $callback[0] = $controller;
+
+            foreach ($controller->get_middlewares() as $middleware) {
+                $middleware->execute();
+            }
         }
 
-        return call_user_func($callback, $this->request);
+        return call_user_func($callback, $this->request, $this->response);
     }
 
     public function renderView($view, $params = [])
@@ -66,8 +74,10 @@ class Router
 
     protected function layoutContent()
     {
-        debug_print_backtrace();
-        $layout = Application::$APPLICATION->controller->layout;
+        $layout = Application::$APPLICATION->layout;
+        if (Application::$APPLICATION->controller) {
+            $layout = Application::$APPLICATION->controller->layout;
+        }
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/${layout}.php";
 
