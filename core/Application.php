@@ -7,6 +7,11 @@ use App\Core\Database\DBModel;
 use App\Models\User;
 
 class Application {
+    const EVENT_BEFORE_REQUEST = 'beforeRequest';
+    const EVENT_AFTER_REQUEST = 'beforeAfter';
+
+    protected array $eventListeners = [];
+
     public string $layout = 'main';
     public User $userClass;
     public static string $ROOT_DIR;
@@ -57,6 +62,7 @@ class Application {
     }
 
     public function run() {
+        $this->triggerEvent(self::EVENT_BEFORE_REQUEST);
         try {
             echo $this->router->resolve();
         } catch (\Exception $e) {
@@ -65,6 +71,17 @@ class Application {
             ]);
         }
 
+    }
+
+    public function triggerEvent(string $eventName) {
+        $callbacks = $this->eventListeners[$eventName] ?? [];
+        foreach ($callbacks as $callback) {
+            call_user_func($callback);
+        }
+    }
+
+    public function on($eventName, $callback) {
+        $this->eventListeners[$eventName][] = $callback;
     }
 
     public function getPrimaryKey(): string {
