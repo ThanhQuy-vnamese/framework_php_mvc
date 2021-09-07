@@ -10,20 +10,21 @@ class Database
 
     public function __construct(array $config)
     {
-        $host        = $config['host'] ?? '';
-        $username    = $config['username'] ?? '';
-        $password    = $config['password'] ?? '';
-        $database    = $config['database'] ?? '';
+        $host = $config['host'] ?? '';
+        $username = $config['username'] ?? '';
+        $password = $config['password'] ?? '';
+        $database = $config['database'] ?? '';
         $this->mysql = mysqli_connect($host, $username, $password, $database);
+        $this->mysql->set_charset('utf8');
     }
 
     public function applyMigrations()
     {
         $this->createMigrationsTable();
-        $appliedMigrations   = $this->getApplyMigrations();
-        $migrationConverted  = $this->covertMigrations($appliedMigrations);
-        $newMigrations       = [];
-        $files               = scandir(Application::$ROOT_DIR . '/migrations');
+        $appliedMigrations = $this->getApplyMigrations();
+        $migrationConverted = $this->covertMigrations($appliedMigrations);
+        $newMigrations = [];
+        $files = scandir(Application::$ROOT_DIR . '/migrations');
         $toAppliedMigrations = array_diff($files, $migrationConverted);
         foreach ($toAppliedMigrations as $migration) {
             if ($migration === '.' || $migration === '..') {
@@ -32,14 +33,14 @@ class Database
 
             require_once Application::$ROOT_DIR . '/migrations/' . $migration;
             $classname = pathinfo($migration, PATHINFO_FILENAME);
-            $instance  = new $classname();
+            $instance = new $classname();
             $this->log("Apply migration $migration");
             $instance->up();
             $this->log("Apply migration $migration");
             $newMigrations[] = $migration;
         }
 
-        if ( ! empty($newMigrations)) {
+        if (!empty($newMigrations)) {
             $this->saveMigration($newMigrations);
         } else {
             $this->log('All migration are applied');
@@ -68,7 +69,7 @@ class Database
 
     public function getApplyMigrations(): ?array
     {
-        $query  = "SELECT migration FROM migrations";
+        $query = "SELECT migration FROM migrations";
         $result = $this->mysql->query($query);
 
         return $result->fetch_all();
@@ -77,8 +78,8 @@ class Database
     public function saveMigration(array $migrations)
     {
         $migrations = array_map(fn($m) => "('$m')", $migrations);
-        $values     = implode(',', $migrations);
-        $query      = "INSERT INTO migrations (migration) VALUES $values";
+        $values = implode(',', $migrations);
+        $query = "INSERT INTO migrations (migration) VALUES $values";
         $this->mysql->query($query);
     }
 

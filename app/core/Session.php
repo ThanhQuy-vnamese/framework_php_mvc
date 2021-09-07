@@ -10,12 +10,18 @@ class Session
 
     public function __construct()
     {
-        session_start();
+        $this->startSession();
         $flashMessages = $_SESSION[self::FLASH_MESSAGE] ?? [];
         foreach ($flashMessages as $key => &$flashMessage) {
             $flashMessage['removed'] = true;
         }
         $_SESSION[self::FLASH_MESSAGE] = $flashMessages;
+    }
+
+    private function startSession(): void {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     public function setFlash(string $key, $value)

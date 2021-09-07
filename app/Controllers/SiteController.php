@@ -1,15 +1,17 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Controllers;
 
-use App\Core\Controller;
+use App\Core\Controller\BaseController;
 
 /**
  * Class SiteController
  * @package App\Controller
  */
-
-class SiteController extends Controller {
+class SiteController extends BaseController
+{
     public function home(): string
     {
         $params = [
@@ -25,8 +27,9 @@ class SiteController extends Controller {
 
     public function handleContact(): string
     {
-        $body = $this->request->getBody();
-        var_dump($body);die;
+        $body = $this->request->getAllInput();
+        var_dump($body);
+        die;
         return 'Handling submitted form';
     }
 }

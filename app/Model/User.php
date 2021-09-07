@@ -1,13 +1,15 @@
 <?php
-namespace App\Models;
+
+namespace App\Model;
 
 use App\Core\Database\DBModel;
+use JetBrains\PhpStorm\ArrayShape;
 
 class User extends DBModel
 {
     public const STATUS_INACTIVE = 0;
-    public const STATUS_ACTIVE= 1;
-    public const STATUS_DELETED= 2;
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_DELETED = 2;
 
     public string $firstname = '';
     public string $lastname = '';
@@ -44,7 +46,8 @@ class User extends DBModel
         return ['firstname', 'lastname', 'email', 'password', 'status'];
     }
 
-    public function getPrimaryKey(): string {
+    public function getPrimaryKey(): string
+    {
         return 'id';
     }
 

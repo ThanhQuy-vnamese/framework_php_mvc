@@ -1,6 +1,6 @@
 <?php
 
-use App\Core\Migrations;
+use App\Core\Application;
 
 class m0001_initial
 {

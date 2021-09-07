@@ -5,8 +5,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controllers\AuthController;
 use App\Core\Application;
 use App\Controllers\SiteController;
-use App\Core\Views\Twig;
-use App\Models\User;
+use App\Core\Middleware\AuthMiddleware;
+use App\Core\View\Twig;
+use App\Model\User;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -47,6 +48,6 @@ $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
 
-$app->router->get('/profile', [AuthController::class, 'profile']);
+$app->router->get('/profile', [AuthController::class, 'profile'], AuthMiddleware::class);
 
 $app->run();

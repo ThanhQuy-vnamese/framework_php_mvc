@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Views;
+namespace App\Core\View;
 
 use Twig\Environment;
 use Twig\Error\LoaderError;

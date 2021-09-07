@@ -73,17 +73,17 @@ abstract class Model
         return empty($this->errors);
     }
 
-    private function addErrorForRules(string $attribute, $message)
-    {
-        $this->errors[$attribute][] = $message;
-    }
-
-    public function addError(string $attribute, string $rule, $params = [])
+    private function addErrorForRules(string $attribute, string $rule, $params = [])
     {
         $message = $this->errorMessage()[$rule] ?? '';
         foreach ($params as $key => $value) {
             $message = str_replace("{{$key}}", $value, $message);
         }
+        $this->errors[$attribute][] = $message;
+    }
+
+    public function addError(string $attribute, string $message)
+    {
         $this->errors[$attribute][] = $message;
     }
 

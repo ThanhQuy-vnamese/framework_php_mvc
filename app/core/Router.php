@@ -2,6 +2,10 @@
 
 namespace App\Core;
 
+use App\Core\Controller\BaseController;
+use App\Core\Request\Request;
+use App\Core\Response\Response;
+
 class Router
 {
     protected array $router = [];
@@ -14,14 +18,28 @@ class Router
         $this->response = $response;
     }
 
-    public function get($path, $callback)
+    /**
+     * @param $path
+     * @param $callback
+     * @param string $middleware
+     * @return $this
+     */
+    public function get($path, $callback, string $middleware = ''): Router
     {
         $this->router['get'][$path] = $callback;
+        $this->router['get'][$path]['middleware'] = $middleware;
+        return $this;
     }
 
-    public function post($path, $callback)
+    /**
+     * @param $path
+     * @param $callback
+     * @return $this
+     */
+    public function post($path, $callback): Router
     {
         $this->router['post'][$path] = $callback;
+        return $this;
     }
 
     public function resolve()
@@ -33,7 +51,9 @@ class Router
         }
         $method = $this->request->getMethod();
         // TODO: Refactor
-        $callback = $this->router[$method][$path] ?? false;
+        $class = $this->router[$method][$path] ?? false;
+        $callback = $class;
+        unset($callback['middleware']);
         if ($callback === false) {
             $this->response->setStatusCode(404);
 
@@ -43,31 +63,26 @@ class Router
             return $this->renderView($callback);
         }
         if (is_array($callback)) {
-            /**@var Controller $controller*/
-            $controller                           = new $callback[0](Application::$APPLICATION->twig);
+            /**@var BaseController $controller*/
+            $controller                           = new $callback[0](Application::$APPLICATION->twig, $this->request, $this->response);
             Application::$APPLICATION->controller = $controller;
             $controller->action                   = $callback[1];
             $callback[0] = $controller;
 
-            foreach ($controller->get_middlewares() as $middleware) {
-                $middleware->execute();
+            if (!empty($class['middleware'])) {
+                $middleware = [];
+                $middleware[0] = new $class['middleware']();
+                $middleware[1] = '__invoke';
+                call_user_func($middleware);
             }
         }
-
-        return call_user_func($callback, $this->request, $this->response);
+        return call_user_func($callback);
     }
 
     public function renderView($view, $params = [])
     {
         $layoutContent = $this->layoutContent();
         $viewContent   = $this->renderOnlyView($view, $params);
-
-        return str_replace('{{content}}', $viewContent, $layoutContent);
-    }
-
-    public function renderContent($viewContent)
-    {
-        $layoutContent = $this->layoutContent();
 
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }

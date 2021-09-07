@@ -1,7 +1,14 @@
 <?php
-namespace App\Core;
+namespace App\Core\Request;
 
 class Request {
+    public Input $input;
+
+    public function __construct()
+    {
+        $this->input = new Input($this->getAllInput());
+    }
+
     public function getPath() {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
         $position = strpos($path, '?');
@@ -12,7 +19,7 @@ class Request {
     }
 
     public function getMethod(): string {
-        return strtolower($_SERVER['REQUEST_METHOD']);
+        return strtolower($_SERVER['REQUEST_METHOD'] ?? '');
     }
 
     public function isGet(): bool {
@@ -23,20 +30,20 @@ class Request {
         return $this->getMethod() === 'post';
     }
 
-    public function getBody(): array {
-        $body = [];
-        if ($this->getMethod() === 'get') {
+    public function getAllInput(): array {
+        $input = [];
+        if ($this->isGet()) {
             foreach ($_GET as $key => $value) {
-                $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                $input[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
 
-        if ($this->getMethod() === 'post') {
+        if ($this->isPost()) {
             foreach ($_POST as $key => $value) {
-                $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                $input[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
 
-        return $body;
+        return $input;
     }
 }
