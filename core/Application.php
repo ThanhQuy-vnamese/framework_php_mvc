@@ -26,15 +26,14 @@ class Application {
     public ?DBModel $user;
     public ?Controller $controller = null;
 
-    public function __construct(Twig $twig, string $rootPath, array $config)
+    public function __construct(string $rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
         self::$APPLICATION = $this;
-        $this->userClass = new $config['userClass']();
+//        $this->userClass = new $config['userClass']();
         $this->request = new Request();
         $this->response = new Response();
         $this->session = new Session();
-        $this->twig = $twig;
         $this->router = new Router($this->request, $this->response);
         $this->database = new Database($config['db']);
 
@@ -46,6 +45,10 @@ class Application {
 //            $this->user = $this->userClass->findOne([$primaryKey => $primaryValue]);
 //        }
 
+    }
+
+    public function setTwigTemplate(Twig $twig) {
+        $this->twig = $twig;
     }
 
     /**

@@ -8,6 +8,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
+use Twig\TemplateWrapper;
 
 class Twig {
     public Environment $twig;
@@ -26,6 +27,18 @@ class Twig {
      */
     public function render(string $templateName, array $params = []): string
     {
-        return $this->twig->render($templateName.'.twig', $params);
+        $template = $templateName . '.twig';
+        return $this->twig->render($template, $params);
+    }
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function load(string $templateName): TemplateWrapper
+    {
+        $template = $templateName . '.twig';
+        return $this->twig->load($template);
     }
 }
