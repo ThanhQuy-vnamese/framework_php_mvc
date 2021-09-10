@@ -4,6 +4,7 @@
 namespace App\Core\Auth;
 
 
+use App\Core\Cookie\Cookie;
 use App\Core\Session;
 use App\Model\User;
 
@@ -14,14 +15,19 @@ class Authentication
      */
     private $user;
     private Session $session;
+    private Cookie $cookie;
+    private bool $rememberPassword;
+
     public function __construct()
     {
         $this->session =  new Session();
+        $this->cookie = new Cookie();
         $this->user = $this->session->get('user') ?? null;
     }
 
-    public function login(array $info): bool
+    public function login(array $info, bool $rememberPassword = false): bool
     {
+        $this->rememberPassword = $rememberPassword;
         $where = $info;
         if (array_key_exists('password', $info)) {
             unset($where['password']);
@@ -41,8 +47,15 @@ class Authentication
         if (!password_verify($password, $result->password)) {
             return false;
         }
-        $this->session->set('user', $result);
 
+        return $this->setInfo($result);
+    }
+
+    private function setInfo($result): bool {
+        $this->session->set('user', $result);
+        if ($this->rememberPassword) {
+            $this->cookie->set('user', $result->id);
+        }
         return true;
     }
 
@@ -56,5 +69,8 @@ class Authentication
 
     public function logout() {
         $this->session->remove('user');
+        if ($this->session->get('user')) {
+            $this->session->remove('user');
+        }
     }
 }

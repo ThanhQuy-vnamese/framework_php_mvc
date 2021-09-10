@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use App\Core\Database\DBModel;
-use JetBrains\PhpStorm\ArrayShape;
 
 class User extends DBModel
 {
