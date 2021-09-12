@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Core\Auth;
 
@@ -20,7 +21,7 @@ class Authentication
 
     public function __construct()
     {
-        $this->session =  new Session();
+        $this->session = new Session();
         $this->cookie = new Cookie();
         $this->user = $this->session->get('user') ?? null;
     }
@@ -51,7 +52,8 @@ class Authentication
         return $this->setInfo($result);
     }
 
-    private function setInfo($result): bool {
+    private function setInfo($result): bool
+    {
         $this->session->set('user', $result);
         if ($this->rememberPassword) {
             $this->cookie->set('user', $result->id);
@@ -59,15 +61,18 @@ class Authentication
         return true;
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->user;
     }
 
-    public function isLogin(): bool {
+    public function isLogin(): bool
+    {
         return !empty($this->session->get('user'));
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->session->remove('user');
         if ($this->session->get('user')) {
             $this->session->remove('user');

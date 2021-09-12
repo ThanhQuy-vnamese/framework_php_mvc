@@ -4,7 +4,6 @@ namespace App\Core\Database;
 
 use App\Core\Application;
 use App\Core\Model;
-use Dotenv\Repository\Adapter\ApacheAdapter;
 
 abstract class DBModel extends Model
 {
@@ -52,7 +51,11 @@ abstract class DBModel extends Model
         $tableName = static::tableName();
         $condition = '';
         foreach ($where as $key => $value) {
-            $condition .= "$key = '$value'";
+            if (is_int($value)) {
+                $condition .= "$key = $value";
+            } else {
+                $condition .= "$key = '$value'";
+            }
             if ($key !== $lastIndex) {
                 $condition .= ' AND ';
             }
@@ -60,5 +63,13 @@ abstract class DBModel extends Model
         $query = "SELECT * FROM $tableName WHERE $condition";
         $result = Application::$APPLICATION->database->mysql->query($query);
         return $result->fetch_object();
+    }
+
+
+    public function limitSelect(): string {
+        if (empty($this->attributes())) {
+            return '*';
+        }
+        return implode(',', $this->attributes());
     }
 }

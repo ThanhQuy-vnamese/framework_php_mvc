@@ -42,7 +42,7 @@ class User extends DBModel
 
     function attributes(): array
     {
-        return ['firstname', 'lastname', 'email', 'password', 'status'];
+        return ['firstname', 'lastname', 'email', 'status'];
     }
 
     public function getPrimaryKey(): string
@@ -59,5 +59,17 @@ class User extends DBModel
             'password' => 'Password',
             'passwordRepeat' => 'Password Repeat',
         ];
+    }
+
+    public function getUsers(): array {
+        $row = $this->limitSelect();
+        $query = "SELECT $row FROM users";
+        $result = $this->getDatabase()->mysql->query($query);
+        $numRows = $result->num_rows;
+        if ($numRows > 0) {
+                return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        return [];
     }
 }

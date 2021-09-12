@@ -14,7 +14,7 @@ class Router
 
     public function __construct(Request $request, Response $response)
     {
-        $this->request  = $request;
+        $this->request = $request;
         $this->response = $response;
     }
 
@@ -34,18 +34,20 @@ class Router
     /**
      * @param $path
      * @param $callback
+     * @param string $middleware
      * @return $this
      */
-    public function post($path, $callback): Router
+    public function post($path, $callback, string $middleware = ''): Router
     {
         $this->router['post'][$path] = $callback;
+        $this->router['get'][$path]['middleware'] = $middleware;
         return $this;
     }
 
     public function resolve()
     {
         $path = $this->request->getPath();
-        $pos  = strpos($path, '/public');
+        $pos = strpos($path, '/public');
         if ($pos !== false) {
             $path = substr($path, $pos + strlen('/public'));
         }
@@ -63,10 +65,10 @@ class Router
             return $this->renderView($callback);
         }
         if (is_array($callback)) {
-            /**@var BaseController $controller*/
-            $controller                           = new $callback[0](Application::$APPLICATION->twig, $this->request, $this->response);
+            /**@var BaseController $controller */
+            $controller = new $callback[0](Application::$APPLICATION->twig, $this->request, $this->response);
             Application::$APPLICATION->controller = $controller;
-            $controller->action                   = $callback[1];
+            $controller->action = $callback[1];
             $callback[0] = $controller;
 
             if (!empty($class['middleware'])) {
@@ -82,7 +84,7 @@ class Router
     public function renderView($view, $params = [])
     {
         $layoutContent = $this->layoutContent();
-        $viewContent   = $this->renderOnlyView($view, $params);
+        $viewContent = $this->renderOnlyView($view, $params);
 
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }

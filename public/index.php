@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\AuthController;
+use App\Controllers\TestController;
 use App\Core\Application;
 use App\Controllers\SiteController;
 use App\Core\Middleware\AuthMiddleware;
@@ -49,5 +50,6 @@ $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
 
 $app->router->get('/profile', [AuthController::class, 'profile'], AuthMiddleware::class);
+$app->router->get('/api/users', [TestController::class, 'api']);
 
 $app->run();

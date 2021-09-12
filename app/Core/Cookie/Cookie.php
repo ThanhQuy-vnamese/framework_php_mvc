@@ -11,7 +11,7 @@ class Cookie
 {
     public function set(string $name, string $value, int $timeExpire = 2592000): Cookie
     {
-        setcookie($name, $value, $timeExpire);
+        setcookie($name, $value, time() + $timeExpire);
         return $this;
     }
 

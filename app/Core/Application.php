@@ -10,7 +10,8 @@ use App\Core\Response\Response;
 use App\Core\View\Twig;
 use App\Model\User;
 
-class Application {
+class Application
+{
     const EVENT_BEFORE_REQUEST = 'beforeRequest';
     const EVENT_AFTER_REQUEST = 'beforeAfter';
 
@@ -40,7 +41,8 @@ class Application {
         $this->database = new Database($config['db']);
     }
 
-    public function setTwigTemplate(Twig $twig) {
+    public function setTwigTemplate(Twig $twig)
+    {
         $this->twig = $twig;
     }
 
@@ -53,48 +55,57 @@ class Application {
     }
 
     /**
-     * @param  BaseController  $controller
+     * @param BaseController $controller
      */
     public function set_controller(BaseController $controller): void
     {
         $this->controller = $controller;
     }
 
-    public function run() {
+    public function run()
+    {
         $this->triggerEvent(self::EVENT_BEFORE_REQUEST);
         try {
             echo $this->router->resolve();
         } catch (\Exception $e) {
-            echo $this->router->renderView('_error', [
-                'exception' => $e
-            ]);
+            echo $this->router->renderView(
+                '_error',
+                [
+                    'exception' => $e
+                ]
+            );
         }
-
     }
 
-    public function triggerEvent(string $eventName) {
+    public function triggerEvent(string $eventName)
+    {
         $callbacks = $this->eventListeners[$eventName] ?? [];
         foreach ($callbacks as $callback) {
             call_user_func($callback);
         }
     }
 
-    public function on($eventName, $callback) {
+    public function on($eventName, $callback)
+    {
         $this->eventListeners[$eventName][] = $callback;
     }
 
-    public function getPrimaryKey(): string {
+    public function getPrimaryKey(): string
+    {
         return 'id';
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->user = null;
         $this->session->remove('user');
     }
 
-    public function login(DBModel $user): bool{
+    public function login(DBModel $user): bool
+    {
         $this->user = $user;
-        var_dump($user);die;
+        var_dump($user);
+        die;
         $primaryKey = $this->getPrimaryKey();
 //        $primaryValue = $this->{$primaryKey};
 //        var_dump($primaryKey);die;

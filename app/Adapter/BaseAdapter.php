@@ -4,17 +4,10 @@ declare(strict_types=1);
 
 namespace App\Adapter;
 
-class BaseAdapter
+abstract class BaseAdapter
 {
-    public object $data;
 
-    public function setData($data): BaseAdapter
-    {
-        $this->data = $data;
-        return $this;
-    }
+    abstract public function set($data);
 
-    public function getData(): object {
-        return $this->data;
-    }
+    abstract public function get();
 }
