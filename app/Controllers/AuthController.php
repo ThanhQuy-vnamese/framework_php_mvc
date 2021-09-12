@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Adapter\UserAdapter;
 use App\Core\Auth\Authentication;
 use App\Core\Controller\BaseController;
 use App\Core\Session;
@@ -55,6 +56,8 @@ class AuthController extends BaseController
      */
     public function profile(): string
     {
-        return $this->twig->render('profile');
+        $userAdapter = new UserAdapter();
+        $users = $userAdapter->getUsers()->toArray();
+        return $this->twig->render('profile', ['users' => $users]);
     }
 }

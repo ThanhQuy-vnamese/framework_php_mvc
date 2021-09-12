@@ -67,7 +67,7 @@ class User extends DBModel
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
         if ($numRows > 0) {
-                return $result->fetch_all(MYSQLI_ASSOC);
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
 
         return [];

@@ -6,7 +6,6 @@ namespace App\Adapter;
 
 abstract class BaseAdapter
 {
-
     abstract public function set($data);
 
     abstract public function get();
