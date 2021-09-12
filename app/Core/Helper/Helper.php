@@ -18,4 +18,20 @@ class Helper
         $host = $_SERVER['HTTP_HOST'];
         return $http . $host . $pathPublic . '/' . $path;
     }
+
+    /**
+     * @param string $path
+     * @return string|void
+     */
+    public function redirect(string $path): string {
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $pos = strpos($requestUrl, PREFIX_PUBLIC);
+        if ($pos !== false) {
+            $pathPublic = $requestUrl . $path;
+        } else {
+            $pathPublic = $path;
+        }
+
+        return $pathPublic;
+    }
 }
