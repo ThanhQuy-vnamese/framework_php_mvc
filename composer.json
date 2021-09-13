@@ -9,7 +9,8 @@
     ],
     "require": {
         "vlucas/phpdotenv": "^5.3",
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0",
+        "firebase/php-jwt": "^5.4"
     },
     "autoload": {
         "psr-4": {

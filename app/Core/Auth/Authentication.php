@@ -68,14 +68,18 @@ class Authentication
 
     public function isLogin(): bool
     {
-        return !empty($this->session->get('user'));
+        $session = new Session();
+        if ($session->get('user') && !empty($this->session->get('user'))) {
+            return true;
+        }
+        return false;
     }
 
     public function logout()
     {
         $this->session->remove('user');
-        if ($this->session->get('user')) {
-            $this->session->remove('user');
+        if ($this->cookie->get('user')) {
+            $this->cookie->remove('user');
         }
     }
 }
