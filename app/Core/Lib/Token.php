@@ -18,7 +18,8 @@ class Token
         return JWT::encode($this->payload, $privateKey, $alg);
     }
 
-    public function decode($jwt, string $publicKey, array $allowedAlg = ['HS256']) {
+    public function decode($jwt, string $publicKey, array $allowedAlg = ['HS256']): object
+    {
         return JWT::decode($jwt, $publicKey, $allowedAlg);
     }
 
