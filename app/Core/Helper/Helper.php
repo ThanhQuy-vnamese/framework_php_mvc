@@ -27,7 +27,8 @@ class Helper
         $requestUrl = $_SERVER['REQUEST_URI'];
         $pos = strpos($requestUrl, PREFIX_PUBLIC);
         if ($pos !== false) {
-            $pathPublic = $requestUrl . $path;
+            $pathPublic = substr($requestUrl, 0,$pos + strlen('/public'));
+            $pathPublic = $pathPublic . $path;
         } else {
             $pathPublic = $path;
         }
