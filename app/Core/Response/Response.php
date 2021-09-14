@@ -11,7 +11,7 @@ class Response
         http_response_code($status);
     }
 
-    public function redirect(string $url)
+    public function redirect(string $url, array $params = [])
     {
         $requestUrl = $_SERVER['REQUEST_URI'];
         $pos = strpos($requestUrl, PREFIX_PUBLIC);
@@ -19,6 +19,18 @@ class Response
             $pathPublic = $requestUrl . $url;
         } else {
             $pathPublic = $url;
+        }
+
+        if (!empty($params)) {
+            $linkParam = '';
+            $lastItem = end($params);
+            foreach ($params as $key => $value) {
+                $linkParam .= $key . '=' . $value;
+                if ($value !== $lastItem) {
+                    $linkParam .= '&';
+                }
+            }
+            $pathPublic .= '?' . $linkParam;
         }
 
         header('location: ' . $pathPublic);

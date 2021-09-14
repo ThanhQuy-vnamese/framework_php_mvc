@@ -21,9 +21,10 @@ class Helper
 
     /**
      * @param string $path
+     * @param array $params
      * @return string|void
      */
-    public function redirect(string $path): string {
+    public function redirect(string $path, array $params = []): string {
         $requestUrl = $_SERVER['REQUEST_URI'];
         $pos = strpos($requestUrl, PREFIX_PUBLIC);
         if ($pos !== false) {
@@ -31,6 +32,18 @@ class Helper
             $pathPublic = $pathPublic . $path;
         } else {
             $pathPublic = $path;
+        }
+
+        if (!empty($params)) {
+            $linkParam = '';
+            $lastItem = end($params);
+            foreach ($params as $key => $value) {
+                $linkParam .= $key . '=' . $value;
+                if ($value !== $lastItem) {
+                    $linkParam .= '&';
+                }
+            }
+            $pathPublic .= '?' . $linkParam;
         }
 
         return $pathPublic;
