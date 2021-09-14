@@ -45,7 +45,16 @@ class Authentication
             return false;
         }
 
-        if (!password_verify($password, $result->password)) {
+        $info = password_get_info($password);
+        $isExistCost = isset($info['options']['cost']);
+
+        if (!$isExistCost) {
+            if (!password_verify($password, $result->password)) {
+                return false;
+            }
+        }
+
+        if ($info['options']['cost'] !== 10) {
             return false;
         }
 
