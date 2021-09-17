@@ -49,9 +49,11 @@ class Authentication
         $isExistCost = isset($info['options']['cost']);
 
         if (!$isExistCost) {
-            if (!password_verify($password, $result->password)) {
-                return false;
+            if (password_verify($password, $result->password)) {
+                return $this->setInfo($result);
             }
+
+            return false;
         }
 
         if ($info['options']['cost'] !== 10) {
