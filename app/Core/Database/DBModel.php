@@ -5,6 +5,7 @@ namespace App\Core\Database;
 use App\Adapter\ModelAdapter;
 use App\Core\Application;
 use App\Core\Model;
+use stdClass;
 
 abstract class DBModel extends Model
 {
@@ -95,18 +96,16 @@ abstract class DBModel extends Model
         return $this;
     }
 
-    public function get()
+    public function get(): stdClass
     {
-        $limitSelect = $this->limitField;
-        if ($limitSelect) {
-            $limitSelect = $this->limitSelect();
-        }
+        $limitSelect = $this->limitSelectNew();
         $condition = $this->condition;
         if (!empty($condition)) {
             $condition = "WHERE $condition";
         }
         $tableName = static::tableName();
         $query = "SELECT $limitSelect FROM $tableName $condition";
+        var_dump($query);die;
 
         $result = Application::$APPLICATION->database->mysql->query($query);
         if (!$result) {
@@ -126,6 +125,19 @@ abstract class DBModel extends Model
         if (empty($this->attributes())) {
             return '*';
         }
+        return implode(',', $this->attributes());
+    }
+
+    public function limitSelectNew(): string
+    {
+        if (empty($this->attributes()) && empty($this->limitField)) {
+            return '*';
+        }
+
+        if (!empty($this->limitField)) {
+            return $this->limitField;
+        }
+
         return implode(',', $this->attributes());
     }
 }
