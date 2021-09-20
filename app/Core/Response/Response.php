@@ -34,7 +34,7 @@ class Response
             $pathPublic .= '?' . $linkParam;
         }
 
-        header('location: ' . $pathPublic);
+        header('location:' . $pathPublic);
     }
 
     public function json_encode($data)

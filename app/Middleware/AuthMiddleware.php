@@ -1,11 +1,13 @@
 <?php
 
 
-namespace App\Core\Middleware;
+namespace App\Middleware;
 
 
 use App\Core\Auth\Authentication;
 use App\Core\Exception\ForbiddenException;
+use App\Core\Middleware\BaseMiddleware;
+use App\Core\Response\Response;
 
 class AuthMiddleware extends BaseMiddleware
 {
@@ -13,7 +15,9 @@ class AuthMiddleware extends BaseMiddleware
     {
         $authentication = new Authentication();
         if (!$authentication->isLogin()) {
-            throw new ForbiddenException();
+//            throw new ForbiddenException();
+            $response = new Response();
+            $response->redirect('/login');
         }
     }
 }

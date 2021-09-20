@@ -2,11 +2,18 @@
 
 namespace App\Core\Database;
 
+use App\Adapter\ModelAdapter;
 use App\Core\Application;
 use App\Core\Model;
 
 abstract class DBModel extends Model
 {
+    protected string $limitField = '';
+
+    protected string $condition = '';
+
+    protected string $table = '';
+
     abstract function tableName(): string;
 
     abstract function attributes(): array;
@@ -44,29 +51,78 @@ abstract class DBModel extends Model
         return implode(',', $values);
     }
 
-    public function findOne($where)
+    public function getOne($where)
     {
-        $index = array_keys($where);
-        $lastIndex = end($index);
+        $selectField = $this->limitSelect();
+        $this->condition($where);
+        $condition = $this->condition;
         $tableName = static::tableName();
+
+        $query = "SELECT $selectField FROM $tableName WHERE $condition";
+        $result = Application::$APPLICATION->database->mysql->query($query);
+        return $result->fetch_object();
+    }
+
+    public function select(array $fields): DBModel
+    {
+        $this->limitField = implode(',', $fields);
+        return $this;
+    }
+
+    public function table(string $table)
+    {
+        $this->table = $table;
+        return $this;
+    }
+
+    public function condition(array $conditions): DBModel
+    {
         $condition = '';
-        foreach ($where as $key => $value) {
+        $lastIndex = end($conditions);
+        foreach ($conditions as $key => $value) {
             if (is_int($value)) {
                 $condition .= "$key = $value";
             } else {
                 $condition .= "$key = '$value'";
             }
-            if ($key !== $lastIndex) {
+            if ($value !== $lastIndex) {
                 $condition .= ' AND ';
             }
         }
-        $query = "SELECT * FROM $tableName WHERE $condition";
+
+        $this->condition = $condition;
+
+        return $this;
+    }
+
+    public function get()
+    {
+        $limitSelect = $this->limitField;
+        if ($limitSelect) {
+            $limitSelect = $this->limitSelect();
+        }
+        $condition = $this->condition;
+        if (!empty($condition)) {
+            $condition = "WHERE $condition";
+        }
+        $tableName = static::tableName();
+        $query = "SELECT $limitSelect FROM $tableName $condition";
+
         $result = Application::$APPLICATION->database->mysql->query($query);
-        return $result->fetch_object();
+        if (!$result) {
+            return new \stdClass();
+        }
+        if ($result->num_rows === 0) {
+            return new \stdClass();
+        }
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $modelAdapter = new ModelAdapter($data);
+        return $modelAdapter->setDataToAttributes();
     }
 
 
-    public function limitSelect(): string {
+    public function limitSelect(): string
+    {
         if (empty($this->attributes())) {
             return '*';
         }
