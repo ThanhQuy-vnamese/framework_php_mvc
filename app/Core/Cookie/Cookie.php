@@ -20,7 +20,7 @@ class Cookie
      */
     public function get(string $name, bool $throwError = false)
     {
-        $cookie =  (isset($_COOKIE[$name]) && !empty($_COOKIE[$name])) ? $_COOKIE[$name] : false;
+        $cookie = (isset($_COOKIE[$name]) && !empty($_COOKIE[$name])) ? $_COOKIE[$name] : false;
         if ($throwError) {
             throw new CookieNotExistException("Can not get ${name} from cookie.", 404);
         }

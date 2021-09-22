@@ -6,7 +6,6 @@ use App\Controllers\AuthController;
 use App\Controllers\TestController;
 use App\Core\Application;
 use App\Controllers\SiteController;
-use App\Core\Middleware\AuthMiddleware;
 use App\Core\View\Twig;
 use App\Model\User;
 
@@ -35,6 +34,7 @@ $twig = new Twig($pathViews, $options);
 
 $app = new Application(dirname(__DIR__), $config);
 $app->setTwigTemplate($twig);
+$app->twig->addGlobalFunction('session', Application::$APPLICATION->session );
 
 //$app->on(Application::EVENT_BEFORE_REQUEST, function() {
 //    echo 'Before request';
@@ -49,7 +49,11 @@ $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
 
-$app->router->get('/profile', [AuthController::class, 'profile'], AuthMiddleware::class);
+$app->router->get('/profile', [AuthController::class, 'profile']);
+$app->router->get('/index', [AuthController::class, 'index']);
 $app->router->get('/api/users', [TestController::class, 'api']);
+
+$app->router->get('/abc', [TestController::class, 'get']);
+$app->router->post('/xyz', [TestController::class, 'post']);
 
 $app->run();

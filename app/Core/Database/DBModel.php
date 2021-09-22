@@ -105,7 +105,6 @@ abstract class DBModel extends Model
         }
         $tableName = static::tableName();
         $query = "SELECT $limitSelect FROM $tableName $condition";
-        var_dump($query);die;
 
         $result = Application::$APPLICATION->database->mysql->query($query);
         if (!$result) {
