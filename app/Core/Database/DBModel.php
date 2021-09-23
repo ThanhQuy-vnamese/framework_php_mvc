@@ -70,7 +70,7 @@ abstract class DBModel extends Model
         return $this;
     }
 
-    public function table(string $table)
+    public function table(string $table): DBModel
     {
         $this->table = $table;
         return $this;
@@ -118,6 +118,18 @@ abstract class DBModel extends Model
         return $modelAdapter->setDataToAttributes();
     }
 
+    public function insert(array $values) {
+        $strField = $this->generateFieldToString($values);
+        $strValue = $this->generateValuesToString($values);
+        $db = $this->getDatabase();
+        $query = "INSERT INTO $this->table ($strField) VALUES $strValue;";
+        $result = $db->mysql->query($query);
+        if (!$result) {
+            return false;
+        }
+        return $db->mysql->insert_id;
+    }
+
 
     public function limitSelect(): string
     {
@@ -138,5 +150,66 @@ abstract class DBModel extends Model
         }
 
         return implode(',', $this->attributes());
+    }
+
+    /**
+     * @param array $values
+     * @return string
+     */
+    protected function generateValuesToString(array $values): string
+    {
+        $strValue = '';
+        $isMultiValue = false;
+        $lastValue = end($values);
+        foreach ($values as $value) {
+            if (is_array($value)) {
+                $isMultiValue = true;
+                $str = '';
+                $lastValueChild = end($value);
+                foreach ($value as $childValue) {
+                    $str .= $this->generateValues($childValue, $lastValueChild);
+                }
+                $strValue .= '(' . $str . ')';
+                if ($lastValue != $value) {
+                    $strValue .= ', ';
+                }
+            } else {
+                $strValue .= $this->generateValues($value, $lastValue);
+            }
+        }
+
+        return $isMultiValue ? $strValue : '(' . $strValue . ')';
+    }
+
+    /**
+     * @param $value
+     * @param $lastValue
+     * @return string
+     */
+    protected function generateValues($value, $lastValue): string
+    {
+        $strValue = '';
+        if (is_int($value)) {
+            $strValue .= $value;
+        } else {
+            $strValue .= "'$value'";
+        }
+        if ($value !== $lastValue) {
+            $strValue .= ', ';
+        }
+        return $strValue;
+    }
+
+    /**
+     * @param array $values
+     * @return string
+     */
+    protected function generateFieldToString(array $values): string
+    {
+        $value = array_values($values);
+        if (is_array($value[0])) {
+            return implode(', ', array_keys($value[0]));
+        }
+        return implode(', ', array_keys($values));
     }
 }
