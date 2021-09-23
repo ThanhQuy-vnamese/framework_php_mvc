@@ -118,7 +118,8 @@ abstract class DBModel extends Model
         return $modelAdapter->setDataToAttributes();
     }
 
-    public function insert(array $values) {
+    public function insert(array $values)
+    {
         $strField = $this->generateFieldToString($values);
         $strValue = $this->generateValuesToString($values);
         $db = $this->getDatabase();
@@ -128,6 +129,28 @@ abstract class DBModel extends Model
             return false;
         }
         return $db->mysql->insert_id;
+    }
+
+    public function update(array $values, array $conditions): bool
+    {
+        $lastValue = end($values);
+        $strUpdateQuery = '';
+        foreach ($values as $key => $value) {
+            $strUpdateQuery .= $key . ' = ' . (is_int($value) ? $value : "'$value'");
+            if ($value != $lastValue) {
+                $strUpdateQuery .= ', ';
+            }
+        }
+
+        $this->condition($conditions);
+        $query = "UPDATE $this->table SET $strUpdateQuery WHERE $this->condition";
+        $db = $this->getDatabase();
+        $result = $db->mysql->query($query);
+        if (!$result) {
+            return false;
+        }
+
+        return true;
     }
 
 
