@@ -13,6 +13,8 @@ abstract class DBModel extends Model
 
     protected string $condition = '';
 
+    protected string $operation = '=';
+
     protected string $table = '';
 
     abstract function tableName(): string;
@@ -54,12 +56,11 @@ abstract class DBModel extends Model
 
     public function getOne($where)
     {
-        $selectField = $this->limitSelect();
         $this->condition($where);
         $condition = $this->condition;
         $tableName = static::tableName();
 
-        $query = "SELECT $selectField FROM $tableName WHERE $condition";
+        $query = "SELECT * FROM $tableName WHERE $condition";
         $result = Application::$APPLICATION->database->mysql->query($query);
         return $result->fetch_object();
     }
@@ -76,15 +77,16 @@ abstract class DBModel extends Model
         return $this;
     }
 
-    public function condition(array $conditions): DBModel
+    public function condition(array $conditions, string $operation = ''): DBModel
     {
         $condition = '';
         $lastIndex = end($conditions);
+        $operation = $this->getOperation($operation);
         foreach ($conditions as $key => $value) {
             if (is_int($value)) {
-                $condition .= "$key = $value";
+                $condition .= "$key $operation $value";
             } else {
-                $condition .= "$key = '$value'";
+                $condition .= "$key $operation '$value'";
             }
             if ($value !== $lastIndex) {
                 $condition .= ' AND ';
@@ -108,10 +110,10 @@ abstract class DBModel extends Model
 
         $result = Application::$APPLICATION->database->mysql->query($query);
         if (!$result) {
-            return new \stdClass();
+            return new stdClass();
         }
         if ($result->num_rows === 0) {
-            return new \stdClass();
+            return new stdClass();
         }
         $data = $result->fetch_all(MYSQLI_ASSOC);
         $modelAdapter = new ModelAdapter($data);
@@ -234,5 +236,14 @@ abstract class DBModel extends Model
             return implode(', ', array_keys($value[0]));
         }
         return implode(', ', array_keys($values));
+    }
+
+    /**
+     * @param string $operation
+     * @return string
+     */
+    protected function getOperation(string $operation): string
+    {
+        return empty($operation) ? $this->operation : $operation;
     }
 }
