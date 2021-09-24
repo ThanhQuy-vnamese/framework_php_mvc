@@ -26,10 +26,9 @@ class AuthController extends BaseController
             $login = $authentication->login(['email' => $email, 'password' => $password]);
             if ($loginForm->validate() && $login) {
                 $this->response->redirect('/');
-                return;
             }
         }
-        return $this->render('login', ['model' => $loginForm]);
+        return $this->twig->render('login');
     }
 
     public function register(): string
@@ -56,8 +55,14 @@ class AuthController extends BaseController
      */
     public function profile(): string
     {
-        $userAdapter = new UserAdapter();
-        $users = $userAdapter->getUsers()->toArray();
-        return $this->twig->render('profile', ['users' => $users]);
+        $session = new Session();
+        $session->setFlash('success', 'Dang ki thanh cong');
+        $this->response->redirect('/index');
+    }
+
+
+    public function index(): string
+    {
+        return $this->twig->render('index');
     }
 }
