@@ -155,6 +155,17 @@ abstract class DBModel extends Model
         return true;
     }
 
+    public function delete(): bool {
+        $db = $this->getDatabase();
+        $query = "DELETE FROM $this->table WHERE $this->condition";
+        $result = $db->mysql->query($query);
+        if (!$result) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     public function limitSelect(): string
     {
