@@ -1,11 +1,27 @@
-export const ListGroup = () => {
+import React, {VFC} from "react";
+import clsx from "clsx";
+
+export interface Item {
+    name: string
+    isActive: boolean;
+}
+
+export interface ListGroupProps {
+    items: Item[];
+}
+
+export const ListGroup: VFC<ListGroupProps> = ({items}) => {
     return (
         <ul className="list-group">
-            <li className="list-group-item active">Cras justo odio</li>
-            <li className="list-group-item">Dapibus ac facilisis in</li>
-            <li className="list-group-item">Morbi leo risus</li>
-            <li className="list-group-item">Porta ac consectetur ac</li>
-            <li className="list-group-item">Vestibulum at eros</li>
+            {items.map((item, index) => {
+                const itemCss = clsx('list-group-item', {
+                    active: item.isActive,
+                })
+
+                return (
+                    <li key={index} className={itemCss}>Cras justo odio</li>
+                );
+            })}
         </ul>
     );
 }
