@@ -2,11 +2,8 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Controllers\ApiController;
-use App\Controllers\AuthController;
-use App\Controllers\TestController;
+use App\Controllers\SampleController;
 use App\Core\Application;
-use App\Controllers\SiteController;
 use App\Core\View\Twig;
 use App\Model\User;
 
@@ -41,22 +38,6 @@ $app->twig->addGlobalFunction('session', Application::$APPLICATION->session);
 //    echo 'Before request';
 //});
 
-$app->router->get('/', [SiteController::class, 'home']);
-$app->router->get('/contact', [SiteController::class, 'contact']);
-$app->router->post('/contact', [SiteController::class, 'handleContact']);
-
-$app->router->get('/login', [AuthController::class, 'login']);
-$app->router->post('/login', [AuthController::class, 'login']);
-$app->router->get('/register', [AuthController::class, 'register']);
-$app->router->post('/register', [AuthController::class, 'register']);
-
-$app->router->get('/profile', [AuthController::class, 'profile']);
-$app->router->get('/index', [AuthController::class, 'index']);
-$app->router->get('/api/users', [TestController::class, 'api']);
-
-$app->router->get('/abc', [TestController::class, 'get']);
-$app->router->post('/xyz', [TestController::class, 'post']);
-$app->router->get('/api/users', [ApiController::class, 'getUser']);
-$app->router->post('/api/login', [ApiController::class, 'login']);
+$app->router->get('/', [SampleController::class, 'index']);
 
 $app->run();

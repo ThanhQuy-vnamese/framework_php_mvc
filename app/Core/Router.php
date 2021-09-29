@@ -70,10 +70,7 @@ class Router
         if ($callback === false) {
             $this->response->setStatusCode(404);
 
-            return $this->renderView('_404');
-        }
-        if (is_string($callback)) {
-            return $this->renderView($callback);
+            return Application::$APPLICATION->twig->render('_404');
         }
         if (is_array($callback)) {
             /**@var BaseController $controller */
@@ -90,36 +87,5 @@ class Router
             }
         }
         return call_user_func($callback);
-    }
-
-    public function renderView($view, $params = [])
-    {
-        $layoutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyView($view, $params);
-
-        return str_replace('{{content}}', $viewContent, $layoutContent);
-    }
-
-    protected function layoutContent()
-    {
-        $layout = Application::$APPLICATION->layout;
-        if (Application::$APPLICATION->controller) {
-            $layout = Application::$APPLICATION->controller->layout;
-        }
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/layouts/${layout}.php";
-
-        return ob_get_clean();
-    }
-
-    protected function renderOnlyView($view, $params = [])
-    {
-        foreach ($params as $key => $value) {
-            $$key = $value;
-        }
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/${view}.php";
-
-        return ob_get_clean();
     }
 }
