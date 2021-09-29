@@ -21,14 +21,4 @@ class BaseController
         $this->request = $request;
         $this->response = $response;
     }
-
-    /**
-     * @param string $view
-     * @param array $params
-     * @return array|bool|string
-     */
-    public function render(string $view, array$params = [])
-    {
-        return Application::$APPLICATION->router->renderView($view, $params);
-    }
 }
