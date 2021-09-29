@@ -2,12 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Adapter\UserAdapter;
 use App\Core\Auth\Authentication;
 use App\Core\Controller\BaseController;
+use App\Core\Database\Query;
 use App\Core\Session;
 use App\Model\LoginForm;
+use App\Model\Test;
 use App\Model\User;
+use App\Model\Users2;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -55,8 +57,16 @@ class AuthController extends BaseController
      */
     public function profile(): string
     {
-        $session = new Session();
-        $session->setFlash('success', 'Dang ki thanh cong');
+//        $query = new Query();
+//        $users = $query->table('users')->select(['firstname'])->condition(['id' => 1])->get();
+//
+//        $users = new Users2();
+//        $users = $users->condition(['id' => 1])->get();
+
+//        $id = $test->table('test')->insert(['fullname' => 'dang trung hieu2', 'phone' => 1234]);
+//        $result = $test->table('test')->condition(['id' => 2])->delete();
+        var_dump(json_decode(file_get_contents('php://input'), true)    );
+        die;
         $this->response->redirect('/index');
     }
 
