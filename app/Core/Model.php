@@ -4,7 +4,9 @@
 namespace App\Core;
 
 
-abstract class Model
+use App\Core\Database\Query;
+
+abstract class Model extends Query
 {
     public const RULE_REQUIRED = 'required';
     public const RULE_EMAIl = 'email';

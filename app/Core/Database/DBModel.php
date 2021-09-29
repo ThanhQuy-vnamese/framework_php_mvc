@@ -7,15 +7,6 @@ use App\Core\Model;
 
 abstract class DBModel extends Model
 {
-    abstract function tableName(): string;
-
-    abstract function attributes(): array;
-
-    public function getDatabase(): Database
-    {
-        return Application::$APPLICATION->database;
-    }
-
     public function save(): bool
     {
         $tableName = $this->tableName();
@@ -44,29 +35,19 @@ abstract class DBModel extends Model
         return implode(',', $values);
     }
 
-    public function findOne($where)
+    public function getOne($where)
     {
-        $index = array_keys($where);
-        $lastIndex = end($index);
+        $this->condition($where);
+        $condition = $this->condition;
         $tableName = static::tableName();
-        $condition = '';
-        foreach ($where as $key => $value) {
-            if (is_int($value)) {
-                $condition .= "$key = $value";
-            } else {
-                $condition .= "$key = '$value'";
-            }
-            if ($key !== $lastIndex) {
-                $condition .= ' AND ';
-            }
-        }
+
         $query = "SELECT * FROM $tableName WHERE $condition";
         $result = Application::$APPLICATION->database->mysql->query($query);
         return $result->fetch_object();
     }
 
-
-    public function limitSelect(): string {
+    public function limitSelect(): string
+    {
         if (empty($this->attributes())) {
             return '*';
         }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 namespace App\Core\View;
 
 use App\Core\Helper\Helper;
+use App\Core\Session;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
-use Twig\TwigFunction;
 
 class Twig {
     public Environment $twig;
@@ -19,11 +19,13 @@ class Twig {
     {
         $loader = new FilesystemLoader($pathToView);
         $twig = new Environment($loader, $options);
-        $string = '';
         $twig->addGlobal('helper', new Helper());
-//        $function = new TwigFunction('test_function', custom_link());
-//        $twig->addFunction($function);
+        $twig->addGlobal('session', Session::class);
         $this->twig = $twig;
+    }
+
+    public function addGlobalFunction($name, $value) {
+        $this->twig->addGlobal($name, $value);
     }
 
     /**

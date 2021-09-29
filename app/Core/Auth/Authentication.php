@@ -34,7 +34,7 @@ class Authentication
             unset($where['password']);
         }
         $user = new User();
-        $result = $user->findOne($where);
+        $result = $user->getOne($where);
 
         return $this->validate($result, $info['password']);
     }
