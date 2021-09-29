@@ -15,6 +15,11 @@ class Authentication
      * @var User|mixed|string|null
      */
     private $user;
+
+    /**
+     * @var User|mixed|string|null
+     */
+    private $result;
     private Session $session;
     private Cookie $cookie;
     private bool $rememberPassword;
@@ -65,6 +70,7 @@ class Authentication
 
     private function setInfo($result): bool
     {
+        $this->result = $result;
         $this->session->set('user', $result);
         if ($this->rememberPassword) {
             $this->cookie->set('user', $result->id);
@@ -75,6 +81,11 @@ class Authentication
     public function user()
     {
         return $this->user;
+    }
+
+    public function getUser()
+    {
+        return $this->result;
     }
 
     public function isLogin(): bool

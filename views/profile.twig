@@ -4,5 +4,8 @@
     {{ helper.custom_link('js/index.js') }}
 <h2>Profile</h2>
     <a href="{{ helper.redirect('/') }}">Index</a>
+{#    {% if(session->getFlash('hello')) %}#}
+        <h2>{{ session.getFlash('hello') }}</h2>
+{#    {% endif %}#}
 <script src="{{ helper.custom_link('js/index.js')}}"></script>
 {% endblock %}
