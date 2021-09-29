@@ -27,7 +27,9 @@ class Router
     public function get($path, $callback, string $middleware = ''): Router
     {
         $this->router['get'][$path] = $callback;
-        $this->router['get'][$path]['middleware'] = $middleware;
+        if (!empty($middleware)) {
+            $this->router['get'][$path]['middleware'] = $middleware;
+        }
         return $this;
     }
 
@@ -40,10 +42,16 @@ class Router
     public function post($path, $callback, string $middleware = ''): Router
     {
         $this->router['post'][$path] = $callback;
-        $this->router['get'][$path]['middleware'] = $middleware;
+        if (!empty($middleware)) {
+            $this->router['get'][$path]['middleware'] = $middleware;
+        }
+
         return $this;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function resolve()
     {
         $path = $this->request->getPath();
@@ -54,6 +62,9 @@ class Router
         $method = $this->request->getMethod();
         // TODO: Refactor
         $class = $this->router[$method][$path] ?? false;
+        if (!$class) {
+            throw new \Exception('Method is not support');
+        }
         $callback = $class;
         unset($callback['middleware']);
         if ($callback === false) {

@@ -18,6 +18,18 @@ class Request {
         return substr($path, 0, $position);
     }
 
+    public function getHeaders(): array {
+        $headers = array();
+        foreach($_SERVER as $key => $value) {
+            if (substr($key, 0, 5) !== 'HTTP_') {
+                continue;
+            }
+            $header = str_replace(' ', '-', ucwords(str_replace('_', ' ', strtolower(substr($key, 5)))));
+            $headers[$header] = $value;
+        }
+        return $headers;
+    }
+
     public function getMethod(): string {
         return strtolower($_SERVER['REQUEST_METHOD'] ?? '');
     }
@@ -43,6 +55,13 @@ class Request {
                 if(is_array($value)) {
                     $input[$key] = $value;
                 } else {
+                    $input[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                }
+            }
+
+            $paramsGetContent = (array)json_decode(file_get_contents('php://input'), true);
+            if (!is_null($paramsGetContent)) {
+                foreach ($paramsGetContent as $key => $value) {
                     $input[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
                 }
             }

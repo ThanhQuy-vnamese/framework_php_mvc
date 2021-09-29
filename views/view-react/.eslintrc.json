@@ -5,8 +5,9 @@
     "jest": true
   },
   "rules": {
-    "import/first": "error",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": 0
   },
   "extends": [
     "react-app",

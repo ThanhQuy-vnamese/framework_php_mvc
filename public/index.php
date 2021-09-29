@@ -57,5 +57,6 @@ $app->router->get('/api/users', [TestController::class, 'api']);
 $app->router->get('/abc', [TestController::class, 'get']);
 $app->router->post('/xyz', [TestController::class, 'post']);
 $app->router->get('/api/users', [ApiController::class, 'getUser']);
+$app->router->post('/api/login', [ApiController::class, 'login']);
 
 $app->run();
