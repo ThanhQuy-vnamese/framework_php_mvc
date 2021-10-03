@@ -65,13 +65,13 @@ class Application
     public function run()
     {
         $this->triggerEvent(self::EVENT_BEFORE_REQUEST);
-        try {
+//        try {
             echo $this->router->resolve();
-        } catch (\Exception $e) {
-            echo $this->twig->renderView(
-                '_error'
-            );
-        }
+//        } catch (\Exception $e) {
+//            echo $this->twig->render(
+//                '_error'
+//            );
+//        }
     }
 
     public function triggerEvent(string $eventName)

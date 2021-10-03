@@ -62,9 +62,6 @@ class Router
         $method = $this->request->getMethod();
         // TODO: Refactor
         $class = $this->router[$method][$path] ?? false;
-        if (!$class) {
-            throw new \Exception('Method is not support');
-        }
         $callback = $class;
         unset($callback['middleware']);
         if ($callback === false) {
