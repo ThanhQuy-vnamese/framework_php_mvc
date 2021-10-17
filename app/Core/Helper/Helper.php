@@ -28,6 +28,8 @@ class Helper
             $pathPublic = $path;
         }
 
+        $pathPublic = 'public/' . $path;
+
         if (!empty($params)) {
             $linkParam = '';
             $lastItem = end($params);
