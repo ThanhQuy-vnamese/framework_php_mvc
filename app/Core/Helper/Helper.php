@@ -10,9 +10,10 @@ class Helper
     {
         $requestUrl = $_SERVER['REQUEST_URI'];
         $pos = strpos($requestUrl, PREFIX_PUBLIC);
-        $pathPublic = '';
         if (!$pos) {
             $pathPublic = '/public';
+        } else {
+            $pathPublic = substr($requestUrl, 0, $pos + strlen('/public'));
         }
         $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
         $host = $_SERVER['HTTP_HOST'];
@@ -31,7 +32,8 @@ class Helper
         if (!$pos) {
             $pathPublic = 'public/' . $path;;
         } else {
-            $pathPublic = $path;
+            $pathPublic = substr($requestUrl, 0, $pos + strlen('/public'));
+            $pathPublic = $pathPublic . $path;
         }
 
         if (!empty($params)) {
