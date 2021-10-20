@@ -83,6 +83,14 @@ class Authentication
         return $this->user;
     }
 
+    public function setRememberPassword($isRememberPassword) {
+        $this->rememberPassword = $isRememberPassword;
+    }
+
+    public function setUserInfo(array $info) {
+        $this->setInfo((object) $info);
+    }
+
     public function getUser()
     {
         return $this->result;
