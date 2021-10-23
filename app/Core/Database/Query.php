@@ -53,7 +53,11 @@ class Query extends AbstractQuery
         if ($result->num_rows === 0) {
             return new stdClass();
         }
-        $data = $result->fetch_all(MYSQLI_ASSOC);
+
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
         $modelAdapter = new ModelAdapter($data);
         return $modelAdapter->setDataToAttributes();
     }
