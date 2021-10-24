@@ -34,6 +34,13 @@ class Session
 
     public function getFlash(string $key)
     {
+        $flash = $_SESSION[self::FLASH_MESSAGE][$key]['value'] ?? false;
+        $this->destroyFlash();
+        return $flash;
+    }
+
+    public function hasFlash(string $key)
+    {
         return $_SESSION[self::FLASH_MESSAGE][$key]['value'] ?? false;
     }
 
@@ -49,7 +56,7 @@ class Session
         unset($_SESSION[$key]);
     }
 
-    public function __destruct()
+    public function destroyFlash()
     {
         $flashMessages = $_SESSION[self::FLASH_MESSAGE] ?? [];
         foreach ($flashMessages as $key => &$flashMessage) {
