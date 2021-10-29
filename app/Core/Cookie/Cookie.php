@@ -32,7 +32,7 @@ class Cookie
     {
         if (isset($_COOKIE[$name])) {
             unset($_COOKIE[$name]);
-            setcookie($name, null, -1, '/');
+            setcookie($name, '', -1, '/');
             return true;
         } else {
             return false;

@@ -70,18 +70,18 @@ class Router
             return Application::$APPLICATION->twig->render('_404');
         }
         if (is_array($callback)) {
+            if (!empty($class['middleware'])) {
+                $middleware = [];
+                $middleware[0] = new $class['middleware']();
+                $middleware[1] = '__invoke';
+                return call_user_func($middleware);
+            }
+
             /**@var BaseController $controller */
             $controller = new $callback[0](Application::$APPLICATION->twig, $this->request, $this->response);
             Application::$APPLICATION->controller = $controller;
             $controller->action = $callback[1];
             $callback[0] = $controller;
-
-            if (!empty($class['middleware'])) {
-                $middleware = [];
-                $middleware[0] = new $class['middleware']();
-                $middleware[1] = '__invoke';
-                call_user_func($middleware);
-            }
         }
         return call_user_func($callback);
     }
