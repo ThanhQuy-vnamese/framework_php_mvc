@@ -74,7 +74,7 @@ class Router
                 $middleware = [];
                 $middleware[0] = new $class['middleware']();
                 $middleware[1] = '__invoke';
-                return call_user_func($middleware);
+                call_user_func($middleware);
             }
 
             /**@var BaseController $controller */
