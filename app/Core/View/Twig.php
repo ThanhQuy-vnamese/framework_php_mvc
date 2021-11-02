@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\View;
 
+use App\Core\Auth\Authentication;
 use App\Core\Helper\Helper;
 use App\Core\Session;
 use Twig\Environment;
@@ -20,6 +21,7 @@ class Twig {
         $loader = new FilesystemLoader($pathToView);
         $twig = new Environment($loader, $options);
         $twig->addGlobal('helper', new Helper());
+        $twig->addGlobal('Auth', new Authentication());
         $twig->addGlobal('session', Session::class);
         $this->twig = $twig;
     }
