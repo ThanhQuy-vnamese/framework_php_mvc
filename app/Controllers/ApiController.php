@@ -9,7 +9,8 @@ use App\Core\Controller\BaseController;
 use App\Core\Database\Query;
 use App\Core\Lib\Token;
 
-class ApiController extends BaseController {
+class ApiController extends BaseController
+{
     public function getUser()
     {
         $query = new Query();
@@ -24,9 +25,9 @@ class ApiController extends BaseController {
         return $this->response->json_encode($result);
     }
 
-    public function login() {
+    public function login()
+    {
         $content = json_decode(file_get_contents('php://input'), true);
-        $headers = $this->request->getHeaders();
 
         $authentication = new Authentication();
         $info = ['isLogin' => false];
@@ -43,9 +44,9 @@ class ApiController extends BaseController {
 
             http_response_code(201);
             $info['isLogin'] = true;
-            $info['userInfo'] = ['id' => $idUser, 'email'=>$email,'accessToken' => $jwt];
-            return $this->response->json_encode($headers);
+            $info['userInfo'] = ['id' => $idUser, 'email' => $email, 'accessToken' => $jwt];
+            return $this->response->json_encode($info);
         }
-        return $this->response->json_encode($headers);
+        return $this->response->json_encode($info);
     }
 }
