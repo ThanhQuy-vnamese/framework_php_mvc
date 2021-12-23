@@ -7,11 +7,11 @@
 * Webpack
 ## 2. Cấu hình framework
 - Cấu hình của framework được config trong file `.env` </br>
-```
-DB_HOST = localhost // Host
-DB_USER = root // Username database
-DB_PASSWORD = password // Password user database
-DB_DATABASE = phpmvc // Tên Database
+```dotenv
+DB_HOST = localhost     #Host
+DB_USER = root          #Username database
+DB_PASSWORD = password  #Password user database
+DB_DATABASE = phpmvc    #Tên Database
 
 APP_DEBUG=true
 ```
