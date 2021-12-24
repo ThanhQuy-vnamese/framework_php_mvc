@@ -1,12 +1,14 @@
 # How to use framework
 ## 1. Các kĩ thuật được sử dụng
+
 * PHP
 * Template engine (Twig)
 * ReactJs
 * Typescript
 * Webpack
 ## 2. Cấu hình framework
-- Cấu hình của framework được config trong file `.env` </br>
+
+- Cấu hình của framework được config trong file `.env`
 ```dotenv
 DB_HOST = localhost     #Host
 DB_USER = root          #Username database
@@ -16,20 +18,30 @@ DB_DATABASE = phpmvc    #Tên Database
 APP_DEBUG=true
 ```
 ## 3. Cách chạy
-- Cách 1: Vào thư mục phpmvc chạy lệnh `php -S 127.0.0.1:8888`. Sau đó truy cập vào đường dẫn trên trình duyệt `localhost:8888`
-- Cách 2: Copy thư mục phpmvc vào thư mục xampp sau đó truy cập trên url `[host]/phpmvc/public`
+### 3.1 Chạy framework với server page
+* Mở terminal trong thư mục `phpmvc`, chạy lệnh `composer install` sau đó chạy băng 1 trong 2 cách dưới đây
+    * Cách 1: Mở terminal trong thư mục `phpmvc` chạy lệnh `php -S 127.0.0.1:8888`. Sau đó truy cập vào đường dẫn trên trình duyệt `localhost:8888`
+    * Cách 2: Copy thư mục phpmvc vào thư mục xampp sau đó truy cập trên url `http://[host]/phpmvc/public`
+### 3.2 Chạy framework với Reactjs 
+
+* B1: Mở terminal trong thư mục `phpmvc`, chạy lệnh `npm install`
+* B2: Chạy lệnh compile `npm run watch`. Nếu môi trường production thì chạy lệnh `npm run build`
+* B3: Chạy web bình thường, chọn 1 tron g 2 cách ở 3.1
 
 ## 4. Cấu trúc Server
-- Route được định nghĩa trong `public/index.php` </br>
-Ex: </br>
+
+- Route được định nghĩa trong `public/index.php`
+
+Ex:
 ```php
 <?php
 // TODO: ..
 $app->router->get('/', [SampleController::class, 'index']);
 $app->router->get('/api/users', [ApiController::class, 'getUser']);
 ```
-- Controller được định nghĩa trong `app/Controllers` </br>
-Ex: `SampleController.php` </br>
+- Controller được định nghĩa trong `app/Controllers`
+
+Ex: `SampleController.php`
 ```php
 <?php
 declare(strict_types=1);
@@ -45,8 +57,9 @@ class SampleController extends BaseController {
     }
 }
 ```
-- Model được định nghĩa trong `app/Model` </br>
-Ex: `SampleModel.php` </br>
+- Model được định nghĩa trong `app/Model`
+
+Ex: `SampleModel.php`
 ```php
 <?php
 declare(strict_types=1);
@@ -67,8 +80,9 @@ class SampleModel extends DBModel
    }
 };
 ```
-- View được định nghĩa trong `views` <br />
-Ex: `welcome.twig` </br>
+- View được định nghĩa trong `views`
+
+Ex: `welcome.twig`
 ```html
 <!doctype html>
 <html lang="en">
@@ -84,6 +98,17 @@ Ex: `welcome.twig` </br>
 </body>
 </html>
 ```
-- File js được định nghĩ trong thư mục `public/js` </br>
-- File css được định nghĩ trong thư mục `public/css` </br>
-- Image được định nghĩ trong thư mục `public/image` </br>
+- File js được định nghĩ trong thư mục `public/js`
+- File css được định nghĩ trong thư mục `public/css`
+- Image được định nghĩ trong thư mục `public/image`
+
+## 5. Cấu trúc client
+
+ReactJs được viết trong thư mục `public/src` và sẽ được compile ra thư mục `public/src`
+
+Vì sử dụng typescript nên extension là `.tsx` hoặc `.ts`
+
+- Component react được lưu trong `public/src/components`
+- Pages react được lưu trong `public/src/pages`
+- Service call API được lưu trong `public/src/services`
+- `public/src/index.js` là entry file
