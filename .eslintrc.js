@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 module.exports = {
     env: {
         browser: true,
@@ -20,6 +19,8 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
-        'prettier/prettier': ['error']
-    }
+        'prettier/prettier': ['error'],
+        "no-unused-vars": ['error', {"args": "all"}]
+    },
+    ignorePatterns: ['webpack.config.js', '.eslintrc.js']
 };

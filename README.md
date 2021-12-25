@@ -26,7 +26,7 @@ APP_DEBUG=true
 
 * B1: Mở terminal trong thư mục `phpmvc`, chạy lệnh `npm install`
 * B2: Chạy lệnh compile `npm run watch`. Nếu môi trường production thì chạy lệnh `npm run build`
-* B3: Chạy web bình thường, chọn 1 tron g 2 cách ở 3.1
+* B3: Chạy web bình thường, chọn 1 trong 2 cách ở 3.1
 
 ## 4. Cấu trúc Server
 
@@ -109,6 +109,12 @@ ReactJs được viết trong thư mục `public/src` và sẽ được compile 
 Vì sử dụng typescript nên extension là `.tsx` hoặc `.ts`
 
 - Component react được lưu trong `public/src/components`
+  
+  - Trong mỗi component có thể chứa file css. File css có dạng `.scss`
+ hoặc là `.sass`
+  - Trong mỗi component cũng có thể chứa file image, các loại image được hỗ trợ `png|jpeg|ipg|gif`
+  - Trong mỗi component cũng có thể chứa file `svg`
+  - Image được import khi runtime sẽ được compile vào thư mục `dist/images`
 - Pages react được lưu trong `public/src/pages`
 - Service call API được lưu trong `public/src/services`
 - `public/src/index.js` là entry file
