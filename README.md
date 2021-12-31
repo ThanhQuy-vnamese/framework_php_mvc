@@ -35,7 +35,7 @@ APP_DEBUG=true
 Ex:
 ```php
 <?php
-// TODO: ..
+// TODO: Code here
 $app->router->get('/', [SampleController::class, 'index']);
 $app->router->get('/api/users', [ApiController::class, 'getUser']);
 ```
@@ -104,7 +104,27 @@ Ex: `welcome.twig`
 
 ## 5. Cấu trúc client
 
-ReactJs được viết trong thư mục `public/src` và sẽ được compile ra thư mục `public/src`
+ReactJs được viết trong thư mục `public/src` và sẽ được compile ra thư mục `public/dist`
+
+Để chạy được React thì cần 1 file template và nhúng file JS đã compile vào file template
+
+Ex: `index.twig`
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h2>Hello World!</h2>
+<script src="{{ helper.custom_link('js/dist/index.js')}}"></script>
+</body>
+</html>
+```
 
 Vì sử dụng typescript nên extension là `.tsx` hoặc `.ts`
 
