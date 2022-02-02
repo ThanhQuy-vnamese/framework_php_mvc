@@ -88,6 +88,33 @@ class Database
         echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
     }
 
+    public function createSampleData()
+    {
+        $files = scandir(Application::$ROOT_DIR . '/seeds');
+        foreach ($files as $file) {
+            if ($file === '.' || $file === '..') {
+                continue;
+            }
+
+            require_once Application::$ROOT_DIR . '/seeds/' . $file;
+            $classname = pathinfo($file, PATHINFO_FILENAME);
+            $instance = new $classname();
+            $this->log("Apply migration $file");
+            $result = $instance->create();
+            if ($result) {
+                $this->log("Apply seed(s) $file success!");
+            } else {
+                $this->log("Apply seed(s) $file fail!");
+            }
+        }
+
+//        if (!empty($newMigrations)) {
+//            $this->saveMigration($newMigrations);
+//        } else {
+//            $this->log('All migration are applied');
+//        }
+    }
+
 //    public function query(string $query) {
 //        return $this->query($query);
 //    }
