@@ -30,4 +30,14 @@ class UserController extends BaseController
     public function getViewUserDetail():string {
         return $this->twig->render('admin/pages/user_detail');
     }
+
+    /**
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function getViewUserAdd():string {
+        return $this->twig->render('admin/pages/user_add');
+    }
 }

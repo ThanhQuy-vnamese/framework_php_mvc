@@ -46,5 +46,6 @@ $app->router->post('/api/login', [ApiController::class, 'login']);
 
 $app->router->get('/admin', [UserController::class, 'getViewUserList']);
 $app->router->get('/admin/user-detail', [UserController::class, 'getViewUserDetail']);
+$app->router->get('/admin/user-add', [UserController::class, 'getViewUserAdd']);
 
 $app->run();

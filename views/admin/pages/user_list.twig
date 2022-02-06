@@ -23,9 +23,7 @@
                                                 <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#"><span>Add User</span></a></li>
-                                                        <li><a href="#"><span>Add Team</span></a></li>
-                                                        <li><a href="#"><span>Import User</span></a></li>
+                                                        <li><a href="{{ redirect('admin/user-add') }}"><span>Add User</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -116,9 +114,62 @@
                                                         <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
-                                                                <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li><a href="{{ redirect('admin/user-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
                                                                 <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
+                                                                <li class="divider"></li>
+                                                                <li><a href="#"><em class="icon ni ni-user-cross-fill"></em><span>Delete user</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div><!-- .nk-tb-item -->
+                                    <div class="nk-tb-item">
+                                        <div class="nk-tb-col nk-tb-col-check">
+                                            <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                <input type="checkbox" class="custom-control-input" id="uid1">
+                                                <label class="custom-control-label" for="uid1"></label>
+                                            </div>
+                                        </div>
+                                        <div class="nk-tb-col">
+                                            <div class="user-card">
+                                                <div class="user-avatar xs bg-danger">
+                                                    <span>AB</span>
+                                                </div>
+                                                <div class="user-name">
+                                                    <span class="tb-lead">Nguyễn Văn B</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span>User</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-sm">
+                                            <span>nguyenvanb@mail.com</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span>0123456789</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-xxl">
+                                            <span>1-1-1999</span>
+                                        </div>
+                                        <div class="nk-tb-col">
+                                            <span class="tb-status text-danger">Inactive</span>
+                                        </div>
+                                        <div class="nk-tb-col nk-tb-col-tools">
+                                            <ul class="nk-tb-actions gx-2">
+                                                <li>
+                                                    <div class="drodown">
+                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li><a href="{{ redirect('admin/user-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li class="divider"></li>
+                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
+                                                                <li class="divider"></li>
+                                                                <li><a href="#"><em class="icon ni ni-user-cross-fill"></em><span>Delete user</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
