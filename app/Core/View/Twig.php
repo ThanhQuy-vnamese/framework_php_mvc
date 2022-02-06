@@ -24,6 +24,7 @@ class Twig {
         $twig = new Environment($loader, $options);
 
         $twig->addFunction($this->addCreateLinkFunction());
+        $twig->addFunction($this->addRedirectFunction());
         $twig->addGlobal('helper', new Helper());
         $twig->addGlobal('Auth', new Authentication());
         $twig->addGlobal('session', Session::class);
@@ -40,6 +41,23 @@ class Twig {
             $pos = strpos($requestUrl, PREFIX_PUBLIC);
             if (!$pos) {
                 $pathPublic = '/public';
+            } else {
+                $pathPublic = substr($requestUrl, 0, $pos + strlen('/public'));
+            }
+            $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
+            $host = $_SERVER['HTTP_HOST'];
+            return $http . $host . $pathPublic . '/' . $path;
+        });
+        return $function;
+    }
+
+
+    public function addRedirectFunction() {
+        $function = new TwigFunction('redirect', function ($path = '') {
+            $requestUrl = $_SERVER['REQUEST_URI'];
+            $pos = strpos($requestUrl, PREFIX_PUBLIC);
+            if (!$pos) {
+                $pathPublic = '';
             } else {
                 $pathPublic = substr($requestUrl, 0, $pos + strlen('/public'));
             }
