@@ -6,8 +6,8 @@
         </div>
         <div class="nk-sidebar-brand">
             <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="{{ assets('template/admin/images/logo.png') }}" srcset="{{ assets('template/admin/images/logo2x.png 2x')}}" alt="logo">
-                <img class="logo-dark logo-img" src="{{ assets('template/admin/images/logo-dark.png') }}" srcset="{{ assets('template/admin/images/logo-dark2x.png 2x')}}" alt="logo-dark">
+                <img class="logo-light logo-img" src="{{ createLink('template/admin/images/logo.png') }}" srcset="{{ createLink('template/admin/images/logo2x.png 2x')}}" alt="logo">
+                <img class="logo-dark logo-img" src="{{ createLink('template/admin/images/logo-dark.png') }}" srcset="{{ createLink('template/admin/images/logo-dark2x.png 2x')}}" alt="logo-dark">
             </a>
         </div>
     </div><!-- .nk-sidebar-element -->
@@ -19,9 +19,9 @@
                         <h6 class="overline-title text-primary-alt">Use-Case Preview</h6>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/crm/index.html" class="nk-menu-link">
+                        <a href="{{ redirect('admin') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
-                            <span class="nk-menu-text">CRM Panel</span><span class="nk-menu-badge">HOT</span>
+                            <span class="nk-menu-text">Manage users</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->
