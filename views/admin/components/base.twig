@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{{ createLink('template/admin/assets/css/dashlite.css?ver=2.9.0') }}">
     <link rel="stylesheet" href="{{ createLink('template/admin/assets/css/libs/fontawesome-icons.css?ver=2.9.0') }}">
     <link id="skin-default" rel="stylesheet" href="{{ createLink('template/admin/assets/css/theme.css?ver=2.9.0') }}">
+    <link rel="stylesheet" href="{{ createLink('template/admin/assets/css/editors/tinymce.css?ver=2.9.0') }}">
+    {% block css %}
+    {% endblock %}
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -125,6 +128,9 @@
 <script src="{{ createLink('template/admin/assets/js/bundle.js?ver=2.9.0') }}"></script>
 <script src="{{ createLink('template/admin/assets/js/scripts.js?ver=2.9.0') }}"></script>
 <script src="{{ createLink('template/admin/assets/js/charts/gd-default.js?ver=2.9.0') }}"></script>
+<script src="{{ createLink('template/admin/assets/js/libs/editors/tinymce.js?ver=2.9.0') }}"></script>
+{% block javascript %}
+{% endblock %}
 </body>
 
 </html>

@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\ContactController;
 use App\Controllers\MedicalFileController;
+use App\Controllers\MedicineController;
 use App\Controllers\UserController;
 use App\Controllers\ApiController;
 use App\Controllers\SampleController;
@@ -47,11 +48,13 @@ $app->router->get('/api/users', [ApiController::class, 'getUser']);
 $app->router->post('/api/login', [ApiController::class, 'login']);
 
 // Admin
-$app->router->get('/admin', [UserController::class, 'getViewUserList']);
+$app->router->get('/admin/user-list', [UserController::class, 'getViewUserList']);
 $app->router->get('/admin/user-detail', [UserController::class, 'getViewUserDetail']);
 $app->router->get('/admin/user-add', [UserController::class, 'getViewUserAdd']);
 $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'getViewMedicalFileList']);
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
+$app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
+$app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
 $app->router->get('/admin/contact-list', [ContactController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewContactDetail']);
 
