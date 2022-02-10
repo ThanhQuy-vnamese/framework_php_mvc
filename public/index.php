@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use App\Controllers\BlogController;
 use App\Controllers\ContactController;
 use App\Controllers\MedicalFileController;
 use App\Controllers\MedicineController;
@@ -55,6 +56,8 @@ $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'ge
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
+$app->router->get('/admin/blog-list', [BlogController::class, 'getViewBlogList']);
+$app->router->get('/admin/blog-detail', [BlogController::class, 'getViewBlogDetail']);
 $app->router->get('/admin/contact-list', [ContactController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewContactDetail']);
 
