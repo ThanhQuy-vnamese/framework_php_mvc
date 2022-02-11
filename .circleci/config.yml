@@ -1,4 +1,5 @@
-version: 2
+version: 2.1
+
 jobs:
   deploy:
     docker:
@@ -7,10 +8,12 @@ jobs:
       - checkout
       - run:
           name: "What PAss"
-          command: echo ${PASSWORDSERVER}
+          command: |
+            echo ${PASSWORDSERVER}
       - run:
           name: "What IP"
-          command: echo ${IPSERVER}
+          command: |
+            echo ${IPSERVER}
       - run:
           name: "Deploy to server"
           command: |
@@ -20,7 +23,6 @@ jobs:
             sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r deploy.sh root@${IPSERVER}:/install
             sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /install && sh deploy.sh'
 workflows:
-  version: 2
   build-and-test:
     jobs:
       - deploy:
