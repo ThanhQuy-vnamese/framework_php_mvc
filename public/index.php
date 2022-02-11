@@ -57,6 +57,7 @@ $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, '
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
 $app->router->get('/admin/blog-list', [BlogController::class, 'getViewBlogList']);
+$app->router->get('/admin/blog-add', [BlogController::class, 'getViewBlogAdd']);
 $app->router->get('/admin/blog-detail', [BlogController::class, 'getViewBlogDetail']);
 $app->router->get('/admin/contact-list', [ContactController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewContactDetail']);
