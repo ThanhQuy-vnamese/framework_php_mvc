@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "What branch am I on now?"
+          command: echo $PASSWORDSERVER
+      - run:
           name: "Deploy to server"
           command: |
             sudo apt-get update
