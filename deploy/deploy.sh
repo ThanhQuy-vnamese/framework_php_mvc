@@ -22,9 +22,9 @@ chmod -R 755 /var/www/phpmvc
 
 if [  -f "/var/www/phpmvc/.env" ]; then
     rm -rf /var/www/phpmvc/.env
-    cp -rf /home/.env.server .env
+    cp -rf /var/www/phpmvc/.env.server .env || exit 1
 else
-    cp -rf /home/.env.server .env
+    cp -rf /var/www/phpmvc/.env.server .env || exit 1
 fi
 
 service httpd restart
