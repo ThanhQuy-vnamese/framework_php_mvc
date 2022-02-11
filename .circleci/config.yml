@@ -11,3 +11,12 @@ jobs:
             sudo apt-get update
             sudo apt-get install sshpass
             ls -al
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - setup-ci
