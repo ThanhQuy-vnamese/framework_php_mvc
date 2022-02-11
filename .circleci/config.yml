@@ -18,6 +18,7 @@ workflows:
   build-and-test:
     jobs:
       - deploy:
+          context: phpmvc
           filters:
             branches:
               only:
