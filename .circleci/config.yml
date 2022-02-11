@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "What branch am I on now?"
-          command: echo $PASSWORDSERVER
+          name: "What PAss"
+          command: echo ${PASSWORDSERVER}
+       - run:
+           name: "What IP"
+           command: echo ${IPSERVER}
       - run:
           name: "Deploy to server"
           command: |
