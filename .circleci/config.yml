@@ -9,7 +9,7 @@ jobs:
           name: "What PAss"
           command: echo ${PASSWORDSERVER}
       - run:
-          name: "What IP"
+          name: "What IP test"
           command: echo ${IPSERVER}
       - run:
           name: "Deploy to server"
