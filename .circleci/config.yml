@@ -6,23 +6,16 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "What PAss"
-          command: echo ${PASSWORDSERVER}
-      - run:
-          name: "What IP test"
-          command: echo ${IPSERVER}
-      - run:
           name: "Deploy to server"
           command: |
             sudo apt-get update
             sudo apt-get install sshpass
-            ls -al
             cd deploy
             sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r deploy.sh root@${IPSERVER}:/home/install
             sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install && sh deploy.sh'
 workflows:
   version: 2
-  build-and-test:
+  deploy-server:
     jobs:
       - deploy:
           context: phpmvc
