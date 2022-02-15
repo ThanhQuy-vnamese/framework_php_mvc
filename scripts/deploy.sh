@@ -1,5 +1,10 @@
 #!/bin/bash
-cd /var/www/phpmvc
+cd /var/www/ || exit 1
+if [ ! -d "/var/www/phpmvc" ]; then
+    git clone https://huntercq8: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@github.com/trunghieu0207/phpmvc.git
+fi
+
+cd phpmvc/ || exit 1
 git fetch
 git reset --hard origin/setup-ci
 if [ ! -d "/var/www/phpmvc/vendor" ]; then
