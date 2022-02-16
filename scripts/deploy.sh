@@ -8,7 +8,7 @@ fi
 
 cd phpmvc/ || exit 1
 git fetch
-git reset --hard origin/setup-ci
+git reset --hard origin/master
 if [ ! -d "/var/www/phpmvc/vendor" ]; then
   composer install
 else
