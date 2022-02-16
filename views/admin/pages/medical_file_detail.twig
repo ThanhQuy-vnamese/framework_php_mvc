@@ -1,0 +1,411 @@
+{% extends 'admin/components/base.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between g-3">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Medical Files / <strong class="text-primary small">Nguyen Van A</strong></h3>
+                            <div class="nk-block-des text-soft">
+                                <ul class="list-inline">
+                                    <li>File ID: <span class="text-base">1</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="nk-block-head-content">
+                            <a href="html/user-list-regular.html"
+                               class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-arrow-left"></em><span>Back</span></a>
+                            <a href="html/user-list-regular.html"
+                               class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                        class="icon ni ni-arrow-left"></em></a>
+                        </div>
+                    </div>
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card" id="nav-tab">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#nav-personal">
+                                            <em class="icon ni ni-user-circle"></em><span>Personal</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#nav-health">
+                                            <em class="icon fas fa-hand-holding-medical"></em><span>Heath</span></a>
+                                    </li>
+                                </ul><!-- .nav-tabs -->
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="card-inner tab-pane fade show active" id="nav-personal">
+                                        <div class="nk-block">
+                                            <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                                <h5 class="title">Main Information</h5>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDefault">Edit Information</button>
+                                            </div><!-- .nk-block-head -->
+                                            <div class="profile-ud-list">
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">First Name</span>
+                                                        <span class="profile-ud-value">Nguyen</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Last Name</span>
+                                                        <span class="profile-ud-value">Van A</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Birthday</span>
+                                                        <span class="profile-ud-value">1-1-1999</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Gender</span>
+                                                        <span class="profile-ud-value">Nam</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Phone</span>
+                                                        <span class="profile-ud-value">0123456789</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Email</span>
+                                                        <span class="profile-ud-value">nguyenvana@mail.com</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">CMND/CCCD</span>
+                                                        <span class="profile-ud-value">333333333</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Province/City</span>
+                                                        <span class="profile-ud-value">TPHCM</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">District</span>
+                                                        <span class="profile-ud-value">Gò Vấp</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Wards</span>
+                                                        <span class="profile-ud-value">5</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Village/House number</span>
+                                                        <span class="profile-ud-value">5</span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .profile-ud-list -->
+                                        </div><!-- .nk-block -->
+                                        <div class="nk-block">
+                                            <div class="nk-block-head nk-block-head-line">
+                                                <h6 class="title overline-title text-base">Other Information</h6>
+                                            </div><!-- .nk-block-head -->
+                                            <div class="profile-ud-list">
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Health Insurance number</span>
+                                                        <span class="profile-ud-value">DN-1111111</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Expiration date</span>
+                                                        <span class="profile-ud-value">1-1-1999</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Nationality</span>
+                                                        <span class="profile-ud-value">Viet Nam</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Ethnic</span>
+                                                        <span class="profile-ud-value">Kinh</span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">QR</span>
+                                                        <span class="profile-ud-value"><img src="{{ createLink('') }}" alt="Qr image" /></span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .profile-ud-list -->
+                                        </div><!-- .nk-block -->
+                                        <div class="nk-divider divider md"></div>
+                                        <!-- Modal Content Code -->
+                                        <div class="modal fade" tabindex="-1" id="modalDefault">
+                                            <div class="modal-dialog modal-xl" role="document">
+                                                <div class="modal-content">
+                                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <em class="icon ni ni-cross"></em>
+                                                    </a>
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Information</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="">
+                                                            <div class="card-inner">
+                                                                <div class="preview-block">
+                                                                    <span class="preview-title-lg overline-title">Main Information</span>
+                                                                    <div class="row gy-4">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="first-name">First Name</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="first-name"
+                                                                                           id="first-name" placeholder="Enter First Name">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="last-name">Last Name</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="last-name" id="last-name"
+                                                                                           placeholder="Enter Last Name">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="password">Gender</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <div class="custom-control custom-radio">
+                                                                                        <input type="radio" id="nam" name="gender"
+                                                                                               class="custom-control-input" checked>
+                                                                                        <label class="custom-control-label" for="nam">Nam</label>
+                                                                                    </div>
+                                                                                    <div class="custom-control custom-radio">
+                                                                                        <input type="radio" id="nu" name="gender"
+                                                                                               class="custom-control-input">
+                                                                                        <label class="custom-control-label" for="nu">Nữ</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="birthday">Birthday</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="date" class="form-control" name="birthday" id="birthday"
+                                                                                           placeholder="Enter Birthday">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="phone">Phone</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="phone" id="phone"
+                                                                                           placeholder="Enter Phone">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="email">Email</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="email" class="form-control" name="email" id="email"
+                                                                                           placeholder="Enter Email">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="identity-card">Identity card</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="identity-card"
+                                                                                           id="identity-card" placeholder="Enter Identity card">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="city">Province/City</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="city"
+                                                                                           id="city" placeholder="Enter Province/City">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="district">District</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="district"
+                                                                                           id="district" placeholder="Enter District">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="wards">Wards</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="wards"
+                                                                                           id="wards" placeholder="Enter Wards">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="house-number">House number</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="house-number"
+                                                                                           id="house-number" placeholder="Enter House number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr class="preview-hr">
+                                                                    <span class="preview-title-lg overline-title">Other information</span>
+                                                                    <div class="row gy-4">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="health-insurance-number">Health Insurance number</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="health-insurance-number" id="health-insurance-number"
+                                                                                           placeholder="Enter Health Insurance number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="expiration-date">Expiration date</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="expiration-date" id="expiration-date"
+                                                                                           placeholder="Enter Expiration date">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="nationality">Nationality</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="nationality" id="nationality"
+                                                                                           placeholder="Enter Nationality">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="ethnic">Ethnic</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="ethnic" id="ethnic"
+                                                                                           placeholder="Enter Ethnic">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr class="preview-hr">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <button type="submit" class="btn btn-success">Edit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer bg-light">
+                                                        <span class="sub-text">Modal Footer Text</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .card-inner -->
+                                    <div class="card-inner tab-pane fade" id="nav-health">
+                                        {% include('admin/pages/_heaths.twig') %}
+                                    </div><!-- .card-inner -->
+                                </div>
+                            </div><!-- .card-content -->
+                            <div class="card-aside card-aside-right user-aside toggle-slide toggle-slide-right toggle-break-xxl toggle-screen-xxl"
+                                 data-content="userAside" data-toggle-screen="xxl" data-toggle-overlay="true"
+                                 data-toggle-body="true">
+                                <div class="card-inner-group" data-simplebar="init">
+                                    <div class="simplebar-wrapper" style="margin: 0px;">
+                                        <div class="simplebar-height-auto-observer-wrapper">
+                                            <div class="simplebar-height-auto-observer"></div>
+                                        </div>
+                                        <div class="simplebar-mask">
+                                            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                                <div class="simplebar-content-wrapper" tabindex="0" role="region"
+                                                     aria-label="scrollable content"
+                                                     style="height: auto; overflow: hidden;">
+                                                    <div class="simplebar-content" style="padding: 0px;">
+                                                        <div class="card-inner">
+                                                            <div class="user-card user-card-s2">
+                                                                <div class="user-avatar lg bg-primary">
+                                                                    <span>AB</span>
+                                                                </div>
+                                                                <div class="user-info">
+                                                                    <div class="badge badge-outline-light badge-pill ucap">
+                                                                        User
+                                                                    </div>
+                                                                    <h5>Nguyen Van A</h5>
+                                                                    <span class="sub-text">nguyenvana@mail.com</span>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- .card-inner -->
+                                                        <div class="card-inner">
+                                                            <form action="">
+                                                                <div class="form-group">
+                                                                    <label class="form-label" for="customFileLabel">Change avatar</label>
+                                                                    <div class="form-control-wrap">
+                                                                        <div class="custom-file">
+                                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" align="center">
+                                                                    <div class="form-control-wrap">
+                                                                        <button type="submit" name="btn-submit" class="btn btn-secondary">Change Avatar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div><!-- .card-inner -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="simplebar-placeholder" style="width: auto; height: 819px;"></div>
+                                    </div>
+                                </div><!-- .card-inner -->
+                            </div><!-- .card-aside -->
+                        </div><!-- .card-aside-wrap -->
+                    </div><!-- .card -->
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+{% verbatim  %}
+<script>
+    tinymce.init({
+    selector: '#description'
+});
+</script>
+{% endverbatim  %}
+{% endblock %}
