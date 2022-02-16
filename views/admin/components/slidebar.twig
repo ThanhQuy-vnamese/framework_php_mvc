@@ -1,0 +1,55 @@
+<div class="nk-sidebar nk-sidebar-fixed is-dark " data-content="sidebarMenu">
+    <div class="nk-sidebar-element nk-sidebar-head">
+        <div class="nk-menu-trigger">
+            <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+            <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+        </div>
+        <div class="nk-sidebar-brand">
+            <a href="{{ redirect('admin/user-list') }}" class="logo-link nk-sidebar-logo">
+                <img class="logo-light logo-img" src="{{ createLink('template/admin/images/logo.png') }}" srcset="{{ createLink('template/admin/images/logo2x.png 2x')}}" alt="logo">
+                <img class="logo-dark logo-img" src="{{ createLink('template/admin/images/logo-dark.png') }}" srcset="{{ createLink('template/admin/images/logo-dark2x.png 2x')}}" alt="logo-dark">
+            </a>
+        </div>
+    </div><!-- .nk-sidebar-element -->
+    <div class="nk-sidebar-element nk-sidebar-body">
+        <div class="nk-sidebar-content">
+            <div class="nk-sidebar-menu" data-simplebar>
+                <ul class="nk-menu">
+                    <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">Menu</h6>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="{{ redirect('admin/user-list') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
+                            <span class="nk-menu-text">Manage users</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="{{ redirect('admin/medical-file-list') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                            <span class="nk-menu-text">Manage medical files</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="{{ redirect('admin/medicine-list') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon fas fa-capsules"></em></span>
+                            <span class="nk-menu-text">Manage medicine</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="{{ redirect('admin/blog-list') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon fas fa-blog"></em></span>
+                            <span class="nk-menu-text">Manage blogs</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="{{ redirect('admin/contact-list') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon fas fa-address-book"></em></span>
+                            <span class="nk-menu-text">Manage contact</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                </ul><!-- .nk-menu -->
+            </div><!-- .nk-sidebar-menu -->
+        </div><!-- .nk-sidebar-content -->
+    </div><!-- .nk-sidebar-element -->
+</div>
