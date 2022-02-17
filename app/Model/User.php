@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Core\Database\DBModel;
+use App\Core\Database\Query;
 
 class User extends DBModel
 {
@@ -71,5 +72,32 @@ class User extends DBModel
         }
 
         return [];
+    }
+
+    /**
+     * @param array $information
+     * @return false|int|string
+     */
+    public function addUser(array $information) {
+        $query = new Query();
+        return $query->table('medican_users')->insert($information);
+    }
+
+    /**
+     * @param array $information
+     * @return false|int|string
+     */
+    public function addUserProfile(array $information) {
+        $query = new Query();
+        return $query->table('medican_user_profiles')->insert($information);
+    }
+
+    /**
+     * @param string $email
+     * @return \stdClass
+     */
+    public function getInfoFromEmail(string $email) {
+        $query = new Query();
+        return $query->table('medican_users')->condition(['email' => $email])->get();
     }
 }

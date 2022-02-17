@@ -52,6 +52,7 @@ $app->router->post('/api/login', [ApiController::class, 'login']);
 $app->router->get('/admin/user-list', [UserController::class, 'getViewUserList']);
 $app->router->get('/admin/user-detail', [UserController::class, 'getViewUserDetail']);
 $app->router->get('/admin/user-add', [UserController::class, 'getViewUserAdd']);
+$app->router->post('/admin/post-user-add', [UserController::class, 'addUser']);
 $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'getViewMedicalFileList']);
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);

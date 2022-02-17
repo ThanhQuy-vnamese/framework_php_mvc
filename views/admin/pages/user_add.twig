@@ -21,7 +21,13 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    <form action="">
+                    {% if(Session.hasFlash('successAddUser')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successAddUser') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorAddUser')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddUser') }}</div>
+                    {% endif %}
+                    <form action="{{ redirect('admin/post-user-add') }}" method="post">
                         <div class="card-inner">
                             <div class="preview-block">
                                 <span class="preview-title-lg overline-title">Login Information</span>
@@ -68,11 +74,11 @@
                                             <div class="form-control-wrap">
                                                 <div class="custom-control custom-radio" >
                                                     <input type="radio" id="inactive" name="status"
-                                                           class="custom-control-input" checked>
+                                                           class="custom-control-input" value="0" checked>
                                                     <label class="custom-control-label" for="inactive">Inactive</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="active" name="status"
+                                                    <input type="radio" id="active" value="1" name="status"
                                                            class="custom-control-input">
                                                     <label class="custom-control-label" for="active">Active</label>
                                                 </div>
@@ -94,9 +100,9 @@
                                             <div class="form-control-wrap ">
                                                 <div class="form-control-select">
                                                     <select class="form-control" name="role" id="role">
-                                                        <option value="default_option">User</option>
-                                                        <option value="option_select_name">Doctor</option>
-                                                        <option value="option_select_name">Administrator</option>
+                                                        <option value="3">User</option>
+                                                        <option value="2">Doctor</option>
+                                                        <option value="1">Administrator</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -139,13 +145,13 @@
                                             <div class="form-control-wrap">
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="nam" name="gender"
-                                                           class="custom-control-input" checked>
-                                                    <label class="custom-control-label" for="nam">Nam</label>
+                                                           class="custom-control-input" value="male" checked>
+                                                    <label class="custom-control-label" for="nam">Male</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="nu" name="gender"
-                                                           class="custom-control-input">
-                                                    <label class="custom-control-label" for="nu">Nữ</label>
+                                                           class="custom-control-input" value="female">
+                                                    <label class="custom-control-label" for="nu">Female</label>
                                                 </div>
                                             </div>
                                         </div>
