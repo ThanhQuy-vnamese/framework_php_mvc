@@ -24,8 +24,8 @@ jobs:
             sudo apt-get update
             sudo apt-get install sshpass
             cd scripts
-            sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r mysql/mysql.sh root@${IPSERVER}:/home/install
-            sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install && sh mysql.sh'
+            sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r mysql root@${IPSERVER}:/home/install
+            sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install/mysql && sh mysql.sh'
 workflows:
   version: 2
   deploy-server:
