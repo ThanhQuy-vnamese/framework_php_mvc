@@ -47,6 +47,7 @@ class Response
         }
 
         header('location:' . $pathPublic);
+        exit();
     }
 
     public function json_encode($data)

@@ -27,7 +27,7 @@ class Twig {
         $twig->addFunction($this->addRedirectFunction());
         $twig->addGlobal('helper', new Helper());
         $twig->addGlobal('Auth', new Authentication());
-        $twig->addGlobal('session', Session::class);
+        $twig->addGlobal('Session', new Session());
         $this->twig = $twig;
     }
 
