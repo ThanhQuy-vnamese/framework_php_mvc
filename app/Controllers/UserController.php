@@ -84,19 +84,25 @@ class UserController extends BaseController
         if (!$idUser) {
             $session->setFlash('errorAddUser', 'Add user failed');
             $this->response->redirect('/admin/user-add');
-        } else {
-            $dataUserProfile = [
-                'first_name' => $firstName,
-                'last_name' => $lastName,
-                'birthday' => $birthday,
-                'gender' => $gender,
-                'address' => $address,
-                'phone' => $phone,
-                'user_id' => $idUser
-            ];
-
-            $user->addUserProfile($dataUserProfile);
         }
+
+        $dataUserProfile = [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'birthday' => $birthday,
+            'gender' => $gender,
+            'address' => $address,
+            'phone' => $phone,
+            'user_id' => $idUser
+        ];
+
+        $idUserProfile = $user->addUserProfile($dataUserProfile);
+
+        if (!$idUserProfile) {
+            $session->setFlash('errorAddUser', 'Add user failed');
+            $this->response->redirect('/admin/user-add');
+        }
+
         $session->setFlash('successAddUser', 'Add user success');
         $this->response->redirect('/admin/user-add');
     }
