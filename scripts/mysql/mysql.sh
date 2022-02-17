@@ -1,3 +1,2 @@
 #!/bin/bash
-mysql -u root -p
-echo 'Abc@1234'
+mysql -u root -pAbc@1234 -e "show databases;"
