@@ -32,4 +32,6 @@ else
   cp -rf /var/www/phpmvc/.env.server .env || exit 1
 fi
 
+sed -i 's/\'\/public\'\;/\'\;/ /var/www/phpmvc/app/Core/View/Twig.php
+
 service httpd restart
