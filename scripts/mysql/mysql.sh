@@ -1,2 +1,4 @@
 #!/bin/bash
-mysql -u root -pAbc@1234 -e "show databases;"
+mysql -u root -p
+echo 'Abc@1234'
+echo 'show databased;'
