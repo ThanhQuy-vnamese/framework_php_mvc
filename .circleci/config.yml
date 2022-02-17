@@ -36,3 +36,5 @@ workflows:
             branches:
               only:
                 - master
+      - mysql:
+          context: phpmvc
