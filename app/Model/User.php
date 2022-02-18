@@ -100,4 +100,15 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medican_users')->condition(['email' => $email])->get();
     }
+
+    public function getAllUsers() {
+        $query = new Query();
+        $sql = "SELECT * FROM medican_users AS U INNER JOIN medican_user_profiles AS up ON u.id=up.user_id";
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 }

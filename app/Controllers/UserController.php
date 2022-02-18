@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Core\Controller\BaseController;
 use App\Core\Session;
 use App\Model\User;
+use App\Repository\UserRepository;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -20,7 +21,9 @@ class UserController extends BaseController
      */
     public function getViewUserList(): string
     {
-        return $this->twig->render('admin/pages/user_list');
+        $userRepository = new UserRepository();
+        $users = $userRepository->getAllUsers();
+        return $this->twig->render('admin/pages/user_list', ['users' => $users]);
     }
 
     /**
@@ -114,5 +117,10 @@ class UserController extends BaseController
     public function validateExistEmail(string $email): array {
         $user = new User();
         return (array)$user->getInfoFromEmail($email);
+    }
+
+    public function getUsers() {
+        $user = new User();
+        return $user->getAllUsers();
     }
 }
