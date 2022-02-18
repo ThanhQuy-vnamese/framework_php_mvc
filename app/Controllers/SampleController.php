@@ -18,6 +18,6 @@ class SampleController extends BaseController
      */
     public function index (): string
     {
-        return $this->twig->render('welcome');
+        return $this->twig->render('base');
     }
 }

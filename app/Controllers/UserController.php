@@ -16,6 +16,14 @@ class UserController extends BaseController
      * @throws RuntimeError
      * @throws SyntaxError
      */
+    public function index():string
+    {
+        return $this->twig->render('base');
+    }
+    public function login():string
+    {
+        return $this->twig->render('user/pages/login');
+    }
     public function getViewUserList(): string
     {
         return $this->twig->render('admin/pages/user_list');

@@ -62,4 +62,7 @@ $app->router->get('/admin/blog-detail', [BlogController::class, 'getViewBlogDeta
 $app->router->get('/admin/contact-list', [ContactController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewContactDetail']);
 
+
+// User
+$app->router->get('/user/login', [UserController::class, 'login']);
 $app->run();
