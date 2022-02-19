@@ -113,6 +113,68 @@ class UserController extends BaseController
         $this->response->redirect('/admin/user-add');
     }
 
+    public function updateUser() {
+        $idUser = $this->request->input->get('id');
+        $firstName = $this->request->input->get('first-name');
+        $lastName = $this->request->input->get('last-name');
+        $email = $this->request->input->get('email');
+        $password = $this->request->input->get('password');
+        $confirmPassword = $this->request->input->get('confirm-password');
+        $status = $this->request->input->get('status');
+        $role = $this->request->input->get('role');
+        $birthday = $this->request->input->get('birthday');
+        $address = $this->request->input->get('address');
+        $phone = $this->request->input->get('phone');
+        $gender = $this->request->input->get('gender');
+
+        $session = new Session();
+        $userRepository = new UserRepository();
+        $isExistEmail = $userRepository->isExistEmail($idUser, $email);
+        if ($isExistEmail) {
+            $session->setFlash('errorUpdateUser', 'Email already exists');
+            $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+        }
+
+        $dataUser = [
+            'status' => $status,
+            'role' => $role
+        ];
+
+        if (!empty($password) && !empty($confirmPassword)) {
+            if ($password !== $confirmPassword) {
+                $session->setFlash('errorUpdateUser', 'Password not match');
+                $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+            }
+
+            $dataUser['password'] = password_hash($password, PASSWORD_DEFAULT);
+        }
+
+        $user = new User();
+        $isUpdateUserSuccess = $user->updateUser($idUser, $dataUser);
+        if (!$isUpdateUserSuccess) {
+            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+        }
+
+        $dataUserProfile = [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'birthday' => $birthday,
+            'gender' => $gender,
+            'address' => $address,
+            'phone' => $phone,
+        ];
+
+        $isUpdateUserProfileSuccess = $user->updateUserProfile($idUser, $dataUserProfile);
+        if (!$isUpdateUserProfileSuccess) {
+            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+        }
+
+        $session->setFlash('successUpdateUser', 'Update user success');
+        $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+    }
+
     /**
      * @param string $email
      * @return array

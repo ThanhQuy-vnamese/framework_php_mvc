@@ -21,6 +21,12 @@ class UserRepository
         return $this->convertUser($user)[0] ?? [];
     }
 
+    public function isExistEmail(string $user_id, string $email): bool {
+        $user = new User();
+        $nums = $user->getEmailExceptUserId($user_id, $email);
+        return $nums > 0;
+    }
+
     private function convertUser(array $users): array
     {
         $data = [];

@@ -25,6 +25,12 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successUpdateUser')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successUpdateUser') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorUpdateUser')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorUpdateUser') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -124,7 +130,8 @@
                                                     <h5 class="modal-title">Edit user</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="">
+                                                    <form action="{{ redirect('admin/post-user-update') }}" method="post">
+                                                        <input type="text" hidden name="id" value="{{ user.id }}">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
                                                                 <span class="preview-title-lg overline-title">Login Information</span>
@@ -241,13 +248,13 @@
                                                                             <label class="form-label" for="password">Gender</label>
                                                                             <div class="form-control-wrap">
                                                                                 <div class="custom-control custom-radio">
-                                                                                    <input type="radio" id="nam" name="gender"
-                                                                                           class="custom-control-input" {{ user.gender == 'male' ? 'checked' : '' }}>
+                                                                                    <input type="radio" id="nam" name="gender" value="Male"
+                                                                                           class="custom-control-input" {{ user.gender == 'Male' ? 'checked' : '' }}>
                                                                                     <label class="custom-control-label" for="nam">Male</label>
                                                                                 </div>
                                                                                 <div class="custom-control custom-radio">
-                                                                                    <input type="radio" id="nu" name="gender"
-                                                                                           class="custom-control-input" {{ user.gender == 'female' ? 'checked' : '' }}>
+                                                                                    <input type="radio" id="nu" name="gender" value="Female"
+                                                                                           class="custom-control-input" {{ user.gender == 'Female' ? 'checked' : '' }}>
                                                                                     <label class="custom-control-label" for="nu">Female</label>
                                                                                 </div>
                                                                             </div>
