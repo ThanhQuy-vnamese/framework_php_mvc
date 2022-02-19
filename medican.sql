@@ -15,7 +15,7 @@ CREATE TABLE `medican_user_profiles` (
   `first_name` varchar(255),
   `last_name` varchar(255),
   `birthday` date,
-  `gender` char(5),
+  `gender` char(7),
   `avatar` varchar(255),
   `address` varchar(100),
   `phone` varchar(12),
