@@ -101,9 +101,22 @@ class User extends DBModel
         return $query->table('medican_users')->condition(['email' => $email])->get();
     }
 
-    public function getAllUsers() {
+    public function getAllUsers(): array {
         $query = new Query();
-        $sql = "SELECT * FROM medican_users AS U INNER JOIN medican_user_profiles AS up ON u.id=up.user_id";
+        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medican_users AS U INNER JOIN medican_user_profiles AS UP ON U.id=UP.user_id";
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getUser(string $id): array {
+        $query = new Query();
+        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medican_users AS U INNER JOIN medican_user_profiles AS UP ON U.id=UP.user_id WHERE U.id=$id";
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {

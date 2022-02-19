@@ -34,7 +34,10 @@ class UserController extends BaseController
      */
     public function getViewUserDetail(): string
     {
-        return $this->twig->render('admin/pages/user_detail');
+        $idUser = $this->request->input->get('id');
+        $userRepository = new UserRepository();
+        $user = $userRepository->getUser($idUser);
+        return $this->twig->render('admin/pages/user_detail', ['user' => $user]);
     }
 
     /**
@@ -69,7 +72,7 @@ class UserController extends BaseController
             $this->response->redirect('/admin/user-add');
         }
 
-        if (!empty($this->validateExistEmail($email))){
+        if (!empty($this->validateExistEmail($email))) {
             $session->setFlash('errorAddUser', 'Email already exists');
             $this->response->redirect('/admin/user-add');
         }
@@ -114,13 +117,9 @@ class UserController extends BaseController
      * @param string $email
      * @return array
      */
-    public function validateExistEmail(string $email): array {
+    public function validateExistEmail(string $email): array
+    {
         $user = new User();
         return (array)$user->getInfoFromEmail($email);
-    }
-
-    public function getUsers() {
-        $user = new User();
-        return $user->getAllUsers();
     }
 }

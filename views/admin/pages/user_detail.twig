@@ -7,10 +7,10 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Users / <strong class="text-primary small">Nguyen Van A</strong></h3>
+                            <h3 class="nk-block-title page-title">Users / <strong class="text-primary small">{{ user.full_name }}</strong></h3>
                             <div class="nk-block-des text-soft">
                                 <ul class="list-inline">
-                                    <li>User ID: <span class="text-base">1</span></li>
+                                    <li>User ID: <span class="text-base">{{ user.id }}</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,32 +44,32 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">First Name</span>
-                                                    <span class="profile-ud-value">Nguyen</span>
+                                                    <span class="profile-ud-value">{{ user.first_name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Last Name</span>
-                                                    <span class="profile-ud-value">Van A</span>
+                                                    <span class="profile-ud-value">{{ user.last_name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Email Address</span>
-                                                    <span class="profile-ud-value">nguyenvana@mail.com</span>
+                                                    <span class="profile-ud-value">{{ user.email }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Role</span>
-                                                    <span class="profile-ud-value">Administrator</span>
+                                                    <span class="profile-ud-value">{{ user.role.name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Status</span>
                                                     <span class="profile-ud-value">
-                                                        <span class="badge badge-success">Active</span>
+                                                        <span class="badge badge-{{ user.status.code == '0' ? 'danger' : 'success' }}">{{ user.status.name }}</span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -83,19 +83,19 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Address</span>
-                                                    <span class="profile-ud-value">Gò Vấp, TPHCM</span>
+                                                    <span class="profile-ud-value">{{ user.address }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Date of Birth</span>
-                                                    <span class="profile-ud-value">1-1-1980</span>
+                                                    <span class="profile-ud-value">{{ user.birthday }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Gender</span>
-                                                    <span class="profile-ud-value">Nam</span>
+                                                    <span class="profile-ud-value">{{ user.gender }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -134,7 +134,7 @@
                                                                             <label class="form-label" for="first-name">First Name</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="first-name"
-                                                                                       id="first-name" placeholder="Enter First Name">
+                                                                                       id="first-name" placeholder="Enter First Name" value="{{ user.first_name }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -143,7 +143,7 @@
                                                                             <label class="form-label" for="last-name">Last Name</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="last-name" id="last-name"
-                                                                                       placeholder="Enter Last Name">
+                                                                                       placeholder="Enter Last Name" value="{{ user.last_name }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -152,7 +152,7 @@
                                                                             <label class="form-label" for="email">Email</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="email" class="form-control" name="email" id="email"
-                                                                                       placeholder="Enter Email">
+                                                                                       placeholder="Enter Email" value="{{ user.email }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -171,12 +171,12 @@
                                                                             <div class="form-control-wrap">
                                                                                 <div class="custom-control custom-radio" >
                                                                                     <input type="radio" id="inactive" name="status"
-                                                                                           class="custom-control-input" checked>
+                                                                                           class="custom-control-input" {{ user.status.code == '0' ? 'checked' : '' }}>
                                                                                     <label class="custom-control-label" for="inactive">Inactive</label>
                                                                                 </div>
                                                                                 <div class="custom-control custom-radio">
                                                                                     <input type="radio" id="active" name="status"
-                                                                                           class="custom-control-input">
+                                                                                           class="custom-control-input" {{ user.status.code == '1' ? 'checked' : '' }}>
                                                                                     <label class="custom-control-label" for="active">Active</label>
                                                                                 </div>
                                                                             </div>
@@ -197,9 +197,9 @@
                                                                             <div class="form-control-wrap ">
                                                                                 <div class="form-control-select">
                                                                                     <select class="form-control" name="role" id="role">
-                                                                                        <option value="default_option">User</option>
-                                                                                        <option value="option_select_name">Doctor</option>
-                                                                                        <option value="option_select_name">Administrator</option>
+                                                                                        <option value="3" {{ user.role.code == '3' ? 'selected' : '' }}>User</option>
+                                                                                        <option value="2" {{ user.role.code == '2' ? 'selected' : '' }}>Doctor</option>
+                                                                                        <option value="1" {{ user.role.code == '1' ? 'selected' : '' }}>Administrator</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -214,7 +214,7 @@
                                                                             <label class="form-label" for="birthday">Birthday</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="date" class="form-control" name="birthday" id="birthday"
-                                                                                       placeholder="Enter Birthday">
+                                                                                       placeholder="Enter Birthday" value="{{ user.birthday }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -223,7 +223,7 @@
                                                                             <label class="form-label" for="address">Address</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="address" id="address"
-                                                                                       placeholder="Enter Address">
+                                                                                       placeholder="Enter Address" value="{{ user.address }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -232,7 +232,7 @@
                                                                             <label class="form-label" for="phone">Phone</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="phone" id="phone"
-                                                                                       placeholder="Enter Phone">
+                                                                                       placeholder="Enter Phone" value="{{ user.phone }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -242,13 +242,13 @@
                                                                             <div class="form-control-wrap">
                                                                                 <div class="custom-control custom-radio">
                                                                                     <input type="radio" id="nam" name="gender"
-                                                                                           class="custom-control-input" checked>
-                                                                                    <label class="custom-control-label" for="nam">Nam</label>
+                                                                                           class="custom-control-input" {{ user.gender == 'male' ? 'checked' : '' }}>
+                                                                                    <label class="custom-control-label" for="nam">Male</label>
                                                                                 </div>
                                                                                 <div class="custom-control custom-radio">
                                                                                     <input type="radio" id="nu" name="gender"
-                                                                                           class="custom-control-input">
-                                                                                    <label class="custom-control-label" for="nu">Nữ</label>
+                                                                                           class="custom-control-input" {{ user.gender == 'female' ? 'checked' : '' }}>
+                                                                                    <label class="custom-control-label" for="nu">Female</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
