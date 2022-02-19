@@ -53,7 +53,7 @@ class Twig {
 
 
     public function addRedirectFunction() {
-        $function = new TwigFunction('redirect', function ($path = '') {
+        $function = new TwigFunction('redirect', function ($path = '', $params = []) {
             $requestUrl = $_SERVER['REQUEST_URI'];
             $pos = strpos($requestUrl, PREFIX_PUBLIC);
             if (!$pos) {
@@ -61,9 +61,21 @@ class Twig {
             } else {
                 $pathPublic = substr($requestUrl, 0, $pos + strlen('/public'));
             }
+            $pathPublic .= '/' . $path;
+            if (!empty($params)) {
+                $linkParam = '';
+                $lastItem = end($params);
+                foreach ($params as $key => $value) {
+                    $linkParam .= $key . '=' . $value;
+                    if ($value !== $lastItem) {
+                        $linkParam .= '&';
+                    }
+                }
+                $pathPublic .= '?' . $linkParam;
+            }
             $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
             $host = $_SERVER['HTTP_HOST'];
-            return $http . $host . $pathPublic . '/' . $path;
+            return $http . $host . $pathPublic;
         });
         return $function;
     }
