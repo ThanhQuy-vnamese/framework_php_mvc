@@ -71,6 +71,11 @@ class UserController extends BaseController
 
         $session = new Session();
 
+        if (empty($password) || empty($confirmPassword)) {
+            $session->setFlash('errorAddUser', 'Please enter password');
+            $this->response->redirect('/admin/user-add');
+        }
+
         if ($password != $confirmPassword) {
             $session->setFlash('errorAddUser', 'Password not match');
             $this->response->redirect('/admin/user-add');
