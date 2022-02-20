@@ -300,10 +300,10 @@
                                                                 </div>
                                                                 <div class="user-info">
                                                                     <div class="badge badge-outline-light badge-pill ucap">
-                                                                        User
+                                                                        {{ user.role.name }}
                                                                     </div>
-                                                                    <h5>Nguyen Van A</h5>
-                                                                    <span class="sub-text">nguyenvana@mail.com</span>
+                                                                    <h5>{{ user.full_name }}</h5>
+                                                                    <span class="sub-text">{{ user.email }}</span>
                                                                 </div>
                                                             </div>
                                                         </div><!-- .card-inner -->
