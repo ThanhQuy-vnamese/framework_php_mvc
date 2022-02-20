@@ -296,7 +296,7 @@
                                                         <div class="card-inner">
                                                             <div class="user-card user-card-s2">
                                                                 <div class="user-avatar lg bg-primary">
-                                                                    <span>AB</span>
+                                                                    <img src="{{ createLink('upload/avatars/') }}{{ user.avatar }}" alt="">
                                                                 </div>
                                                                 <div class="user-info">
                                                                     <div class="badge badge-outline-light badge-pill ucap">
@@ -308,12 +308,13 @@
                                                             </div>
                                                         </div><!-- .card-inner -->
                                                         <div class="card-inner">
-                                                            <form action="">
+                                                            <form action="{{ redirect('admin/post-update-avatar') }}" method="post" enctype="multipart/form-data">
+                                                                <input type="text" hidden name="user-id" value="{{ user.id }}">
                                                                 <div class="form-group">
                                                                     <label class="form-label" for="customFileLabel">Change avatar</label>
                                                                     <div class="form-control-wrap">
                                                                         <div class="custom-file">
-                                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                                            <input type="file" class="custom-file-input" id="customFile" name="avatar-file">
                                                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                                                         </div>
                                                                     </div>

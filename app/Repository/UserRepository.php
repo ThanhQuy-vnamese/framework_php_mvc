@@ -45,6 +45,7 @@ class UserRepository
             $temp['gender'] = $user['gender'] ?? '';
             $temp['qr_image'] = $user['qr_image'] ?? '';
             $temp['status'] = $this->getStatus($user['status']) ?? '';
+            $temp['avatar'] = $user['avatar'] ?? '';
             $data[] = $temp;
         }
 

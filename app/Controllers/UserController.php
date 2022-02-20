@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Core\Controller\BaseController;
+use App\Core\Helper\UploadFile;
 use App\Core\Session;
 use App\Model\User;
 use App\Repository\UserRepository;
@@ -176,6 +177,30 @@ class UserController extends BaseController
 
         $session->setFlash('successUpdateUser', 'Update user success');
         $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+    }
+
+    public function updateAvatar() {
+        $userId = $this->request->input->get('user-id');
+        $avatarFile = $this->request->input->get('avatar-file');
+        $uploadFile = new UploadFile($avatarFile);
+        $isSuccess = $uploadFile->upload('avatars/');
+
+        $session = new Session();
+        if (!$isSuccess) {
+            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $this->response->redirect('/admin/user-detail', ['id' => $userId]);
+        }
+        $data = [
+            'avatar' => $uploadFile->getFileName(),
+        ];
+        $user = new User();
+        $isSuccessUpdateAvatar = $user->updateUserProfile($userId, $data);
+        if (!$isSuccessUpdateAvatar) {
+            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $this->response->redirect('/admin/user-detail', ['id' => $userId]);
+        }
+        $session->setFlash('successUpdateUser', 'Update user success');
+        $this->response->redirect('/admin/user-detail', ['id' => $userId]);
     }
 
     public function deleteUser() {
