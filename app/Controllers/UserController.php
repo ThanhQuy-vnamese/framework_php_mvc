@@ -110,7 +110,7 @@ class UserController extends BaseController
         }
 
         $session->setFlash('successAddUser', 'Add user success');
-        $this->response->redirect('/admin/user-add');
+        $this->response->redirect('/admin/user-list');
     }
 
     public function updateUser() {
@@ -173,6 +173,20 @@ class UserController extends BaseController
 
         $session->setFlash('successUpdateUser', 'Update user success');
         $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
+    }
+
+    public function deleteUser() {
+        $userId = $this->request->input->get('user-id');
+        $user = new User();
+        $isDeleteSuccess = $user->deleteUser($userId);
+        $session = new Session();
+        if (!$isDeleteSuccess) {
+            $session->setFlash('errorDeleteUser', 'Delete user fail');
+            $this->response->redirect('/admin/user-list');
+        }
+
+        $session->setFlash('successDeleteUser', 'Delete user success');
+        $this->response->redirect('/admin/user-list');
     }
 
     public function resetPassword() {

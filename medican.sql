@@ -3,7 +3,7 @@ CREATE TABLE `medican_users` (
   `email` varchar(255) UNIQUE,
   `password` varchar(255),
   `status` boolean,
-  `created_at` timestamp,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP ,
   `token` varchar(700),
   `qr_image` varchar(500),
   `face_id` varchar(500),
@@ -35,7 +35,7 @@ CREATE TABLE `medican_medican_records` (
   `province` varchar(50),
   `health_insurance` boolean,
   `covid_vaccination` text,
-  `created_at` timestamp,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `user_id` int
 );
 
@@ -52,7 +52,7 @@ CREATE TABLE `medican_blogs` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(255),
   `content` text,
-  `created_at` timestamp,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `image` varchar(255),
   `user_id` int
 );
@@ -63,19 +63,19 @@ CREATE TABLE `medican_contact_infomation` (
   `phone` varchar(12),
   `message` text,
   `full_name` varchar(100),
-  `created_at` timestamp,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `user_id` int
 );
 
 CREATE TABLE `medican_appointments` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `subject` varchar(100),
-  `date_start` timestamp,
-  `date_end` timestamp,
-  `time_start` timestamp,
-  `time_end` timestamp,
-  `createt_at` timestamp,
-  `updated_at` timestamp,
+  `date_start` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_end` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `time_start` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `time_end` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `user_id` int
 );
 
@@ -83,8 +83,8 @@ CREATE TABLE `medican_appointment_attendees` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `id_appointment` int,
   `user_id` int,
-  `created_at` timestamp,
-  `updated_at` timestamp
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `medican_medicines` (
@@ -107,7 +107,7 @@ CREATE TABLE `medican_prescriptions` (
   `address` varchar(255),
   `note` varchar(255),
   `heaths_id` int,
-  `created_at` timestamp,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `user_id` int
 );
 
@@ -119,27 +119,27 @@ CREATE TABLE `medican_prescription_details` (
   `dosage` varchar(50)
 );
 
-ALTER TABLE `medican_user_profiles` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_user_profiles` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medican_appointments` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_appointments` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medican_contact_infomation` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_contact_infomation` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medican_medican_records` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_medican_records` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medican_blogs` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_blogs` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medican_appointment_attendees` ADD FOREIGN KEY (`id_appointment`) REFERENCES `medican_appointments` (`id`);
 
-ALTER TABLE `medican_appointment_attendees` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_appointment_attendees` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medican_heaths` ADD FOREIGN KEY (`id_medican_records`) REFERENCES `medican_medican_records` (`id`);
 
 ALTER TABLE `medican_medicines` ADD FOREIGN KEY (`medicine_type_id`) REFERENCES `medican_medicines_types` (`id`);
 
-ALTER TABLE `medican_prescriptions` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`);
+ALTER TABLE `medican_prescriptions` ADD FOREIGN KEY (`user_id`) REFERENCES `medican_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medican_prescriptions` ADD FOREIGN KEY (`heaths_id`) REFERENCES `medican_heaths` (`id`);
+ALTER TABLE `medican_prescriptions` ADD FOREIGN KEY (`heaths_id`) REFERENCES `medican_heaths` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medican_prescription_details` ADD FOREIGN KEY (`medicine_id`) REFERENCES `medican_medicines` (`id`);
 

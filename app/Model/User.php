@@ -140,6 +140,11 @@ class User extends DBModel
         return $query->table('medican_users')->update($information, ['id' => $id]);
     }
 
+    public function deleteUser(string $id): bool {
+        $query = new Query();
+        return $query->table('medican_users')->condition(['id' => $id])->delete();
+    }
+
     public function getEmailExceptUserId(string $user_id, string $email): int {
         $sql = "SELECT * FROM medican_users WHERE email='$email' AND id <> '$user_id';";
         $result = $this->getDatabase()->mysql->query($sql);

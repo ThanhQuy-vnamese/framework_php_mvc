@@ -35,11 +35,20 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successAddUser')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successAddUser') }}</div>
+                    {% endif %}
                     {% if(Session.hasFlash('successResetPassword')) %}
                         <div class="alert alert-success">{{ session.getFlash('successResetPassword') }}</div>
                     {% endif %}
                     {% if(Session.hasFlash('errorResetPassword')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorResetPassword') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successDeleteUser')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successDeleteUser') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorDeleteUser')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDeleteUser') }}</div>
                     {% endif %}
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner-group">
@@ -123,9 +132,9 @@
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li><a href="{{ redirect('admin/user-detail', {'id': user.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a class="js-reset-password" href="javascript:void(0)" data-id-user="{{ user.id }}"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
+                                                                <li><a href="javascript:void(0)" class="js-reset-password" data-id-user="{{ user.id }}"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-user-cross-fill"></em><span>Delete user</span></a></li>
+                                                                <li><a href="javascript:void(0)" class="js-delete-user" data-id-user="{{ user.id }}"><em class="icon ni ni-user-cross-fill"></em><span>Delete user</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -184,6 +193,33 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal zoom" tabindex="-1" id="deleteUserModal">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <em class="icon ni ni-cross"></em>
+                                                </a>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Reset Password</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Are you sure delete user?</h4>
+                                                    <form id="delete-user-form" action="{{ redirect('admin/post-delete-user') }}" method="post">
+                                                        <input type="text" hidden value="" name="user-id">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">Delete</button>
+                                                                <button class="btn btn-xl btn-outline-secondary js-btn-cancel">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer bg-light">
+                                                    <span class="sub-text">Modal Footer Text</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">
@@ -211,6 +247,16 @@
         var userId = $(this).data('id-user');
         $('input[name="user-id"]').attr('value', userId);
         $('#resetPasswordModal').modal('show');
+    })
+    $('.js-delete-user').on('click', function () {
+        var userId = $(this).data('id-user');
+        $('#delete-user-form input[name="user-id"]').attr('value', userId);
+        $('#deleteUserModal').modal('show');
+
+        $('.js-btn-cancel').on('click', (event) => {
+            event.preventDefault();
+            $('#deleteUserModal').modal('hide');
+        })
     })
 </script>
 {% endverbatim  %}
