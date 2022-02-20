@@ -37,6 +37,9 @@ class UserController extends BaseController
         $idUser = $this->request->input->get('id');
         $userRepository = new UserRepository();
         $user = $userRepository->getUser($idUser);
+        if (empty($user)) {
+            $this->response->redirect('/admin/user-list');
+        }
         return $this->twig->render('admin/pages/user_detail', ['user' => $user]);
     }
 
