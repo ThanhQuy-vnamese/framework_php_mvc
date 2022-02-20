@@ -35,6 +35,12 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successResetPassword')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successResetPassword') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorResetPassword')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorResetPassword') }}</div>
+                    {% endif %}
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner-group">
                             <div class="card-inner position-relative card-tools-toggle">
@@ -117,7 +123,7 @@
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li><a href="{{ redirect('admin/user-detail', {'id': user.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
+                                                                <li><a class="js-reset-password" href="javascript:void(0)" data-id-user="{{ user.id }}"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
                                                                 <li class="divider"></li>
                                                                 <li><a href="#"><em class="icon ni ni-user-cross-fill"></em><span>Delete user</span></a></li>
                                                             </ul>
@@ -128,6 +134,56 @@
                                         </div>
                                     </div><!-- .nk-tb-item -->
                                     {% endfor %}
+                                    <div class="modal fade" tabindex="-1" id="resetPasswordModal">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <em class="icon ni ni-cross"></em>
+                                                </a>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Reset Password</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ redirect('admin/post-reset-password') }}" method="post">
+                                                        <input type="text" hidden value="" name="user-id">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <div class="row gy-4">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="password">Password</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="password" class="form-control" name="password"
+                                                                                       id="password" placeholder="Enter Password">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="confirm-password">Confirm Password</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="password" class="form-control" name="confirm-password"
+                                                                                       id="confirm-password" placeholder="Enter Confirm Password">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="preview-hr">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <button type="submit" class="btn btn-success">Reset password</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer bg-light">
+                                                    <span class="sub-text">Modal Footer Text</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">
@@ -147,4 +203,15 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascript %}
+{% verbatim  %}
+<script>
+    $('.js-reset-password').on('click', function () {
+        var userId = $(this).data('id-user');
+        $('input[name="user-id"]').attr('value', userId);
+        $('#resetPasswordModal').modal('show');
+    })
+</script>
+{% endverbatim  %}
 {% endblock %}

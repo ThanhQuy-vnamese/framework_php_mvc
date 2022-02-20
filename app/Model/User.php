@@ -135,6 +135,11 @@ class User extends DBModel
         return $query->table('medican_user_profiles')->update($information, ['user_id' => $user_id]);
     }
 
+    public function updatePassword(string $id, array $information): bool {
+        $query = new Query();
+        return $query->table('medican_users')->update($information, ['id' => $id]);
+    }
+
     public function getEmailExceptUserId(string $user_id, string $email): int {
         $sql = "SELECT * FROM medican_users WHERE email='$email' AND id <> '$user_id';";
         $result = $this->getDatabase()->mysql->query($sql);

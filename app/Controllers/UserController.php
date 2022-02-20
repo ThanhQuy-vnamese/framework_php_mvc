@@ -175,6 +175,36 @@ class UserController extends BaseController
         $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
     }
 
+    public function resetPassword() {
+        $userId = $this->request->input->get('user-id');
+        $password = $this->request->input->get('password');
+        $confirmPassword = $this->request->input->get('confirm-password');
+        $session = new Session();
+        if (empty($password) || empty($confirmPassword)) {
+            $session->setFlash('errorResetPassword', 'Please enter password');
+            $this->response->redirect('/admin/user-list');
+        }
+
+        if ($password !== $confirmPassword) {
+            $session->setFlash('errorResetPassword', 'Password not match');
+            $this->response->redirect('/admin/user-list');
+        }
+
+        $info = [
+            'password' => password_hash($password, PASSWORD_DEFAULT)
+        ];
+
+        $user = new User();
+        $isUpdateSuccess = $user->updatePassword($userId, $info);
+        if (!$isUpdateSuccess) {
+            $session->setFlash('errorResetPassword', 'Reset password fail');
+            $this->response->redirect('/admin/user-list');
+        }
+
+        $session->setFlash('successResetPassword', 'Reset password success');
+        $this->response->redirect('/admin/user-list');
+    }
+
     /**
      * @param string $email
      * @return array
