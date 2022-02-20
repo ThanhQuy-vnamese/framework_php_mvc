@@ -21,9 +21,17 @@ class UploadFile
         return empty($this->fileName) ? $this->fileInput['name'] : $this->fileName;
     }
 
-    public function upload($path = 'public/upload/'): bool {
+    public function upload($path): bool {
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $pos = strpos($requestUrl, PREFIX_PUBLIC);
+        if ($pos) {
+            $directory = 'upload/';
+        } else {
+            $directory = 'public/upload/';
+        }
         $fileName = empty($this->fileName) ? $this->fileInput['name'] : $this->fileName;
-        $directory = 'public/upload/' . $path;
+        $directory = $directory . $path;
+
         return move_uploaded_file($this->fileInput['tmp_name'], $directory . $fileName);
     }
 }
