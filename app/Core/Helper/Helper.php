@@ -50,4 +50,13 @@ class Helper
 
         return $pathPublic;
     }
+
+    public function getDirectoryUpload(): string {
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $pos = strpos($requestUrl, PREFIX_PUBLIC);
+        if ($pos) {
+           return 'upload/';
+        }
+        return 'public/upload/';
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Core\Controller\BaseController;
 use App\Core\Helper\UploadFile;
+use App\Core\Lib\QrCode;
 use App\Core\Session;
 use App\Model\User;
 use App\Repository\UserRepository;
@@ -86,17 +87,22 @@ class UserController extends BaseController
             $this->response->redirect('/admin/user-add');
         }
 
+        $qrName = $this->generateRandomString(15);
+        $qrCode = new QrCode();
+        $qrCode->create('content', $qrName);
+
         $dataUser = [
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'status' => $status,
-            'role' => $role
+            'role' => $role,
+            'qr_image' => $qrName . '.png'
         ];
 
         $user = new User();
-        $idUser = $user->addUser($dataUser);
+        $userId = $user->addUser($dataUser);
 
-        if (!$idUser) {
+        if (!$userId) {
             $session->setFlash('errorAddUser', 'Add user failed');
             $this->response->redirect('/admin/user-add');
         }
@@ -108,7 +114,7 @@ class UserController extends BaseController
             'gender' => $gender,
             'address' => $address,
             'phone' => $phone,
-            'user_id' => $idUser
+            'user_id' => $userId
         ];
 
         $idUserProfile = $user->addUserProfile($dataUserProfile);
@@ -120,6 +126,16 @@ class UserController extends BaseController
 
         $session->setFlash('successAddUser', 'Add user success');
         $this->response->redirect('/admin/user-list');
+    }
+
+    public function generateRandomString(int $length = 10): string {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
     public function updateUser() {
