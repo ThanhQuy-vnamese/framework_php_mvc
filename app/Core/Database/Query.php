@@ -78,10 +78,11 @@ class Query extends AbstractQuery
     public function update(array $values, array $conditions): bool
     {
         $lastValue = end($values);
+        $lastKey = key($values);
         $strUpdateQuery = '';
         foreach ($values as $key => $value) {
             $strUpdateQuery .= $key . ' = ' . (is_int($value) ? $value : "'$value'");
-            if ($value != $lastValue) {
+            if ($value != $lastValue || $key != $lastKey) {
                 $strUpdateQuery .= ', ';
             }
         }
