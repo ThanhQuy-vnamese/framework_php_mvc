@@ -57,8 +57,10 @@ $app->router->post('/admin/post-user-update', [UserController::class, 'updateUse
 $app->router->post('/admin/post-reset-password', [UserController::class, 'resetPassword']);
 $app->router->post('/admin/post-delete-user', [UserController::class, 'deleteUser']);
 $app->router->post('/admin/post-update-avatar', [UserController::class, 'updateAvatar']);
+$app->router->get('/admin/medical-file-add', [MedicalFileController::class, 'getViewMedicalFileAdd']);
 $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'getViewMedicalFileList']);
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
+$app->router->post('/admin/post-medical-file-add', [MedicalFileController::class, 'addMedicalFile']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
 $app->router->get('/admin/blog-list', [BlogController::class, 'getViewBlogList']);
