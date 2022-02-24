@@ -1,5 +1,4 @@
-USE
-phpmvc;
+USE phpmvc;
 
 CREATE TABLE `medical_users`
 (
