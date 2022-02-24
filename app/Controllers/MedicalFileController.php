@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Core\Controller\BaseController;
 use App\Core\Session;
 use App\Model\MedicalFile;
+use App\Repository\MedicalFileRepository;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -31,7 +32,8 @@ class MedicalFileController extends BaseController
      */
     public function getViewMedicalFileList(): string
     {
-        return $this->twig->render('admin/pages/medical_file_list');
+        $medicalFiles = $this->getMedicalFiles();
+        return $this->twig->render('admin/pages/medical_file_list', ['medicalFiles' => $medicalFiles]);
     }
 
     /**
@@ -43,6 +45,11 @@ class MedicalFileController extends BaseController
     public function getViewMedicalFileDetail(): string
     {
         return $this->twig->render('admin/pages/medical_file_detail');
+    }
+
+    public function getMedicalFiles(): array {
+        $medicalFileRepository = new MedicalFileRepository();
+        return $medicalFileRepository->getMedicalFiles();
     }
 
     public function addMedicalFile()

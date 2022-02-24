@@ -14,6 +14,18 @@ class MedicalFile extends DBModel
         return [];
     }
 
+    public function getMedicalFiles(): array {
+        $query = "SELECT id, first_name, last_name, gender, identity_card, birthday, phone FROM medical_medical_records;";
+        $result = $this->getDatabase()->mysql->query($query);
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        return $data;
+    }
+
     public function addMedicalFile(array $information)
     {
         $query = new Query();
