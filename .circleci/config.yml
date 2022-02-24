@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Login Mysql"
+          name: "Init database"
           command: |
             sudo apt-get update
             sudo apt-get install sshpass
@@ -32,9 +32,15 @@ workflows:
     jobs:
       - deploy:
           context: phpmvc
+          requires:
+            - mysql
           filters:
             branches:
               only:
                 - master
       - mysql:
           context: phpmvc
+          filters:
+            branches:
+              only:
+                - master
