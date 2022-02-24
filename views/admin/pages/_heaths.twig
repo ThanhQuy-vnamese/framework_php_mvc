@@ -1,6 +1,8 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between">
-        <h5 class="title">Heaths Information</h5></div><!-- .nk-block-head -->
+        <h5 class="title">Heaths Information</h5>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHeath">Add heaths</button>
+    </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
         <div class="profile-ud-item">
             <div class="profile-ud wider">
@@ -291,6 +293,86 @@
 {#                                    <button type="submit" class="btn btn-success">Edit</button>#}
 {#                                </div>#}
 {#                            </div>#}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer bg-light">
+                <span class="sub-text">Modal Footer Text</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="modalAddHeath">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                <em class="icon ni ni-cross"></em>
+            </a>
+            <div class="modal-header">
+                <h5 class="modal-title">Add Heaths</h5>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="card-inner">
+                        <div class="preview-block">
+                            <span class="preview-title-lg overline-title">Main Information</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fever">Fever</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" name="fever" id="fever">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="have-a-cold">Have a cold</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" name="have-a-cold" id="have-a-cold">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="sore-throat">Sore throat</label>
+                                        <div class="form-control-wrap ">
+                                            <div class="form-control-select">
+                                                <select class="form-control" name="sore-throat" id="sore-throat">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="description">Description</label>
+                                        <div class="form-control-wrap">
+                                            <textarea type="text" class="form-control" name="description" id="description"
+                                                      placeholder="Enter Last Name">11111111</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="preview-hr">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Edit</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
