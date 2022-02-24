@@ -1,4 +1,4 @@
-USER phpmvc;
+USE phpmvc;
 
 CREATE TABLE IF NOT EXISTS `medican_users` (
                                                `id` int PRIMARY KEY AUTO_INCREMENT,
