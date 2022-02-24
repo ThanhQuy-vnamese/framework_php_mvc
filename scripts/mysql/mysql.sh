@@ -1,2 +1,5 @@
 #!/bin/bash
-mysql -u root -pAbc@1234 -e "DROP DATABASE IF EXISTS phpmvc; "
+MYSQL=$(mysql -uroot -pAbc@1234)
+
+MYSQL -e "show databases;"
+
