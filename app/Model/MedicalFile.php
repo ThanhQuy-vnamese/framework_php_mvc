@@ -34,7 +34,11 @@ class MedicalFile extends DBModel
                     WHERE MR.id=$medicalFileId
                 SQL;
         $result = $this->getDatabase()->mysql->query($query);
-        return $result->fetch_assoc();
+        $num = $result->num_rows;
+        if ($num > 0) {
+            $result->fetch_assoc();
+        }
+        return [];
     }
 
     public function addMedicalFile(array $information)

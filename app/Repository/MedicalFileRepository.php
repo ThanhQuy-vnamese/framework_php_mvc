@@ -37,20 +37,20 @@ class MedicalFileRepository
 
     private function convertMedicalDetail(array $medicalFile): array {
         $data = [];
-        $data['first_name'] = $medicalFile['first_name'];
-        $data['last_name'] = $medicalFile['last_name'];
-        $data['gender'] = $medicalFile['gender'];
-        $data['identity_card'] = $medicalFile['identity_card'];
-        $data['email'] = $medicalFile['email'];
-        $data['phone'] = $medicalFile['phone'];
-        $data['way'] = $medicalFile['way'];
-        $data['district'] = $medicalFile['district'];
-        $data['wards'] = $medicalFile['wards'];
-        $data['province'] = $medicalFile['province'];
-        $data['covid_injections'] = $this->convertCovidVaccinationInjection($medicalFile['covid_vaccination']);
-        $data['created_at'] = $medicalFile['created_at'];
-        $data['user_id'] = $medicalFile['user_id'];
-        $data['health_insurance'] = $medicalFile['health_insurance'];
+        $data['first_name'] = $medicalFile['first_name'] ?? '';
+        $data['last_name'] = $medicalFile['last_name'] ?? '';
+        $data['gender'] = $medicalFile['gender'] ?? '';
+        $data['identity_card'] = $medicalFile['identity_card'] ?? '';
+        $data['email'] = $medicalFile['email'] ?? '';
+        $data['phone'] = $medicalFile['phone'] ?? '';
+        $data['way'] = $medicalFile['way'] ?? '';
+        $data['district'] = $medicalFile['district'] ?? '';
+        $data['wards'] = $medicalFile['wards'] ?? '';
+        $data['province'] = $medicalFile['province'] ?? '';
+        $data['covid_injections'] = $this->convertCovidVaccinationInjection($medicalFile['covid_vaccination'] ?? '');
+        $data['created_at'] = $medicalFile['created_at'] ?? '';
+        $data['user_id'] = $medicalFile['user_id'] ?? '';
+        $data['health_insurance'] = $medicalFile['health_insurance'] ?? '';
         $data['health_insurance_number'] = $medicalFile['health_insurance_number'] ?? '';
         $data['expiration_date'] = $medicalFile['expiration_date'] ?? '';
 
@@ -58,6 +58,10 @@ class MedicalFileRepository
     }
 
     private function convertCovidVaccinationInjection(string $covid_vaccination): array {
+        if (empty($covid_vaccination)) {
+            return [];
+        }
+
         $covidVaccinations = unserialize($covid_vaccination);
         $data = [];
         $injections = 1;
