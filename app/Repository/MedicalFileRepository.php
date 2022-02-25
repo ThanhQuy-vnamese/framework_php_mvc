@@ -13,6 +13,11 @@ class MedicalFileRepository
         return $this->convertMedicalFile($medicalFile->getMedicalFiles());
     }
 
+    public function getMedicalFileDetail(string $medicalFileId): array {
+        $medicalFile = new MedicalFile();
+        return $this->convertMedicalDetail($medicalFile->getMedicalFileDetail($medicalFileId));
+    }
+
     private function convertMedicalFile(array $medicalFiles): array
     {
         $data = [];
@@ -25,6 +30,43 @@ class MedicalFileRepository
             $temp['phone'] = $medicalFile['phone'];
             $temp['identity_card'] = $medicalFile['identity_card'];
             $temp['age'] = $this->calculateAge($temp['birthday']);
+            $data[] = $temp;
+        }
+        return $data;
+    }
+
+    private function convertMedicalDetail(array $medicalFile): array {
+        $data = [];
+        $data['first_name'] = $medicalFile['first_name'];
+        $data['last_name'] = $medicalFile['last_name'];
+        $data['gender'] = $medicalFile['gender'];
+        $data['identity_card'] = $medicalFile['identity_card'];
+        $data['email'] = $medicalFile['email'];
+        $data['phone'] = $medicalFile['phone'];
+        $data['way'] = $medicalFile['way'];
+        $data['district'] = $medicalFile['district'];
+        $data['wards'] = $medicalFile['wards'];
+        $data['province'] = $medicalFile['province'];
+        $data['covid_injections'] = $this->convertCovidVaccinationInjection($medicalFile['covid_vaccination']);
+        $data['created_at'] = $medicalFile['created_at'];
+        $data['user_id'] = $medicalFile['user_id'];
+        $data['health_insurance'] = $medicalFile['health_insurance'];
+        $data['health_insurance_number'] = $medicalFile['health_insurance_number'] ?? '';
+        $data['expiration_date'] = $medicalFile['expiration_date'] ?? '';
+
+        return $data;
+    }
+
+    private function convertCovidVaccinationInjection(string $covid_vaccination): array {
+        $covidVaccinations = unserialize($covid_vaccination);
+        $data = [];
+        $injections = 1;
+        foreach ($covidVaccinations as $covidVaccinationInjection) {
+            $temp = [];
+            $temp['injection'] = $injections;
+            $temp['type_medicine'] = $covidVaccinationInjection['type_medicine'];
+            $temp['date'] = $covidVaccinationInjection['date'];
+            $injections += 1;
             $data[] = $temp;
         }
         return $data;

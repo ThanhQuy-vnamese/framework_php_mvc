@@ -49,67 +49,67 @@
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">First Name</span>
-                                                        <span class="profile-ud-value">Nguyen</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.first_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Last Name</span>
-                                                        <span class="profile-ud-value">Van A</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.last_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Birthday</span>
-                                                        <span class="profile-ud-value">1-1-1999</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.birthday }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Gender</span>
-                                                        <span class="profile-ud-value">Nam</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.gender }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Phone</span>
-                                                        <span class="profile-ud-value">0123456789</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.phone }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Email</span>
-                                                        <span class="profile-ud-value">nguyenvana@mail.com</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.email }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">CMND/CCCD</span>
-                                                        <span class="profile-ud-value">333333333</span>
+                                                        <span class="profile-ud-label">Identity card</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.identity_card }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Province/City</span>
-                                                        <span class="profile-ud-value">TPHCM</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.province }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">District</span>
-                                                        <span class="profile-ud-value">Gò Vấp</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.district }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Wards</span>
-                                                        <span class="profile-ud-value">5</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.wards }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Village/House number</span>
-                                                        <span class="profile-ud-value">5</span>
+                                                        <span class="profile-ud-label">House number/Way</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.way }}</span>
                                                     </div>
                                                 </div>
                                             </div><!-- .profile-ud-list -->
@@ -121,26 +121,23 @@
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
+                                                        <span class="profile-ud-label">Have Health Insurance</span>
+                                                        <span class="profile-ud-value">
+                                                        <span class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? 'Not Health Insurance' : 'Health Insurance' }}</span>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-ud-item"></div>
+                                                <div class="profile-ud-item">
+                                                    <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Health Insurance number</span>
-                                                        <span class="profile-ud-value">DN-1111111</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.health_insurance_number}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Expiration date</span>
-                                                        <span class="profile-ud-value">1-1-1999</span>
-                                                    </div>
-                                                </div>
-                                                <div class="profile-ud-item">
-                                                    <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Nationality</span>
-                                                        <span class="profile-ud-value">Viet Nam</span>
-                                                    </div>
-                                                </div>
-                                                <div class="profile-ud-item">
-                                                    <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Ethnic</span>
-                                                        <span class="profile-ud-value">Kinh</span>
+                                                        <span class="profile-ud-value">{{ medicalFile.expiration_date }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">

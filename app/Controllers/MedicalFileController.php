@@ -44,10 +44,14 @@ class MedicalFileController extends BaseController
      */
     public function getViewMedicalFileDetail(): string
     {
-        return $this->twig->render('admin/pages/medical_file_detail');
+        $medicalFileId = $this->request->input->get('id');
+        $medicalRepository = new MedicalFileRepository();
+        $medicalFile = $medicalRepository->getMedicalFileDetail($medicalFileId);
+        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile]);
     }
 
-    public function getMedicalFiles(): array {
+    public function getMedicalFiles(): array
+    {
         $medicalFileRepository = new MedicalFileRepository();
         return $medicalFileRepository->getMedicalFiles();
     }

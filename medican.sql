@@ -44,7 +44,7 @@ CREATE TABLE `medical_medical_insurances` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `health_insurance` boolean,
   `health_insurance_number` varchar(20),
-  `expiration_date` datetime,
+  `expiration_date` date,
   `created_at` timestamp,
   `id_medical_records` int
 );

@@ -1,16 +1,18 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between">
-        <h5 class="title">Heaths Information</h5>
+        <h5 class="title">Covid Vaccination</h5>
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHeath">Add heaths</button>
     </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
+        {% for injection in medicalFile.covid_injections %}
         <div class="profile-ud-item">
             <div class="profile-ud wider">
-                <span class="profile-ud-label">Covid Vaccination</span>
-                <div class="profile-ud-value">Mũi 1: Verocell</div>
-                <div class="profile-ud-value">Mũi 2: Verocell</div>
+                <span class="profile-ud-label">Injection {{ injection.injection }}</span>
+                <div class="profile-ud-value">Medicine: {{ injection.type_medicine }}</div>
+                <div class="profile-ud-value">Date: {{ injection.date }}</div>
             </div>
         </div>
+        {% endfor %}
     </div><!-- .profile-ud-list -->
 </div><!-- .nk-block -->
 <div class="nk-divider divider md"></div>

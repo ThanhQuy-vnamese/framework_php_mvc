@@ -26,6 +26,17 @@ class MedicalFile extends DBModel
         return $data;
     }
 
+    public function getMedicalFileDetail(string $medicalFileId): array {
+        $query = <<<SQL
+                    SELECT MR.id first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance, 
+                           MI.health_insurance_number, MI.expiration_date 
+                    FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records 
+                    WHERE MR.id=$medicalFileId
+                SQL;
+        $result = $this->getDatabase()->mysql->query($query);
+        return $result->fetch_assoc();
+    }
+
     public function addMedicalFile(array $information)
     {
         $query = new Query();
