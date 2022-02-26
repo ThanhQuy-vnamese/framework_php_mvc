@@ -38,6 +38,7 @@
             <div class="nk-tb-col tb-col-md"><span class="sub-text">Date of the examination</span></div>
             <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
         </div><!-- .nk-tb-item -->
+        {% for heath in heaths %}
         <div class="nk-tb-item">
             <div class="nk-tb-col nk-tb-col-check">
                 <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -46,13 +47,13 @@
                 </div>
             </div>
             <div class="nk-tb-col tb-col-md">
-                <span>22</span>
+                <span>{{ heath.id }}</span>
             </div>
             <div class="nk-tb-col">
-                <span>Aproin at metus et dolor tincidunt feugiat eu id quam.</span>
+                <span>{{ heath.summary }}</span>
             </div>
             <div class="nk-tb-col tb-col-md">
-                <span>12-2-2022</span>
+                <span>{{ heath.date }}</span>
             </div>
             <div class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-2">
@@ -72,40 +73,7 @@
                 </ul>
             </div>
         </div><!-- .nk-tb-item -->
-        <div class="nk-tb-item">
-            <div class="nk-tb-col nk-tb-col-check">
-                <div class="custom-control custom-control-sm custom-checkbox notext">
-                    <input type="checkbox" class="custom-control-input" id="uid1">
-                    <label class="custom-control-label" for="uid1"></label>
-                </div>
-            </div>
-            <div class="nk-tb-col tb-col-md">
-                <span>22</span>
-            </div>
-            <div class="nk-tb-col">
-                <span>Aproin at metus et dolor tincidunt feugiat eu id quam.</span>
-            </div>
-            <div class="nk-tb-col tb-col-md">
-                <span>13-2-2022</span>
-            </div>
-            <div class="nk-tb-col nk-tb-col-tools">
-                <ul class="nk-tb-actions gx-2">
-                    <li>
-                        <div class="drodown">
-                            <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="link-list-opt no-bdr">
-                                    <li><a href="#" data-toggle="modal" data-target="#modalDetailHeaths"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em><span>Views prescription</span></a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete files</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div><!-- .nk-tb-item -->
+        {% endfor %}
     </div><!-- .nk-tb-list -->
 </div><!-- .nk-block -->
 
@@ -315,11 +283,21 @@
                 <h5 class="modal-title">Add Heaths</h5>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="{{ redirect('admin/post-medical-heath-add') }}" method="post">
+                    <input type="text" name="medical-file-id" hidden value="{{ medicalFile.id }}">
                     <div class="card-inner">
                         <div class="preview-block">
                             <span class="preview-title-lg overline-title">Main Information</span>
                             <div class="row gy-4">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="summary">Summary</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="summary" id="summary"
+                                                   placeholder="Enter Summary">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="form-label" for="fever">Fever</label>
@@ -361,9 +339,9 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="description">Description</label>
+                                        <label class="form-label" for="note">Description</label>
                                         <div class="form-control-wrap">
-                                            <textarea type="text" class="form-control" name="description" id="description"
+                                            <textarea type="text" class="form-control" name="note" id="note"
                                                       placeholder="Enter Last Name">11111111</textarea>
                                         </div>
                                     </div>
@@ -372,7 +350,7 @@
                             <hr class="preview-hr">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Edit</button>
+                                    <button type="submit" class="btn btn-success">Add heaths</button>
                                 </div>
                             </div>
                         </div>

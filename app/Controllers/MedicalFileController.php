@@ -47,7 +47,12 @@ class MedicalFileController extends BaseController
         $medicalFileId = $this->request->input->get('id');
         $medicalRepository = new MedicalFileRepository();
         $medicalFile = $medicalRepository->getMedicalFileDetail($medicalFileId);
-        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile]);
+        $heaths = $medicalRepository->getHeaths($medicalFileId);
+        if (empty($medicalFile)) {
+            $this->response->redirect('/admin/medical-file-list');
+        }
+
+        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile, 'heaths' => $heaths]);
     }
 
     public function getMedicalFiles(): array
@@ -127,6 +132,47 @@ class MedicalFileController extends BaseController
 
         $session->setFlash('successAddMedicalFile', 'Add medical file success');
         $this->response->redirect('/admin/medical-file-add');
+    }
+
+    public function addHeath()
+    {
+        $medicalFileId = $this->request->input->get('medical-file-id');
+        $summary = $this->request->input->get('summary');
+        $fever = $this->request->input->get('fever');
+        $haveACold = $this->request->input->get('have-a-cold');
+        $soreThroat = $this->request->input->get('sore-throat');
+        $note = $this->request->input->get('note');
+        $note = $this->request->input->get('note');
+
+        $symptoms = [
+            'fever' => $fever,
+            'cold' => $haveACold,
+            'sore_throat' => $soreThroat,
+        ];
+
+        $medicalFileDetail = [
+            'summary' => $summary,
+            'heaths' => serialize($symptoms),
+            'note' => $note,
+            'id_medical_records' => $medicalFileId
+        ];
+
+        $medicalFile = new MedicalFile();
+        $result = $medicalFile->addHealth($medicalFileDetail);
+
+        $session = new Session();
+        if (!$result) {
+            $session->setFlash('errorHeath', 'Add heath fail');
+            $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
+        }
+
+        $session->setFlash('successHeath', 'Add heath success');
+        $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
+    }
+
+    private function getHeathList(string $medicalFileId)
+    {
+
     }
 
     private function validateHealthInsurance(array $healthInsurance): array

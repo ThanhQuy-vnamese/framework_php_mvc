@@ -25,6 +25,12 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successHeath')) %}
+                    <div class="alert alert-success">{{ session.getFlash('successHeath') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorHeath')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorHeath') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -401,8 +407,11 @@
 {% verbatim  %}
 <script>
     tinymce.init({
-    selector: '#description'
-});
+        selector: '#description'
+    });
+    tinymce.init({
+        selector: '#note'
+    });
 </script>
 {% endverbatim  %}
 {% endblock %}

@@ -28,7 +28,7 @@ class MedicalFile extends DBModel
 
     public function getMedicalFileDetail(string $medicalFileId): array {
         $query = <<<SQL
-                    SELECT MR.id first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance, 
+                    SELECT MR.id, first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance, 
                            MI.health_insurance_number, MI.expiration_date 
                     FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records 
                     WHERE MR.id=$medicalFileId
@@ -36,8 +36,9 @@ class MedicalFile extends DBModel
         $result = $this->getDatabase()->mysql->query($query);
         $num = $result->num_rows;
         if ($num > 0) {
-            $result->fetch_assoc();
+            return $result->fetch_assoc();
         }
+
         return [];
     }
 
@@ -53,9 +54,31 @@ class MedicalFile extends DBModel
         return $query->table('medical_medical_insurances')->insert($information);
     }
 
+    public function addHealth(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_heaths')->insert($information);
+    }
+
     public function getInfoByIdentityCard(string $identityCard): int {
         $query = "SELECT * FROM `medical_medical_records` WHERE identity_card = '$identityCard'";
         $result = $this->getDatabase()->mysql->query($query);
         return $result->num_rows;
+    }
+
+    public function getHeaths(string $medicalFileId): array {
+        $query = "SELECT * FROM `medical_heaths` WHERE id_medical_records=$medicalFileId";
+        $result = $this->getDatabase()->mysql->query($query);
+        $data = [];
+
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        return $data;
     }
 }

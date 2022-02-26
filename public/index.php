@@ -61,6 +61,7 @@ $app->router->get('/admin/medical-file-add', [MedicalFileController::class, 'get
 $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'getViewMedicalFileList']);
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
 $app->router->post('/admin/post-medical-file-add', [MedicalFileController::class, 'addMedicalFile']);
+$app->router->post('/admin/post-medical-heath-add', [MedicalFileController::class, 'addHeath']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
 $app->router->get('/admin/blog-list', [BlogController::class, 'getViewBlogList']);

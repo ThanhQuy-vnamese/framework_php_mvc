@@ -15,7 +15,35 @@ class MedicalFileRepository
 
     public function getMedicalFileDetail(string $medicalFileId): array {
         $medicalFile = new MedicalFile();
-        return $this->convertMedicalDetail($medicalFile->getMedicalFileDetail($medicalFileId));
+        $medicalFileDetail = $medicalFile->getMedicalFileDetail($medicalFileId);
+        if (empty($medicalFileDetail)) {
+            return [];
+        }
+
+        return $this->convertMedicalDetail($medicalFileDetail);
+    }
+
+    public function getHeaths(string $medicalFileId): array {
+        $medicalFile = new MedicalFile();
+        $heaths = $medicalFile->getHeaths($medicalFileId);
+        if (empty($heaths)) {
+            return [];
+        }
+        return $this->convertHeaths($heaths);
+    }
+
+
+    public function convertHeaths(array $heaths): array {
+        $data = [];
+        foreach ($heaths as $heath) {
+            $temp = [];
+            $temp['id'] = $heath['id'];
+            $temp['summary'] = $heath['summary'];
+            $temp['date'] = $heath['date'];
+            array_push($data, $temp);
+        }
+
+        return $data;
     }
 
     private function convertMedicalFile(array $medicalFiles): array
@@ -37,6 +65,7 @@ class MedicalFileRepository
 
     private function convertMedicalDetail(array $medicalFile): array {
         $data = [];
+        $data['id'] = $medicalFile['id'] ?? '';
         $data['first_name'] = $medicalFile['first_name'] ?? '';
         $data['last_name'] = $medicalFile['last_name'] ?? '';
         $data['gender'] = $medicalFile['gender'] ?? '';
