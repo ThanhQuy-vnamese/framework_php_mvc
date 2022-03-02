@@ -62,8 +62,8 @@
                             <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="link-list-opt no-bdr">
-                                    <li><a href="#" data-toggle="modal" data-target="#modalDetailHeaths"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em></em><span>Views prescription</span></a></li>
+                                    <li><a href="#" class="js-heath-view-detail" data-heath-id="{{ heath.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em><span>Views prescription</span></a></li>
                                     <li class="divider"></li>
                                     <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
                                 </ul>
@@ -87,7 +87,8 @@
                 <h5 class="modal-title">Heaths Information</h5>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="" method="post">
+                    <input type="text" name="heath-id" hidden value="">
                     <div class="card-inner">
                         <div class="preview-block">
                             <span class="preview-title-lg overline-title">Main Information</span>
@@ -96,19 +97,19 @@
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
                                             <span class="profile-ud-label">Fever</span>
-                                            <div class="profile-ud-value">Yes</div>
+                                            <div class="profile-ud-value js-fever"></div>
                                         </div>
                                     </div>
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
                                             <span class="profile-ud-label">Have a cold</span>
-                                            <div class="profile-ud-value">Yes</div>
+                                            <div class="profile-ud-value js-cold"></div>
                                         </div>
                                     </div>
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
                                             <span class="profile-ud-label">Sore throat</span>
-                                            <div class="profile-ud-value">No</div>
+                                            <div class="profile-ud-value js-sore-throat"></div>
                                         </div>
                                     </div>
                                 </div><!-- .profile-ud-list -->
@@ -117,7 +118,7 @@
                             <div class="bq-note">
                                 <div class="bq-note-item">
                                     <div class="bq-note-text">
-                                        <p>Aproin at metus et dolor tincidunt feugiat eu id quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sollicitudin non nunc vel pharetra. </p>
+                                        <p class="js-advice">Aproin at metus et dolor tincidunt feugiat eu id quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sollicitudin non nunc vel pharetra. </p>
                                     </div>
                                 </div><!-- .bq-note-item -->
                             </div><!-- .bq-note -->

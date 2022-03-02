@@ -142,7 +142,6 @@ class MedicalFileController extends BaseController
         $haveACold = $this->request->input->get('have-a-cold');
         $soreThroat = $this->request->input->get('sore-throat');
         $note = $this->request->input->get('note');
-        $note = $this->request->input->get('note');
 
         $symptoms = [
             'fever' => $fever,
@@ -170,9 +169,11 @@ class MedicalFileController extends BaseController
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
-    private function getHeathList(string $medicalFileId)
-    {
-
+    public function getHeathDetail() {
+        $heathId = $this->request->input->get('id');
+        $medicalFileRepository = new MedicalFileRepository();
+        $heath = $medicalFileRepository->getHeathDetail($heathId);
+        return $this->response->json_encode($heath);
     }
 
     private function validateHealthInsurance(array $healthInsurance): array

@@ -5,7 +5,6 @@ namespace App\Model;
 
 use App\Core\Database\DBModel;
 use App\Core\Database\Query;
-use stdClass;
 
 class MedicalFile extends DBModel
 {
@@ -28,9 +27,9 @@ class MedicalFile extends DBModel
 
     public function getMedicalFileDetail(string $medicalFileId): array {
         $query = <<<SQL
-                    SELECT MR.id, first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance, 
-                           MI.health_insurance_number, MI.expiration_date 
-                    FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records 
+                    SELECT MR.id, first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance,
+                           MI.health_insurance_number, MI.expiration_date
+                    FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records
                     WHERE MR.id=$medicalFileId
                 SQL;
         $result = $this->getDatabase()->mysql->query($query);
@@ -80,5 +79,16 @@ class MedicalFile extends DBModel
         }
 
         return $data;
+    }
+
+    public function getHeathDetail(string $heathId): array {
+        $query = "SELECT * FROM `medical_heaths` WHERE id=$heathId";
+        $result = $this->getDatabase()->mysql->query($query);
+        $nums = $result->num_rows;
+        if ($nums === 0) {
+            return [];
+        }
+
+        return $result->fetch_assoc();
     }
 }

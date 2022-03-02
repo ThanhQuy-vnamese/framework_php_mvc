@@ -60,8 +60,10 @@ $app->router->post('/admin/post-update-avatar', [UserController::class, 'updateA
 $app->router->get('/admin/medical-file-add', [MedicalFileController::class, 'getViewMedicalFileAdd']);
 $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'getViewMedicalFileList']);
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
+$app->router->get('/admin/ajax-medical-file-heath', [MedicalFileController::class, 'getHeathDetail']);
 $app->router->post('/admin/post-medical-file-add', [MedicalFileController::class, 'addMedicalFile']);
 $app->router->post('/admin/post-medical-heath-add', [MedicalFileController::class, 'addHeath']);
+$app->router->post('/admin/post-medical-heath-edit', [MedicalFileController::class, 'addHeath']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
 $app->router->get('/admin/blog-list', [BlogController::class, 'getViewBlogList']);

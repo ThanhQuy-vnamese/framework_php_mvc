@@ -412,6 +412,24 @@
     tinymce.init({
         selector: '#note'
     });
+
+    $(document).ready(() => {
+        const $modalViewDetail = $('#modalDetailHeaths');
+        $('.js-heath-view-detail').on('click', (event) => {
+            const heathId = $(event.target).data('heath-id');
+            $.ajax({
+              url: `ajax-medical-file-heath?id=${heathId}`,
+            }).done((response) => {
+                $modalViewDetail.find('.js-fever').text(response.symptom.fever);
+                $modalViewDetail.find('.js-cold').text(response.symptom.cold);
+                $modalViewDetail.find('.js-sore-throat').text(response.symptom.sore_throat);
+                $modalViewDetail.find('.js-advice').html(response.note);
+                $modalViewDetail.find('input[name="heath-id"]').attr('value', response.id)
+                $('#modalDetailHeaths').modal('show');
+            });
+        })
+    })
+
 </script>
 {% endverbatim  %}
 {% endblock %}

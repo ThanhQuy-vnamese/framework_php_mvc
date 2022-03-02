@@ -32,8 +32,29 @@ class MedicalFileRepository
         return $this->convertHeaths($heaths);
     }
 
+    public function getHeathDetail(string $heathId): array {
+        $medicalFile = new MedicalFile();
+        return $this->convertHeathDetail($medicalFile->getHeathDetail($heathId));
+    }
 
-    public function convertHeaths(array $heaths): array {
+    private function convertHeathDetail(array $heath): array {
+        $data['id'] = $heath['id'];
+        $data['summary'] = $heath['summary'];
+        $data['symptom'] = $this->convertSymptom(unserialize($heath['heaths']));
+        $data['note'] = $heath['note'];
+        return $data;
+    }
+
+    private function convertSymptom(array $symptom): array {
+        $data = [];
+        $data['fever'] = $symptom['fever'] === '1' ? 'Yes' : 'No';
+        $data['cold'] = $symptom['cold'] === '1' ? 'Yes' : 'No';
+        $data['sore_throat'] = $symptom['sore_throat'] === '1' ? 'Yes' : 'No';
+
+        return $data;
+    }
+
+    private function convertHeaths(array $heaths): array {
         $data = [];
         foreach ($heaths as $heath) {
             $temp = [];
