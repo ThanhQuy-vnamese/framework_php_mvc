@@ -406,13 +406,6 @@
 {% block javascript %}
 {% verbatim  %}
 <script>
-    tinymce.init({
-        selector: '#description'
-    });
-    tinymce.init({
-        selector: '#note'
-    });
-
     $(document).ready(() => {
         const $modalViewDetail = $('#modalDetailHeaths');
         $('.js-heath-view-detail').on('click', (event) => {
@@ -420,11 +413,13 @@
             $.ajax({
               url: `ajax-medical-file-heath?id=${heathId}`,
             }).done((response) => {
+                $modalViewDetail.find('.js-summary').text(response.summary);
                 $modalViewDetail.find('.js-fever').text(response.symptom.fever);
                 $modalViewDetail.find('.js-cold').text(response.symptom.cold);
                 $modalViewDetail.find('.js-sore-throat').text(response.symptom.sore_throat);
                 $modalViewDetail.find('.js-advice').html(response.note);
                 $modalViewDetail.find('input[name="heath-id"]').attr('value', response.id)
+                $modalViewDetail.find('input[name="medical-file-id"]').attr('value', response.medical_file_id)
                 $('#modalDetailHeaths').modal('show');
             });
         })

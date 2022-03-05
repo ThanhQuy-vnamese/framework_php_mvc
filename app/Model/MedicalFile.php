@@ -59,6 +59,12 @@ class MedicalFile extends DBModel
         return $query->table('medical_heaths')->insert($information);
     }
 
+    public function editHealth(array $information, string $heathId): bool
+    {
+        $query = new Query();
+        return $query->table('medical_heaths')->update($information, ['id' => $heathId]);
+    }
+
     public function getInfoByIdentityCard(string $identityCard): int {
         $query = "SELECT * FROM `medical_medical_records` WHERE identity_card = '$identityCard'";
         $result = $this->getDatabase()->mysql->query($query);

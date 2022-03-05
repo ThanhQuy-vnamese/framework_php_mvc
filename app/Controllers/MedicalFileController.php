@@ -169,6 +169,41 @@ class MedicalFileController extends BaseController
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
+    public function editHeath()
+    {
+        $heathId = $this->request->input->get('heath-id');
+        $summary = $this->request->input->get('summary');
+        $fever = $this->request->input->get('fever');
+        $haveACold = $this->request->input->get('have-a-cold');
+        $soreThroat = $this->request->input->get('sore-throat');
+        $note = $this->request->input->get('description');
+        $medicalFileId = $this->request->input->get('medical-file-id');
+
+        $symptoms = [
+            'fever' => $fever,
+            'cold' => $haveACold,
+            'sore_throat' => $soreThroat,
+        ];
+
+        $medicalFileDetail = [
+            'summary' => $summary,
+            'heaths' => serialize($symptoms),
+            'note' => $note,
+        ];
+
+        $medicalFile = new MedicalFile();
+        $result = $medicalFile->editHealth($medicalFileDetail, $heathId);
+
+        $session = new Session();
+        if (!$result) {
+            $session->setFlash('errorHeath', 'Add heath fail');
+            $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
+        }
+
+        $session->setFlash('successHeath', 'Add heath success');
+        $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
+    }
+
     public function getHeathDetail() {
         $heathId = $this->request->input->get('id');
         $medicalFileRepository = new MedicalFileRepository();

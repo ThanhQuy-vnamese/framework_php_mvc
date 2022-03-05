@@ -62,7 +62,7 @@
                             <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="link-list-opt no-bdr">
-                                    <li><a href="#" class="js-heath-view-detail" data-heath-id="{{ heath.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                    <li><a href="javascript:void(0)" class="js-heath-view-detail" data-heath-id="{{ heath.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em><span>Views prescription</span></a></li>
                                     <li class="divider"></li>
                                     <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
@@ -87,12 +87,21 @@
                 <h5 class="modal-title">Heaths Information</h5>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{ redirect('admin/post-medical-heath-edit') }}" method="post">
                     <input type="text" name="heath-id" hidden value="">
+                    <input type="text" name="medical-file-id" hidden value="">
                     <div class="card-inner">
                         <div class="preview-block">
                             <span class="preview-title-lg overline-title">Main Information</span>
                             <div class="nk-block">
+                                <span class="preview-title-lg overline-title">Summary</span>
+                                <div class="bq-note">
+                                    <div class="bq-note-item">
+                                        <div class="bq-note-text">
+                                            <p class="js-summary"> </p>
+                                        </div>
+                                    </div><!-- .bq-note-item -->
+                                </div><!-- .bq-note -->
                                 <div class="profile-ud-list">
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
@@ -125,6 +134,15 @@
                             <hr class="preview-hr">
                             <span class="preview-title-lg overline-title">Edit information</span>
                             <div class="row gy-4">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="summary">Summary</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="summary" id="summary"
+                                                   placeholder="Enter Summary">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="form-label" for="fever">Fever</label>
