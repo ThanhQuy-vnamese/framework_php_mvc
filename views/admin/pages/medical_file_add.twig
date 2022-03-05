@@ -21,6 +21,12 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successAddMedicalFile')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successAddMedicalFile') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorAddMedicalFile')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddMedicalFile') }}</div>
+                    {% endif %}
                     <form action="{{ redirect('admin/post-medical-file-add') }}" method="post">
                         <div class="card-inner">
                             <div class="preview-block">
