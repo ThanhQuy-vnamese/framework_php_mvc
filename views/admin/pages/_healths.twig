@@ -1,7 +1,7 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between">
         <h5 class="title">Covid Vaccination</h5>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHeath">Add heaths</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHealth">Add healths</button>
     </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
         {% for injection in medicalFile.covid_injections %}
@@ -38,7 +38,7 @@
             <div class="nk-tb-col tb-col-md"><span class="sub-text">Date of the examination</span></div>
             <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
         </div><!-- .nk-tb-item -->
-        {% for heath in heaths %}
+        {% for health in healths %}
         <div class="nk-tb-item">
             <div class="nk-tb-col nk-tb-col-check">
                 <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -47,13 +47,13 @@
                 </div>
             </div>
             <div class="nk-tb-col tb-col-md">
-                <span>{{ heath.id }}</span>
+                <span>{{ health.id }}</span>
             </div>
             <div class="nk-tb-col">
-                <span>{{ heath.summary }}</span>
+                <span>{{ health.summary }}</span>
             </div>
             <div class="nk-tb-col tb-col-md">
-                <span>{{ heath.date }}</span>
+                <span>{{ health.date }}</span>
             </div>
             <div class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-2">
@@ -62,7 +62,7 @@
                             <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="link-list-opt no-bdr">
-                                    <li><a href="javascript:void(0)" class="js-heath-view-detail" data-heath-id="{{ heath.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                    <li><a href="javascript:void(0)" class="js-health-view-detail" data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em><span>Views prescription</span></a></li>
                                     <li class="divider"></li>
                                     <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
@@ -77,18 +77,18 @@
     </div><!-- .nk-tb-list -->
 </div><!-- .nk-block -->
 
-<div class="modal fade" tabindex="-1" id="modalDetailHeaths">
+<div class="modal fade" tabindex="-1" id="modalDetailHealths">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Heaths Information</h5>
+                <h5 class="modal-title">Healths Information</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ redirect('admin/post-medical-heath-edit') }}" method="post">
-                    <input type="text" name="heath-id" hidden value="">
+                <form action="{{ redirect('admin/post-medical-health-edit') }}" method="post">
+                    <input type="text" name="health-id" hidden value="">
                     <input type="text" name="medical-file-id" hidden value="">
                     <div class="card-inner">
                         <div class="preview-block">
@@ -292,17 +292,17 @@
         </div>
     </div>
 </div>
-<div class="modal fade" tabindex="-1" id="modalAddHeath">
+<div class="modal fade" tabindex="-1" id="modalAddHealth">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Add Heaths</h5>
+                <h5 class="modal-title">Add Healths</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ redirect('admin/post-medical-heath-add') }}" method="post">
+                <form action="{{ redirect('admin/post-medical-health-add') }}" method="post">
                     <input type="text" name="medical-file-id" hidden value="{{ medicalFile.id }}">
                     <div class="card-inner">
                         <div class="preview-block">
@@ -369,7 +369,7 @@
                             <hr class="preview-hr">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Add heaths</button>
+                                    <button type="submit" class="btn btn-success">Add healths</button>
                                 </div>
                             </div>
                         </div>

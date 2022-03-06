@@ -47,12 +47,12 @@ class MedicalFileController extends BaseController
         $medicalFileId = $this->request->input->get('id');
         $medicalRepository = new MedicalFileRepository();
         $medicalFile = $medicalRepository->getMedicalFileDetail($medicalFileId);
-        $heaths = $medicalRepository->getHeaths($medicalFileId);
+        $healths = $medicalRepository->getHealths($medicalFileId);
         if (empty($medicalFile)) {
             $this->response->redirect('/admin/medical-file-list');
         }
 
-        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile, 'heaths' => $heaths]);
+        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile, 'healths' => $healths]);
     }
 
     public function getMedicalFiles(): array
@@ -102,6 +102,7 @@ class MedicalFileController extends BaseController
             'covid_vaccination' => serialize($covidVaccination),
             'user_id' => '1'
         ];
+
         $session = new Session();
         $medicalFile = new MedicalFile();
         if ($medicalFile->getInfoByIdentityCard($identityCard) > 0) {
@@ -134,7 +135,7 @@ class MedicalFileController extends BaseController
         $this->response->redirect('/admin/medical-file-add');
     }
 
-    public function addHeath()
+    public function addHealth()
     {
         $medicalFileId = $this->request->input->get('medical-file-id');
         $summary = $this->request->input->get('summary');
@@ -151,7 +152,7 @@ class MedicalFileController extends BaseController
 
         $medicalFileDetail = [
             'summary' => $summary,
-            'heaths' => serialize($symptoms),
+            'healths' => serialize($symptoms),
             'note' => $note,
             'id_medical_records' => $medicalFileId
         ];
@@ -161,17 +162,17 @@ class MedicalFileController extends BaseController
 
         $session = new Session();
         if (!$result) {
-            $session->setFlash('errorHeath', 'Add heath fail');
+            $session->setFlash('errorHealth', 'Add health fail');
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successHeath', 'Add heath success');
+        $session->setFlash('successHealth', 'Add health success');
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
-    public function editHeath()
+    public function editHealth()
     {
-        $heathId = $this->request->input->get('heath-id');
+        $healthId = $this->request->input->get('health-id');
         $summary = $this->request->input->get('summary');
         $fever = $this->request->input->get('fever');
         $haveACold = $this->request->input->get('have-a-cold');
@@ -187,28 +188,28 @@ class MedicalFileController extends BaseController
 
         $medicalFileDetail = [
             'summary' => $summary,
-            'heaths' => serialize($symptoms),
+            'healths' => serialize($symptoms),
             'note' => $note,
         ];
 
         $medicalFile = new MedicalFile();
-        $result = $medicalFile->editHealth($medicalFileDetail, $heathId);
+        $result = $medicalFile->editHealth($medicalFileDetail, $healthId);
 
         $session = new Session();
         if (!$result) {
-            $session->setFlash('errorHeath', 'Add heath fail');
+            $session->setFlash('errorHealth', 'Add health fail');
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successHeath', 'Add heath success');
+        $session->setFlash('successHealth', 'Add health success');
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
-    public function getHeathDetail() {
-        $heathId = $this->request->input->get('id');
+    public function getHealthDetail() {
+        $healthId = $this->request->input->get('id');
         $medicalFileRepository = new MedicalFileRepository();
-        $heath = $medicalFileRepository->getHeathDetail($heathId);
-        return $this->response->json_encode($heath);
+        $health = $medicalFileRepository->getHealthDetail($healthId);
+        return $this->response->json_encode($health);
     }
 
     private function validateHealthInsurance(array $healthInsurance): array

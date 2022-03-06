@@ -56,13 +56,13 @@ class MedicalFile extends DBModel
     public function addHealth(array $information)
     {
         $query = new Query();
-        return $query->table('medical_heaths')->insert($information);
+        return $query->table('medical_healths')->insert($information);
     }
 
-    public function editHealth(array $information, string $heathId): bool
+    public function editHealth(array $information, string $healthId): bool
     {
         $query = new Query();
-        return $query->table('medical_heaths')->update($information, ['id' => $heathId]);
+        return $query->table('medical_healths')->update($information, ['id' => $healthId]);
     }
 
     public function getInfoByIdentityCard(string $identityCard): int {
@@ -71,8 +71,8 @@ class MedicalFile extends DBModel
         return $result->num_rows;
     }
 
-    public function getHeaths(string $medicalFileId): array {
-        $query = "SELECT * FROM `medical_heaths` WHERE id_medical_records=$medicalFileId";
+    public function getHealths(string $medicalFileId): array {
+        $query = "SELECT * FROM `medical_healths` WHERE id_medical_records=$medicalFileId";
         $result = $this->getDatabase()->mysql->query($query);
         $data = [];
 
@@ -87,8 +87,8 @@ class MedicalFile extends DBModel
         return $data;
     }
 
-    public function getHeathDetail(string $heathId): array {
-        $query = "SELECT * FROM `medical_heaths` WHERE id=$heathId";
+    public function getHealthDetail(string $healthId): array {
+        $query = "SELECT * FROM `medical_healths` WHERE id=$healthId";
         $result = $this->getDatabase()->mysql->query($query);
         $nums = $result->num_rows;
         if ($nums === 0) {

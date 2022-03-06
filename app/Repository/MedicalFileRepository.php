@@ -23,24 +23,24 @@ class MedicalFileRepository
         return $this->convertMedicalDetail($medicalFileDetail);
     }
 
-    public function getHeaths(string $medicalFileId): array {
+    public function getHealths(string $medicalFileId): array {
         $medicalFile = new MedicalFile();
-        $heaths = $medicalFile->getHeaths($medicalFileId);
+        $heaths = $medicalFile->getHealths($medicalFileId);
         if (empty($heaths)) {
             return [];
         }
-        return $this->convertHeaths($heaths);
+        return $this->convertHealths($heaths);
     }
 
-    public function getHeathDetail(string $heathId): array {
+    public function getHealthDetail(string $heathId): array {
         $medicalFile = new MedicalFile();
-        return $this->convertHeathDetail($medicalFile->getHeathDetail($heathId));
+        return $this->convertHealthDetail($medicalFile->getHealthDetail($heathId));
     }
 
-    private function convertHeathDetail(array $heath): array {
+    private function convertHealthDetail(array $heath): array {
         $data['id'] = $heath['id'];
         $data['summary'] = $heath['summary'];
-        $data['symptom'] = $this->convertSymptom(unserialize($heath['heaths']));
+        $data['symptom'] = $this->convertSymptom(unserialize($heath['healths']));
         $data['note'] = $heath['note'];
         $data['medical_file_id'] = $heath['id_medical_records'];
         return $data;
@@ -55,7 +55,7 @@ class MedicalFileRepository
         return $data;
     }
 
-    private function convertHeaths(array $heaths): array {
+    private function convertHealths(array $heaths): array {
         $data = [];
         foreach ($heaths as $heath) {
             $temp = [];

@@ -25,11 +25,11 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    {% if(Session.hasFlash('successHeath')) %}
-                    <div class="alert alert-success">{{ session.getFlash('successHeath') }}</div>
+                    {% if(Session.hasFlash('successHealth')) %}
+                    <div class="alert alert-success">{{ session.getFlash('successHealth') }}</div>
                     {% endif %}
-                    {% if(Session.hasFlash('errorHeath')) %}
-                        <div class="alert alert-danger">{{ session.getFlash('errorHeath') }}</div>
+                    {% if(Session.hasFlash('errorHealth')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorHealth') }}</div>
                     {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
@@ -41,7 +41,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#nav-health">
-                                            <em class="icon fas fa-hand-holding-medical"></em><span>Heath</span></a>
+                                            <em class="icon fas fa-hand-holding-medical"></em><span>Health</span></a>
                                     </li>
                                 </ul><!-- .nav-tabs -->
                                 <div class="tab-content" id="nav-tabContent">
@@ -337,7 +337,7 @@
                                         </div>
                                     </div><!-- .card-inner -->
                                     <div class="card-inner tab-pane fade" id="nav-health">
-                                        {% include('admin/pages/_heaths.twig') %}
+                                        {% include('admin/pages/_healths.twig') %}
                                     </div><!-- .card-inner -->
                                 </div>
                             </div><!-- .card-content -->
@@ -407,20 +407,20 @@
 {% verbatim  %}
 <script>
     $(document).ready(() => {
-        const $modalViewDetail = $('#modalDetailHeaths');
-        $('.js-heath-view-detail').on('click', (event) => {
-            const heathId = $(event.target).data('heath-id');
+        const $modalViewDetail = $('#modalDetailHealths');
+        $('.js-health-view-detail').on('click', (event) => {
+            const healthId = $(event.target).data('health-id');
             $.ajax({
-              url: `ajax-medical-file-heath?id=${heathId}`,
+              url: `ajax-medical-file-health?id=${healthId}`,
             }).done((response) => {
                 $modalViewDetail.find('.js-summary').text(response.summary);
                 $modalViewDetail.find('.js-fever').text(response.symptom.fever);
                 $modalViewDetail.find('.js-cold').text(response.symptom.cold);
                 $modalViewDetail.find('.js-sore-throat').text(response.symptom.sore_throat);
                 $modalViewDetail.find('.js-advice').html(response.note);
-                $modalViewDetail.find('input[name="heath-id"]').attr('value', response.id)
+                $modalViewDetail.find('input[name="health-id"]').attr('value', response.id)
                 $modalViewDetail.find('input[name="medical-file-id"]').attr('value', response.medical_file_id)
-                $('#modalDetailHeaths').modal('show');
+                $('#modalDetailHealths').modal('show');
             });
         })
     })
