@@ -61,7 +61,7 @@ CREATE TABLE `medical_healths`
     `summary`            varchar(255),
     `healths`            text,
     `note`               text,
-    `date`               date DEFAULT CURRENT_DATE,
+    `date`               date DEFAULT (CURRENT_DATE),
     `id_medical_records` int
 );
 
