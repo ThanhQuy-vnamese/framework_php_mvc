@@ -55,13 +55,13 @@ CREATE TABLE `medical_medical_insurances`
     `id_medical_records`      int
 );
 
-CREATE TABLE `medical_heaths`
+CREATE TABLE `medical_healths`
 (
     `id`                 int PRIMARY KEY AUTO_INCREMENT,
     `summary`            varchar(255),
     `healths`            text,
     `note`               text,
-    `date`               date,
+    `date`               date DEFAULT (CURRENT_DATE),
     `id_medical_records` int
 );
 
@@ -130,7 +130,7 @@ CREATE TABLE `medical_prescriptions`
     `name`       varchar(255),
     `address`    varchar(255),
     `note`       varchar(255),
-    `heaths_id`  int,
+    `healths_id`  int,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`    int
 );
@@ -168,7 +168,7 @@ ALTER TABLE `medical_appointment_attendees`
 ALTER TABLE `medical_appointment_attendees`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medical_heaths`
+ALTER TABLE `medical_healths`
     ADD FOREIGN KEY (`id_medical_records`) REFERENCES `medical_medical_records` (`id`) ON DELETE CASCADE;;
 
 ALTER TABLE `medical_medicines`
@@ -178,7 +178,7 @@ ALTER TABLE `medical_prescriptions`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medical_prescriptions`
-    ADD FOREIGN KEY (`heaths_id`) REFERENCES `medical_heaths` (`id`) ON DELETE CASCADE;
+    ADD FOREIGN KEY (`healths_id`) REFERENCES `medical_healths` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medical_prescription_details`
     ADD FOREIGN KEY (`medicine_id`) REFERENCES `medical_medicines` (`id`);
