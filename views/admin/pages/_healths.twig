@@ -65,6 +65,8 @@
                                     <li><a href="javascript:void(0)" class="js-health-view-detail" data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em><span>Views prescription</span></a></li>
                                     <li class="divider"></li>
+                                    <li><a href="javascript:void(0)" class="js-add-prescription" data-health-id="{{ health.id }}"><em class="icon fas fa-prescription"></em><span>Add prescription</span></a></li>
+                                    <li class="divider"></li>
                                     <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
                                 </ul>
                             </div>
@@ -353,6 +355,92 @@
                                                     <option value="0">No</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="note">Description</label>
+                                        <div class="form-control-wrap">
+                                            <textarea type="text" class="form-control" name="note" id="note"
+                                                      placeholder="Enter Last Name">11111111</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="preview-hr">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Add healths</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer bg-light">
+                <span class="sub-text">Modal Footer Text</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="modalAddPrescription">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                <em class="icon ni ni-cross"></em>
+            </a>
+            <div class="modal-header">
+                <h5 class="modal-title">Add Healths</h5>
+            </div>
+            <div class="modal-body">
+                <form action="{{ redirect('admin/post-medical-health-add') }}" method="post">
+                    <input type="text" name="medical-file-id" hidden value="{{ medicalFile.id }}">
+                    <div class="card-inner">
+                        <div class="preview-block">
+                            <span class="preview-title-lg overline-title">Main Information</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="full-name">Full name</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="full-name" id="full-name"
+                                                   placeholder="Enter full-name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="password">Gender</label>
+                                        <div class="form-control-wrap">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="nam" name="gender"
+                                                       class="custom-control-input" value="Male" checked>
+                                                <label class="custom-control-label" for="nam">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="nu" name="gender"
+                                                       class="custom-control-input" value="Female">
+                                                <label class="custom-control-label" for="nu">Female</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="age">Age</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="age" id="age"
+                                                   placeholder="Enter Age">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address">Address</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="address" id="address"
+                                                   placeholder="Enter address">
                                         </div>
                                     </div>
                                 </div>

@@ -423,6 +423,12 @@
                 $('#modalDetailHealths').modal('show');
             });
         })
+
+        const $modalAddPrescription = $('#modalAddPrescription');
+        $('.js-add-prescription').on('click', (event) => {
+            const healthId = $(event.target).data('health-id');
+            $modalAddPrescription.modal('show')
+        });
     })
 
 </script>
