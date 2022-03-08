@@ -167,6 +167,8 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="">
+                                                            <input type="text" hidden name="medical-file-id" value="{{ medicalFile.id }}">
+                                                            <input type="text" hidden name="insurance-id" value="{{ medicalFile.insurance_id }}">
                                                             <div class="card-inner">
                                                                 <div class="preview-block">
                                                                     <span class="preview-title-lg overline-title">Main Information</span>
@@ -176,7 +178,7 @@
                                                                                 <label class="form-label" for="first-name">First Name</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="first-name"
-                                                                                           id="first-name" placeholder="Enter First Name">
+                                                                                           id="first-name" placeholder="Enter First Name" value="{{ medicalFile.first_name }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -185,7 +187,7 @@
                                                                                 <label class="form-label" for="last-name">Last Name</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="last-name" id="last-name"
-                                                                                           placeholder="Enter Last Name">
+                                                                                           placeholder="Enter Last Name" value="{{ medicalFile.first_name }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -195,13 +197,13 @@
                                                                                 <div class="form-control-wrap">
                                                                                     <div class="custom-control custom-radio">
                                                                                         <input type="radio" id="nam" name="gender"
-                                                                                               class="custom-control-input" checked>
-                                                                                        <label class="custom-control-label" for="nam">Nam</label>
+                                                                                               class="custom-control-input" value="Male" checked>
+                                                                                        <label class="custom-control-label" for="nam">Male</label>
                                                                                     </div>
                                                                                     <div class="custom-control custom-radio">
                                                                                         <input type="radio" id="nu" name="gender"
-                                                                                               class="custom-control-input">
-                                                                                        <label class="custom-control-label" for="nu">Nữ</label>
+                                                                                               class="custom-control-input" value="Female">
+                                                                                        <label class="custom-control-label" for="nu">Female</label>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -211,7 +213,7 @@
                                                                                 <label class="form-label" for="birthday">Birthday</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="date" class="form-control" name="birthday" id="birthday"
-                                                                                           placeholder="Enter Birthday">
+                                                                                           placeholder="Enter Birthday" value="{{ medicalFile.birthday }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -220,7 +222,7 @@
                                                                                 <label class="form-label" for="phone">Phone</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="phone" id="phone"
-                                                                                           placeholder="Enter Phone">
+                                                                                           placeholder="Enter Phone" value="{{ medicalFile.phone }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -229,7 +231,7 @@
                                                                                 <label class="form-label" for="email">Email</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="email" class="form-control" name="email" id="email"
-                                                                                           placeholder="Enter Email">
+                                                                                           placeholder="Enter Email" value="{{ medicalFile.email }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -238,7 +240,7 @@
                                                                                 <label class="form-label" for="identity-card">Identity card</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="identity-card"
-                                                                                           id="identity-card" placeholder="Enter Identity card">
+                                                                                           id="identity-card" placeholder="Enter Identity card" value="{{ medicalFile.identity_card }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -247,7 +249,7 @@
                                                                                 <label class="form-label" for="city">Province/City</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="city"
-                                                                                           id="city" placeholder="Enter Province/City">
+                                                                                           id="city" placeholder="Enter Province/City" value="{{ medicalFile.province }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -256,7 +258,7 @@
                                                                                 <label class="form-label" for="district">District</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="district"
-                                                                                           id="district" placeholder="Enter District">
+                                                                                           id="district" placeholder="Enter District" value="{{ medicalFile.district }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -265,16 +267,16 @@
                                                                                 <label class="form-label" for="wards">Wards</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="wards"
-                                                                                           id="wards" placeholder="Enter Wards">
+                                                                                           id="wards" placeholder="Enter Wards" value="{{ medicalFile.wards }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="house-number">House number</label>
+                                                                                <label class="form-label" for="house-number">House number/Way</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="house-number"
-                                                                                           id="house-number" placeholder="Enter House number">
+                                                                                           id="house-number" placeholder="Enter House number" {{ medicalFile.way }}>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -287,7 +289,7 @@
                                                                                 <label class="form-label" for="health-insurance-number">Health Insurance number</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="health-insurance-number" id="health-insurance-number"
-                                                                                           placeholder="Enter Health Insurance number">
+                                                                                           placeholder="Enter Health Insurance number" value="{{ medicalFile.health_insurance_number}}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -295,26 +297,8 @@
                                                                             <div class="form-group">
                                                                                 <label class="form-label" for="expiration-date">Expiration date</label>
                                                                                 <div class="form-control-wrap">
-                                                                                    <input type="text" class="form-control" name="expiration-date" id="expiration-date"
-                                                                                           placeholder="Enter Expiration date">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label class="form-label" for="nationality">Nationality</label>
-                                                                                <div class="form-control-wrap">
-                                                                                    <input type="text" class="form-control" name="nationality" id="nationality"
-                                                                                           placeholder="Enter Nationality">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label class="form-label" for="ethnic">Ethnic</label>
-                                                                                <div class="form-control-wrap">
-                                                                                    <input type="text" class="form-control" name="ethnic" id="ethnic"
-                                                                                           placeholder="Enter Ethnic">
+                                                                                    <input type="date" class="form-control" name="expiration-date" id="expiration-date"
+                                                                                           placeholder="Enter Expiration date" value="{{ medicalFile.expiration_date }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>

@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\BlogController;
 use App\Controllers\ContactController;
+use App\Controllers\EditMedicalFileController;
 use App\Controllers\MedicalFileController;
 use App\Controllers\MedicineController;
 use App\Controllers\UserController;
@@ -65,6 +66,7 @@ $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'ge
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
 $app->router->get('/admin/ajax-medical-file-health', [MedicalFileController::class, 'getHealthDetail']);
 $app->router->post('/admin/post-medical-file-add', [MedicalFileController::class, 'addMedicalFile']);
+$app->router->post('/admin/post-medical-file-edit', [EditMedicalFileController::class, 'editMedicalFile']);
 $app->router->post('/admin/post-medical-health-add', [MedicalFileController::class, 'addHealth']);
 $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::class, 'editHealth']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);

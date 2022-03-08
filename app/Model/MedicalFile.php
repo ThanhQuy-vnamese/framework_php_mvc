@@ -28,7 +28,7 @@ class MedicalFile extends DBModel
     public function getMedicalFileDetail(string $medicalFileId): array {
         $query = <<<SQL
                     SELECT MR.id, first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance,
-                           MI.health_insurance_number, MI.expiration_date
+                           MI.health_insurance_number, MI.expiration_date, MI.id AS insurance_id
                     FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records
                     WHERE MR.id=$medicalFileId
                 SQL;
@@ -47,10 +47,22 @@ class MedicalFile extends DBModel
         return $query->table('medical_medical_records')->insert($information);
     }
 
+    public function updateMedicalFile(array $information, string $medicalFileId): bool
+    {
+        $query = new Query();
+        return $query->table('medical_medical_records')->update($information, ['id' => $medicalFileId]);
+    }
+
     public function addHealthInsurance(array $information)
     {
         $query = new Query();
         return $query->table('medical_medical_insurances')->insert($information);
+    }
+
+    public function updateHealthInsurance(array $information, string $heathInsurancesId): bool
+    {
+        $query = new Query();
+        return $query->table('medical_medical_insurances')->update($information, ['id' => $heathInsurancesId]);
     }
 
     public function addHealth(array $information)

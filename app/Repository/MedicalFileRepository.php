@@ -88,6 +88,7 @@ class MedicalFileRepository
     private function convertMedicalDetail(array $medicalFile): array {
         $data = [];
         $data['id'] = $medicalFile['id'] ?? '';
+        $data['insurance_id'] = $medicalFile['insurance_id'] ?? '';
         $data['first_name'] = $medicalFile['first_name'] ?? '';
         $data['last_name'] = $medicalFile['last_name'] ?? '';
         $data['gender'] = $medicalFile['gender'] ?? '';
