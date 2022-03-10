@@ -91,6 +91,7 @@ class MedicalFileRepository
         $data['insurance_id'] = $medicalFile['insurance_id'] ?? '';
         $data['first_name'] = $medicalFile['first_name'] ?? '';
         $data['last_name'] = $medicalFile['last_name'] ?? '';
+        $data['birthday'] = $medicalFile['birthday'] ?? '';
         $data['gender'] = $medicalFile['gender'] ?? '';
         $data['identity_card'] = $medicalFile['identity_card'] ?? '';
         $data['email'] = $medicalFile['email'] ?? '';

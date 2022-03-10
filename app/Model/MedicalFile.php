@@ -27,7 +27,7 @@ class MedicalFile extends DBModel
 
     public function getMedicalFileDetail(string $medicalFileId): array {
         $query = <<<SQL
-                    SELECT MR.id, first_name, last_name, gender, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance,
+                    SELECT MR.id, first_name, last_name, gender, birthday, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance,
                            MI.health_insurance_number, MI.expiration_date, MI.id AS insurance_id
                     FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records
                     WHERE MR.id=$medicalFileId
@@ -79,6 +79,12 @@ class MedicalFile extends DBModel
 
     public function getInfoByIdentityCard(string $identityCard): int {
         $query = "SELECT * FROM `medical_medical_records` WHERE identity_card = '$identityCard'";
+        $result = $this->getDatabase()->mysql->query($query);
+        return $result->num_rows;
+    }
+
+    public function getInfoByIdentityCardExceptCurrent(string $identityCard, string $medicalFileId): int {
+        $query = "SELECT * FROM `medical_medical_records` WHERE identity_card = '$identityCard' AND id <> '$medicalFileId'";
         $result = $this->getDatabase()->mysql->query($query);
         return $result->num_rows;
     }

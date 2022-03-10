@@ -25,7 +25,7 @@ class EditMedicalFileController extends BaseController
         $province = $this->request->input->get('province');
         $district = $this->request->input->get('district');
         $wards = $this->request->input->get('wards');
-        $way = $this->request->input->get('way');
+        $way = $this->request->input->get('house-number');
         $covidVaccination = $this->request->input->get('covid_vaccination');
 
         $covidVaccination = [
@@ -57,16 +57,16 @@ class EditMedicalFileController extends BaseController
 
         $session = new Session();
         $medicalFile = new MedicalFile();
-        if ($medicalFile->getInfoByIdentityCard($identityCard) > 0) {
-            $session->setFlash('errorAddMedicalFile', 'The identity card ....');
-            $this->response->redirect('/admin/medical-file-add');
+        if ($medicalFile->getInfoByIdentityCardExceptCurrent($identityCard, $medicalFileId) > 0) {
+            $session->setFlash('errorEditMedicalFile', 'The identity card ....');
+            $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
         $isSuccessUpdateMedicalFileId = $medicalFile->updateMedicalFile($information, $medicalFileId);
 
         if (!$isSuccessUpdateMedicalFileId) {
-            $session->setFlash('errorAddMedicalFile', 'Add medical file fail');
-            $this->response->redirect('/admin/medical-file-add');
+            $session->setFlash('errorEditMedicalFile', 'Add medical file fail');
+            $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
         $healthInsurance = [
@@ -79,12 +79,12 @@ class EditMedicalFileController extends BaseController
         $isSuccess = $medicalFile->updateHealthInsurance($healthInsuranceData, $insuranceId);
 
         if (!$isSuccess) {
-            $session->setFlash('errorAddMedicalFile', 'Add medical file fail');
-            $this->response->redirect('/admin/medical-file-add');
+            $session->setFlash('errorEditMedicalFile', 'Add medical file fail');
+            $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successAddMedicalFile', 'Add medical file success');
-        $this->response->redirect('/admin/medical-file-add');
+        $session->setFlash('successEditMedicalFile', 'Add medical file success');
+        $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
     private function validateHealthInsurance(array $healthInsurance): array

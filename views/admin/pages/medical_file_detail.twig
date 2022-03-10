@@ -31,6 +31,12 @@
                     {% if(Session.hasFlash('errorHealth')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorHealth') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('successEditMedicalFile')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successEditMedicalFile') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorEditMedicalFile')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorEditMedicalFile') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -166,7 +172,7 @@
                                                         <h5 class="modal-title">Edit Information</h5>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="">
+                                                        <form action="{{ redirect('admin/post-medical-file-edit') }}" method="post">
                                                             <input type="text" hidden name="medical-file-id" value="{{ medicalFile.id }}">
                                                             <input type="text" hidden name="insurance-id" value="{{ medicalFile.insurance_id }}">
                                                             <div class="card-inner">
@@ -246,10 +252,10 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="city">Province/City</label>
+                                                                                <label class="form-label" for="province">Province/City</label>
                                                                                 <div class="form-control-wrap">
-                                                                                    <input type="text" class="form-control" name="city"
-                                                                                           id="city" placeholder="Enter Province/City" value="{{ medicalFile.province }}">
+                                                                                    <input type="text" class="form-control" name="province"
+                                                                                           id="province" placeholder="Enter Province/City" value="{{ medicalFile.province }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -276,7 +282,7 @@
                                                                                 <label class="form-label" for="house-number">House number/Way</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text" class="form-control" name="house-number"
-                                                                                           id="house-number" placeholder="Enter House number" {{ medicalFile.way }}>
+                                                                                           id="house-number" placeholder="Enter House number" value="{{ medicalFile.way }}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
