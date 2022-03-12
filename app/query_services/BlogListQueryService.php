@@ -26,7 +26,7 @@ class BlogListQueryService implements BlogListQueryServiceInterface
         if ($result->num_rows > 0) {
             $blogs = [];
             while ($row = $result->fetch_assoc()) {
-                $blogs[$row['id']] = new BlogDto($row['id'], $row['title'], $row['created_at']);
+                $blogs[$row['id']] = new BlogDto($row['id'], $row['title'], $row['content'] ,$row['created_at']);
             }
 
             return $blogs;

@@ -16,16 +16,6 @@ class BlogController extends BaseController
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function getViewBlogList(): string {
-        return $this->twig->render('admin/pages/blog_list');
-    }
-
-    /**
-     * @return string
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
     public function getViewBlogAdd(): string {
         return $this->twig->render('admin/pages/blog_add');
     }
