@@ -18,6 +18,22 @@ class SampleController extends BaseController
      */
     public function index (): string
     {
-        return $this->twig->render('base');
+        return $this->twig->render('user/pages/home');
+    }
+    public function about ():string
+    {
+        return $this->twig->render('user/pages/about');
+    }
+    public function doctor():string
+    {
+        return $this->twig->render('user/pages/doctor');
+    }
+    public function bookClinic()
+    {
+        return $this->twig->render('user/pages/book_clinic');
+    }
+    public function contact()
+    {
+        return $this->twig->render('user/pages/contact');
     }
 }

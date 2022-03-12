@@ -29,4 +29,5 @@ class MedicalFileController extends BaseController
     public function getViewMedicalFileDetail(): string {
         return $this->twig->render('admin/pages/medical_file_detail');
     }
+    public function 
 }

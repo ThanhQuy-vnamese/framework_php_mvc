@@ -20,6 +20,11 @@ class BlogController extends BaseController
         return $this->twig->render('admin/pages/blog_list');
     }
 
+    // Lấy danh sách blog cho trang chủ user
+    public function getAllBlogList():string{
+        return $this->twig->render('user/pages/blog');
+    }
+
     /**
      * @return string
      * @throws LoaderError

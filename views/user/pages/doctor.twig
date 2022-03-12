@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>medical</title>
+		<!--Phần style, boostrap-->
+		{{ include('user/components/head.twig') }}
+
+	</head>
+
+	<body>
+		<!--::header part start::-->
+		{{ include('user/components/menu.twig')}}
+		<!-- Header part end-->
+
+		<!-- breadcrumb start-->
+			<section class="breadcrumb_part breadcrumb_bg"> <div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb_iner">
+							<div class="breadcrumb_iner_item">
+								<h2>doctors</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- breadcrumb start-->
+
+		<!--::doctor_part start::-->
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">First</th>
+						<th scope="col">Last</th>
+						<th scope="col">Handle</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--::doctor_part end::-->
+
+
+		<!-- footer part start-->
+		{{ include('user/components/footer.twig')}}
+
+		<!-- footer part end-->
+
+	</body>
+
+</html>

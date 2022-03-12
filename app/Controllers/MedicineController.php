@@ -29,4 +29,9 @@ class MedicineController extends BaseController
     public function getViewMedicineDetail(): string {
         return $this->twig->render('admin/pages/medicine_detail');
     }
+    public function getViewMedicanRecord():string
+    {
+        return $this->twig->render('user/pages/medican_record');
+    }
+    
 }

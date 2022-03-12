@@ -35,9 +35,7 @@ class UserController extends BaseController
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function getViewUserDetail():string {
-        return $this->twig->render('admin/pages/user_detail');
-    }
+
 
     /**
      * @return string
@@ -47,5 +45,17 @@ class UserController extends BaseController
      */
     public function getViewUserAdd():string {
         return $this->twig->render('admin/pages/user_add');
+    }
+    public function getViewUserDetail():string {
+        return $this->twig->render('admin/pages/user_detail');
+    }
+    public function getViewLogin():string{
+        return $this->twig->render('user/pages/login');
+    }
+    public function getViewProfile():string{
+        return $this->twig->render('user/pages/profile');
+    }
+    public function getViewRegister():string{
+        return $this->twig->render('user/pages/register');
     }
 }
