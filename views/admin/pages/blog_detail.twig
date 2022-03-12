@@ -86,7 +86,7 @@ Mollitia dolores asperiores ipsum rerum repellendus Sed ut accusantium doloremqu
                             <div class="card-inner card-inner-xl">
                                 <article class="entry">
                                     {% autoescape false %}
-                                    {{ blog.content|raw|raw }}
+                                    {{ blog.content|raw|html_decode }}
                                     {% endautoescape %}
                                 </article>
                             </div>
