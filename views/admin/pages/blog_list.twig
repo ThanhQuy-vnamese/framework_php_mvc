@@ -71,7 +71,8 @@
                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Updated date</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
-                                    <div class="nk-tb-item">
+                                    {% for blog in blogs %}
+                                        <div class="nk-tb-item">
                                         <div class="nk-tb-col nk-tb-col-check">
                                             <div class="custom-control custom-control-sm custom-checkbox notext">
                                                 <input type="checkbox" class="custom-control-input" id="uid1">
@@ -79,13 +80,13 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
-                                            <span>1</span>
+                                            <span>{{ blog.id }}</span>
                                         </div>
                                         <div class="nk-tb-col">
-                                            <span>How to take care of covid patients at home</span>
+                                            <span>{{ blog.title }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
-                                            <span>12-1-2022 15:30:56</span>
+                                            <span>{{ blog.created_time }}</span>
                                         </div>
                                         <div class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-2">
@@ -105,42 +106,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div><!-- .nk-tb-item -->
-                                    <div class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                <label class="custom-control-label" for="uid1"></label>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>2</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span>How to take care of covid patients at home</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>12-1-2022 15:30:56</span>
-                                        </div>
-                                        <div class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-2">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/blog-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
+                                    </div>
+                                    {% endfor %}
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">

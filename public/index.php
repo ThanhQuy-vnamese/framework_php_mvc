@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\BlogAddController;
 use App\Controllers\BlogController;
+use App\Controllers\BlogListController;
 use App\Controllers\ContactController;
 use App\Controllers\EditMedicalFileController;
 use App\Controllers\MedicalFileController;
@@ -72,7 +73,7 @@ $app->router->post('/admin/post-medical-health-add', [MedicalFileController::cla
 $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::class, 'editHealth']);
 $app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
-$app->router->get('/admin/blog-list', [BlogController::class, 'getViewBlogList']);
+$app->router->get('/admin/blog-list', [BlogListController::class, 'getViewBlogList']);
 $app->router->get('/admin/blog-add', [BlogController::class, 'getViewBlogAdd']);
 $app->router->post('/admin/post-blog-add', [BlogAddController::class, 'addBlog']);
 $app->router->get('/admin/blog-detail', [BlogController::class, 'getViewBlogDetail']);
