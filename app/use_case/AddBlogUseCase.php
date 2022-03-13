@@ -67,6 +67,6 @@ class AddBlogUseCase
 
     private function buildBlog(string $title, array $file, string $content): Blog
     {
-        return new Blog($title, $file['name'], $content);
+        return new Blog(null, $title, $file['name'], $content);
     }
 }

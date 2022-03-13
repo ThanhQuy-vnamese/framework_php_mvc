@@ -18,7 +18,8 @@ class BlogDetailController extends BaseController
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function getViewBlogDetail(): string {
+    public function getViewBlogDetail(): string
+    {
         $id = $this->request->input->get('id');
 
         $viewBlogDetailUseCase = new ViewBlogDetailUseCase();
@@ -27,8 +28,10 @@ class BlogDetailController extends BaseController
         return $this->twig->render('admin/pages/blog_detail', ['blog' => $this->createResponseData($blog)]);
     }
 
-    private function createResponseData(BlogDto $blog): array {
+    private function createResponseData(BlogDto $blog): array
+    {
         return [
+            'id' => $blog->getId(),
             'title' => $blog->getTitle(),
             'content' => trim($blog->getContent()),
         ];

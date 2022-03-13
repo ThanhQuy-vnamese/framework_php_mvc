@@ -10,6 +10,7 @@ use App\Controllers\admin\BlogController;
 use App\Controllers\admin\BlogDetailController;
 use App\Controllers\admin\BlogListController;
 use App\Controllers\admin\ContactController;
+use App\Controllers\admin\EditBlogController;
 use App\Controllers\admin\EditMedicalFileController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineController;
@@ -78,6 +79,7 @@ $app->router->get('/admin/blog-list', [BlogListController::class, 'getViewBlogLi
 $app->router->get('/admin/blog-add', [BlogController::class, 'getViewBlogAdd']);
 $app->router->post('/admin/post-blog-add', [BlogAddController::class, 'addBlog']);
 $app->router->get('/admin/blog-detail', [BlogDetailController::class, 'getViewBlogDetail']);
+$app->router->post('/admin/post-edit-blog', [EditBlogController::class, 'editBlog']);
 $app->router->get('/admin/contact-list', [ContactController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewContactDetail']);
 
