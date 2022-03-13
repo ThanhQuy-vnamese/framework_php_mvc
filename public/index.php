@@ -5,17 +5,17 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Controllers\BlogAddController;
-use App\Controllers\BlogController;
-use App\Controllers\BlogDetailController;
-use App\Controllers\BlogListController;
-use App\Controllers\ContactController;
-use App\Controllers\EditMedicalFileController;
-use App\Controllers\MedicalFileController;
-use App\Controllers\MedicineController;
-use App\Controllers\UserController;
+use App\Controllers\admin\BlogAddController;
+use App\Controllers\admin\BlogController;
+use App\Controllers\admin\BlogDetailController;
+use App\Controllers\admin\BlogListController;
+use App\Controllers\admin\ContactController;
+use App\Controllers\admin\EditMedicalFileController;
+use App\Controllers\admin\MedicalFileController;
+use App\Controllers\admin\MedicineController;
+use App\Controllers\admin\SampleController;
+use App\Controllers\admin\UserController;
 use App\Controllers\ApiController;
-use App\Controllers\SampleController;
 use App\Core\Application;
 use App\Core\View\Twig;
 use App\Model\User;
