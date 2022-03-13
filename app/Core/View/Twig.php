@@ -12,10 +12,12 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 use Twig\TemplateWrapper;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 use const App\Core\Helper\PREFIX_PUBLIC;
 
-class Twig {
+class Twig
+{
     public Environment $twig;
 
     public function __construct($pathToView, array $options = [])
@@ -28,14 +30,18 @@ class Twig {
         $twig->addGlobal('helper', new Helper());
         $twig->addGlobal('Auth', new Authentication());
         $twig->addGlobal('Session', new Session());
+        $filter = $this->addHtmlDecodeFilter();
+        $twig->addFilter($filter);
         $this->twig = $twig;
     }
 
-    public function addGlobalFunction($name, $value) {
+    public function addGlobalFunction($name, $value)
+    {
         $this->twig->addGlobal($name, $value);
     }
 
-    public function addCreateLinkFunction() {
+    public function addCreateLinkFunction(): TwigFunction
+    {
         $function = new TwigFunction('createLink', function ($path = '') {
             $requestUrl = $_SERVER['REQUEST_URI'];
             $pos = strpos($requestUrl, PREFIX_PUBLIC);
@@ -52,7 +58,8 @@ class Twig {
     }
 
 
-    public function addRedirectFunction() {
+    public function addRedirectFunction(): TwigFunction
+    {
         $function = new TwigFunction('redirect', function ($path = '', $params = []) {
             $requestUrl = $_SERVER['REQUEST_URI'];
             $pos = strpos($requestUrl, PREFIX_PUBLIC);
@@ -78,6 +85,13 @@ class Twig {
             return $http . $host . $pathPublic;
         });
         return $function;
+    }
+
+    public function addHtmlDecodeFilter(): TwigFilter
+    {
+        return new TwigFilter('html_decode', function ($string) {
+            return html_entity_decode($string);
+        });
     }
 
     /**
