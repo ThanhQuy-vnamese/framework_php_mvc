@@ -68,22 +68,34 @@ CREATE TABLE `medical_healths`
 CREATE TABLE `medical_blogs`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
-    `title`      varchar(255),
+    `title`      varchar(100),
     `content`    text,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `image`      varchar(255),
     `user_id`    int
 );
 
-CREATE TABLE `medical_contact_infomation`
+CREATE TABLE `medical_contact_information`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
     `email`      varchar(255),
     `phone`      varchar(12),
+    `title`      varchar(100),
     `message`    text,
     `full_name`  varchar(100),
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`    int
+);
+
+CREATE TABLE `medical_contact_reply` (
+     `id` int PRIMARY KEY AUTO_INCREMENT,
+     `email` varchar(255),
+     `phone` char(12),
+     `message` text,
+     `full_name` varchar(100),
+     `created_at` timestamp,
+     `user_id` int,
+     `contact_id` int
 );
 
 CREATE TABLE `medical_appointments`
@@ -150,8 +162,10 @@ ALTER TABLE `medical_user_profiles`
 ALTER TABLE `medical_appointments`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medical_contact_infomation`
+ALTER TABLE `medical_contact_information`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `medical_contact_reply` ADD FOREIGN KEY (`contact_id`) REFERENCES `medical_contact_information` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medical_medical_records`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
