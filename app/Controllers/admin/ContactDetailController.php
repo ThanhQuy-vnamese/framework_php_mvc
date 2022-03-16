@@ -34,6 +34,8 @@ class ContactDetailController extends BaseController
             $temp['email'] = $contact->getEmail();
             $temp['full_name'] = $contact->getFullName();
             $temp['message'] = $contact->getMessage();
+            $temp['contact_id'] = $contact->getContactId();
+            $temp['time'] = $contact->getTime();
             $data[] = $temp;
         }
         return $data;

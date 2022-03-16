@@ -25,10 +25,6 @@ class ContactDetailFactory
         $this->contactReply = $contact_reply;
     }
 
-    public function getDetailList()
-    {
-    }
-
     public function contactInformation(): array
     {
         return $this->contactInformation;

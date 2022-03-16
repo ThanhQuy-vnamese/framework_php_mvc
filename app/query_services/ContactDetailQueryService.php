@@ -21,7 +21,7 @@ class ContactDetailQueryService
         $this->db = $query->getDatabase()->mysql;
     }
 
-    public function getContactForViewDetail(string $email)
+    public function getContactForViewDetail(string $email): ContactDetailFactory
     {
         $contactInformation = $this->getContactInformation($email);
         $contactReply = $this->getContactReply($email);
@@ -29,7 +29,7 @@ class ContactDetailQueryService
         return new ContactDetailFactory($contactInformation, $contactReply);
     }
 
-    public function getContactInformation(string $email)
+    public function getContactInformation(string $email): array
     {
         $sql = "SELECT * FROM medical_contact_infomation WHERE email='%s' ORDER BY created_at ASC;";
         $query = sprintf($sql, $email);
@@ -47,14 +47,16 @@ class ContactDetailQueryService
                 $row['phone'],
                 '',
                 $row['message'],
-                $row['full_name'] ?? ''
+                $row['full_name'] ?? '',
+                null,
+                $row['created_at']
             );
         }
 
         return $data;
     }
 
-    public function getContactReply(string $email)
+    public function getContactReply(string $email): array
     {
         $sql = "SELECT * FROM `medical_contact_reply` WHERE contact_id IN (SELECT id FROM medical_contact_infomation WHERE email='hieu@mail.com')";
         $query = sprintf($sql, $email);
@@ -72,7 +74,9 @@ class ContactDetailQueryService
                 $row['phone'],
                 '',
                 $row['message'],
-                $row['full_name'] ?? ''
+                $row['full_name'] ?? '',
+                (int)$row['contact_id'],
+                $row['created_at']
             );
         }
 
