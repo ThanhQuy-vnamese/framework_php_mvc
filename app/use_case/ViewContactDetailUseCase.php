@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\use_case;
@@ -15,7 +16,8 @@ class ViewContactDetailUseCase
         $this->contactDetailQueryService = new ContactDetailQueryService();
     }
 
-    public function execute(string $email): ContactDetailFactory {
+    public function execute(string $email): ContactDetailFactory
+    {
         return $this->contactDetailQueryService->getContactForViewDetail($email);
     }
 }

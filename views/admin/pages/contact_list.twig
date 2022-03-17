@@ -53,6 +53,7 @@
                                         <div class="nk-tb-col tb-col-sm"><span class="sub-text">Phone</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
+                                    {% for contact in contact_list %}
                                     <div class="nk-tb-item">
                                         <div class="nk-tb-col nk-tb-col-check">
                                             <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -61,7 +62,7 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
-                                            <span>1</span>
+                                            <span>{{ contact.id }}</span>
                                         </div>
                                         <div class="nk-tb-col">
                                             <div class="user-card">
@@ -69,15 +70,15 @@
                                                     <span>AB</span>
                                                 </div>
                                                 <div class="user-name">
-                                                    <span class="tb-lead">Nguyễn Văn A</span>
+                                                    <span class="tb-lead">{{contact.full_name}}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span>nguyenvana@mail.com</span>
+                                            <span>{{ contact.email }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
-                                            <span>0123456789</span>
+                                            <span>{{ contact.phone }}</span>
                                         </div>
                                         <div class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-2">
@@ -86,11 +87,9 @@
                                                         <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/contact-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li><a href="{{ redirect('admin/contact-detail', {'email': contact.email}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
+                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete contact</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -98,51 +97,7 @@
                                             </ul>
                                         </div>
                                     </div><!-- .nk-tb-item -->
-                                    <div class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                <label class="custom-control-label" for="uid1"></label>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>2</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <div class="user-card">
-                                                <div class="user-avatar xs bg-danger">
-                                                    <span>AB</span>
-                                                </div>
-                                                <div class="user-name">
-                                                    <span class="tb-lead">Nguyễn Văn B</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>nguyenvanb@mail.com</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>0123456789</span>
-                                        </div>
-                                        <div class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-2">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/contact-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
+                                    {% endfor %}
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">

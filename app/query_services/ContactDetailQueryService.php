@@ -6,9 +6,9 @@ namespace App\query_services;
 
 use App\Core\Database\Query;
 use App\domain\factory\ContactDetailFactory;
-use App\dto\ContactInformationDto;
+use App\dto\ContactDto;
 
-class ContactDetailQueryService
+class ContactDetailQueryService implements ContactDetailQueryServiceInterface
 {
     /**
      * @var false|\mysqli|null
@@ -29,6 +29,10 @@ class ContactDetailQueryService
         return new ContactDetailFactory($contactInformation, $contactReply);
     }
 
+    /**
+     * @param string $email
+     * @return ContactDto[]
+     */
     public function getContactInformation(string $email): array
     {
         $sql = "SELECT * FROM medical_contact_infomation WHERE email='%s' ORDER BY created_at ASC;";
@@ -41,7 +45,7 @@ class ContactDetailQueryService
         $data = [];
         while ($row = $result->fetch_assoc()) {
             $id = $row['id'];
-            $data[$row['id']] = new ContactInformationDto(
+            $data[$row['id']] = new ContactDto(
                 (int)$id,
                 $row['email'],
                 $row['phone'],
@@ -56,6 +60,10 @@ class ContactDetailQueryService
         return $data;
     }
 
+    /**
+     * @param string $email
+     * @return ContactDto[]
+     */
     public function getContactReply(string $email): array
     {
         $sql = "SELECT * FROM `medical_contact_reply` WHERE contact_id IN (SELECT id FROM medical_contact_infomation WHERE email='hieu@mail.com')";
@@ -68,7 +76,7 @@ class ContactDetailQueryService
         $data = [];
         while ($row = $result->fetch_assoc()) {
             $id = $row['id'];
-            $data[$row['contact_id']] = new ContactInformationDto(
+            $data[$row['contact_id']] = new ContactDto(
                 (int)$id,
                 $row['email'],
                 $row['phone'],

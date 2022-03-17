@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\domain\factory;
 
-use App\dto\ContactInformationDto;
+use App\dto\ContactDto;
 use App\dto\ContactInformationForDetailDto;
 
 class ContactDetailFactory
 {
     /**
-     * @var ContactInformationDto[]
+     * @var ContactDto[]
      */
     private array $contactInformation;
 
     /**
-     * @var ContactInformationDto[]
+     * @var ContactDto[]
      */
     private array $contactReply;
 

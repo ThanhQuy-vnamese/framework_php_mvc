@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\dto;
 
-class ContactInformationDto
+class ContactDto
 {
     private int $id;
     private string $email;
     private string $phone;
-    private string $title;
-    private string $message;
+    private ?string $title;
+    private ?string $message;
     private ?string $full_name;
     private ?int $contact_id;
     private ?string $time;
@@ -19,8 +19,8 @@ class ContactInformationDto
         int $id,
         string $email,
         string $phone,
-        string $title,
-        string $message,
+        ?string $title = null,
+        ?string $message = null,
         ?string $full_name = null,
         ?int $contact_id = null,
         ?string $time = null
@@ -50,17 +50,17 @@ class ContactInformationDto
         return $this->phone;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
-    public function getFullName(): string
+    public function getFullName(): ?string
     {
         return $this->full_name;
     }

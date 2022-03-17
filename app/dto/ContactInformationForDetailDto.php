@@ -7,14 +7,14 @@ namespace App\dto;
 class ContactInformationForDetailDto
 {
     /**
-     * @var ContactInformationDto[]
+     * @var ContactDto[]
      */
     private array $contactInformationList;
     private array $contactInformation;
     private array $contactReply;
 
     /**
-     * @param ContactInformationDto[] $contactInformationList
+     * @param ContactDto[] $contactInformationList
      */
     public function __construct(array $contactInformationList, array $contactInformation, array $contactReply)
     {
@@ -24,7 +24,7 @@ class ContactInformationForDetailDto
     }
 
     /**
-     * @return ContactInformationDto[]
+     * @return ContactDto[]
      */
     public function getContactInformationList(): array
     {
