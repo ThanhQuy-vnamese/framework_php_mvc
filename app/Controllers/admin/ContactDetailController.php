@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controllers\admin;
@@ -20,15 +21,20 @@ class ContactDetailController extends BaseController
      */
     public function getViewContactDetail(): string
     {
+        $email = $this->request->input->get('email');
         $viewContactDetailUseCase = new ViewContactDetailUseCase();
-        $contactDetailFactory = $viewContactDetailUseCase->execute('hieu@mail.com');
-        return $this->twig->render('admin/pages/contact_detail', ['contactForView' => $this->createResponseData($contactDetailFactory)]);
+        $contactDetailFactory = $viewContactDetailUseCase->execute($email);
+        return $this->twig->render(
+            'admin/pages/contact_detail',
+            ['contactForView' => $this->createResponseData($contactDetailFactory)]
+        );
     }
 
-    public function createResponseData(ContactDetailFactory $contactDetailFactory): array {
+    public function createResponseData(ContactDetailFactory $contactDetailFactory): array
+    {
         $contactDetailForView = $contactDetailFactory->getContactForViewDetail()->getContactInformationList();
         $data = [];
-        foreach ($contactDetailForView as $contact){
+        foreach ($contactDetailForView as $contact) {
             $temp = [];
             $temp['title'] = $contact->getTitle();
             $temp['email'] = $contact->getEmail();

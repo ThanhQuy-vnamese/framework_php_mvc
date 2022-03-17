@@ -66,7 +66,7 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
      */
     public function getContactReply(string $email): array
     {
-        $sql = "SELECT * FROM `medical_contact_reply` WHERE contact_id IN (SELECT id FROM medical_contact_infomation WHERE email='hieu@mail.com')";
+        $sql = "SELECT * FROM `medical_contact_reply` WHERE contact_id IN (SELECT id FROM medical_contact_infomation WHERE email='%s')";
         $query = sprintf($sql, $email);
         $result = $this->db->query($query);
         if ($result->num_rows === 0) {
