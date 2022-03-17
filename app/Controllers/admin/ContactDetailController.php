@@ -24,6 +24,7 @@ class ContactDetailController extends BaseController
         $email = $this->request->input->get('email');
         $viewContactDetailUseCase = new ViewContactDetailUseCase();
         $contactDetailFactory = $viewContactDetailUseCase->execute($email);
+
         return $this->twig->render(
             'admin/pages/contact_detail',
             ['contactForView' => $this->createResponseData($contactDetailFactory)]
