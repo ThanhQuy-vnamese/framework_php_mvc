@@ -22,4 +22,6 @@ interface ContactDetailQueryServiceInterface
      * @return ContactDto[]
      */
     public function getContactReply(string $email): array;
+
+    public function getLastContact(string $email): ContactDto;
 }

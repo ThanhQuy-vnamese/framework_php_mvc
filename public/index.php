@@ -15,6 +15,7 @@ use App\Controllers\admin\EditBlogController;
 use App\Controllers\admin\EditMedicalFileController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineController;
+use App\Controllers\admin\ReplyContactController;
 use App\Controllers\admin\SampleController;
 use App\Controllers\admin\UserController;
 use App\Controllers\ApiController;
@@ -83,5 +84,6 @@ $app->router->get('/admin/blog-detail', [BlogDetailController::class, 'getViewBl
 $app->router->post('/admin/post-edit-blog', [EditBlogController::class, 'editBlog']);
 $app->router->get('/admin/contact-list', [ContactListController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactDetailController::class, 'getViewContactDetail']);
+$app->router->post('/admin/post-reply-contact', [ReplyContactController::class, 'replyContact']);
 
 $app->run();

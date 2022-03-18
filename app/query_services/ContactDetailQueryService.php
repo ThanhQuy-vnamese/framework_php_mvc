@@ -25,8 +25,9 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
     {
         $contactInformation = $this->getContactInformation($email);
         $contactReply = $this->getContactReply($email);
+        $lastContact = $this->getLastContact($email);
 
-        return new ContactDetailFactory($contactInformation, $contactReply);
+        return new ContactDetailFactory($contactInformation, $contactReply, $lastContact);
     }
 
     /**
@@ -76,7 +77,7 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
         $data = [];
         while ($row = $result->fetch_assoc()) {
             $id = $row['id'];
-            $data[$row['contact_id']] = new ContactDto(
+            $data[$row['id']] = new ContactDto(
                 (int)$id,
                 $row['email'],
                 $row['phone'],
@@ -89,5 +90,18 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
         }
 
         return $data;
+    }
+
+    public function getLastContact(string $email): ContactDto {
+        $sql = "SELECT * FROM `medical_contact_infomation` WHERE email='%s' ORDER BY id DESC LIMIT 0,1;";
+        $query = sprintf($sql, $email);
+        $result = $this->db->query($query);
+        if ($result->num_rows === 0) {
+            return new ContactDto(0, '', '');
+        }
+
+        $row = $result->fetch_assoc();
+        $result->free_result();
+        return new ContactDto((int)$row['id'], $row['email'], $row['phone']);
     }
 }

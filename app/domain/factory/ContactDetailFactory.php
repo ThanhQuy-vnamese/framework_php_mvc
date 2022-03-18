@@ -19,10 +19,13 @@ class ContactDetailFactory
      */
     private array $contactReply;
 
-    public function __construct(array $contact_information, array $contact_reply)
+    private ?ContactDto $lastContact;
+
+    public function __construct(array $contact_information, array $contact_reply, ?ContactDto $lastContact = null)
     {
         $this->contactInformation = $contact_information;
         $this->contactReply = $contact_reply;
+        $this->lastContact = $lastContact;
     }
 
     public function contactInformation(): array
@@ -35,12 +38,18 @@ class ContactDetailFactory
         return $this->contactReply;
     }
 
+    public function getLastContact(): ContactDto
+    {
+        return $this->lastContact;
+    }
+
     public function getContactForViewDetail(): ContactInformationForDetailDto
     {
         return new ContactInformationForDetailDto(
             $this->getOrderContact(),
             $this->contactInformation,
-            $this->contactReply
+            $this->contactReply,
+            $this->lastContact
         );
     }
 
@@ -49,8 +58,11 @@ class ContactDetailFactory
         $temp = [];
         foreach ($this->contactInformation as $contactInfo) {
             $temp[] = $contactInfo;
-            if (array_key_exists($contactInfo->getId(), $this->contactReply)) {
-                $temp[] = $this->contactReply[$contactInfo->getId()];
+            foreach ($this->contactReply as $id => $contactReply) {
+                $contactId = $contactReply->getContactId();
+                if ($contactInfo->getId() === $contactId) {
+                    $temp[] = $this->contactReply[$id];
+                }
             }
         }
 

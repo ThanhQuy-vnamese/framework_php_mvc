@@ -27,15 +27,17 @@ class ContactDetailController extends BaseController
 
         return $this->twig->render(
             'admin/pages/contact_detail',
-            ['contactForView' => $this->createResponseData($contactDetailFactory)]
+            ['contactForView' => $this->createResponseData($contactDetailFactory), 'email' => $email]
         );
     }
 
     public function createResponseData(ContactDetailFactory $contactDetailFactory): array
     {
-        $contactDetailForView = $contactDetailFactory->getContactForViewDetail()->getContactInformationList();
+        $contactDetailForView = $contactDetailFactory->getContactForViewDetail();
+        $contactList = $contactDetailForView->getContactInformationList();
         $data = [];
-        foreach ($contactDetailForView as $contact) {
+
+        foreach ($contactList as $contact) {
             $temp = [];
             $temp['title'] = $contact->getTitle();
             $temp['email'] = $contact->getEmail();
@@ -45,6 +47,11 @@ class ContactDetailController extends BaseController
             $temp['time'] = $contact->getTime();
             $data[] = $temp;
         }
-        return $data;
+
+        $lastContact = $contactDetailForView->getLastContact();
+        $result['id'] = $lastContact->getId();
+        $result['contact_list'] = $data;
+
+        return $result;
     }
 }

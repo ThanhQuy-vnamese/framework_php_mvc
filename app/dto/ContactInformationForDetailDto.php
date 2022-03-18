@@ -12,15 +12,21 @@ class ContactInformationForDetailDto
     private array $contactInformationList;
     private array $contactInformation;
     private array $contactReply;
+    private ?ContactDto $lastContact;
 
     /**
      * @param ContactDto[] $contactInformationList
      */
-    public function __construct(array $contactInformationList, array $contactInformation, array $contactReply)
-    {
+    public function __construct(
+        array $contactInformationList,
+        array $contactInformation,
+        array $contactReply,
+        ?ContactDto $lastContact
+    ) {
         $this->contactInformationList = $contactInformationList;
         $this->contactInformation = $contactInformation;
         $this->contactReply = $contactReply;
+        $this->lastContact = $lastContact;
     }
 
     /**
@@ -39,5 +45,10 @@ class ContactInformationForDetailDto
     public function getContactReply(): array
     {
         return $this->contactReply;
+    }
+
+    public function getLastContact(): ?ContactDto
+    {
+        return $this->lastContact;
     }
 }
