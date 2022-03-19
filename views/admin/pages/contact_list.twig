@@ -15,6 +15,12 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('errorDeleteContact')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDeleteContact') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successDeleteContact')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successDeleteContact') }}</div>
+                    {% endif %}
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner-group">
                             <div class="card-inner position-relative card-tools-toggle">
@@ -89,7 +95,7 @@
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li><a href="{{ redirect('admin/contact-detail', {'email': contact.email}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete contact</span></a></li>
+                                                                <li><a href="javascript:void(0);" class="js-delete-contact" data-contact-email="{{ contact.email }}"><em class="icon fas fa-trash-alt"></em><span>Delete contact</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -99,6 +105,34 @@
                                     </div><!-- .nk-tb-item -->
                                     {% endfor %}
                                 </div><!-- .nk-tb-list -->
+                                <div class="modal zoom" tabindex="-1" id="deleteContact">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                <em class="icon ni ni-cross"></em>
+                                            </a>
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete contact</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Are you sure delete contact?</h4>
+                                                Contact have email <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> after being deleted will not be able to recover.
+                                                <form id="delete-contact-form" action="{{ redirect('admin/post-delete-contact') }}" method="post">
+                                                    <input type="text" hidden value="" name="email">
+                                                    <div class="card-inner">
+                                                        <div class="preview-block">
+                                                            <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">Delete</button>
+                                                            <button class="btn btn-xl btn-outline-secondary js-btn-cancel">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer bg-light">
+                                                <span class="sub-text">Modal Footer Text</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div><!-- .card-inner -->
                             <div class="card-inner">
                                 <ul class="pagination justify-content-center justify-content-md-start">
@@ -117,4 +151,21 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascript %}
+{% verbatim  %}
+<script>
+    $('.js-delete-contact').on('click', function () {
+        var email = $(this).data('contact-email');
+        $('#delete-contact-form input[name="email"]').attr('value', email);
+        $('.js-contact-email').text(email);
+        $('#deleteContact').modal('show');
+
+        $('.js-btn-cancel').on('click', (event) => {
+            event.preventDefault();
+            $('#deleteContact').modal('hide');
+        })
+    })
+</script>
+{% endverbatim  %}
 {% endblock %}

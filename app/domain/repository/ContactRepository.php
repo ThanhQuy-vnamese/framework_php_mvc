@@ -37,4 +37,16 @@ class ContactRepository implements ContactRepositoryInterface
 
         return (int)$this->db->insert_id;
     }
+
+    public function deleteContact(string $email): bool
+    {
+        $sql = "DELETE FROM medical_contact_information WHERE email = '%s';";
+        $query = sprintf($sql, $email);
+
+        if ($this->db->query($query)) {
+            return true;
+        }
+
+        return false;
+    }
 }
