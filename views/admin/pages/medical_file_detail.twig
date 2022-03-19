@@ -37,6 +37,12 @@
                     {% if(Session.hasFlash('errorEditMedicalFile')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorEditMedicalFile') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('successAddPrescription')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successAddPrescription') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorAddPrescription')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddPrescription') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -417,8 +423,9 @@
         })
 
         const $modalAddPrescription = $('#modalAddPrescription');
-        $('.js-add-prescription').on('click', (event) => {
-            const healthId = $(event.target).data('health-id');
+        $('.js-add-prescription').on('click', function () {
+            const healthId = $(this).data('health-id');
+            $('#add-prescription-form [name="health-id"]').attr('value', healthId);
             $modalAddPrescription.modal('show')
         });
     })

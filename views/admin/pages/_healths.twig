@@ -1,17 +1,18 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between">
         <h5 class="title">Covid Vaccination</h5>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHealth">Add healths</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHealth">Add healths
+        </button>
     </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
         {% for injection in medicalFile.covid_injections %}
-        <div class="profile-ud-item">
-            <div class="profile-ud wider">
-                <span class="profile-ud-label">Injection {{ injection.injection }}</span>
-                <div class="profile-ud-value">Medicine: {{ injection.type_medicine }}</div>
-                <div class="profile-ud-value">Date: {{ injection.date }}</div>
+            <div class="profile-ud-item">
+                <div class="profile-ud wider">
+                    <span class="profile-ud-label">Injection {{ injection.injection }}</span>
+                    <div class="profile-ud-value">Medicine: {{ injection.type_medicine }}</div>
+                    <div class="profile-ud-value">Date: {{ injection.date }}</div>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div><!-- .profile-ud-list -->
 </div><!-- .nk-block -->
@@ -39,42 +40,51 @@
             <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
         </div><!-- .nk-tb-item -->
         {% for health in healths %}
-        <div class="nk-tb-item">
-            <div class="nk-tb-col nk-tb-col-check">
-                <div class="custom-control custom-control-sm custom-checkbox notext">
-                    <input type="checkbox" class="custom-control-input" id="uid1">
-                    <label class="custom-control-label" for="uid1"></label>
+            <div class="nk-tb-item">
+                <div class="nk-tb-col nk-tb-col-check">
+                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                        <input type="checkbox" class="custom-control-input" id="uid1">
+                        <label class="custom-control-label" for="uid1"></label>
+                    </div>
                 </div>
-            </div>
-            <div class="nk-tb-col tb-col-md">
-                <span>{{ health.id }}</span>
-            </div>
-            <div class="nk-tb-col">
-                <span>{{ health.summary }}</span>
-            </div>
-            <div class="nk-tb-col tb-col-md">
-                <span>{{ health.date }}</span>
-            </div>
-            <div class="nk-tb-col nk-tb-col-tools">
-                <ul class="nk-tb-actions gx-2">
-                    <li>
-                        <div class="drodown">
-                            <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="link-list-opt no-bdr">
-                                    <li><a href="javascript:void(0)" class="js-health-view-detail" data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em class="icon fas fa-prescription"></em><span>Views prescription</span></a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="javascript:void(0)" class="js-add-prescription" data-health-id="{{ health.id }}"><em class="icon fas fa-prescription"></em><span>Add prescription</span></a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
-                                </ul>
+                <div class="nk-tb-col tb-col-md">
+                    <span>{{ health.id }}</span>
+                </div>
+                <div class="nk-tb-col">
+                    <span>{{ health.summary }}</span>
+                </div>
+                <div class="nk-tb-col tb-col-md">
+                    <span>{{ health.date }}</span>
+                </div>
+                <div class="nk-tb-col nk-tb-col-tools">
+                    <ul class="nk-tb-actions gx-2">
+                        <li>
+                            <div class="drodown">
+                                <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle"
+                                   data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                        <li><a href="javascript:void(0)" class="js-health-view-detail"
+                                               data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a>
+                                        </li>
+                                        <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em
+                                                        class="icon fas fa-prescription"></em><span>Views prescription</span></a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)" class="js-add-prescription"
+                                               data-health-id="{{ health.id }}"><em
+                                                        class="icon fas fa-prescription"></em><span>Add prescription</span></a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div><!-- .nk-tb-item -->
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- .nk-tb-item -->
         {% endfor %}
     </div><!-- .nk-tb-list -->
 </div><!-- .nk-block -->
@@ -100,7 +110,7 @@
                                 <div class="bq-note">
                                     <div class="bq-note-item">
                                         <div class="bq-note-text">
-                                            <p class="js-summary"> </p>
+                                            <p class="js-summary"></p>
                                         </div>
                                     </div><!-- .bq-note-item -->
                                 </div><!-- .bq-note -->
@@ -129,7 +139,9 @@
                             <div class="bq-note">
                                 <div class="bq-note-item">
                                     <div class="bq-note-text">
-                                        <p class="js-advice">Aproin at metus et dolor tincidunt feugiat eu id quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean sollicitudin non nunc vel pharetra. </p>
+                                        <p class="js-advice">Aproin at metus et dolor tincidunt feugiat eu id quam.
+                                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+                                            ac turpis egestas. Aenean sollicitudin non nunc vel pharetra. </p>
                                     </div>
                                 </div><!-- .bq-note-item -->
                             </div><!-- .bq-note -->
@@ -188,7 +200,8 @@
                                     <div class="form-group">
                                         <label class="form-label" for="description">Description</label>
                                         <div class="form-control-wrap">
-                                            <textarea type="text" class="form-control" name="description" id="description"
+                                            <textarea type="text" class="form-control" name="description"
+                                                      id="description"
                                                       placeholder="Enter Last Name">11111111</textarea>
                                         </div>
                                     </div>
@@ -279,11 +292,11 @@
                                 </div>
                             </div>
                             <hr class="preview-hr">
-{#                            <div class="col-sm-6">#}
-{#                                <div class="form-group">#}
-{#                                    <button type="submit" class="btn btn-success">Edit</button>#}
-{#                                </div>#}
-{#                            </div>#}
+                            {# <div class="col-sm-6"> #}
+                            {# <div class="form-group"> #}
+                            {# <button type="submit" class="btn btn-success">Edit</button> #}
+                            {# </div> #}
+                            {# </div> #}
                         </div>
                     </div>
                 </form>
@@ -391,11 +404,13 @@
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Add Healths</h5>
+                <h5 class="modal-title">Add Prescription</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ redirect('admin/post-medical-health-add') }}" method="post">
+                <form id="add-prescription-form" action="{{ redirect('admin/post-prescription-add') }}" method="post">
                     <input type="text" name="medical-file-id" hidden value="{{ medicalFile.id }}">
+                    <input type="text" name="user-id" hidden value="{{ medicalFile.user_id }}">
+                    <input type="text" name="health-id" hidden>
                     <div class="card-inner">
                         <div class="preview-block">
                             <span class="preview-title-lg overline-title">Main Information</span>
@@ -454,6 +469,37 @@
                                     </div>
                                 </div>
                             </div>
+                            {% for count in 1..10 %}
+                            <div class="row gy-4">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="name-{{ count }}">Name {{ count }}</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="name-{{ count }}" id="name-{{ count }}"
+                                                   placeholder="Enter Name {{ count }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="quantity-{{ count }}">Quantity {{ count }}</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name=quantity-{{ count }}" id="quantity-{{ count }}"
+                                                   placeholder="Enter Quantity {{ count }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="dosage-{{ count }}">Dosage {{ count }}</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" name="dosage-{{ count }}" id="dosage-{{ count }}"
+                                                   placeholder="Enter Dosage {{ count }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                             <hr class="preview-hr">
                             <div class="col-sm-6">
                                 <div class="form-group">
