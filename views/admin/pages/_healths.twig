@@ -67,8 +67,8 @@
                                         <li><a href="javascript:void(0)" class="js-health-view-detail"
                                                data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a>
                                         </li>
-                                        <li><a href="#" data-toggle="modal" data-target="#modalPrescription"><em
-                                                        class="icon fas fa-prescription"></em><span>Views prescription</span></a>
+                                        <li><a href="javascript:void(0)" class="js-view-prescription" data-health-id="{{ health.id }}">
+                                                <em class="icon fas fa-prescription"></em><span>Views prescription</span></a>
                                         </li>
                                         <li class="divider"></li>
                                         <li><a href="javascript:void(0)" class="js-add-prescription"
@@ -242,19 +242,19 @@
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
                                             <span class="profile-ud-label">Full name</span>
-                                            <div class="profile-ud-value">Nguyen Van A</div>
+                                            <div class="profile-ud-value js-full-name"></div>
                                         </div>
                                     </div>
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
                                             <span class="profile-ud-label">Gender - Age</span>
-                                            <div class="profile-ud-value">Nam - 22</div>
+                                            <div class="profile-ud-value"><span class="js-gender"></span> - <span class="js-age">11</span></div>
                                         </div>
                                     </div>
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
                                             <span class="profile-ud-label">Address</span>
-                                            <div class="profile-ud-value">123 Gò Vấp, TPHCM</div>
+                                            <div class="profile-ud-value js-address">123 Gò Vấp, TPHCM</div>
                                         </div>
                                     </div>
                                 </div><!-- .profile-ud-list -->
@@ -273,20 +273,7 @@
                                                 <th scope="col">Dosage</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Panadol</td>
-                                                <td>10 viên</td>
-                                                <td>Mỗi ngày 1 viên</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Vitamin</td>
-                                                <td>10 viên</td>
-                                                <td>Mỗi ngày 1 viên</td>
-                                            </tr>
-                                            </tbody>
+                                            <tbody class="js-medicine-list"></tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -420,7 +407,7 @@
                                         <label class="form-label" for="full-name">Full name</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="full-name" id="full-name"
-                                                   placeholder="Enter full-name">
+                                                   placeholder="Enter full-name" value="{{ medicalFile.first_name }} {{ medicalFile.last_name }}">
                                         </div>
                                     </div>
                                 </div>

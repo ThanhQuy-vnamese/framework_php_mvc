@@ -20,6 +20,7 @@ use App\Controllers\admin\MedicineController;
 use App\Controllers\admin\ReplyContactController;
 use App\Controllers\admin\SampleController;
 use App\Controllers\admin\UserController;
+use App\Controllers\admin\ViewPrescriptionController;
 use App\Controllers\ApiController;
 use App\Core\Application;
 use App\Core\View\Twig;
@@ -73,6 +74,7 @@ $app->router->get('/admin/medical-file-add', [MedicalFileController::class, 'get
 $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'getViewMedicalFileList']);
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
 $app->router->get('/admin/ajax-medical-file-health', [MedicalFileController::class, 'getHealthDetail']);
+$app->router->get('/admin/ajax-get-prescription', [ViewPrescriptionController::class, 'getPrescription']);
 $app->router->post('/admin/post-medical-file-add', [MedicalFileController::class, 'addMedicalFile']);
 $app->router->post('/admin/post-medical-file-edit', [EditMedicalFileController::class, 'editMedicalFile']);
 $app->router->post('/admin/post-medical-health-add', [MedicalFileController::class, 'addHealth']);
