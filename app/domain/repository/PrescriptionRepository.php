@@ -7,7 +7,7 @@ namespace App\domain\repository;
 use App\Core\Database\Query;
 use App\domain\entity\Prescription;
 
-class PrescriptionRepository
+class PrescriptionRepository implements PrescriptionRepositoryInterface
 {
     /**
      * @var false|\mysqli|null
