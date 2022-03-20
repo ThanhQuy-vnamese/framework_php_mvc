@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\domain\repository;
+
+use App\Core\Database\Query;
+
+class HealthRepository implements HealthRepositoryInterface
+{
+    /**
+     * @var false|\mysqli|null
+     */
+    private $db;
+
+    public function __construct()
+    {
+        $query = new Query();
+        $this->db = $query->getDatabase()->mysql;
+    }
+
+    public function deleteHealth(int $id): bool
+    {
+        $sql = "DELETE FROM medical_healths WHERE id = %s";
+        $query = sprintf($sql, $id);
+
+        if ($this->db->query($query)) {
+            return true;
+        }
+
+        return false;
+    }
+}

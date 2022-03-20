@@ -44,6 +44,12 @@
                     {% if(Session.hasFlash('errorAddPrescription')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorAddPrescription') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('successDeleteHealth')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successDeleteHealth') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorDeleteHealth')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDeleteHealth') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -532,6 +538,20 @@
                     $modalPrescription.modal('show')
             });
         });
+
+        $('.js-delete-health').on('click', function () {
+            const healthId = $(this).data('health-id');
+            const medicalFileId = $(this).data('medical-file-id');
+            $('#delete-health-form input[name="health-id"]').attr('value', healthId);
+            $('#delete-health-form input[name="medical-file-id"]').attr('value', medicalFileId);
+            $('.js-health-id').text(healthId);
+            $('#modalDeleteHealth').modal('show');
+
+            $('.js-btn-cancel').on('click', (event) => {
+                event.preventDefault();
+                $('#modalDeleteHealth').modal('hide');
+            })
+        })
     })
 
 </script>
