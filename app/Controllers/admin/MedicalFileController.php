@@ -135,41 +135,6 @@ class MedicalFileController extends BaseController
         $this->response->redirect('/admin/medical-file-add');
     }
 
-    public function addHealth()
-    {
-        $medicalFileId = $this->request->input->get('medical-file-id');
-        $summary = $this->request->input->get('summary');
-        $fever = $this->request->input->get('fever');
-        $haveACold = $this->request->input->get('have-a-cold');
-        $soreThroat = $this->request->input->get('sore-throat');
-        $note = $this->request->input->get('note');
-
-        $symptoms = [
-            'fever' => $fever,
-            'cold' => $haveACold,
-            'sore_throat' => $soreThroat,
-        ];
-
-        $medicalFileDetail = [
-            'summary' => $summary,
-            'healths' => serialize($symptoms),
-            'note' => $note,
-            'id_medical_records' => $medicalFileId
-        ];
-
-        $medicalFile = new MedicalFile();
-        $result = $medicalFile->addHealth($medicalFileDetail);
-
-        $session = new Session();
-        if (!$result) {
-            $session->setFlash('errorHealth', 'Add health fail');
-            $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
-        }
-
-        $session->setFlash('successHealth', 'Add health success');
-        $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
-    }
-
     public function editHealth()
     {
         $healthId = $this->request->input->get('health-id');

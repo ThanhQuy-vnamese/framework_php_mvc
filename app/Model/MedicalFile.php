@@ -65,12 +65,6 @@ class MedicalFile extends DBModel
         return $query->table('medical_medical_insurances')->update($information, ['id' => $heathInsurancesId]);
     }
 
-    public function addHealth(array $information)
-    {
-        $query = new Query();
-        return $query->table('medical_healths')->insert($information);
-    }
-
     public function editHealth(array $information, string $healthId): bool
     {
         $query = new Query();

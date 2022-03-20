@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\admin\AddHealthController;
+use App\Controllers\admin\AddMedicalFileController;
 use App\Controllers\admin\AddPrescriptionController;
 use App\Controllers\admin\BlogAddController;
 use App\Controllers\admin\BlogController;
@@ -77,7 +78,7 @@ $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'ge
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail']);
 $app->router->get('/admin/ajax-medical-file-health', [MedicalFileController::class, 'getHealthDetail']);
 $app->router->get('/admin/ajax-get-prescription', [ViewPrescriptionController::class, 'getPrescription']);
-$app->router->post('/admin/post-medical-file-add', [MedicalFileController::class, 'addMedicalFile']);
+$app->router->post('/admin/post-medical-file-add', [AddMedicalFileController::class, 'addMedicalFile']);
 $app->router->post('/admin/post-medical-file-edit', [EditMedicalFileController::class, 'editMedicalFile']);
 $app->router->post('/admin/post-medical-health-add', [AddHealthController::class, 'addHealth']);
 $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::class, 'editHealth']);

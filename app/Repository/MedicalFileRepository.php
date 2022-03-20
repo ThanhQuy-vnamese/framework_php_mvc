@@ -132,7 +132,7 @@ class MedicalFileRepository
         foreach ($covidVaccinations as $covidVaccinationInjection) {
             $temp = [];
             $temp['injection'] = $injections;
-            $temp['type_medicine'] = $covidVaccinationInjection['type_medicine'];
+            $temp['type_medicine'] = $covidVaccinationInjection['type_vaccine'];
             $temp['date'] = $covidVaccinationInjection['date'];
             $injections += 1;
             $data[] = $temp;
