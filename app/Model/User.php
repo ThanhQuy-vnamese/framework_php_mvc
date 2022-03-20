@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Core\Database\DBModel;
+use App\Core\Database\Query;
 
 class User extends DBModel
 {
@@ -50,6 +51,34 @@ class User extends DBModel
         return 'id';
     }
 
+    /**
+     * @param array information
+     * @return false|int|string
+     */
+    public function addUserProfile(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->insert($information);
+    }
+    /**
+     * @param array information
+     * @return false|int|string
+     */
+    public function addUser(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_users')->insert($information);
+    }
+
+    /**
+     * @param string email
+     * @return 
+     */
+    public function getInfoFromEmail(string $email)
+    {
+        $query = new Query();
+        return $query->table('medical_users')->condition(['email' => $email])->get();
+    }
     public function labels(): array
     {
         return [
@@ -61,7 +90,8 @@ class User extends DBModel
         ];
     }
 
-    public function getUsers(): array {
+    public function getUsers(): array
+    {
         $row = $this->limitSelect();
         $query = "SELECT $row FROM users";
         $result = $this->getDatabase()->mysql->query($query);
@@ -72,4 +102,32 @@ class User extends DBModel
 
         return [];
     }
+    /**
+     * @param array information
+     * @return false|int|string
+     */
+    public function userLogin(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_users')->condition(['email' => $information['email'],
+                                                          'password'=>$information['password'],
+                                                          'status'=>'1'])->get();
+    }
+    public function getProfileByUserId($userID)
+    {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->condition(['user_id'=>$userID])->get();
+
+    }
+    public function getUserIdByMail($email)
+    {
+        $query = new Query();
+        return $query->table('medical_users')->condition(['email'=>$email])->get();
+    }
+    public function updatePassword($userID, $new_password)
+    {
+        $query = new Query();
+        return $query->table('medical_users')->update(['password'=>$new_password], ['id'=>$userID]);
+    }
+
 }

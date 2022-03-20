@@ -173,23 +173,26 @@
 						<div class="row no-gutters align-items-center">
 							<div class="col-md-6">
 								<div class="form-wrap bg-white">
+									{% if(Session.hasFlash('updatePass')) %}
+										<div class="alert alert-success">{{ session.getFlash('updatePass') }}</div>
+									{% endif %}
 									<h4 class="btm-sep pb-3 mb-5">Login</h4>
-									<form class="form" method="post" action="#">
+									<form class="form" method="post" action="{{ redirect('user/post-login') }}">
 										<div class="row">
 											<div class="col-12">
 												<div class="form-group position-relative">
 													<span class="zmdi zmdi-account"></span>
-													<input type="email" id="email" class="form-control" placeholder="Email Address">
+													<input type="email" id="email" class="form-control" placeholder="Email Address" name="email">
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="form-group position-relative">
 													<span class="zmdi zmdi-email"></span>
-													<input type="password" id="password" class="form-control" placeholder="Password">
+													<input type="password" id="password" class="form-control" placeholder="Password" name="password">
 												</div>
 											</div>
 											<div class="col-12 text-lg-right">
-												<a href="#" class="c-black">Forgot password ?</a>
+												<a href="{{ redirect('user/forgot-password') }}" class="c-black">Forgot password ?</a>
 											</div>
 											<div class="col-12 mt-30">
 												<button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Sign In

@@ -71,8 +71,20 @@ $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewCo
 
 // Phần User
 $app->router->get('/user/login', [UserController::class, 'login']);
+$app->router->post('/user/post-login', [UserController::class, 'postLogin']);
+$app->router->get('/user/logout', [UserController::class, 'logout']);
+
 $app->router->get('/user/profile', [UserController::class, 'getViewProfile']);
+
+
 $app->router->get('/user/register', [UserController::class, 'getViewRegister']);
+$app->router->post('/user/post-add-user', [UserController::class, 'postAddUser']);
+
+$app->router->get('/user/forgot-password', [UserController::class, 'getViewForgotPassWord']);
+
+$app->router->get('/user/reset-password', [UserController::class, 'resetPassWord']);
+
+
 $app->router->get('/user/medican-record', [MedicineController::class, 'getViewMedicanRecord']);
 
 $app->router->get('/blog', [BlogController::class, 'getAllBlogList']);
