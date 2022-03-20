@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository;
@@ -13,7 +14,8 @@ class MedicalFileRepository
         return $this->convertMedicalFile($medicalFile->getMedicalFiles());
     }
 
-    public function getMedicalFileDetail(string $medicalFileId): array {
+    public function getMedicalFileDetail(string $medicalFileId): array
+    {
         $medicalFile = new MedicalFile();
         $medicalFileDetail = $medicalFile->getMedicalFileDetail($medicalFileId);
         if (empty($medicalFileDetail)) {
@@ -23,7 +25,8 @@ class MedicalFileRepository
         return $this->convertMedicalDetail($medicalFileDetail);
     }
 
-    public function getHealths(string $medicalFileId): array {
+    public function getHealths(string $medicalFileId): array
+    {
         $medicalFile = new MedicalFile();
         $heaths = $medicalFile->getHealths($medicalFileId);
         if (empty($heaths)) {
@@ -32,12 +35,14 @@ class MedicalFileRepository
         return $this->convertHealths($heaths);
     }
 
-    public function getHealthDetail(string $heathId): array {
+    public function getHealthDetail(string $heathId): array
+    {
         $medicalFile = new MedicalFile();
         return $this->convertHealthDetail($medicalFile->getHealthDetail($heathId));
     }
 
-    private function convertHealthDetail(array $heath): array {
+    private function convertHealthDetail(array $heath): array
+    {
         $data['id'] = $heath['id'];
         $data['summary'] = $heath['summary'];
         $data['symptom'] = $this->convertSymptom(unserialize($heath['healths']));
@@ -46,7 +51,8 @@ class MedicalFileRepository
         return $data;
     }
 
-    private function convertSymptom(array $symptom): array {
+    private function convertSymptom(array $symptom): array
+    {
         $data = [];
         $data['fever'] = $symptom['fever'] === '1' ? 'Yes' : 'No';
         $data['cold'] = $symptom['cold'] === '1' ? 'Yes' : 'No';
@@ -55,7 +61,8 @@ class MedicalFileRepository
         return $data;
     }
 
-    private function convertHealths(array $heaths): array {
+    private function convertHealths(array $heaths): array
+    {
         $data = [];
         foreach ($heaths as $heath) {
             $temp = [];
@@ -85,13 +92,15 @@ class MedicalFileRepository
         return $data;
     }
 
-    private function convertMedicalDetail(array $medicalFile): array {
+    private function convertMedicalDetail(array $medicalFile): array
+    {
         $data = [];
         $data['id'] = $medicalFile['id'] ?? '';
         $data['insurance_id'] = $medicalFile['insurance_id'] ?? '';
         $data['first_name'] = $medicalFile['first_name'] ?? '';
         $data['last_name'] = $medicalFile['last_name'] ?? '';
         $data['birthday'] = $medicalFile['birthday'] ?? '';
+        $data['age'] = $this->calculateAge($medicalFile['birthday']);
         $data['gender'] = $medicalFile['gender'] ?? '';
         $data['identity_card'] = $medicalFile['identity_card'] ?? '';
         $data['email'] = $medicalFile['email'] ?? '';
@@ -100,6 +109,7 @@ class MedicalFileRepository
         $data['district'] = $medicalFile['district'] ?? '';
         $data['wards'] = $medicalFile['wards'] ?? '';
         $data['province'] = $medicalFile['province'] ?? '';
+        $data['full_address'] = $data['way'] . ', ' . $data['district'] . ', ' . $data['wards'] . ', ' . $data['province'];
         $data['covid_injections'] = $this->convertCovidVaccinationInjection($medicalFile['covid_vaccination'] ?? '');
         $data['created_at'] = $medicalFile['created_at'] ?? '';
         $data['user_id'] = $medicalFile['user_id'] ?? '';
@@ -110,7 +120,8 @@ class MedicalFileRepository
         return $data;
     }
 
-    private function convertCovidVaccinationInjection(string $covid_vaccination): array {
+    private function convertCovidVaccinationInjection(string $covid_vaccination): array
+    {
         if (empty($covid_vaccination)) {
             return [];
         }

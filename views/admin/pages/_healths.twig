@@ -421,14 +421,14 @@
                                         <label class="form-label" for="password">Gender</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="nam" name="gender"
-                                                       class="custom-control-input" value="Male" checked>
-                                                <label class="custom-control-label" for="nam">Male</label>
+                                                <input type="radio" id="male" name="gender"
+                                                       class="custom-control-input" value="Male" {{ medicalFile.gender == 'Male' ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="male">Male</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="nu" name="gender"
-                                                       class="custom-control-input" value="Female">
-                                                <label class="custom-control-label" for="nu">Female</label>
+                                                <input type="radio" id="female" name="gender"
+                                                       class="custom-control-input" value="Female" {{ medicalFile.gender == 'Female' ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="female">Female</label>
                                             </div>
                                         </div>
                                     </div>
@@ -438,7 +438,7 @@
                                         <label class="form-label" for="age">Age</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="age" id="age"
-                                                   placeholder="Enter Age">
+                                                   placeholder="Enter Age" value="{{ medicalFile.age }}">
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +447,7 @@
                                         <label class="form-label" for="address">Address</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="address" id="address"
-                                                   placeholder="Enter address">
+                                                   placeholder="Enter address" value="{{ medicalFile.full_address }}">
                                         </div>
                                     </div>
                                 </div>
