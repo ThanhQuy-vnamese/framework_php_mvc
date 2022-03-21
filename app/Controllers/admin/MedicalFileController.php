@@ -102,20 +102,4 @@ class MedicalFileController extends BaseController
         $health = $medicalFileRepository->getHealthDetail($healthId);
         return $this->response->json_encode($health);
     }
-
-    private function validateHealthInsurance(array $healthInsurance): array
-    {
-        $healthInsuranceData = [
-            'health_insurance' => false,
-            'id_medical_records' => $healthInsurance['medical_file_id']
-        ];
-
-        if (!empty($healthInsurance['health_insurance_number']) && !empty($healthInsurance['expiration_date'])) {
-            $healthInsuranceData['health_insurance'] = true;
-            $healthInsuranceData['health_insurance_number'] = $healthInsurance['health_insurance_number'];
-            $healthInsuranceData['expiration_date'] = $healthInsurance['expiration_date'];
-        }
-
-        return $healthInsuranceData;
-    }
 }

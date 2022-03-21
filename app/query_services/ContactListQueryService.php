@@ -23,7 +23,7 @@ class ContactListQueryService implements ContactListQueryServiceInterface
 
     public function getContactForListView(): ContactListDto
     {
-        $query = "SELECT * FROM `medical_contact_infomation` GROUP BY email ORDER BY `created_at` DESC;";
+        $query = "SELECT * FROM `medical_contact_information` GROUP BY email ORDER BY `created_at` DESC;";
         $result = $this->db->query($query);
         if ($result->num_rows === 0) {
             return new ContactListDto([]);

@@ -27,7 +27,7 @@ class ViewPrescriptionQueryService
         $result = $this->db->query($query);
 
         if ($result->num_rows === 0) {
-            return [];
+            return new PrescriptionDto(null, '', '', null, '', '', '', null, null);
         }
         $row = $result->fetch_assoc();
 

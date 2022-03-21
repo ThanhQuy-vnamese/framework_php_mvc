@@ -9,23 +9,23 @@ class PrescriptionDto
     private ?int $id;
     private string $fullName;
     private string $gender;
-    private int $age;
+    private ?int $age;
     private string $address;
     private string $note;
     private string $medicineList;
-    private int $health_id;
-    private int $user_id;
+    private ?int $health_id;
+    private ?int $user_id;
 
     public function __construct(
         ?int $id,
         string $full_name,
         string $gender,
-        int $age,
+        ?int $age,
         string $address,
         string $note,
         string $medicine_list,
-        int $health_id,
-        int $user_id
+        ?int $health_id,
+        ?int $user_id
     ) {
         $this->id = $id;
         $this->fullName = $full_name;
@@ -64,7 +64,7 @@ class PrescriptionDto
     /**
      * @return int
      */
-    public function getAge(): int
+    public function getAge(): ?int
     {
         return $this->age;
     }
@@ -96,7 +96,7 @@ class PrescriptionDto
     /**
      * @return int
      */
-    public function getHealthId(): int
+    public function getHealthId(): ?int
     {
         return $this->health_id;
     }
@@ -104,7 +104,7 @@ class PrescriptionDto
     /**
      * @return int
      */
-    public function getUserId(): int
+    public function getUserId(): ?int
     {
         return $this->user_id;
     }

@@ -36,7 +36,7 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
      */
     public function getContactInformation(string $email): array
     {
-        $sql = "SELECT * FROM medical_contact_infomation WHERE email='%s' ORDER BY created_at ASC;";
+        $sql = "SELECT * FROM medical_contact_information WHERE email='%s' ORDER BY created_at ASC;";
         $query = sprintf($sql, $email);
         $result = $this->db->query($query);
         if ($result->num_rows === 0) {
@@ -67,7 +67,7 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
      */
     public function getContactReply(string $email): array
     {
-        $sql = "SELECT * FROM `medical_contact_reply` WHERE contact_id IN (SELECT id FROM medical_contact_infomation WHERE email='%s')";
+        $sql = "SELECT * FROM `medical_contact_reply` WHERE contact_id IN (SELECT id FROM medical_contact_information WHERE email='%s')";
         $query = sprintf($sql, $email);
         $result = $this->db->query($query);
         if ($result->num_rows === 0) {
@@ -93,7 +93,7 @@ class ContactDetailQueryService implements ContactDetailQueryServiceInterface
     }
 
     public function getLastContact(string $email): ContactDto {
-        $sql = "SELECT * FROM `medical_contact_infomation` WHERE email='%s' ORDER BY id DESC LIMIT 0,1;";
+        $sql = "SELECT * FROM `medical_contact_information` WHERE email='%s' ORDER BY id DESC LIMIT 0,1;";
         $query = sprintf($sql, $email);
         $result = $this->db->query($query);
         if ($result->num_rows === 0) {
