@@ -75,7 +75,7 @@ $app->router->post('/user/post-login', [UserController::class, 'postLogin']);
 $app->router->get('/user/logout', [UserController::class, 'logout']);
 
 $app->router->get('/user/profile', [UserController::class, 'getViewProfile']);
-
+$app->router->post('/user/post-profile', [UserController::class, 'postProfile']);
 
 $app->router->get('/user/register', [UserController::class, 'getViewRegister']);
 $app->router->post('/user/post-add-user', [UserController::class, 'postAddUser']);

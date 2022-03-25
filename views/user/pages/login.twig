@@ -176,6 +176,9 @@
 									{% if(Session.hasFlash('updatePass')) %}
 										<div class="alert alert-success">{{ session.getFlash('updatePass') }}</div>
 									{% endif %}
+									{% if(Session.hasFlash('errorLogin'))%}
+										<div class="alert alert-danger">{{ session.getFlash('errorLogin') }}</div>
+									{% endif %}
 									<h4 class="btm-sep pb-3 mb-5">Login</h4>
 									<form class="form" method="post" action="{{ redirect('user/post-login') }}">
 										<div class="row">

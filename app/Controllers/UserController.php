@@ -48,7 +48,15 @@ class UserController extends BaseController
             $session = new Session();
             $session->setFlash('user', $getProfileById[0]);
             $this->getViewByRole($data[0]->role);
+     
         }
+        else{
+            $session = new Session();
+            $session->setFlash('errorLogin', "Tài khoản không hợp lệ");
+            $this->response->redirect('/user/login');
+
+        }
+        
     }
     /**
      * Dùng để chuyển trang cho từng role 
@@ -91,7 +99,67 @@ class UserController extends BaseController
     }
     public function getViewProfile(): string
     {
+        if(isset($_GET['user_id']))
+        {
+            $userId = $_GET['user_id'];
+            $user = new User();
+            $getProfileById = (array)$user->getProfileByUserId($userId);
+            // echo("<pre>");
+            // print_r($getProfileById);
+            $session = new Session();
+            $session->setFlash('userProfile', $getProfileById[0]);
+            
+        }
         return $this->twig->render('user/pages/profile');
+    }
+
+    public function postProfile()
+    {
+        $session = new Session();
+        
+        $request = new Request();
+        // echo("<pre>");
+        // print_r($request->getAllInput());
+        $user_id = trim($this->request->input->get('user_id'));
+        $firstName = trim($this->request->input->get('first-name'));
+        $lastName = trim($this->request->input->get('last-name'));
+        $email = trim($this->request->input->get('email'));
+        $status = '1';
+        $role = '1';
+        $birthday = $this->request->input->get('birthday');
+        $address = $this->request->input->get('address');
+        $phone = trim($this->request->input->get('phone'));
+        $gender = $this->request->input->get('gender');
+
+        $dataUser = array(
+            'email' => $email,
+            'status' => $status,
+            'role' => $role,
+            'id' => $user_id
+        );
+        $user = new User();
+        $updateUserAccount =  $user->updateUserAccount($dataUser, $user_id);
+        $dataUserProfile = [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'birthday' => $birthday,
+            'gender' => $gender,
+            'address' => $address,
+            'phone' => $phone,
+            'user_id' => $user_id
+        ];
+        print_r($dataUserProfile);
+        $updateUserProfile = $user->updateUserProfile($dataUserProfile, $user_id);
+        $session = new Session();
+        if($updateUserAccount && $updateUserProfile)
+        {
+           $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
+           $this->response->redirect('/user/profile?user_id='.$user_id);
+        }
+        else{
+            $session->setFlash('updateUserError', "Cập nhật thất bại! ");
+            $this->response->redirect('/user/profile?user_id='.$user_id);
+        }
     }
     public function getViewRegister(): string
     {

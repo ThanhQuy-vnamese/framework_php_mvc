@@ -60,6 +60,16 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_user_profiles')->insert($information);
     }
+    public function updateUserProfile(array $information, $userID)
+    {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->update($information,['user_id'=>$userID]);
+    }
+    public function updateUserAccount(array $information, $userID)
+    {
+        $query = new Query();
+        return $query->table('medical_users')->update($information, ['id'=>$userID]);
+    }
     /**
      * @param array information
      * @return false|int|string
@@ -115,8 +125,14 @@ class User extends DBModel
     }
     public function getProfileByUserId($userID)
     {
-        $query = new Query();
-        return $query->table('medical_user_profiles')->condition(['user_id'=>$userID])->get();
+        $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
+                mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu 
+        on mp.user_id = mu.id where user_id = ".$userID;
+        $result = $this->getDatabase()->mysql->query($query);
+        $numRows = $result->num_rows;
+                if ($numRows > 0) {
+                    return $result->fetch_all(MYSQLI_ASSOC);
+                }
 
     }
     public function getUserIdByMail($email)

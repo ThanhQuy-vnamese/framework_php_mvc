@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* user/pages/profile.twig */
-class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685400d3 extends Template
+class __TwigTemplate_a37b94d86afa2f3e50f56f627ce776d68bc389b5142dbc7e4be1345488854d45 extends Template
 {
     private $source;
     private $macros = [];
@@ -238,10 +238,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t\t\t<label class=\"labels\">Address</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"address\" value=\"";
-        // line 154
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "userProfile"], "method", false, false, false, 154), "address", [], "any", false, false, false, 154), "html", null, true);
-        echo "\"></div>
+\t\t\t\t\t\t\t\t\t<label class=\"labels\">Address</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"address\" value=\"address\"></div>
 
 
 \t\t\t\t\t\t\t</div>
@@ -283,7 +280,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
     public function getDebugInfo()
     {
-        return array (  243 => 154,  236 => 149,  221 => 136,  218 => 135,  203 => 122,  201 => 121,  191 => 114,  182 => 108,  176 => 105,  168 => 100,  160 => 95,  153 => 91,  149 => 90,  144 => 89,  138 => 87,  135 => 86,  129 => 84,  127 => 83,  112 => 71,  108 => 70,  37 => 1,);
+        return array (  236 => 149,  221 => 136,  218 => 135,  203 => 122,  201 => 121,  191 => 114,  182 => 108,  176 => 105,  168 => 100,  160 => 95,  153 => 91,  149 => 90,  144 => 89,  138 => 87,  135 => 86,  129 => 84,  127 => 83,  112 => 71,  108 => 70,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -441,7 +438,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t\t\t<label class=\"labels\">Address</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"address\" value=\"{{ session.getValue('userProfile').address }}\"></div>
+\t\t\t\t\t\t\t\t\t<label class=\"labels\">Address</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"address\" value=\"address\"></div>
 
 
 \t\t\t\t\t\t\t</div>
