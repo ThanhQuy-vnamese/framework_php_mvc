@@ -121,6 +121,23 @@ CREATE TABLE `medical_appointment_attendees`
     `updated_at`     timestamp DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE `medical_medicines`
+(
+    `id`               int PRIMARY KEY AUTO_INCREMENT,
+    `name`             varchar(100),
+    `unit`             varchar(10),
+    `quantity`         int,
+    `description`      text,
+    `medicine_type_id` int
+);
+
+CREATE TABLE `medical_medicines_types`
+(
+    `id`          int PRIMARY KEY AUTO_INCREMENT,
+    `name`        varchar(255),
+    `description` text
+);
+
 CREATE TABLE `medical_prescriptions`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
@@ -162,6 +179,9 @@ ALTER TABLE `medical_appointment_attendees`
 
 ALTER TABLE `medical_healths`
     ADD FOREIGN KEY (`id_medical_records`) REFERENCES `medical_medical_records` (`id`) ON DELETE CASCADE;;
+
+ALTER TABLE `medical_medicines`
+    ADD FOREIGN KEY (`medicine_type_id`) REFERENCES `medical_medicines_types` (`id`);
 
 ALTER TABLE `medical_prescriptions`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;

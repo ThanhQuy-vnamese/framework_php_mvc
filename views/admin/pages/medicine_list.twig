@@ -36,7 +36,7 @@
                                                                 <h5 class="modal-title">Add Medicine</h5>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="">
+                                                                <form action="{{ redirect('admin/post-add-medicine') }}" method="post">
                                                                     <div class="card-inner">
                                                                         <div class="preview-block">
                                                                             <span class="preview-title-lg overline-title">Medicine Information</span>
@@ -56,11 +56,20 @@
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
                                                                                                 <select class="form-control" name="type" id="type">
-                                                                                                    <option value="default_option">Thuốc cảm</option>
-                                                                                                    <option value="option_select_name">Kháng sinh</option>
-                                                                                                    <option value="option_select_name">Kháng viêm</option>
+                                                                                                    <option value="1">Thuốc cảm</option>
+                                                                                                    <option value="2">Kháng sinh</option>
+                                                                                                    <option value="3">Kháng viêm</option>
                                                                                                 </select>
                                                                                             </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="form-label" for="quantity">Quantity</label>
+                                                                                        <div class="form-control-wrap">
+                                                                                            <input type="text" class="form-control" name="quantity"
+                                                                                                   id="quantity" placeholder="Enter quantity">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -70,8 +79,8 @@
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
                                                                                                 <select class="form-control" name="unit" id="unit">
-                                                                                                    <option value="default_option">Hộp</option>
-                                                                                                    <option value="option_select_name">Viên</option>
+                                                                                                    <option value="hộp">Hộp</option>
+                                                                                                    <option value="viên">Viên</option>
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
@@ -112,6 +121,9 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('errorAddMedicine')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddMedicine') }}</div>
+                    {% endif %}
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner-group">
                             <div class="card-inner position-relative card-tools-toggle">
