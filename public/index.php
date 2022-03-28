@@ -21,6 +21,7 @@ use App\Controllers\admin\EditBlogController;
 use App\Controllers\admin\EditMedicalFileController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineController;
+use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
 use App\Controllers\admin\SampleController;
 use App\Controllers\admin\UserController;
@@ -85,7 +86,7 @@ $app->router->post('/admin/post-medical-health-add', [AddHealthController::class
 $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::class, 'editHealth']);
 $app->router->post('/admin/post-prescription-add', [AddPrescriptionController::class, 'addPrescription']);
 $app->router->post('/admin/post-delete-health', [DeleteHealthRecordController::class, 'deleteHealth']);
-$app->router->get('/admin/medicine-list', [MedicineController::class, 'getViewMedicineList']);
+$app->router->get('/admin/medicine-list', [MedicineListController::class, 'getViewMedicineList']);
 $app->router->post('/admin/post-add-medicine', [AddMedicineController::class, 'addMedicine']);
 $app->router->get('/admin/medicine-detail', [MedicineController::class, 'getViewMedicineDetail']);
 $app->router->get('/admin/blog-list', [BlogListController::class, 'getViewBlogList']);
