@@ -25,13 +25,24 @@ class ContactListQueryService implements ContactListQueryServiceInterface
     {
         $query = "SELECT * FROM `medical_contact_information` GROUP BY email ORDER BY `created_at` DESC;";
         $result = $this->db->query($query);
+        if (!$result) {
+            return new ContactListDto([]);
+        }
+
         if ($result->num_rows === 0) {
             return new ContactListDto([]);
         }
 
         $data = [];
         while ($row = $result->fetch_assoc()) {
-            $data[$row['id']] = new ContactDto((int)$row['id'], $row['email'], $row['phone'], null, null, $row['full_name']);
+            $data[$row['id']] = new ContactDto(
+                (int)$row['id'],
+                $row['email'],
+                $row['phone'],
+                null,
+                null,
+                $row['full_name']
+            );
         }
 
         return new ContactListDto($data);
