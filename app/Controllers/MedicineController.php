@@ -33,5 +33,5 @@ class MedicineController extends BaseController
     {
         return $this->twig->render('user/pages/medican_record');
     }
-    
+
 }

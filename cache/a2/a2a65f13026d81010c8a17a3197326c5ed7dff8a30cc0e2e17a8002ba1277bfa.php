@@ -46,6 +46,7 @@ class __TwigTemplate_fc3c1be04b6ce96ab0c2f4dbf97f8f8abfa680bac7252bfb06bf83e2932
         // line 9
         echo twig_include($this->env, $context, "user/components/head.twig");
         echo "
+
 \t</head>
 
 \t<body>
@@ -53,248 +54,78 @@ class __TwigTemplate_fc3c1be04b6ce96ab0c2f4dbf97f8f8abfa680bac7252bfb06bf83e2932
 
 \t\t<!-- Header part end-->
 \t\t";
-        // line 16
+        // line 17
         echo twig_include($this->env, $context, "user/components/menu.twig");
         echo "
 \t\t<!-- breadcrumb start-->
-\t\t\t<section class=\"breadcrumb_part breadcrumb_bg\"> <div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t<div class=\"breadcrumb_iner\">
-\t\t\t\t\t\t\t<div class=\"breadcrumb_iner_item\">
-\t\t\t\t\t\t\t\t<h2>Đặt phòng khám</h2>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
+
 \t\t<!-- breadcrumb start-->
 
-\t\t<!-- feature_part start-->
-\t\t<section class=\"feature_part single_feature_page\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row justify-content-center\">
-\t\t\t\t\t<div class=\"col-xl-8\">
-\t\t\t\t\t\t<div class=\"section_tittle text-center\">
-\t\t\t\t\t\t\t<h2>Our services</h2>
-\t\t\t\t\t\t</div>
+\t\t\t<div class=\"container\"> <div class=\"row md-5\">
+\t\t\t\t<div class=\"col-12 md-5\">
+\t\t\t\t\t<div class=\"card-title\" style=\"text-align:center\">
+\t\t\t\t\t\t<h2>ĐẶT LỊCH HẸN</h2>
 \t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"row justify-content-between align-items-center\">
-\t\t\t\t\t<div class=\"col-lg-3 col-sm-12\">
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_1.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_2.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-lg-4 col-sm-12\">
-\t\t\t\t\t\t<div class=\"single_feature_img\">
-\t\t\t\t\t\t\t<img src=\"img/service.png\" alt=\"\">
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-lg-3 col-sm-12\">
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_1.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_2.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
-\t\t<!-- feature_part start-->
 
-\t\t<!--::doctor_part start::-->
-\t\t<section class=\"doctor_part section_padding\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row justify-content-center\">
-\t\t\t\t\t<div class=\"col-xl-8\">
-\t\t\t\t\t\t<div class=\"section_tittle text-center\">
-\t\t\t\t\t\t\t<h2>
-\t\t\t\t\t\t\t\tExperienced Doctors</h2>
-\t\t\t\t\t\t\t<p>Face replenish sea good winged bearing years air divide wasHave night male also</p>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_1.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Adam Billiard</h3>
-\t\t\t\t\t\t\t\t\t<p>Heart specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t<form>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Họ</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"first-name\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_4.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Adam Billiard</h3>
-\t\t\t\t\t\t\t\t\t<p>Medicine specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Tên</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"last-name\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_2.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Fred Macyard</h3>
-\t\t\t\t\t\t\t\t\t<p>CHeart specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Địa chỉ</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"address\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_3.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Justin Stuard</h3>
-\t\t\t\t\t\t\t\t\t<p>Heart specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Số điện thoại</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"phone\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
-\t\t<!--::doctor_part end::-->
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Chọn ngày
+\t\t\t\t\t\t\t</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"date\" min=\"08:00\" max=\"17:00\" class=\"form-control\" id=\"name\" name=\"date\">
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Chọn giờ
+\t\t\t\t\t\t\t</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"time\" min=\"08:00\" max=\"17:00\" class=\"form-control\" id=\"name\" name=\"time\">
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"description\" class=\"col-sm-3 col-form-label\">Bệnh nhân có ghi chú khác</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"description\" rows=\"5\" name=\"description\"></textarea>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
 
-\t\t<!--::regervation_part start::-->
-\t\t<section class=\"regervation_part section_padding\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row align-items-center regervation_content\">
-\t\t\t\t\t<div class=\"col-lg-7\">
-\t\t\t\t\t\t<div class=\"regervation_part_iner\">
-\t\t\t\t\t\t\t<form>
-\t\t\t\t\t\t\t\t<h2>Make an Appointment</h2>
-\t\t\t\t\t\t\t\t<div class=\"form-row\">
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"inputEmail4\" placeholder=\"Name\">
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"inputPassword4\" placeholder=\"Email address\">
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<select class=\"form-control\" id=\"Select\">
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\" selected>Select service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"5\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t</select>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group time_icon col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<select class=\"form-control\" id=\"Select2\">
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"\" selected>Time</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">8 AM TO 10AM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">10 AM TO 12PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">12PM TO 2PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">2PM TO 4PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">4PM TO 6PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">6PM TO 8PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">4PM TO 10PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">10PM TO 12PM</option>
-\t\t\t\t\t\t\t\t\t\t</select>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-12\">
-\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"Textarea\" rows=\"4\" placeholder=\"Your Note \"></textarea>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t<div class=\"regerv_btn\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn_2\">Make an Appointment</a>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</form>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-lg-5 col-md-6\">
-\t\t\t\t\t\t<div class=\"reservation_img\">
-\t\t\t\t\t\t\t<img src=\"img/reservation.png\" alt=\"\" class=\"reservation_img_iner\">
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
+\t\t\t\t\t</form>
 \t\t\t\t</div>
 \t\t\t</div>
-\t\t</section>
+\t\t</div>
+
 \t\t<!--::regervation_part end::-->
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 249
+        // line 82
         echo twig_include($this->env, $context, "user/components/footer.twig");
-        echo "
-\t</body>
-
-</html>
+        echo "</body>
+</html></body></html>
 ";
     }
 
@@ -310,7 +141,7 @@ class __TwigTemplate_fc3c1be04b6ce96ab0c2f4dbf97f8f8abfa680bac7252bfb06bf83e2932
 
     public function getDebugInfo()
     {
-        return array (  293 => 249,  57 => 16,  47 => 9,  37 => 1,);
+        return array (  126 => 82,  58 => 17,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -324,6 +155,7 @@ class __TwigTemplate_fc3c1be04b6ce96ab0c2f4dbf97f8f8abfa680bac7252bfb06bf83e2932
 \t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
 \t\t<title>medical</title>
 \t\t{{ include('user/components/head.twig') }}
+
 \t</head>
 
 \t<body>
@@ -332,241 +164,71 @@ class __TwigTemplate_fc3c1be04b6ce96ab0c2f4dbf97f8f8abfa680bac7252bfb06bf83e2932
 \t\t<!-- Header part end-->
 \t\t{{ include('user/components/menu.twig')}}
 \t\t<!-- breadcrumb start-->
-\t\t\t<section class=\"breadcrumb_part breadcrumb_bg\"> <div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t<div class=\"breadcrumb_iner\">
-\t\t\t\t\t\t\t<div class=\"breadcrumb_iner_item\">
-\t\t\t\t\t\t\t\t<h2>Đặt phòng khám</h2>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
+
 \t\t<!-- breadcrumb start-->
 
-\t\t<!-- feature_part start-->
-\t\t<section class=\"feature_part single_feature_page\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row justify-content-center\">
-\t\t\t\t\t<div class=\"col-xl-8\">
-\t\t\t\t\t\t<div class=\"section_tittle text-center\">
-\t\t\t\t\t\t\t<h2>Our services</h2>
-\t\t\t\t\t\t</div>
+\t\t\t<div class=\"container\"> <div class=\"row md-5\">
+\t\t\t\t<div class=\"col-12 md-5\">
+\t\t\t\t\t<div class=\"card-title\" style=\"text-align:center\">
+\t\t\t\t\t\t<h2>ĐẶT LỊCH HẸN</h2>
 \t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"row justify-content-between align-items-center\">
-\t\t\t\t\t<div class=\"col-lg-3 col-sm-12\">
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_1.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_2.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-lg-4 col-sm-12\">
-\t\t\t\t\t\t<div class=\"single_feature_img\">
-\t\t\t\t\t\t\t<img src=\"img/service.png\" alt=\"\">
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-lg-3 col-sm-12\">
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_1.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"single_feature\">
-\t\t\t\t\t\t\t<div class=\"single_feature_part\">
-\t\t\t\t\t\t\t\t<span class=\"single_feature_icon\"><img src=\"img/icon/feature_2.svg\" alt=\"\"></span>
-\t\t\t\t\t\t\t\t<h4>Better Future</h4>
-\t\t\t\t\t\t\t\t<p>Darkness multiply rule Which from without life creature blessed
-\t\t\t\t\t\t\t\t\t                                give moveth moveth seas make day which divided our have.</p>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
-\t\t<!-- feature_part start-->
 
-\t\t<!--::doctor_part start::-->
-\t\t<section class=\"doctor_part section_padding\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row justify-content-center\">
-\t\t\t\t\t<div class=\"col-xl-8\">
-\t\t\t\t\t\t<div class=\"section_tittle text-center\">
-\t\t\t\t\t\t\t<h2>
-\t\t\t\t\t\t\t\tExperienced Doctors</h2>
-\t\t\t\t\t\t\t<p>Face replenish sea good winged bearing years air divide wasHave night male also</p>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_1.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Adam Billiard</h3>
-\t\t\t\t\t\t\t\t\t<p>Heart specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t<form>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Họ</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"first-name\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_4.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Adam Billiard</h3>
-\t\t\t\t\t\t\t\t\t<p>Medicine specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Tên</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"last-name\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_2.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Fred Macyard</h3>
-\t\t\t\t\t\t\t\t\t<p>CHeart specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Địa chỉ</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"address\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
-\t\t\t\t\t\t<div class=\"single_blog_item\">
-\t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"img/doctor/doctor_3.png\" alt=\"doctor\">
-\t\t\t\t\t\t\t\t<div class=\"social_icon\">
-\t\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-twitter-alt\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-instagram\"></i></a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-skype\"></i></a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"single_text\">
-\t\t\t\t\t\t\t\t<div class=\"single_blog_text\">
-\t\t\t\t\t\t\t\t\t<h3>DR Justin Stuard</h3>
-\t\t\t\t\t\t\t\t\t<p>Heart specialist</p>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Số điện thoại</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"name\" name=\"phone\">
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
-\t\t<!--::doctor_part end::-->
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Chọn ngày
+\t\t\t\t\t\t\t</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"date\" min=\"08:00\" max=\"17:00\" class=\"form-control\" id=\"name\" name=\"date\">
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Chọn giờ
+\t\t\t\t\t\t\t</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<input type=\"time\" min=\"08:00\" max=\"17:00\" class=\"form-control\" id=\"name\" name=\"time\">
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"form-group row\">
+\t\t\t\t\t\t\t<label for=\"description\" class=\"col-sm-3 col-form-label\">Bệnh nhân có ghi chú khác</label>
+\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"description\" rows=\"5\" name=\"description\"></textarea>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
 
-\t\t<!--::regervation_part start::-->
-\t\t<section class=\"regervation_part section_padding\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row align-items-center regervation_content\">
-\t\t\t\t\t<div class=\"col-lg-7\">
-\t\t\t\t\t\t<div class=\"regervation_part_iner\">
-\t\t\t\t\t\t\t<form>
-\t\t\t\t\t\t\t\t<h2>Make an Appointment</h2>
-\t\t\t\t\t\t\t\t<div class=\"form-row\">
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" id=\"inputEmail4\" placeholder=\"Name\">
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"inputPassword4\" placeholder=\"Email address\">
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<select class=\"form-control\" id=\"Select\">
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\" selected>Select service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"5\">Name of service</option>
-\t\t\t\t\t\t\t\t\t\t</select>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group time_icon col-md-6\">
-\t\t\t\t\t\t\t\t\t\t<select class=\"form-control\" id=\"Select2\">
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"\" selected>Time</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">8 AM TO 10AM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">10 AM TO 12PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">12PM TO 2PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">2PM TO 4PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">4PM TO 6PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">6PM TO 8PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">4PM TO 10PM</option>
-\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">10PM TO 12PM</option>
-\t\t\t\t\t\t\t\t\t\t</select>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"form-group col-md-12\">
-\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"Textarea\" rows=\"4\" placeholder=\"Your Note \"></textarea>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t<div class=\"regerv_btn\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn_2\">Make an Appointment</a>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</form>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"col-lg-5 col-md-6\">
-\t\t\t\t\t\t<div class=\"reservation_img\">
-\t\t\t\t\t\t\t<img src=\"img/reservation.png\" alt=\"\" class=\"reservation_img_iner\">
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
+\t\t\t\t\t</form>
 \t\t\t\t</div>
 \t\t\t</div>
-\t\t</section>
+\t\t</div>
+
 \t\t<!--::regervation_part end::-->
 
 \t\t<!-- footer part start-->
-\t\t{{ include('user/components/footer.twig')}}
-\t</body>
-
-</html>
+\t\t{{ include('user/components/footer.twig')}}</body>
+</html></body></html>
 ", "user/pages/book_clinic.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\pages\\book_clinic.twig");
     }
 }

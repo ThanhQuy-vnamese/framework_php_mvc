@@ -328,4 +328,12 @@ class UserController extends BaseController
         }
         return $this->twig->render('user/pages/resetpassword');
     }
+    public function getListDoctor():string
+    {
+        return $this->twig->render('user/pages/doctor');
+    }
+    public function getDetailDoctor():string
+    {
+        return $this->twig->render('user/pages/detail-doctor');
+    }
 }

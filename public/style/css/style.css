@@ -2,6 +2,10 @@
 
 /* line 1, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_extends.scss */
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .btn_1,
 .btn_2,
 .regervation_part .btn_2:hover {
@@ -4171,7 +4175,7 @@ ul {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #1c19ab;
+    background-color: #007bff;
     opacity: 0.8;
     z-index: -1;
 }

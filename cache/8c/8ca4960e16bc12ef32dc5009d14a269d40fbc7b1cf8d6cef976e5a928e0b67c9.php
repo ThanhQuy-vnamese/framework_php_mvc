@@ -114,7 +114,9 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
             // line 46
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "book-clinic"], "method", false, false, false, 46), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/profile"], "method", false, false, false, 46), "html", null, true);
+            echo "?user_id=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 46), "user_id", [], "any", false, false, false, 46), "html", null, true);
             echo "\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
             // line 47
@@ -169,7 +171,7 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 
     public function getDebugInfo()
     {
-        return array (  133 => 52,  127 => 50,  121 => 47,  117 => 46,  111 => 43,  108 => 42,  106 => 41,  100 => 38,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
+        return array (  135 => 52,  129 => 50,  123 => 47,  117 => 46,  111 => 43,  108 => 42,  106 => 41,  100 => 38,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -219,7 +221,7 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t\t\t\t <i class=\"fa-solid fa-user\"></i> {{ session.getValue('user').first_name}}
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('book-clinic') }}\">Profile</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/profile')}}?user_id={{ session.getValue('user').user_id}}\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/logout') }}\">Logout</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t{% else %}

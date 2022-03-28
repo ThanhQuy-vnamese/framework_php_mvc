@@ -24,10 +24,7 @@ class SampleController extends BaseController
     {
         return $this->twig->render('user/pages/about');
     }
-    public function doctor():string
-    {
-        return $this->twig->render('user/pages/doctor');
-    }
+
     public function bookClinic()
     {
         return $this->twig->render('user/pages/book_clinic');

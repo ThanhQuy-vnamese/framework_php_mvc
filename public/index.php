@@ -46,7 +46,9 @@ $app->twig->addGlobalFunction('session', Application::$APPLICATION->session);
 
 $app->router->get('/', [SampleController::class, 'index']);
 $app->router->get('/about', [SampleController::class, 'about']);
-$app->router->get('/doctor', [SampleController::class, 'doctor']);
+$app->router->get('/doctor', [UserController::class, 'getListDoctor']);
+$app->router->get('/detail-doctor', [UserController::class, 'getDetailDoctor']);
+
 $app->router->get('/book-clinic', [SampleController::class, 'bookClinic']);
 $app->router->get('/contact', [SampleController::class, 'contact']);
 
