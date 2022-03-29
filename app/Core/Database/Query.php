@@ -68,6 +68,7 @@ class Query extends AbstractQuery
         $strValue = $this->generateValuesToString($values);
         $db = $this->getDatabase();
         $query = "INSERT INTO $this->table ($strField) VALUES $strValue;";
+//        var_dump($query);die;
         $result = $db->mysql->query($query);
         if (!$result) {
             return false;

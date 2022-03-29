@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controllers;
+namespace App\Controllers\admin;
 
 use App\Core\Controller\BaseController;
 use Twig\Error\LoaderError;
@@ -10,16 +10,6 @@ use Twig\Error\SyntaxError;
 
 class BlogController extends BaseController
 {
-    /**
-     * @return string
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
-    public function getViewBlogList(): string {
-        return $this->twig->render('admin/pages/blog_list');
-    }
-
     /**
      * @return string
      * @throws LoaderError

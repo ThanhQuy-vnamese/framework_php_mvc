@@ -68,22 +68,35 @@ CREATE TABLE `medical_healths`
 CREATE TABLE `medical_blogs`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
-    `title`      varchar(255),
+    `title`      varchar(100),
     `content`    text,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `image`      varchar(255),
     `user_id`    int
 );
 
-CREATE TABLE `medical_contact_infomation`
+CREATE TABLE `medical_contact_information`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
     `email`      varchar(255),
+    `age`        int,
     `phone`      varchar(12),
+    `title`      varchar(100),
     `message`    text,
     `full_name`  varchar(100),
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`    int
+);
+
+CREATE TABLE `medical_contact_reply` (
+     `id` int PRIMARY KEY AUTO_INCREMENT,
+     `email` varchar(255),
+     `phone` char(12),
+     `message` text,
+     `full_name` varchar(100),
+     `created_at` timestamp,
+     `user_id` int,
+     `contact_id` int
 );
 
 CREATE TABLE `medical_appointments`
@@ -113,6 +126,7 @@ CREATE TABLE `medical_medicines`
     `id`               int PRIMARY KEY AUTO_INCREMENT,
     `name`             varchar(100),
     `unit`             varchar(10),
+    `quantity`         int,
     `description`      text,
     `medicine_type_id` int
 );
@@ -128,20 +142,14 @@ CREATE TABLE `medical_prescriptions`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
     `name`       varchar(255),
+    `age`        varchar(5),
+    `gender`     varchar(10),
+    `medicine`   text,
     `address`    varchar(255),
     `note`       varchar(255),
     `healths_id`  int,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`    int
-);
-
-CREATE TABLE `medical_prescription_details`
-(
-    `id`                int PRIMARY KEY AUTO_INCREMENT,
-    `prescription_id`   int,
-    `medicine_id`       int,
-    `medicine_quantity` int,
-    `dosage`            varchar(50)
 );
 
 ALTER TABLE `medical_user_profiles`
@@ -150,8 +158,10 @@ ALTER TABLE `medical_user_profiles`
 ALTER TABLE `medical_appointments`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medical_contact_infomation`
+ALTER TABLE `medical_contact_information`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `medical_contact_reply` ADD FOREIGN KEY (`contact_id`) REFERENCES `medical_contact_information` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medical_medical_records`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
@@ -179,9 +189,3 @@ ALTER TABLE `medical_prescriptions`
 
 ALTER TABLE `medical_prescriptions`
     ADD FOREIGN KEY (`healths_id`) REFERENCES `medical_healths` (`id`) ON DELETE CASCADE;
-
-ALTER TABLE `medical_prescription_details`
-    ADD FOREIGN KEY (`medicine_id`) REFERENCES `medical_medicines` (`id`);
-
-ALTER TABLE `medical_prescription_details`
-    ADD FOREIGN KEY (`prescription_id`) REFERENCES `medical_prescriptions` (`id`);

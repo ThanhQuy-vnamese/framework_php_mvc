@@ -50,4 +50,21 @@ class Helper
 
         return $pathPublic;
     }
+
+    public function getDirectoryUpload(): string
+    {
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $ipServer = $_SERVER['REMOTE_ADDR'];
+        $pos = strpos($requestUrl, PREFIX_PUBLIC);
+        if ($ipServer !== '127.0.0.1' && $ipServer !== '::1') {
+            $directory = 'upload/';
+        } else {
+            if ($pos) {
+                $directory = 'upload/';
+            } else {
+                $directory = 'public/upload/';
+            }
+        }
+        return $directory;
+    }
 }

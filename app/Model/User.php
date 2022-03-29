@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Core\Database\DBModel;
+use App\Core\Database\Query;
 
 class User extends DBModel
 {
@@ -71,5 +72,86 @@ class User extends DBModel
         }
 
         return [];
+    }
+
+    /**
+     * @param array $information
+     * @return false|int|string
+     */
+    public function addUser(array $information) {
+        $query = new Query();
+        return $query->table('medical_users')->insert($information);
+    }
+
+    /**
+     * @param array $information
+     * @return false|int|string
+     */
+    public function addUserProfile(array $information) {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->insert($information);
+    }
+
+    /**
+     * @param string $email
+     * @return \stdClass
+     */
+    public function getInfoFromEmail(string $email) {
+        $query = new Query();
+        return $query->table('medical_users')->condition(['email' => $email])->get();
+    }
+
+    public function getAllUsers(): array {
+        $query = new Query();
+        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id";
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getUser(string $id): array {
+        $query = new Query();
+        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function updateUser(string $id, array $information): bool {
+        $query = new Query();
+        return $query->table('medical_users')->update($information, ['id' => $id]);
+    }
+
+    public function updateUserProfile(string $user_id, array $information): bool {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->update($information, ['user_id' => $user_id]);
+    }
+
+    public function updatePassword(string $id, array $information): bool {
+        $query = new Query();
+        return $query->table('medical_users')->update($information, ['id' => $id]);
+    }
+
+    public function deleteUser(string $id): bool {
+        $query = new Query();
+        return $query->table('medical_users')->condition(['id' => $id])->delete();
+    }
+
+    public function getEmailExceptUserId(string $user_id, string $email): int {
+        $sql = "SELECT * FROM medical_users WHERE email='$email' AND id <> '$user_id';";
+        $result = $this->getDatabase()->mysql->query($sql);
+        return $result->num_rows;
     }
 }
