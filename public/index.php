@@ -19,6 +19,7 @@ use App\Controllers\admin\DeleteContactController;
 use App\Controllers\admin\DeleteHealthRecordController;
 use App\Controllers\admin\EditBlogController;
 use App\Controllers\admin\EditMedicalFileController;
+use App\Controllers\admin\EditMedicineController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
@@ -89,6 +90,7 @@ $app->router->post('/admin/post-delete-health', [DeleteHealthRecordController::c
 $app->router->get('/admin/medicine-list', [MedicineListController::class, 'getViewMedicineList']);
 $app->router->post('/admin/post-add-medicine', [AddMedicineController::class, 'addMedicine']);
 $app->router->get('/admin/medicine-detail', [ViewMedicineDetailController::class, 'getViewMedicineDetail']);
+$app->router->post('/admin/post-edit-medicine', [EditMedicineController::class, 'editMedicine']);
 $app->router->get('/admin/blog-list', [BlogListController::class, 'getViewBlogList']);
 $app->router->get('/admin/blog-add', [BlogController::class, 'getViewBlogAdd']);
 $app->router->post('/admin/post-blog-add', [BlogAddController::class, 'addBlog']);

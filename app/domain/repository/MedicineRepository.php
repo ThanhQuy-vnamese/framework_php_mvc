@@ -36,4 +36,25 @@ class MedicineRepository implements MedicineRepositoryInterface
 
         return (int)$this->db->insert_id;
     }
+
+    public function updateMedicine(Medicine $medicine): bool
+    {
+        $sql = "UPDATE medical_medicines
+                SET name = '%s', unit = '%s', quantity = %s, description = '%s', medicine_type_id = %s
+                WHERE id = %s";
+        $query = sprintf(
+            $sql,
+            $medicine->getName(),
+            $medicine->getUnit(),
+            $medicine->getQuantity(),
+            $medicine->getDescription(),
+            $medicine->getTypeId(),
+            $medicine->getId()
+        );
+        if ($this->db->query($query)) {
+            return true;
+        }
+
+        return false;
+    }
 }
