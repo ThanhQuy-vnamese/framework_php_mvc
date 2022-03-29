@@ -13,6 +13,7 @@ use App\Controllers\admin\BlogAddController;
 use App\Controllers\admin\BlogController;
 use App\Controllers\admin\BlogDetailController;
 use App\Controllers\admin\BlogListController;
+use App\Controllers\admin\CalendarIndexController;
 use App\Controllers\admin\ContactDetailController;
 use App\Controllers\admin\ContactListController;
 use App\Controllers\admin\DeleteContactController;
@@ -100,5 +101,6 @@ $app->router->get('/admin/contact-list', [ContactListController::class, 'getView
 $app->router->get('/admin/contact-detail', [ContactDetailController::class, 'getViewContactDetail']);
 $app->router->post('/admin/post-reply-contact', [ReplyContactController::class, 'replyContact']);
 $app->router->post('/admin/post-delete-contact', [DeleteContactController::class, 'deleteContact']);
+$app->router->get('/admin/calendar', [CalendarIndexController::class, 'getViewCalendarIndex']);
 
 $app->run();
