@@ -36,7 +36,7 @@
                                                                 <h5 class="modal-title">Add Medicine</h5>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="">
+                                                                <form action="{{ redirect('admin/post-add-medicine') }}" method="post">
                                                                     <div class="card-inner">
                                                                         <div class="preview-block">
                                                                             <span class="preview-title-lg overline-title">Medicine Information</span>
@@ -56,11 +56,20 @@
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
                                                                                                 <select class="form-control" name="type" id="type">
-                                                                                                    <option value="default_option">Thuốc cảm</option>
-                                                                                                    <option value="option_select_name">Kháng sinh</option>
-                                                                                                    <option value="option_select_name">Kháng viêm</option>
+                                                                                                    <option value="1">Thuốc cảm</option>
+                                                                                                    <option value="2">Kháng sinh</option>
+                                                                                                    <option value="3">Kháng viêm</option>
                                                                                                 </select>
                                                                                             </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="form-label" for="quantity">Quantity</label>
+                                                                                        <div class="form-control-wrap">
+                                                                                            <input type="text" class="form-control" name="quantity"
+                                                                                                   id="quantity" placeholder="Enter quantity">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -70,8 +79,8 @@
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
                                                                                                 <select class="form-control" name="unit" id="unit">
-                                                                                                    <option value="default_option">Hộp</option>
-                                                                                                    <option value="option_select_name">Viên</option>
+                                                                                                    <option value="hộp">Hộp</option>
+                                                                                                    <option value="viên">Viên</option>
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
@@ -112,6 +121,9 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('errorAddMedicine')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddMedicine') }}</div>
+                    {% endif %}
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner-group">
                             <div class="card-inner position-relative card-tools-toggle">
@@ -149,6 +161,7 @@
                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Type</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
+                                    {% for medicine in medicines %}
                                     <div class="nk-tb-item">
                                         <div class="nk-tb-col nk-tb-col-check">
                                             <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -157,13 +170,13 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span>22</span>
+                                            <span>{{ medicine.id }}</span>
                                         </div>
                                         <div class="nk-tb-col">
-                                            <span>Thuốc cảm</span>
+                                            <span>{{ medicine.name }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span>Kháng sinh</span>
+                                            <span>{{ medicine.type_name }}</span>
                                         </div>
                                         <div class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-2">
@@ -172,7 +185,7 @@
                                                         <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/medicine-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li><a href="{{ redirect('admin/medicine-detail', {'id': medicine.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
                                                                 <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete Medicine</span></a></li>
                                                             </ul>
@@ -182,39 +195,7 @@
                                             </ul>
                                         </div>
                                     </div><!-- .nk-tb-item -->
-                                    <div class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                <label class="custom-control-label" for="uid1"></label>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>22</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span>Thuốc ho</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>Kháng viêm</span>
-                                        </div>
-                                        <div class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-2">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/medicine-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete Medicine</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
+                                    {% endfor %}
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">

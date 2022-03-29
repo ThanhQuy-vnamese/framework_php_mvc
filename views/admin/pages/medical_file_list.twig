@@ -23,7 +23,7 @@
                                                 <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="{{ redirect('admin/user-add') }}"><span>Add User</span></a></li>
+                                                        <li><a href="{{ redirect('admin/medical-file-add') }}"><span>Add Medical File</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -71,11 +71,12 @@
                                         <div class="nk-tb-col"><span class="sub-text">Full name</span></div>
                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Age</span></div>
                                         <div class="nk-tb-col tb-col-sm"><span class="sub-text">Gender</span></div>
-                                        <div class="nk-tb-col"><span class="sub-text">CMND/CCCD</span></div>
+                                        <div class="nk-tb-col"><span class="sub-text">Identity card</span></div>
                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Phone</span></div>
                                         <div class="nk-tb-col tb-col-xxl"><span class="sub-text">Birthday</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
+                                    {% for medicalFile in medicalFiles %}
                                     <div class="nk-tb-item">
                                         <div class="nk-tb-col nk-tb-col-check">
                                             <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -84,7 +85,7 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span>22</span>
+                                            <span>{{ medicalFile.id }}</span>
                                         </div>
                                         <div class="nk-tb-col">
                                             <div class="user-card">
@@ -92,24 +93,24 @@
                                                     <span>AB</span>
                                                 </div>
                                                 <div class="user-name">
-                                                    <span class="tb-lead">Nguyễn Văn A</span>
+                                                    <span class="tb-lead">{{ medicalFile.full_name }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span>28</span>
+                                            <span>{{ medicalFile.age }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-sm">
-                                            <span>Nu</span>
+                                            <span>{{ medicalFile.gender }}</span>
                                         </div>
                                         <div class="nk-tb-col">
-                                            <span>334927955</span>
+                                            <span>{{ medicalFile.identity_card }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-md">
-                                            <span>0123456789</span>
+                                            <span>{{ medicalFile.phone }}</span>
                                         </div>
                                         <div class="nk-tb-col tb-col-xxl">
-                                            <span>1-1-1999</span>
+                                            <span>{{ medicalFile.birthday }}</span>
                                         </div>
                                         <div class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-2">
@@ -118,7 +119,7 @@
                                                         <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/medical-file-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li><a href="{{ redirect('admin/medical-file-detail', {'id': medicalFile.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                 <li class="divider"></li>
                                                                 <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset ...</span></a></li>
                                                                 <li class="divider"></li>
@@ -130,60 +131,7 @@
                                             </ul>
                                         </div>
                                     </div><!-- .nk-tb-item -->
-                                    <div class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                <label class="custom-control-label" for="uid1"></label>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>22</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <div class="user-card">
-                                                <div class="user-avatar xs bg-danger">
-                                                    <span>AB</span>
-                                                </div>
-                                                <div class="user-name">
-                                                    <span class="tb-lead">Nguyễn Văn B</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>22</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>Nam</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span>334927956</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>0123456789</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-xxl">
-                                            <span>1-1-1999</span>
-                                        </div>
-                                        <div class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-2">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/user-detail') }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset ...</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete files</span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
+                                    {% endfor %}
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">
