@@ -43,7 +43,7 @@ class AddPrescriptionController extends BaseController
             $name = $this->request->input->getString("name-${i}");
             $quantity = $this->request->input->getString("quantity-${i}");
             $dosage = $this->request->input->getString("dosage-${i}");
-            if (empty($name) && empty($quantity) && empty($dosage)) {
+            if (empty($name) || empty($quantity) || empty($dosage)) {
                 continue;
             }
             $medicineList[$i]['name'] = $name;

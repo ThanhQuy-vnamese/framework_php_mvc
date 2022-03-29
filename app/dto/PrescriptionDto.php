@@ -8,7 +8,7 @@ class PrescriptionDto
 {
     private ?int $id;
     private string $fullName;
-    private string $gender;
+    private ?string $gender;
     private ?int $age;
     private string $address;
     private string $note;
@@ -19,7 +19,7 @@ class PrescriptionDto
     public function __construct(
         ?int $id,
         string $full_name,
-        string $gender,
+        ?string $gender,
         ?int $age,
         string $address,
         string $note,
@@ -54,9 +54,9 @@ class PrescriptionDto
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getGender(): string
+    public function getGender(): ?string
     {
         return $this->gender;
     }

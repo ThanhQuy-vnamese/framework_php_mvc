@@ -109,4 +109,20 @@ class MedicalFile extends DBModel
 
         return $result->fetch_assoc();
     }
+
+    public function getMedicineList(): array {
+        $query = "SELECT * FROM `medical_medicines`";
+        $result = $this->getDatabase()->mysql->query($query);
+        $data = [];
+
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        return $data;
+    }
 }

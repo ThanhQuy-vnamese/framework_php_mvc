@@ -41,6 +41,11 @@ class MedicalFileRepository
         return $this->convertHealthDetail($medicalFile->getHealthDetail($heathId));
     }
 
+    public function getMedicineList(): array {
+        $medicalFile = new MedicalFile();
+        return $medicalFile->getMedicineList();
+    }
+
     private function convertHealthDetail(array $heath): array
     {
         $data['id'] = $heath['id'];

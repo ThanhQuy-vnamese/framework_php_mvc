@@ -7,7 +7,7 @@ namespace App\query_services;
 use App\Core\Database\Query;
 use App\dto\PrescriptionDto;
 
-class ViewPrescriptionQueryService
+class ViewPrescriptionQueryService implements ViewPrescriptionQueryServiceInterface
 {
     /**
      * @var false|\mysqli|null
@@ -20,7 +20,7 @@ class ViewPrescriptionQueryService
         $this->db = $query->getDatabase()->mysql;
     }
 
-    public function getPrescription(int $health_id)
+    public function getPrescription(int $health_id): PrescriptionDto
     {
         $sql = "SELECT * FROM medical_prescriptions WHERE healths_id=%s;";
         $query = sprintf($sql, $health_id);

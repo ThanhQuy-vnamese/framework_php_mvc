@@ -12,7 +12,7 @@ class MedicineDto
     private ?string $description;
     private ?string $unit;
 
-    public function __construct(?int $id, string $name, string $type_name, ?string $description, ?string $unit)
+    public function __construct(?int $id, string $name, string $type_name, ?string $description, ?string $unit = null)
     {
         $this->id = $id;
         $this->name = $name;

@@ -143,6 +143,7 @@ CREATE TABLE `medical_prescriptions`
     `id`         int PRIMARY KEY AUTO_INCREMENT,
     `name`       varchar(255),
     `age`        varchar(5),
+    `gender`     varchar(10),
     `medicine`   text,
     `address`    varchar(255),
     `note`       varchar(255),

@@ -465,11 +465,13 @@
                                 <div class="row gy-4">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label class="form-label" for="name-{{ count }}">Name {{ count }}</label>
+                                            <label class="form-label" for="select-name-{{ count }}">Name {{ count }}</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" name="name-{{ count }}"
-                                                       id="name-{{ count }}"
-                                                       placeholder="Enter Name {{ count }}">
+                                                <select class="form-control selectpicker" id="select-name-{{ count }}" data-live-search="true" name="name-{{ count }}">
+                                                    {% for medicine in medicines %}
+                                                        <option data-tokens="{{ medicine.name }}">{{ medicine.name }}</option>
+                                                    {% endfor %}
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

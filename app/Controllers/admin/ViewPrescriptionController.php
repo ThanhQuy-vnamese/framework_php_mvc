@@ -23,7 +23,7 @@ class ViewPrescriptionController extends BaseController
         return [
             'id' => $prescriptionDto->getId(),
             'fullName' => $prescriptionDto->getFullName(),
-            'gender' => $prescriptionDto->getGender(),
+            'gender' => $prescriptionDto->getGender() ?? '',
             'age' => $prescriptionDto->getAge(),
             'address' => $prescriptionDto->getAddress(),
             'note' => $prescriptionDto->getNote(),

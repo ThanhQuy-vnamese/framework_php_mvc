@@ -48,11 +48,12 @@ class MedicalFileController extends BaseController
         $medicalRepository = new MedicalFileRepository();
         $medicalFile = $medicalRepository->getMedicalFileDetail($medicalFileId);
         $healths = $medicalRepository->getHealths($medicalFileId);
+        $medicines = $medicalRepository->getMedicineList();
         if (empty($medicalFile)) {
             $this->response->redirect('/admin/medical-file-list');
         }
 
-        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile, 'healths' => $healths]);
+        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile, 'healths' => $healths, 'medicines' => $medicines]);
     }
 
     public function getMedicalFiles(): array
