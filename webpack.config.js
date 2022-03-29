@@ -2,13 +2,13 @@ const path = require('path');
 require('@babel/polyfill');
 
 module.exports = {
-    entry: [
-        '@babel/polyfill',
-        path.join(__dirname, 'public/js/src', 'index.js')
-    ],
+    entry: {
+        'index': path.join(__dirname, 'public/js/src', 'index.js'),
+        'appointment': path.join(__dirname, 'public/js/src/pages/appointment', 'index.js'),
+    },
     output: {
         path: path.resolve(__dirname, 'public/js/dist'),
-        filename: 'index.js'
+        filename: '[name].js'
     },
     devtool: 'inline-source-map',
     module: {
@@ -23,12 +23,13 @@ module.exports = {
                             '@babel/preset-env',
                             '@babel/preset-typescript',
                             ['@babel/preset-react', { runtime: 'automatic' }]
-                        ]
+                        ],
+                        plugins: ['@babel/plugin-transform-runtime'],
                     }
                 }
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.(sass|scss|css)$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
             },
             {
