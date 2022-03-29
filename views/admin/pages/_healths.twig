@@ -468,6 +468,7 @@
                                             <label class="form-label" for="select-name-{{ count }}">Name {{ count }}</label>
                                             <div class="form-control-wrap">
                                                 <select class="form-control selectpicker" id="select-name-{{ count }}" data-live-search="true" name="name-{{ count }}">
+                                                    <option data-tokens="---">----</option>
                                                     {% for medicine in medicines %}
                                                         <option data-tokens="{{ medicine.name }}">{{ medicine.name }}</option>
                                                     {% endfor %}
