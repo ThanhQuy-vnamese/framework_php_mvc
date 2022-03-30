@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: circleci/php:7.4.6
+      - image: circleci/php:7.4.26
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
             sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install && sh deploy.sh'
   mysql:
     docker:
-      - image: circleci/php:7.4.6
+      - image: circleci/php:7.4.26
     steps:
       - checkout
       - run:
