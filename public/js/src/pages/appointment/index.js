@@ -1,4 +1,4 @@
-import { Calendar } from '../../components/Calendar';
+import { Calendar } from '../../components/Appointment/Calendar';
 import ReactDOM from 'react-dom';
 
 const App = () => {

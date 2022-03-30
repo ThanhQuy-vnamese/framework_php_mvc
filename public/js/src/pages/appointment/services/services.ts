@@ -1,0 +1,13 @@
+import axios from 'axios';
+
+interface SaveCalendarRequestParams {
+    subject: string;
+    fullName: string;
+    date: string;
+    timeStart: string;
+    timeEnd: string;
+    doctorId: string;
+    description: string;
+}
+
+export const saveCalendar = (params: SaveCalendarRequestParams) => {};

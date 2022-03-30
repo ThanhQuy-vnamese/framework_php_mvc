@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
         'prettier'
     ],
     parser: '@typescript-eslint/parser',
@@ -20,7 +21,8 @@ module.exports = {
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
         'prettier/prettier': ['error'],
-        "no-unused-vars": ['error', {"args": "all"}]
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"]
     },
     ignorePatterns: ['webpack.config.js', '.eslintrc.js']
 };
