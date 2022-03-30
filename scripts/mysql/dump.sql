@@ -103,10 +103,12 @@ CREATE TABLE `medical_appointments`
 (
     `id`         int PRIMARY KEY AUTO_INCREMENT,
     `subject`    varchar(100),
+    `full_name`    varchar(50),
     `date_start` timestamp DEFAULT CURRENT_TIMESTAMP,
     `date_end`   timestamp DEFAULT CURRENT_TIMESTAMP,
     `time_start` timestamp DEFAULT CURRENT_TIMESTAMP,
     `time_end`   timestamp DEFAULT CURRENT_TIMESTAMP,
+    `description` text,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`    int

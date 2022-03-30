@@ -1,6 +1,7 @@
 import { Button, Modal } from 'react-bootstrap';
 import { FormAdd } from './FormAdd';
 import { useState, VFC } from 'react';
+import { saveCalendar } from '../../pages/appointment/services/services';
 
 interface AddModalProps {
     isShow: boolean;
@@ -27,7 +28,6 @@ export const AddModal: VFC<AddModalProps> = ({
 
     const onChangeSubject = (subject: string) => {
         setSubject(subject);
-        console.log(subject);
     };
     const onChangeFullName = (fullName: string) => {
         setFullName(fullName);
@@ -40,14 +40,31 @@ export const AddModal: VFC<AddModalProps> = ({
     };
     const onChangeTimeEnd = (timeEnd: string) => {
         setTimeEnd(timeEnd);
-        console.log(timeEnd);
     };
     const onChangeDoctor = (doctor: string) => {
         setDoctor(doctor);
-        console.log(doctor);
     };
     const onChangeDescription = (description: string) => {
         setDescription(description);
+    };
+
+    const handleOnshow = () => {
+        setTimeStart(defaultTimeStart);
+        setTimeEnd(defaultTimeEnd);
+        setDate(defaultDate);
+    };
+
+    const handleSubmit = () => {
+        const requestParams = {
+            subject,
+            fullName,
+            date,
+            timeStart,
+            timeEnd,
+            doctorId: doctor,
+            description
+        };
+        saveCalendar(requestParams);
     };
 
     return (
@@ -61,6 +78,7 @@ export const AddModal: VFC<AddModalProps> = ({
                     document
                         .getElementsByClassName('modal')[0]
                         .removeAttribute('tabindex');
+                    handleOnshow();
                 }}
             >
                 <Modal.Header>
@@ -86,7 +104,9 @@ export const AddModal: VFC<AddModalProps> = ({
                     <Button variant="secondary" onClick={() => onClickClose()}>
                         Close
                     </Button>
-                    <Button variant="primary">Save changes</Button>
+                    <Button variant="primary" onClick={() => handleSubmit()}>
+                        Save changes
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </>

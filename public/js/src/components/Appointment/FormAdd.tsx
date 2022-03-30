@@ -86,7 +86,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                                 className="form-control"
                                 name="date"
                                 id="date"
-                                value={defaultDate}
+                                defaultValue={defaultDate}
                                 onChange={e => onChangeDate(e.target.value)}
                             />
                         </div>
@@ -103,7 +103,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                                 className="form-control"
                                 name="time-start"
                                 id="time-start"
-                                value={defaultTimeStart}
+                                defaultValue={'17:00:00'}
                                 onChange={e =>
                                     onChangeTimeStart(e.target.value)
                                 }
@@ -122,7 +122,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                                 className="form-control"
                                 name="time-end"
                                 id="time-end"
-                                value={defaultTimeEnd}
+                                defaultValue={defaultTimeEnd}
                                 onChange={e => onChangeTimeEnd(e.target.value)}
                             />
                         </div>

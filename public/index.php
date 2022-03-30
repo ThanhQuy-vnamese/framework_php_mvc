@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use App\Controllers\admin\AddCalendarController;
 use App\Controllers\admin\AddHealthController;
 use App\Controllers\admin\AddMedicalFileController;
 use App\Controllers\admin\AddMedicineController;
@@ -102,5 +103,9 @@ $app->router->get('/admin/contact-detail', [ContactDetailController::class, 'get
 $app->router->post('/admin/post-reply-contact', [ReplyContactController::class, 'replyContact']);
 $app->router->post('/admin/post-delete-contact', [DeleteContactController::class, 'deleteContact']);
 $app->router->get('/admin/calendar', [CalendarIndexController::class, 'getViewCalendarIndex']);
+
+// Internal API
+$app->router->post('/admin/ajax/add-calendar', [AddCalendarController::class, 'addCalendar']);
+
 
 $app->run();

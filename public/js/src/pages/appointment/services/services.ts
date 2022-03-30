@@ -10,4 +10,15 @@ interface SaveCalendarRequestParams {
     description: string;
 }
 
-export const saveCalendar = (params: SaveCalendarRequestParams) => {};
+export const saveCalendar = (params: SaveCalendarRequestParams) => {
+    axios
+        .post('/admin/ajax/add-calendar', {
+            ...params
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+};
