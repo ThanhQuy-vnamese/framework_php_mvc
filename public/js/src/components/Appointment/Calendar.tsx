@@ -1,14 +1,24 @@
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddModal } from './AddModal';
+import { getDoctor } from '../../pages/appointment/services/services';
+import { ItemDataType } from 'rsuite/esm/@types/common';
 
 export const Calendar = () => {
     const [isShow, setIsShow] = useState(false);
     const [date, setDate] = useState('');
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
+    const [doctors, setDoctors] = useState<ItemDataType<string>[]>([]);
+
+    useEffect(() => {
+        const response = getDoctor();
+        response.then(result => {
+            setDoctors(result.data);
+        });
+    }, []);
 
     const events = [
         {
@@ -59,6 +69,7 @@ export const Calendar = () => {
             {isShow && (
                 <AddModal
                     isShow={isShow}
+                    doctors={doctors}
                     onClickClose={handleOffModal}
                     defaultDate={date}
                     defaultTimeStart={timeStart}

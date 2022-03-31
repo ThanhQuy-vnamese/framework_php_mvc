@@ -22,6 +22,8 @@ use App\Controllers\admin\DeleteHealthRecordController;
 use App\Controllers\admin\EditBlogController;
 use App\Controllers\admin\EditMedicalFileController;
 use App\Controllers\admin\EditMedicineController;
+use App\Controllers\admin\GetCalendarController;
+use App\Controllers\admin\GetDoctorController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
@@ -106,6 +108,8 @@ $app->router->get('/admin/calendar', [CalendarIndexController::class, 'getViewCa
 
 // Internal API
 $app->router->post('/admin/ajax/add-calendar', [AddCalendarController::class, 'addCalendar']);
+$app->router->get('/admin/ajax/get-doctor', [GetDoctorController::class, 'getDoctor']);
+//$app->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'addCalendar']);
 
 
 $app->run();

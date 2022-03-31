@@ -1,11 +1,13 @@
 import { SelectPicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import { VFC } from 'react';
+import { ItemDataType } from 'rsuite/esm/@types/common';
 
 interface FormAddProps {
     defaultDate: string;
     defaultTimeStart: string;
     defaultTimeEnd: string;
+    doctors: ItemDataType<string>[];
     onChangeSubject: (subject: string) => void;
     onChangeFullName: (fullName: string) => void;
     onChangeDate: (date: string) => void;
@@ -19,6 +21,7 @@ export const FormAdd: VFC<FormAddProps> = ({
     defaultDate,
     defaultTimeStart,
     defaultTimeEnd,
+    doctors,
     onChangeSubject,
     onChangeFullName,
     onChangeDate,
@@ -27,19 +30,6 @@ export const FormAdd: VFC<FormAddProps> = ({
     onChangeDoctor,
     onChangeDescription
 }) => {
-    const users = [
-        {
-            label: 'Eugenia',
-            value: '1',
-            role: 'Master'
-        },
-        {
-            label: 'Kariane',
-            value: '2',
-            role: 'Master'
-        }
-    ];
-
     return (
         <>
             <div className="row gy-4">
@@ -103,7 +93,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                                 className="form-control"
                                 name="time-start"
                                 id="time-start"
-                                defaultValue={'17:00:00'}
+                                defaultValue={defaultTimeStart}
                                 onChange={e =>
                                     onChangeTimeStart(e.target.value)
                                 }
@@ -135,7 +125,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                         </label>
                         <div className="form-control-wrap">
                             <SelectPicker
-                                data={users}
+                                data={doctors}
                                 style={{ width: 250 }}
                                 menuStyle={{
                                     zIndex: 10000

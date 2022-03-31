@@ -22,3 +22,7 @@ export const saveCalendar = (params: SaveCalendarRequestParams) => {
             console.log(error);
         });
 };
+
+export const getDoctor = async () => {
+    return await axios.get('/admin/ajax/get-doctor');
+};
