@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { AddModal } from './AddModal';
 import { getDoctor } from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
+import { ToastContainer } from 'react-toastify';
 
 export const Calendar = () => {
     const [isShow, setIsShow] = useState(false);
@@ -76,6 +77,7 @@ export const Calendar = () => {
                     defaultTimeEnd={timeEnd}
                 />
             )}
+            <ToastContainer autoClose={2000} />
         </>
     );
 };

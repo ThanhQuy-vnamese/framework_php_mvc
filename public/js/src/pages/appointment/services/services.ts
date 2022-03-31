@@ -11,16 +11,9 @@ interface SaveCalendarRequestParams {
 }
 
 export const saveCalendar = (params: SaveCalendarRequestParams) => {
-    axios
-        .post('/admin/ajax/add-calendar', {
-            ...params
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    return axios.post('/admin/ajax/add-calendar', {
+        ...params
+    });
 };
 
 export const getDoctor = async () => {

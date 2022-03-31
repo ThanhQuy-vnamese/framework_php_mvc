@@ -3,6 +3,8 @@ import { FormAdd } from './FormAdd';
 import { useState, VFC } from 'react';
 import { saveCalendar } from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface AddModalProps {
     isShow: boolean;
@@ -67,7 +69,11 @@ export const AddModal: VFC<AddModalProps> = ({
             doctorId,
             description
         };
-        saveCalendar(requestParams);
+        saveCalendar(requestParams).then(() => {
+            toast.success('Add calendar success!', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        });
     };
 
     return (
