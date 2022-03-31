@@ -175,11 +175,11 @@ ALTER TABLE `medical_blogs`
 ALTER TABLE `medical_medical_insurances`
     ADD FOREIGN KEY (`id_medical_records`) REFERENCES `medical_medical_records` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medical_appointment_attendees`
-    ADD FOREIGN KEY (`id_appointment`) REFERENCES `medical_appointments` (`id`);
+ALTER TABLE `medical_appointments`
+    ADD FOREIGN KEY (`id`) REFERENCES `medical_appointment_attendees` (`id_appointment`);
 
-ALTER TABLE `medical_appointment_attendees`
-    ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `medical_users`
+    ADD FOREIGN KEY (`id`) REFERENCES `medical_appointment_attendees` (`user_id`) ON DELETE CASCADE;
 
 ALTER TABLE `medical_healths`
     ADD FOREIGN KEY (`id_medical_records`) REFERENCES `medical_medical_records` (`id`) ON DELETE CASCADE;;
