@@ -9,7 +9,7 @@ use App\domain\factory\DoctorForAddCalendarFactory;
 
 const ROLE_DOCTOR = 2;
 
-class GetDoctorQueryService
+class GetDoctorQueryService implements GetDoctorQueryServiceInterface
 {
     /**
      * @var false|\mysqli|null

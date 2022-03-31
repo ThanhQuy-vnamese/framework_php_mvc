@@ -3,7 +3,7 @@ import { FormAdd } from './FormAdd';
 import { useState, VFC } from 'react';
 import { saveCalendar } from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface AddModalProps {
@@ -73,6 +73,7 @@ export const AddModal: VFC<AddModalProps> = ({
             toast.success('Add calendar success!', {
                 position: toast.POSITION.TOP_RIGHT
             });
+            onClickClose();
         });
     };
 

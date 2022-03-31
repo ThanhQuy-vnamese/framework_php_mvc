@@ -6,10 +6,11 @@ namespace App\use_case;
 
 use App\domain\factory\DoctorForAddCalendarFactory;
 use App\query_services\GetDoctorQueryService;
+use App\query_services\GetDoctorQueryServiceInterface;
 
 class GetDoctorUserCase
 {
-    private GetDoctorQueryService $getDoctorQueryService;
+    private GetDoctorQueryServiceInterface $getDoctorQueryService;
 
     public function __construct()
     {
