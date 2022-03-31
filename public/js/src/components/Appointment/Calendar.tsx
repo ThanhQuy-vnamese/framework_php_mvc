@@ -30,7 +30,8 @@ export const Calendar = () => {
                 department: 'BioChemistry'
             },
             description: 'Lecture',
-            url: 'google.com'
+            url: 'google.com',
+            backgroundColor: 'red'
         }
     ];
     const handleShowModal = () => {

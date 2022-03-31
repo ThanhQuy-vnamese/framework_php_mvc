@@ -32,8 +32,10 @@ class AddCalendarUseCase
         if (!$calendar_id) {
             return 0;
         }
-        $calendar_attendees = $this->buildCalendarAttendees($calendar_id, $doctor_id);
-        $this->calendarRepository->addCalendarAttendees($calendar_attendees);
+        $user_created = $this->buildCalendarAttendees($calendar_id, 1);
+        $user_attendees = $this->buildCalendarAttendees($calendar_id, $doctor_id);
+        $this->calendarRepository->addCalendarAttendees($user_created);
+        $this->calendarRepository->addCalendarAttendees($user_attendees);
 
         return $calendar_id;
     }
