@@ -19,3 +19,7 @@ export const saveCalendar = (params: SaveCalendarRequestParams) => {
 export const getDoctor = async () => {
     return await axios.get('/admin/ajax/get-doctor');
 };
+
+export const getCalendar = async () => {
+    return await axios.get('/admin/ajax/get-calendar');
+};

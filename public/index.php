@@ -109,7 +109,7 @@ $app->router->get('/admin/calendar', [CalendarIndexController::class, 'getViewCa
 // Internal API
 $app->router->post('/admin/ajax/add-calendar', [AddCalendarController::class, 'addCalendar']);
 $app->router->get('/admin/ajax/get-doctor', [GetDoctorController::class, 'getDoctor']);
-//$app->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'addCalendar']);
+$app->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'getCalendar']);
 
 
 $app->run();

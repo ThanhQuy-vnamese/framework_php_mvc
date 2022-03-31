@@ -3,12 +3,16 @@ import timeGridPlugin from '@fullcalendar/timegrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { useEffect, useState } from 'react';
 import { AddModal } from './AddModal';
-import { getDoctor } from '../../pages/appointment/services/services';
+import {
+    getCalendar,
+    getDoctor
+} from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { ToastContainer } from 'react-toastify';
 
 export const Calendar = () => {
     const [isShow, setIsShow] = useState(false);
+    const [events, setEvents] = useState([]);
     const [date, setDate] = useState('');
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
@@ -19,21 +23,12 @@ export const Calendar = () => {
         response.then(result => {
             setDoctors(result.data);
         });
+        const eventResponse = getCalendar();
+        eventResponse.then(result => {
+            setEvents(result.data);
+        });
     }, []);
 
-    const events = [
-        {
-            title: 'Nguyễn Văn A',
-            start: '2022-03-29T10:30:00',
-            end: '2022-03-29T11:30:00',
-            extendedProps: {
-                department: 'BioChemistry'
-            },
-            description: 'Lecture',
-            url: 'google.com',
-            backgroundColor: 'red'
-        }
-    ];
     const handleShowModal = () => {
         setIsShow(true);
     };
@@ -65,7 +60,7 @@ export const Calendar = () => {
                 events={events}
                 eventClick={info => {
                     info.jsEvent.preventDefault();
-                    console.log(info.event.start);
+                    console.log(info.event);
                 }}
             />
             {isShow && (
