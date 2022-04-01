@@ -1,7 +1,10 @@
 import { Button, Modal } from 'react-bootstrap';
 import { FormAdd } from './FormAdd';
 import { useState, VFC } from 'react';
-import { saveCalendar } from '../../pages/appointment/services/services';
+import {
+    ErrorParams,
+    saveCalendar
+} from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -59,6 +62,24 @@ export const AddModal: VFC<AddModalProps> = ({
         setDate(defaultDate);
     };
 
+    function handleShowError(error: ErrorParams) {
+        if (error.type === 1) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+        if (error.type === 2) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+        if (error.type === 3) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+
     const handleSubmit = () => {
         const requestParams = {
             subject,
@@ -71,12 +92,9 @@ export const AddModal: VFC<AddModalProps> = ({
         };
         saveCalendar(requestParams)
             .then(result => {
-                if (result.data.info.error) {
-                    if (result.data.info.errorType === 1) {
-                        toast.error('Calendar is conflict', {
-                            position: toast.POSITION.TOP_RIGHT
-                        });
-                    }
+                const error = result.data.info.error;
+                if (error.hasError) {
+                    handleShowError(error);
                 } else {
                     toast.success('Add calendar success!', {
                         position: toast.POSITION.TOP_RIGHT

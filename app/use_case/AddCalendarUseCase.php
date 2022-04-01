@@ -12,6 +12,8 @@ use App\domain\repository\CalendarRepositoryInterface;
 class AddCalendarUseCase
 {
     const TYPE_CONFLICT = 1;
+    const TYPE_DOCTOR_EMPTY = 2;
+    const TYPE_DOCTOR_NOT_EXIST = 3;
 
     private CalendarRepositoryInterface $calendarRepository;
 
@@ -29,13 +31,17 @@ class AddCalendarUseCase
         string $description,
         int $doctor_id
     ) {
-        $return_values = ['error' => false];
-
         $calendar = $this->buildCalendar($subject, $full_name, $date, $time_start, $time_end, $description, 1);
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
-            $return_values['errorType'] = self::TYPE_CONFLICT;
-            $return_values['error'] = true;
-            return $return_values;
+            return $this->buildError(true, self::TYPE_CONFLICT, 'Calendar is conflict!');
+        }
+
+        if (empty($doctor_id)) {
+            return $this->buildError(true, self::TYPE_DOCTOR_EMPTY, 'Please chose a doctor!');
+        }
+
+        if (is_null($this->calendarRepository->findUserByUserIdAndRole(1, 2)->getId())) {
+            return $this->buildError(true, self::TYPE_DOCTOR_NOT_EXIST, 'Doctor is chosen not valid!');
         }
 
         $calendar_id = $this->calendarRepository->addCalendar($calendar);
@@ -48,7 +54,7 @@ class AddCalendarUseCase
         $this->calendarRepository->addCalendarAttendees($user_created);
         $this->calendarRepository->addCalendarAttendees($user_attendees);
 
-        return $calendar_id;
+        return $this->buildError(false);
     }
 
     private function buildCalendar(
@@ -76,5 +82,17 @@ class AddCalendarUseCase
     private function buildCalendarAttendees(int $calendar_id, int $user_id): CalendarAttendees
     {
         return new CalendarAttendees(null, $calendar_id, $user_id);
+    }
+
+    private function buildError(bool $has_error, int $error_type = 0, string $message = ''): array
+    {
+        $return_values = ['error' => ['hasError' => false]];
+        if (!$has_error) {
+            return $return_values;
+        }
+        $return_values['error']['hasError'] = $has_error;
+        $return_values['error']['type'] = $error_type;
+        $return_values['error']['message'] = $message;
+        return $return_values;
     }
 }

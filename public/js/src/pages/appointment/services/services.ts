@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 interface SaveCalendarRequestParams {
     subject: string;
@@ -10,7 +10,21 @@ interface SaveCalendarRequestParams {
     description: string;
 }
 
-export const saveCalendar = (params: SaveCalendarRequestParams) => {
+export interface ErrorParams {
+    hasError: boolean;
+    type?: number;
+    message?: string;
+}
+
+interface SaveCalendarResponse {
+    info: {
+        error: ErrorParams;
+    };
+}
+
+export const saveCalendar = (
+    params: SaveCalendarRequestParams
+): Promise<AxiosResponse<SaveCalendarResponse>> => {
     return axios.post('/admin/ajax/add-calendar', {
         ...params
     });

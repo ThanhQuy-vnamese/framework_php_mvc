@@ -7,6 +7,7 @@ namespace App\domain\repository;
 use App\Core\Database\Query;
 use App\domain\entity\Calendar;
 use App\domain\entity\CalendarAttendees;
+use App\domain\entity\User;
 
 class CalendarRepository implements CalendarRepositoryInterface
 {
@@ -71,5 +72,17 @@ class CalendarRepository implements CalendarRepositoryInterface
         $row = $result->fetch_assoc();
 
         return (int)$row['count'];
+    }
+
+    public function findUserByUserIdAndRole(int $user_id, int $role): User
+    {
+        $sql = "SELECT * FROM medical_users WHERE id = %s AND role = %s";
+        $query = sprintf($sql, $user_id, $role);
+        $result = $this->db->query($query);
+        if ($result->num_rows === 0) {
+            return new User(null);
+        }
+        $row = $result->fetch_assoc();
+        return new User((int)$row['id'], $row['email'], $row['password'], (int)$row['status'], (int)$row['role']);
     }
 }
