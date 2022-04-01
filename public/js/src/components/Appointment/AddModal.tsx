@@ -69,12 +69,24 @@ export const AddModal: VFC<AddModalProps> = ({
             doctorId,
             description
         };
-        saveCalendar(requestParams).then(() => {
-            toast.success('Add calendar success!', {
-                position: toast.POSITION.TOP_RIGHT
+        saveCalendar(requestParams)
+            .then(result => {
+                if (result.data.info.error) {
+                    if (result.data.info.errorType === 1) {
+                        toast.error('Calendar is conflict', {
+                            position: toast.POSITION.TOP_RIGHT
+                        });
+                    }
+                } else {
+                    toast.success('Add calendar success!', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                    onClickClose();
+                }
+            })
+            .catch(error => {
+                console.log(error);
             });
-            onClickClose();
-        });
     };
 
     return (

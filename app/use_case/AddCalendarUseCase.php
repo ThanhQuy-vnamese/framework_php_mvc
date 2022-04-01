@@ -11,6 +11,8 @@ use App\domain\repository\CalendarRepositoryInterface;
 
 class AddCalendarUseCase
 {
+    const TYPE_CONFLICT = 1;
+
     private CalendarRepositoryInterface $calendarRepository;
 
     public function __construct()
@@ -26,12 +28,21 @@ class AddCalendarUseCase
         string $time_end,
         string $description,
         int $doctor_id
-    ): int {
+    ) {
+        $return_values = ['error' => false];
+
         $calendar = $this->buildCalendar($subject, $full_name, $date, $time_start, $time_end, $description, 1);
+        if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
+            $return_values['errorType'] = self::TYPE_CONFLICT;
+            $return_values['error'] = true;
+            return $return_values;
+        }
+
         $calendar_id = $this->calendarRepository->addCalendar($calendar);
         if (!$calendar_id) {
             return 0;
         }
+
         $user_created = $this->buildCalendarAttendees($calendar_id, 1);
         $user_attendees = $this->buildCalendarAttendees($calendar_id, $doctor_id);
         $this->calendarRepository->addCalendarAttendees($user_created);

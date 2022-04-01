@@ -18,7 +18,7 @@ class AddCalendarController extends BaseController
         $doctor_id = $this->request->input->getInt('doctorId');
         $description = $this->request->input->get('description');
         $use_case = new AddCalendarUseCase();
-        $id = $use_case->execute($subject, $full_name, $date, $time_start, $time_end, $description, $doctor_id);
-        return $this->response->json_encode(['id' => $id]);
+        $info = $use_case->execute($subject, $full_name, $date, $time_start, $time_end, $description, $doctor_id);
+        return $this->response->json_encode(['info' => $info]);
     }
 }
