@@ -70,7 +70,7 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
         // line 23
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "blog"], "method", false, false, false, 23), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/blog"], "method", false, false, false, 23), "html", null, true);
         echo "\">Blog</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
@@ -86,56 +86,59 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
         // line 33
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "book-clinic"], "method", false, false, false, 33), "html", null, true);
-        echo "\">Đặt phòng khám</a>
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "statistic-covid"], "method", false, false, false, 33), "html", null, true);
+        echo "\">Thống kê covid</a>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
         // line 34
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "book-clinic"], "method", false, false, false, 34), "html", null, true);
+        echo "\">Xem lịch khám</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+        // line 35
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "book-clinic"], "method", false, false, false, 35), "html", null, true);
         echo "\">Khai báo y tế</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
-        // line 38
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "contact"], "method", false, false, false, 38), "html", null, true);
+        // line 39
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "contact"], "method", false, false, false, 39), "html", null, true);
         echo "\">Contact</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t\t";
-        // line 41
-        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "user"], "method", false, false, false, 41)) {
-            // line 42
-            echo "\t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t\t\t <i class=\"fa-solid fa-user\"></i> ";
+        // line 42
+        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "user"], "method", false, false, false, 42)) {
             // line 43
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 43), "first_name", [], "any", false, false, false, 43), "html", null, true);
+            echo "\t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\t\t\t<i class=\"fa-solid fa-user\"></i>
+\t\t\t\t\t\t\t\t\t\t";
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 45), "first_name", [], "any", false, false, false, 45), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-            // line 46
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/profile"], "method", false, false, false, 46), "html", null, true);
+            // line 48
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/profile"], "method", false, false, false, 48), "html", null, true);
             echo "?user_id=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 46), "user_id", [], "any", false, false, false, 46), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 48), "user_id", [], "any", false, false, false, 48), "html", null, true);
             echo "\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-            // line 47
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/logout"], "method", false, false, false, 47), "html", null, true);
+            // line 49
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/logout"], "method", false, false, false, 49), "html", null, true);
             echo "\">Logout</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t";
         } else {
-            // line 50
+            // line 52
             echo "\t\t\t\t\t\t\t\t\t<a class=\"btn_2 d-none d-lg-block\" href=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/login"], "method", false, false, false, 50), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/login"], "method", false, false, false, 52), "html", null, true);
             echo "\">Login</a>
 \t\t\t\t\t\t\t\t";
         }
-        // line 52
+        // line 54
         echo "\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t<li class=\"nav-item\">
-
-\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\"></li>
 \t\t\t\t\t\t</ul>
 \t\t\t\t\t</div>
 \t\t\t\t</nav>
@@ -171,7 +174,7 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 
     public function getDebugInfo()
     {
-        return array (  135 => 52,  129 => 50,  123 => 47,  117 => 46,  111 => 43,  108 => 42,  106 => 41,  100 => 38,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
+        return array (  140 => 54,  134 => 52,  128 => 49,  122 => 48,  116 => 45,  112 => 43,  110 => 42,  104 => 39,  97 => 35,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -198,7 +201,7 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('about') }}\">About</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('blog') }}\">Blog</a>
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('user/blog') }}\">Blog</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('doctor') }}\">Doctors</a>
@@ -208,7 +211,8 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t\t\tService
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('book-clinic') }}\">Đặt phòng khám</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('statistic-covid') }}\">Thống kê covid</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('book-clinic') }}\">Xem lịch khám</a>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('book-clinic') }}\">Khai báo y tế</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</li>
@@ -218,7 +222,8 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t\t{% if(Session.hasFlash('user')) %}
 \t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t\t\t <i class=\"fa-solid fa-user\"></i> {{ session.getValue('user').first_name}}
+\t\t\t\t\t\t\t\t\t\t<i class=\"fa-solid fa-user\"></i>
+\t\t\t\t\t\t\t\t\t\t{{ session.getValue('user').first_name}}
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/profile')}}?user_id={{ session.getValue('user').user_id}}\">Profile</a>
@@ -228,9 +233,7 @@ class __TwigTemplate_9e42e45303ba82385a79e74bb7cd62e2e893e201bb869b3a533aa4c3979
 \t\t\t\t\t\t\t\t\t<a class=\"btn_2 d-none d-lg-block\" href=\"{{ helper.custom_link('user/login') }}\">Login</a>
 \t\t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t<li class=\"nav-item\">
-
-\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\"></li>
 \t\t\t\t\t\t</ul>
 \t\t\t\t\t</div>
 \t\t\t\t</nav>

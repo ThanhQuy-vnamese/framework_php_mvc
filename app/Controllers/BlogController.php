@@ -44,4 +44,7 @@ class BlogController extends BaseController
     public function getViewBlogDetail(): string {
         return $this->twig->render('admin/pages/blog_detail');
     }
+    public function getViewBlogByUser(): string {
+        return $this->twig->render('user/pages/detail-blog');
+    }
 }

@@ -20,7 +20,7 @@
 								<a class="nav-link" href="{{ helper.custom_link('about') }}">About</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ helper.custom_link('blog') }}">Blog</a>
+								<a class="nav-link" href="{{ helper.custom_link('user/blog') }}">Blog</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{ helper.custom_link('doctor') }}">Doctors</a>
@@ -30,7 +30,8 @@
 									Service
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="{{ helper.custom_link('book-clinic') }}">Đặt phòng khám</a>
+									<a class="dropdown-item" href="{{ helper.custom_link('statistic-covid') }}">Thống kê covid</a>
+									<a class="dropdown-item" href="{{ helper.custom_link('book-clinic') }}">Xem lịch khám</a>
 									<a class="dropdown-item" href="{{ helper.custom_link('book-clinic') }}">Khai báo y tế</a>
 								</div>
 							</li>
@@ -40,7 +41,8 @@
 							<li class="nav-item dropdown">
 								{% if(Session.hasFlash('user')) %}
 									<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										 <i class="fa-solid fa-user"></i> {{ session.getValue('user').first_name}}
+										<i class="fa-solid fa-user"></i>
+										{{ session.getValue('user').first_name}}
 									</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<a class="dropdown-item" href="{{ helper.custom_link('user/profile')}}?user_id={{ session.getValue('user').user_id}}">Profile</a>
@@ -50,9 +52,7 @@
 									<a class="btn_2 d-none d-lg-block" href="{{ helper.custom_link('user/login') }}">Login</a>
 								{% endif %}
 							</li>
-							<li class="nav-item">
-
-							</li>
+							<li class="nav-item"></li>
 						</ul>
 					</div>
 				</nav>

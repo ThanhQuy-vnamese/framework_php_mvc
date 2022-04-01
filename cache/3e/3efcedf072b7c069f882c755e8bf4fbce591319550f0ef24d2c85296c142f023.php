@@ -195,35 +195,28 @@ class __TwigTemplate_139893bb732b136e842e3c0fa44ad5764731a517c46561fe6e11f4eea3e
         echo "
 \t\t<!-- Header part end-->
 
-\t\t<!-- breadcrumb start-->
-\t\t\t<section class=\"breadcrumb_part breadcrumb_bg\"> <div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t<div class=\"breadcrumb_iner\">
-\t\t\t\t\t\t\t<div class=\"breadcrumb_iner_item\">
-\t\t\t\t\t\t\t\t<h2>doctors</h2>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
-\t\t<!-- breadcrumb start-->
-
 \t\t<!--::doctor_part start::-->
 
-\t\t<div class=\"container\">
-\t\t\t<div class=\"row justify-content-center\">
+\t\t\t<div class=\"container\"> <div class=\"row justify-content-center\">
 \t\t\t\t<h3>Danh sách bác sĩ</h3>
 \t\t\t</div>
 \t\t\t<div
 \t\t\t\tclass=\"row\">
 \t\t\t\t<!-- Single Advisor-->
-\t\t\t\t<div class=\"col-12 col-sm-6 col-lg-3\">
+
+\t\t\t\t";
+        // line 165
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["getListUser"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
+            // line 166
+            echo "\t\t\t\t<div class=\"col-12 col-sm-6 col-lg-3\">
 \t\t\t\t\t<a href=\"";
-        // line 181
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "redirect", [0 => "/detail-doctor"], "method", false, false, false, 181), "html", null, true);
-        echo "\">
+            // line 167
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "redirect", [0 => "/doctor/detail-doctor"], "method", false, false, false, 167), "html", null, true);
+            echo "?user_id=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "user_id", [], "any", false, false, false, 167), "html", null, true);
+            echo "\">
 \t\t\t\t\t\t<div
 \t\t\t\t\t\t\tclass=\"single_advisor_profile wow fadeInUp\" data-wow-delay=\"0.2s\" style=\"visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;\">
 \t\t\t\t\t\t\t<!-- Team Thumb-->
@@ -244,12 +237,24 @@ class __TwigTemplate_139893bb732b136e842e3c0fa44ad5764731a517c46561fe6e11f4eea3e
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<!-- Team Details-->
 \t\t\t\t\t\t\t<div class=\"single_advisor_details_info\">
-\t\t\t\t\t\t\t\t<h4>Bác sĩ: Huỳnh Anh</h4>
+\t\t\t\t\t\t\t\t<h4>Bác sĩ: ";
+            // line 188
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "first_name", [], "any", false, false, false, 188), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "last_name", [], "any", false, false, false, 188), "html", null, true);
+            echo "</h4>
 \t\t\t\t\t\t\t\t<p class=\"designation\">Chuyên khoa: Cấp cứu</p>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</a>
 \t\t\t\t</div>
+\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 195
+        echo "
 \t\t\t\t<!-- Single Advisor-->
 \t\t\t</div>
 \t\t</div>
@@ -258,7 +263,7 @@ class __TwigTemplate_139893bb732b136e842e3c0fa44ad5764731a517c46561fe6e11f4eea3e
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 215
+        // line 203
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "
 
@@ -282,7 +287,7 @@ class __TwigTemplate_139893bb732b136e842e3c0fa44ad5764731a517c46561fe6e11f4eea3e
 
     public function getDebugInfo()
     {
-        return array (  262 => 215,  225 => 181,  194 => 153,  48 => 10,  37 => 1,);
+        return array (  267 => 203,  257 => 195,  242 => 188,  216 => 167,  213 => 166,  209 => 165,  194 => 153,  48 => 10,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -442,32 +447,18 @@ class __TwigTemplate_139893bb732b136e842e3c0fa44ad5764731a517c46561fe6e11f4eea3e
 \t\t{{ include('user/components/menu.twig')}}
 \t\t<!-- Header part end-->
 
-\t\t<!-- breadcrumb start-->
-\t\t\t<section class=\"breadcrumb_part breadcrumb_bg\"> <div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-lg-12\">
-\t\t\t\t\t\t<div class=\"breadcrumb_iner\">
-\t\t\t\t\t\t\t<div class=\"breadcrumb_iner_item\">
-\t\t\t\t\t\t\t\t<h2>doctors</h2>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</section>
-\t\t<!-- breadcrumb start-->
-
 \t\t<!--::doctor_part start::-->
 
-\t\t<div class=\"container\">
-\t\t\t<div class=\"row justify-content-center\">
+\t\t\t<div class=\"container\"> <div class=\"row justify-content-center\">
 \t\t\t\t<h3>Danh sách bác sĩ</h3>
 \t\t\t</div>
 \t\t\t<div
 \t\t\t\tclass=\"row\">
 \t\t\t\t<!-- Single Advisor-->
+
+\t\t\t\t{% for user in getListUser %}
 \t\t\t\t<div class=\"col-12 col-sm-6 col-lg-3\">
-\t\t\t\t\t<a href=\"{{ helper.redirect('/detail-doctor') }}\">
+\t\t\t\t\t<a href=\"{{ helper.redirect('/doctor/detail-doctor') }}?user_id={{ user.user_id }}\">
 \t\t\t\t\t\t<div
 \t\t\t\t\t\t\tclass=\"single_advisor_profile wow fadeInUp\" data-wow-delay=\"0.2s\" style=\"visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;\">
 \t\t\t\t\t\t\t<!-- Team Thumb-->
@@ -488,12 +479,14 @@ class __TwigTemplate_139893bb732b136e842e3c0fa44ad5764731a517c46561fe6e11f4eea3e
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<!-- Team Details-->
 \t\t\t\t\t\t\t<div class=\"single_advisor_details_info\">
-\t\t\t\t\t\t\t\t<h4>Bác sĩ: Huỳnh Anh</h4>
+\t\t\t\t\t\t\t\t<h4>Bác sĩ: {{ user.first_name }} {{ user.last_name }}</h4>
 \t\t\t\t\t\t\t\t<p class=\"designation\">Chuyên khoa: Cấp cứu</p>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</a>
 \t\t\t\t</div>
+\t\t\t\t{% endfor %}
+
 \t\t\t\t<!-- Single Advisor-->
 \t\t\t</div>
 \t\t</div>

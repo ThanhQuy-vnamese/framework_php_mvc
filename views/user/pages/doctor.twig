@@ -153,32 +153,18 @@
 		{{ include('user/components/menu.twig')}}
 		<!-- Header part end-->
 
-		<!-- breadcrumb start-->
-			<section class="breadcrumb_part breadcrumb_bg"> <div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="breadcrumb_iner">
-							<div class="breadcrumb_iner_item">
-								<h2>doctors</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- breadcrumb start-->
-
 		<!--::doctor_part start::-->
 
-		<div class="container">
-			<div class="row justify-content-center">
+			<div class="container"> <div class="row justify-content-center">
 				<h3>Danh sách bác sĩ</h3>
 			</div>
 			<div
 				class="row">
 				<!-- Single Advisor-->
+
+				{% for user in getListUser %}
 				<div class="col-12 col-sm-6 col-lg-3">
-					<a href="{{ helper.redirect('/detail-doctor') }}">
+					<a href="{{ helper.redirect('/doctor/detail-doctor') }}?user_id={{ user.user_id }}">
 						<div
 							class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 							<!-- Team Thumb-->
@@ -199,12 +185,14 @@
 							</div>
 							<!-- Team Details-->
 							<div class="single_advisor_details_info">
-								<h4>Bác sĩ: Huỳnh Anh</h4>
+								<h4>Bác sĩ: {{ user.first_name }} {{ user.last_name }}</h4>
 								<p class="designation">Chuyên khoa: Cấp cứu</p>
 							</div>
 						</div>
 					</a>
 				</div>
+				{% endfor %}
+
 				<!-- Single Advisor-->
 			</div>
 		</div>

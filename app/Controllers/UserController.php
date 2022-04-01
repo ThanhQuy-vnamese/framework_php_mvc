@@ -15,6 +15,8 @@ use App\Model\User;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use App\Core\Lib\Token;
+use App\Core\Helper\Helper;
 
 class UserController extends BaseController
 {
@@ -46,17 +48,13 @@ class UserController extends BaseController
         if (!empty($data)) {
             $getProfileById = (array)$user->getProfileByUserId($data[0]->id);
             $session = new Session();
-            $session->setFlash('user', $getProfileById[0]);
+            $session->set('user', $getProfileById[0]);
             $this->getViewByRole($data[0]->role);
-     
-        }
-        else{
+        } else {
             $session = new Session();
             $session->setFlash('errorLogin', "Tài khoản không hợp lệ");
             $this->response->redirect('/user/login');
-
         }
-        
     }
     /**
      * Dùng để chuyển trang cho từng role 
@@ -92,23 +90,23 @@ class UserController extends BaseController
     {
         return $this->twig->render('user/pages/login');
     }
-    public function logout():string{
+    public function logout(): string
+    {
         $session = new Session();
         $session->destroyFlash();
         return $this->response->redirect('/');
     }
     public function getViewProfile(): string
     {
-        if(isset($_GET['user_id']))
-        {
+        if (isset($_GET['user_id'])) {
             $userId = $_GET['user_id'];
             $user = new User();
             $getProfileById = (array)$user->getProfileByUserId($userId);
             // echo("<pre>");
             // print_r($getProfileById);
             $session = new Session();
-            $session->setFlash('userProfile', $getProfileById[0]);
             
+            $session->set('userProfile', $getProfileById[0]);
         }
         return $this->twig->render('user/pages/profile');
     }
@@ -116,7 +114,7 @@ class UserController extends BaseController
     public function postProfile()
     {
         $session = new Session();
-        
+
         $request = new Request();
         // echo("<pre>");
         // print_r($request->getAllInput());
@@ -124,7 +122,7 @@ class UserController extends BaseController
         $firstName = trim($this->request->input->get('first-name'));
         $lastName = trim($this->request->input->get('last-name'));
         $email = trim($this->request->input->get('email'));
-        $status = '1';
+
         $role = '1';
         $birthday = $this->request->input->get('birthday');
         $address = $this->request->input->get('address');
@@ -133,7 +131,6 @@ class UserController extends BaseController
 
         $dataUser = array(
             'email' => $email,
-            'status' => $status,
             'role' => $role,
             'id' => $user_id
         );
@@ -148,17 +145,15 @@ class UserController extends BaseController
             'phone' => $phone,
             'user_id' => $user_id
         ];
-        print_r($dataUserProfile);
+
         $updateUserProfile = $user->updateUserProfile($dataUserProfile, $user_id);
         $session = new Session();
-        if($updateUserAccount && $updateUserProfile)
-        {
-           $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
-           $this->response->redirect('/user/profile?user_id='.$user_id);
-        }
-        else{
+        if ($updateUserAccount && $updateUserProfile) {
+            $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
+            $this->response->redirect('/user/profile?user_id=' . $user_id);
+        } else {
             $session->setFlash('updateUserError', "Cập nhật thất bại! ");
-            $this->response->redirect('/user/profile?user_id='.$user_id);
+            $this->response->redirect('/user/profile?user_id=' . $user_id);
         }
     }
     public function getViewRegister(): string
@@ -175,7 +170,7 @@ class UserController extends BaseController
         $email = $this->request->input->get('email');
         $password = $this->request->input->get('password');
         $confirmPassword = $this->request->input->get('confirm-password');
-        $status = '1';
+
         $role = '1';
         $birthday = $this->request->input->get('birthday');
         $address = $this->request->input->get('address');
@@ -199,11 +194,11 @@ class UserController extends BaseController
 
         $qrName = $this->generateRandomString(15);
         $qrCode = new QrCode();
+
         $qrCode->create('content', $qrName);
         $dataUser = array(
             'email' => $email,
             'password' => md5($password),
-            'status' => $status,
             'role' => $role,
             'qr_image' => $qrName . '.png'
         );
@@ -230,10 +225,83 @@ class UserController extends BaseController
             $session->setFlash('errorAddUser', 'Add user failed');
             $this->response->redirect('/user/register');
         }
+        $token = new Token();
+        $payload = ['email' => $email, 'status' => '1'];
+        $key = 'abc';
+        $token->setPayload($payload);
+        $a = $token->encode($key);
 
-        $session->setFlash('successAddUser', 'Add user success');
-        $this->response->redirect('/user/register');
+        $helper = new Helper();
+        $link = $helper->custom_link('verify');
+
+        $full_link = $link . '?token=' . $a;
+        $subject = 'ACTIVE YOUR ACCOUNT';
+        $body = 'click here to active your account <a href="' . $full_link . '">' . $full_link . '</a>';
+        $this->send_mail($email, $session, $subject, $body, $firstName);
     }
+  
+    public function VerifyAccount()
+    {
+        $new_user = new User();
+        $token_res = $this->request->input->get('token');
+        $token = new Token();
+        $key = 'abc';
+        $payload = $token->decode($token_res, $key);
+        $email = $payload->email;
+        $role = $payload->role;
+        $status = 1;
+        $information = array(
+            'email'=>$email,
+            'status'=>$status,
+            'token'=>$token_res
+        );
+        $result2 = $new_user->active_acc($information);
+        $session = new Session();
+        if ($result2) {
+            $session->setFlash('message', 'Your account have been active success!');
+            $this->response->redirect('/user/login');
+        } else {
+            $session->setFlash('message', 'Something went wrong! Try later!');
+            $this->response->redirect('/user/register');
+        }
+    }
+    public function send_mail(string $email,  Session $session, string $subject, string $body, string $firstname = ''): void
+    {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username   = 'huynhkyanh18066031@gmail.com';               //SMTP username
+            $mail->Password   = 'hgtnmqewwddfyyif';                          //SMTP password
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->setFrom('huynhkyanh18066031@gmail.com', 'Mailer');
+
+            if (empty($firstname)) {
+                $mail->addAddress("$email");
+            } else {
+                $mail->addAddress("$email", "$firstname");     //Add a recipient
+            }
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject;
+            //            $mail->Subject = 'ACTIVE YOUR ACCOUNT';
+            //            $mail->Body = 'click here to active your account <a href="' . $full_link . '">' . $full_link . '</a>';
+            $mail->Body = $body;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            $session->setFlash('message', 'Message has been sent! Check your email');
+            $this->response->redirect('/user/login');
+        } catch (Exception $e) {
+            $session->setFlash('warning_message', "Something went wrong. Try Later!'.$e.'");
+        }
+    }
+
 
     public function generateRandomString(int $length = 10): string
     {
@@ -259,12 +327,12 @@ class UserController extends BaseController
             $email = $request->getAllInput()['email'];
             if (!empty($this->checkExistEmail($email))) {
                 // Function check authenticate email
- 
+
                 $user = new User();
                 $data = (array)$user->getUserIdByMail($email);
 
-                $param = "http://localhost:8888/user/reset-password?id=".$data[0]->id;
-                $url_authen = "<a href='".$param."'> Rest password </a>" ; 
+                $param = "http://localhost:8888/user/reset-password?id=" . $data[0]->id;
+                $url_authen = "<a href='" . $param . "'> Rest password </a>";
                 $this->authenticateMail($email, $url_authen);
                 // return $this->response->redirect('/user/reset-password');
             } else {
@@ -285,14 +353,14 @@ class UserController extends BaseController
             $mail->SMTPAuth = true;
             $mail->Username   = 'huynhkyanh18066031@gmail.com';               //SMTP username
             $mail->Password   = 'hgtnmqewwddfyyif';                          //SMTP password
-            $mail->SMTPSecure = 'tls';                                   
+            $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             $mail->setFrom('huynhkyanh18066031@gmail.com', 'Mailer');
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = "Please confirm new password ";
-            $mail->Body = "Click url reset password: ".$url_authen;
+            $mail->Body = "Click url reset password: " . $url_authen;
             $mail->send();
             $session = new Session();
             $session->setFlash('mail', 'Message has been sent');
@@ -303,37 +371,47 @@ class UserController extends BaseController
     public function resetPassWord()
     {
         $session = new Session();
-        if(!empty($_GET['id']))
-        {
+        if (!empty($_GET['id'])) {
             $id = $_GET['id'];
             $session->setFlash('userIdReset', $id);
         }
         $userId = $session->getValue('userIdReset');
         $password = $this->request->input->get('password');
         $confirmPassword = $this->request->input->get('re-password');
-        if(!empty($password) && !empty($confirmPassword))
-        {
+        if (!empty($password) && !empty($confirmPassword)) {
             if ($password != $confirmPassword) {
                 $session->setFlash('errorResetPass', 'Password not match');
                 $this->response->redirect('/user/reset-password');
             }
-            
+
             $user = new User();
             $password = md5($password);
-            if($user->updatePassword($userId, $password))
-            {
+            if ($user->updatePassword($userId, $password)) {
                 $session->setFlash('updatePass', 'Update password success');
                 $this->response->redirect('/user/login');
             }
         }
         return $this->twig->render('user/pages/resetpassword');
     }
-    public function getListDoctor():string
+    public function getListDoctor(): string
     {
-        return $this->twig->render('user/pages/doctor');
+        $user = new User();
+        $data = $user->getAllDoctor();
+        // foreach($data as $key=>$value)
+        // {
+        //     print_r($value['first_name']);
+        // }
+        return $this->twig->render('user/pages/doctor', ['getListUser' => $data]);
     }
-    public function getDetailDoctor():string
+    public function getDetailDoctor(): string
     {
+        if (isset($_GET['user_id'])) {
+            $id = $_GET['user_id'];
+            $session = new Session();
+            $user = new User();
+            $getProfileById = $user->getProfileByUserId($id);
+            $session->set('doctorProfile', $getProfileById[0]);
+        }
         return $this->twig->render('user/pages/detail-doctor');
     }
 }

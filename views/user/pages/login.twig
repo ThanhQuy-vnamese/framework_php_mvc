@@ -176,6 +176,9 @@
 									{% if(Session.hasFlash('updatePass')) %}
 										<div class="alert alert-success">{{ session.getFlash('updatePass') }}</div>
 									{% endif %}
+									{% if(Session.hasFlash('message')) %}
+										<div class="alert alert-success">{{ session.getFlash('message') }}</div>
+									{% endif %}
 									{% if(Session.hasFlash('errorLogin'))%}
 										<div class="alert alert-danger">{{ session.getFlash('errorLogin') }}</div>
 									{% endif %}

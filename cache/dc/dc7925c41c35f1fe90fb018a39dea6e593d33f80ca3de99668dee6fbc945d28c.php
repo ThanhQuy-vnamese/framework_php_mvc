@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* user/pages/book_clinic.twig */
-class __TwigTemplate_fc3c1be04b6ce96ab0c2f4dbf97f8f8abfa680bac7252bfb06bf83e2932a7425 extends Template
+class __TwigTemplate_edb4955590e0bdd040146c66336b335f5b69314356690bb1219ee3944a9e89b2 extends Template
 {
     private $source;
     private $macros = [];

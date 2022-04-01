@@ -47,16 +47,21 @@ $app->twig->addGlobalFunction('session', Application::$APPLICATION->session);
 $app->router->get('/', [SampleController::class, 'index']);
 $app->router->get('/about', [SampleController::class, 'about']);
 $app->router->get('/doctor', [UserController::class, 'getListDoctor']);
-$app->router->get('/detail-doctor', [UserController::class, 'getDetailDoctor']);
+$app->router->get('/doctor/detail-doctor', [UserController::class, 'getDetailDoctor']);
 
-$app->router->get('/book-clinic', [SampleController::class, 'bookClinic']);
+$app->router->get('/doctor/book-clinic', [SampleController::class, 'bookClinic']);
+$app->router->post('/doctor/post-book-clinic', [SampleController::class, 'postBookClinic']);
+$app->router->get('/doctor/show-calendar', [MedicineController::class, 'showCalander']);
+
 $app->router->get('/contact', [SampleController::class, 'contact']);
+$app->router->get('/statistic-covid', [SampleController::class, 'StatisticCovid']);
 
 $app->router->get('/api/users', [ApiController::class, 'getUser']);
 
 $app->router->post('/api/login', [ApiController::class, 'login']);
 
 // Admin
+
 $app->router->get('/admin/user-list', [UserController::class, 'getViewUserList']);
 $app->router->get('/admin/user-detail', [UserController::class, 'getViewUserDetail']);
 $app->router->get('/admin/user-add', [UserController::class, 'getViewUserAdd']);
@@ -70,7 +75,8 @@ $app->router->get('/admin/blog-detail', [BlogController::class, 'getViewBlogDeta
 $app->router->get('/admin/contact-list', [ContactController::class, 'getViewContactList']);
 $app->router->get('/admin/contact-detail', [ContactController::class, 'getViewContactDetail']);
 
-
+$app->router->get('/user/blog', [BlogController::class, 'getAllBlogList']);
+$app->router->get('/user/detail-blog', [BlogController::class, 'getViewBlogByUser']);
 // Phần User
 $app->router->get('/user/login', [UserController::class, 'login']);
 $app->router->post('/user/post-login', [UserController::class, 'postLogin']);
@@ -86,8 +92,9 @@ $app->router->get('/user/forgot-password', [UserController::class, 'getViewForgo
 
 $app->router->get('/user/reset-password', [UserController::class, 'resetPassWord']);
 
+$app->router->get('/verify', [UserController::class, 'VerifyAccount']);
 
 $app->router->get('/user/medican-record', [MedicineController::class, 'getViewMedicanRecord']);
 
-$app->router->get('/blog', [BlogController::class, 'getAllBlogList']);
+
 $app->run();

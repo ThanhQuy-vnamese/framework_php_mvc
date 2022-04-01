@@ -96,7 +96,7 @@
 								<div class="d-flex flex-column align-items-center text-center">
 									<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
 									<div class="mt-3">
-										<h4>{{ session.get('doctorProfile').first_name}} {{ session.get('doctorProfile').last_name  }}</h4>
+										<h4>{{ session.getFlash('doctorProfile').first_name}} {{ session.getFlash('doctorProfile').last_name  }}</h4>
 										<p class="text-secondary mb-1">Full Stack Developer</p>
 										<p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
 										<button class="btn btn-primary">Follow</button>
@@ -110,61 +110,20 @@
 						<div class="card mb-3">
 							<div class="card-body">
 								<div class="row">
-									<div class="col-sm-3">
-										<h6 class="mb-0">Full Name</h6>
-									</div>
-									<div class="col-sm-9 text-secondary">
-										{{ session.get('doctorProfile').first_name}} {{ session.get('doctorProfile').last_name  }}
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-3">
-										<h6 class="mb-0">Email</h6>
-									</div>
-									<div class="col-sm-9 text-secondary">
-										{{ session.get('doctorProfile').email}}
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-3">
-										<h6 class="mb-0">Phone</h6>
-									</div>
-									<div class="col-sm-9 text-secondary">
-										{{ session.get('doctorProfile').phone}}
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-3">
-										<h6 class="mb-0">Mobile</h6>
-									</div>
-									<div class="col-sm-9 text-secondary">
-										(320) 380-4539
-									</div>
-								</div>
-								<hr>
-								<div class="row">
-									<div class="col-sm-3">
-										<h6 class="mb-0">Address</h6>
-									</div>
-									<div class="col-sm-9 text-secondary">
-										{{ session.get('doctorProfile').address}}
-									</div>
-								</div>
-								<hr>
-								<div class="row">
 									<div class="col-sm-12">
-										<a class="btn btn-info " href="{{ helper.custom_link('doctor/book-clinic')}}?doctor_id={{session.get('doctorProfile').user_id}}&user_id={{session.get('user').user_id }}">Đặt lịch khám</a>
+										<h2 class="mb-0">My blog name</h2>
+									</div>
+
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-sm-12">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 									</div>
 								</div>
+								<hr>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row gutters-sm">
-					<h2>Lịch làm việc</h2>
 				</div>
 
 			</div>

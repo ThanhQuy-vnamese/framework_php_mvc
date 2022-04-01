@@ -13,7 +13,7 @@ use Twig\Source;
 use Twig\Template;
 
 /* user/pages/blog.twig */
-class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b3462052c43 extends Template
+class __TwigTemplate_f2db8fdec51a63dc20699eb45aa0aa130c96720caec69b92e96cbafd77f6e588 extends Template
 {
     private $source;
     private $macros = [];
@@ -92,10 +92,7 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 \t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: Anh Huỳnh</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
-\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-        // line 53
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/detail-blog"], "method", false, false, false, 53), "html", null, true);
-        echo "\" class=\"btn btn-info\">Xem chi tiết</a>
+\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-info\">Xem chi tiết</a>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -137,7 +134,7 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 
     public function getDebugInfo()
     {
-        return array (  118 => 71,  97 => 53,  55 => 14,  47 => 9,  37 => 1,);
+        return array (  115 => 71,  55 => 14,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -194,7 +191,7 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 \t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: Anh Huỳnh</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
-\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('user/detail-blog') }}\" class=\"btn btn-info\">Xem chi tiết</a>
+\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-info\">Xem chi tiết</a>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>

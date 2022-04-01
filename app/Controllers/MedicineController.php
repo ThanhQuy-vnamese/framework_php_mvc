@@ -33,5 +33,8 @@ class MedicineController extends BaseController
     {
         return $this->twig->render('user/pages/medican_record');
     }
+    public function showCalander():string{
+        return $this->twig->render('user/pages/list_book_clinic');
+    }
 
 }

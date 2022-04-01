@@ -223,17 +223,26 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
         }
         // line 179
         echo "\t\t\t\t\t\t\t\t\t";
-        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "errorLogin"], "method", false, false, false, 179)) {
+        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "message"], "method", false, false, false, 179)) {
             // line 180
-            echo "\t\t\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "errorLogin"], "method", false, false, false, 180), "html", null, true);
+            echo "\t\t\t\t\t\t\t\t\t\t<div class=\"alert alert-success\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "message"], "method", false, false, false, 180), "html", null, true);
             echo "</div>
 \t\t\t\t\t\t\t\t\t";
         }
         // line 182
+        echo "\t\t\t\t\t\t\t\t\t";
+        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "errorLogin"], "method", false, false, false, 182)) {
+            // line 183
+            echo "\t\t\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "errorLogin"], "method", false, false, false, 183), "html", null, true);
+            echo "</div>
+\t\t\t\t\t\t\t\t\t";
+        }
+        // line 185
         echo "\t\t\t\t\t\t\t\t\t<h4 class=\"btm-sep pb-3 mb-5\">Login</h4>
 \t\t\t\t\t\t\t\t\t<form class=\"form\" method=\"post\" action=\"";
-        // line 183
+        // line 186
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/post-login"]), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"row\">
@@ -251,7 +260,7 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"col-12 text-lg-right\">
 \t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-        // line 198
+        // line 201
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/forgot-password"]), "html", null, true);
         echo "\" class=\"c-black\">Forgot password ?</a>
 \t\t\t\t\t\t\t\t\t\t\t</div>
@@ -268,8 +277,8 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t\t<div class=\"border-bottom pb-5 mb-5\">
 \t\t\t\t\t\t\t\t\t\t<h3 class=\"c-black\">First time here?</h3>
 \t\t\t\t\t\t\t\t\t\t<a href=\"";
-        // line 212
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/register"], "method", false, false, false, 212), "html", null, true);
+        // line 215
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/register"], "method", false, false, false, 215), "html", null, true);
         echo "\" class=\"btn btn-custom\">Sign up</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<h5 class=\"c-black mb-4 mt-n1\">Or Sign In With</h5>
@@ -303,7 +312,7 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 
     public function getDebugInfo()
     {
-        return array (  272 => 212,  255 => 198,  237 => 183,  234 => 182,  228 => 180,  225 => 179,  219 => 177,  217 => 176,  47 => 9,  37 => 1,);
+        return array (  281 => 215,  264 => 201,  246 => 186,  243 => 185,  237 => 183,  234 => 182,  228 => 180,  225 => 179,  219 => 177,  217 => 176,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -485,6 +494,9 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t<div class=\"form-wrap bg-white\">
 \t\t\t\t\t\t\t\t\t{% if(Session.hasFlash('updatePass')) %}
 \t\t\t\t\t\t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('updatePass') }}</div>
+\t\t\t\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t\t\t\t\t{% if(Session.hasFlash('message')) %}
+\t\t\t\t\t\t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('message') }}</div>
 \t\t\t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t\t\t{% if(Session.hasFlash('errorLogin'))%}
 \t\t\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">{{ session.getFlash('errorLogin') }}</div>
