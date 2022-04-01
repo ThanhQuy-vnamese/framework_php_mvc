@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { AddModal } from './AddModal';
 import {
     getCalendar,
+    GetCalendarResponse,
     getDoctor
 } from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
@@ -12,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 
 export const Calendar = () => {
     const [isShow, setIsShow] = useState(false);
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState<GetCalendarResponse[]>([]);
     const [date, setDate] = useState('');
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
@@ -68,6 +69,7 @@ export const Calendar = () => {
                     isShow={isShow}
                     doctors={doctors}
                     onClickClose={handleOffModal}
+                    handleSetEvent={setEvents}
                     defaultDate={date}
                     defaultTimeStart={timeStart}
                     defaultTimeEnd={timeEnd}

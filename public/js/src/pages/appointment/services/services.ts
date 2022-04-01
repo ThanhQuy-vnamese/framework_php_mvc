@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { CalendarOptions } from '@fullcalendar/react';
 
 interface SaveCalendarRequestParams {
     subject: string;
@@ -34,6 +35,16 @@ export const getDoctor = async () => {
     return await axios.get('/admin/ajax/get-doctor');
 };
 
-export const getCalendar = async () => {
+export interface GetCalendarResponse extends CalendarOptions {
+    title: string;
+    start: string;
+    end: string;
+    backgroundColor: string;
+    description: string;
+}
+
+export const getCalendar = async (): Promise<
+    AxiosResponse<GetCalendarResponse[]>
+> => {
     return await axios.get('/admin/ajax/get-calendar');
 };

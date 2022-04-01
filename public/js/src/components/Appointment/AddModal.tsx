@@ -3,6 +3,8 @@ import { FormAdd } from './FormAdd';
 import { useState, VFC } from 'react';
 import {
     ErrorParams,
+    getCalendar,
+    GetCalendarResponse,
     saveCalendar
 } from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
@@ -12,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 interface AddModalProps {
     isShow: boolean;
     onClickClose: () => void;
+    handleSetEvent: (events: GetCalendarResponse[]) => void;
     doctors: ItemDataType<string>[];
     defaultDate: string;
     defaultTimeStart: string;
@@ -22,6 +25,7 @@ export const AddModal: VFC<AddModalProps> = ({
     isShow,
     onClickClose,
     doctors,
+    handleSetEvent,
     defaultDate,
     defaultTimeStart,
     defaultTimeEnd
@@ -80,7 +84,7 @@ export const AddModal: VFC<AddModalProps> = ({
         }
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const requestParams = {
             subject,
             fullName,
@@ -90,7 +94,7 @@ export const AddModal: VFC<AddModalProps> = ({
             doctorId,
             description
         };
-        saveCalendar(requestParams)
+        await saveCalendar(requestParams)
             .then(result => {
                 const error = result.data.info.error;
                 if (error.hasError) {
@@ -105,6 +109,9 @@ export const AddModal: VFC<AddModalProps> = ({
             .catch(error => {
                 console.log(error);
             });
+        await getCalendar().then(result => {
+            handleSetEvent(result.data);
+        });
     };
 
     return (
