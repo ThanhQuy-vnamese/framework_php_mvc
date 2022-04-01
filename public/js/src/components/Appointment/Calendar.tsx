@@ -1,7 +1,7 @@
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AddModal } from './AddModal';
 import {
     getCalendar,
@@ -18,6 +18,7 @@ export const Calendar = () => {
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
     const [doctors, setDoctors] = useState<ItemDataType<string>[]>([]);
+    const testRef = useRef(null);
 
     useEffect(() => {
         const response = getDoctor();
@@ -48,12 +49,37 @@ export const Calendar = () => {
         setTimeEnd(timeEnd[0]);
     };
 
+    // TODO: Implement
+    const test = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        testRef.current.getApi().gotoDate('2022-03-20');
+    };
+
     return (
         <>
             <FullCalendar
                 plugins={[interactionPlugin, timeGridPlugin]}
                 initialView="timeGridWeek"
+                slotMinTime="06:00:00"
+                slotMaxTime="19:00:00"
+                height={900}
+                nowIndicator={true}
                 selectable={true}
+                ref={testRef}
+                customButtons={{
+                    myCustomButton: {
+                        text: 'custom!',
+                        click: () => {
+                            test();
+                        }
+                    }
+                }}
+                headerToolbar={{
+                    left: 'prev,next today myCustomButton',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                }}
                 select={info => {
                     handleSelect(info.startStr, info.endStr);
                     handleShowModal();
