@@ -15,6 +15,7 @@ class Calendar
     private int $userId;
     private string $fullName;
     private string $dateEnd;
+    private ?int $status;
 
     public function __construct(
         ?int $id,
@@ -25,7 +26,8 @@ class Calendar
         string $time_start,
         string $time_end,
         string $description,
-        int $user_id
+        int $user_id,
+        int $status = null
     ) {
         $this->id = $id;
         $this->subject = $subject;
@@ -36,6 +38,7 @@ class Calendar
         $this->timeEnd = $time_end;
         $this->description = $description;
         $this->userId = $user_id;
+        $this->status = $status;
     }
 
     /**
@@ -110,4 +113,11 @@ class Calendar
         return $this->dateEnd;
     }
 
+    /**
+     * @return int|null
+     */
+    public function getStatus(): ?int
+    {
+        return $this->status;
+    }
 }

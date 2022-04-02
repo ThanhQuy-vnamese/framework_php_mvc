@@ -7,7 +7,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Users / <strong class="text-primary small"></strong>
+                            <h3 class="nk-block-title page-title">Calendar / <strong class="text-primary small">{{ calendar_for_view.calendar_info.subject }}</strong>
                             </h3>
                             <div class="nk-block-des text-soft">
                                 <ul class="list-inline">
@@ -26,6 +26,12 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successUpdateStatus')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successUpdateStatus') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorUpdateStatus')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorUpdateStatus') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -37,6 +43,8 @@
                                 </ul><!-- .nav-tabs -->
                                 <div class="card-inner">
                                     <div class="nk-block">
+                                        {% include('admin/pages/_button_change_status.twig') %}
+                                        <div style="clear: both"></div>
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
                                             <h5 class="title">Calendar Information</h5>
                                             <button type="button" class="btn btn-primary" data-toggle="modal"

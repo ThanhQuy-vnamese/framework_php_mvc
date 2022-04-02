@@ -85,4 +85,14 @@ class CalendarRepository implements CalendarRepositoryInterface
         $row = $result->fetch_assoc();
         return new User((int)$row['id'], $row['email'], $row['password'], (int)$row['status'], (int)$row['role']);
     }
+
+    public function editStatusCalendar(Calendar $calendar): bool
+    {
+        $sql = "UPDATE medical_appointments SET status = %s WHERE id = %s";
+        $query = sprintf($sql, $calendar->getStatus(), $calendar->getId());
+        if ($this->db->query($query)) {
+            return true;
+        }
+        return false;
+    }
 }
