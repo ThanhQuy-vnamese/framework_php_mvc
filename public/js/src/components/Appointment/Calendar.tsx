@@ -87,7 +87,7 @@ export const Calendar = () => {
                 events={events}
                 eventClick={info => {
                     info.jsEvent.preventDefault();
-                    console.log(info.event);
+                    window.open(`/admin/calendar-detail?id=${info.event.id}`);
                 }}
             />
             {isShow && (

@@ -16,8 +16,7 @@ class CalendarForViewFactory
     private int $status;
     private string $fullName;
     private int $userId;
-    private int $calendarId;
-    private int $attendeesId;
+    private ?int $attendeesId;
 
     public function __construct(
         ?int $id,
@@ -28,8 +27,7 @@ class CalendarForViewFactory
         string $description,
         int $status,
         int $user_id,
-        int $calendar_id,
-        int $attendees_id
+        int $attendees_id = null
     ) {
         $this->id = $id;
         $this->subject = $subject;
@@ -39,7 +37,6 @@ class CalendarForViewFactory
         $this->description = $description;
         $this->status = $status;
         $this->userId = $user_id;
-        $this->calendarId = $calendar_id;
         $this->attendeesId = $attendees_id;
     }
 
@@ -52,12 +49,24 @@ class CalendarForViewFactory
             $this->timeStart,
             $this->timeEnd,
             $this->description,
-            $this->status,
+            $this->getStatus(),
             $this->userId,
-            $this->calendarId,
             $this->attendeesId,
             $this->getBackgroundColor()
         );
+    }
+
+    private function getStatus(): string
+    {
+        if ($this->status === 0) {
+            return 'Pending';
+        }
+
+        if ($this->status === 1) {
+            return 'Approve';
+        }
+
+        return 'Reject';
     }
 
     private function getBackgroundColor(): string
@@ -67,7 +76,7 @@ class CalendarForViewFactory
         }
 
         if ($this->status === 1) {
-            return 'blue';
+            return 'primary';
         }
 
         return 'red';

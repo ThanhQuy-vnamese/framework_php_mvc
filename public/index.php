@@ -29,6 +29,7 @@ use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
 use App\Controllers\admin\SampleController;
 use App\Controllers\admin\UserController;
+use App\Controllers\admin\ViewCalendarDetailController;
 use App\Controllers\admin\ViewMedicineDetailController;
 use App\Controllers\admin\ViewPrescriptionController;
 use App\Controllers\ApiController;
@@ -105,6 +106,7 @@ $app->router->get('/admin/contact-detail', [ContactDetailController::class, 'get
 $app->router->post('/admin/post-reply-contact', [ReplyContactController::class, 'replyContact']);
 $app->router->post('/admin/post-delete-contact', [DeleteContactController::class, 'deleteContact']);
 $app->router->get('/admin/calendar', [CalendarIndexController::class, 'getViewCalendarIndex']);
+$app->router->get('/admin/calendar-detail', [ViewCalendarDetailController::class, 'getView']);
 
 // Internal API
 $app->router->post('/admin/ajax/add-calendar', [AddCalendarController::class, 'addCalendar']);

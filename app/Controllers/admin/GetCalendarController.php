@@ -26,9 +26,10 @@ class GetCalendarController extends BaseController
         $data = [];
         foreach ($calendars as $calendar) {
             $temp = [];
+            $temp['id'] = $calendar->getCalendarForView()->getId();
             $temp['title'] = $calendar->getCalendarForView()->getSubject();
-            $temp['start'] = $calendar->getCalendarForView()->getTimeStart();
-            $temp['end'] = $calendar->getCalendarForView()->getTimeEnd();
+            $temp['start'] = $calendar->getCalendarForView()->getDateStart();
+            $temp['end'] = $calendar->getCalendarForView()->getDateEnd();
             $temp['description'] = $calendar->getCalendarForView()->getDescription();
             $temp['backgroundColor'] = $calendar->getCalendarForView()->getBackgroundColor();
             $data[] = $temp;

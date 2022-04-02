@@ -8,15 +8,14 @@ class CalendarForViewDto
 {
     private ?int $id;
     private string $subject;
-    private string $timeStart;
-    private string $timeEnd;
-    private int $status;
+    private string $dateStart;
+    private string $dateEnd;
+    private string $status;
     private string $description;
-    private string $backgroundColor;
+    private ?string $backgroundColor;
     private string $fullName;
     private int $userId;
-    private int $calendarId;
-    private int $attendeesId;
+    private ?int $attendeesId;
 
     public function __construct(
         ?int $id,
@@ -25,21 +24,19 @@ class CalendarForViewDto
         string $time_start,
         string $time_end,
         string $description,
-        int $status,
+        string $status,
         int $user_id,
-        int $calendar_id,
-        int $attendees_id,
-        string $background_color
+        int $attendees_id = null,
+        string $background_color = null
     ) {
         $this->id = $id;
         $this->subject = $subject;
         $this->fullName = $full_name;
-        $this->timeStart = $time_start;
-        $this->timeEnd = $time_end;
+        $this->dateStart = $time_start;
+        $this->dateEnd = $time_end;
         $this->description = $description;
         $this->status = $status;
         $this->userId = $user_id;
-        $this->calendarId = $calendar_id;
         $this->attendeesId = $attendees_id;
         $this->backgroundColor = $background_color;
     }
@@ -71,23 +68,23 @@ class CalendarForViewDto
     /**
      * @return string
      */
-    public function getTimeStart(): string
+    public function getDateStart(): string
     {
-        return $this->timeStart;
+        return $this->dateStart;
     }
 
     /**
      * @return string
      */
-    public function getTimeEnd(): string
+    public function getDateEnd(): string
     {
-        return $this->timeEnd;
+        return $this->dateEnd;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getStatus(): int
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -109,25 +106,17 @@ class CalendarForViewDto
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getCalendarId(): int
-    {
-        return $this->calendarId;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAttendeesId(): int
+    public function getAttendeesId(): ?int
     {
         return $this->attendeesId;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBackgroundColor(): string
+    public function getBackgroundColor(): ?string
     {
         return $this->backgroundColor;
     }
