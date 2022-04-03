@@ -27,7 +27,7 @@ class GetDoctorController extends BaseController
             $doctorForView = $doctor->getDoctorForAddCalendarDto();
             $temp = [];
             $temp['label'] = $doctorForView->getName();
-            $temp['value'] = $doctorForView->getId();
+            $temp['value'] = (string)$doctorForView->getId();
             $temp['role'] = $doctorForView->getRole();
             $data[] = $temp;
         }

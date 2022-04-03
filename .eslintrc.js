@@ -22,7 +22,8 @@ module.exports = {
         semi: ['error', 'always'],
         'prettier/prettier': ['error'],
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": ["error"]
+        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-explicit-any": "off"
     },
     ignorePatterns: ['webpack.config.js', '.eslintrc.js']
 };

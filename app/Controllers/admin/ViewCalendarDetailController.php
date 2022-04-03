@@ -36,8 +36,11 @@ class ViewCalendarDetailController extends BaseController
             'status' => $calendar->getStatus(),
             'subject' => $calendar->getSubject(),
             'full_name' => $calendar->getFullName(),
+            'date' => explode(' ', $calendar->getDateStart())[0],
             'date_start' => $calendar->getDateStart(),
             'date_end' => $calendar->getDateEnd(),
+            'time_start' => explode(' ', $calendar->getDateStart())[1] ?? '',
+            'time_end' => explode(' ', $calendar->getDateEnd())[1] ?? '',
             'description' => $calendar->getDescription(),
             'note' => empty($calendar->getNote()) ? null : $calendar->getNote(),
         ];
@@ -47,6 +50,7 @@ class ViewCalendarDetailController extends BaseController
         foreach ($attendees as $attendee) {
             $temp = [];
             $temp['full_name'] = $attendee->getAttendeesForView()->getFullName();
+            $temp['id'] = $attendee->getAttendeesForView()->getId();
             if ($attendee->getAttendeesForView()->getRole() === 2) {
                 $attendees_info['doctor'] = $temp;
             } else {
