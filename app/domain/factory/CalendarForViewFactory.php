@@ -17,6 +17,7 @@ class CalendarForViewFactory
     private string $fullName;
     private int $userId;
     private ?int $attendeesId;
+    private ?string $note;
 
     public function __construct(
         ?int $id,
@@ -27,7 +28,8 @@ class CalendarForViewFactory
         string $description,
         int $status,
         int $user_id,
-        int $attendees_id = null
+        ?int $attendees_id = null,
+        ?string $note = null
     ) {
         $this->id = $id;
         $this->subject = $subject;
@@ -38,6 +40,7 @@ class CalendarForViewFactory
         $this->status = $status;
         $this->userId = $user_id;
         $this->attendeesId = $attendees_id;
+        $this->note = $note;
     }
 
     public function getCalendarForView(): CalendarForViewDto
@@ -52,7 +55,8 @@ class CalendarForViewFactory
             $this->getStatus(),
             $this->userId,
             $this->attendeesId,
-            $this->getBackgroundColor()
+            $this->getBackgroundColor(),
+            $this->note
         );
     }
 

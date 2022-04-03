@@ -6,7 +6,6 @@ namespace App\Controllers\admin;
 
 use App\Core\Controller\BaseController;
 use App\domain\factory\AttendeesForViewDetailFactory;
-use App\dto\AttendeesForViewDetailDto;
 use App\dto\CalendarInfoForViewDetailDto;
 use App\use_case\GetCalendarDetailUseCase;
 use Twig\Error\LoaderError;
@@ -39,6 +38,8 @@ class ViewCalendarDetailController extends BaseController
             'full_name' => $calendar->getFullName(),
             'date_start' => $calendar->getDateStart(),
             'date_end' => $calendar->getDateEnd(),
+            'description' => $calendar->getDescription(),
+            'note' => empty($calendar->getNote()) ? null : $calendar->getNote(),
         ];
         $attendees = $calendar_info_for_view_detail->getAttendees();
         $attendees_info = [];

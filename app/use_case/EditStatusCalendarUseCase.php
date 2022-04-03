@@ -33,6 +33,6 @@ class EditStatusCalendarUseCase
 
     private function buildCalendar(int $calendar_id, int $status, string $note): Calendar
     {
-        return new Calendar($calendar_id, '', '', '', '', '', '', '', 0, $status, empty($note) ? null : $note);
+        return new Calendar($calendar_id, '', '', '', '', '', '', '', 0, $status, $note);
     }
 }

@@ -49,4 +49,13 @@ class AttendeesForViewDetailDto
     {
         return $this->role;
     }
+
+
+    /**
+     * @return string|null
+     */
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
 }

@@ -7,7 +7,6 @@ namespace App\query_services;
 use App\Core\Database\Query;
 use App\domain\factory\AttendeesForViewDetailFactory;
 use App\domain\factory\CalendarForViewFactory;
-use App\dto\AttendeesForViewDetailDto;
 
 class CalendarQueryService implements CalendarQueryServiceInterface
 {
@@ -59,7 +58,7 @@ class CalendarQueryService implements CalendarQueryServiceInterface
 
     public function getCalendarById(int $user_id, int $calendar_id): CalendarForViewFactory
     {
-        $sql = "SELECT A.id, A.subject, A.full_name, A.description, A.date_start, A.date_end, A.status, A.user_id 
+        $sql = "SELECT A.id, A.subject, A.full_name, A.description, A.date_start, A.date_end, A.status, A.user_id, A.note 
                 FROM medical_appointments AS A INNER JOIN medical_appointment_attendees AA ON A.id = AA.id_appointment 
                 WHERE A.id = %s AND AA.user_id = %s";
         $query = sprintf($sql, $calendar_id, $user_id);
@@ -77,7 +76,9 @@ class CalendarQueryService implements CalendarQueryServiceInterface
             $row['date_end'],
             $row['description'],
             (int)$row['status'],
-            (int)$row['user_id']
+            (int)$row['user_id'],
+            null,
+            $row['note']
         );
     }
 

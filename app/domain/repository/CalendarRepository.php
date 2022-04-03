@@ -88,27 +88,8 @@ class CalendarRepository implements CalendarRepositoryInterface
 
     public function editStatusCalendar(Calendar $calendar): bool
     {
-        if (! is_null($calendar->getNote())) {
-            return $this->editStatusCalendarWithNote($calendar);
-        }
-
-        return $this->editStatusCalendarWithoutNote($calendar);
-    }
-
-    private function editStatusCalendarWithNote(Calendar $calendar): bool
-    {
         $sql = "UPDATE medical_appointments SET status = %s, note = '%s' WHERE id = %s";
         $query = sprintf($sql, $calendar->getStatus(), $calendar->getNote(), $calendar->getId());
-        if ($this->db->query($query)) {
-            return true;
-        }
-        return false;
-    }
-
-    private function editStatusCalendarWithoutNote(Calendar $calendar): bool
-    {
-        $sql = "UPDATE medical_appointments SET status = %s WHERE id = %s";
-        $query = sprintf($sql, $calendar->getStatus(), $calendar->getId());
         if ($this->db->query($query)) {
             return true;
         }

@@ -16,6 +16,7 @@ class CalendarForViewDto
     private string $fullName;
     private int $userId;
     private ?int $attendeesId;
+    private ?string $note;
 
     public function __construct(
         ?int $id,
@@ -26,8 +27,9 @@ class CalendarForViewDto
         string $description,
         string $status,
         int $user_id,
-        int $attendees_id = null,
-        string $background_color = null
+        ?int $attendees_id = null,
+        ?string $background_color = null,
+        ?string $note = null
     ) {
         $this->id = $id;
         $this->subject = $subject;
@@ -39,6 +41,7 @@ class CalendarForViewDto
         $this->userId = $user_id;
         $this->attendeesId = $attendees_id;
         $this->backgroundColor = $background_color;
+        $this->note = $note;
     }
 
     /**
@@ -119,5 +122,13 @@ class CalendarForViewDto
     public function getBackgroundColor(): ?string
     {
         return $this->backgroundColor;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNote(): ?string
+    {
+        return $this->note;
     }
 }

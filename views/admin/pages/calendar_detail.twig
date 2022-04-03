@@ -97,6 +97,7 @@
                                             </div>
                                         </div><!-- .profile-ud-list -->
                                     </div><!-- .nk-block -->
+                                    <div class="nk-divider divider md"></div>
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-line">
                                             <h6 class="title overline-title text-base">Attendees</h6>
@@ -116,6 +117,34 @@
                                             </div>
                                         </div><!-- .profile-ud-list -->
                                     </div><!-- .nk-block -->
+                                    <div class="nk-divider divider md"></div>
+                                    <div class="nk-block">
+                                        <div class="nk-block-head nk-block-head-line">
+                                            <h6 class="title overline-title text-base">Description</h6>
+                                        </div><!-- .nk-block-head -->
+                                        <div class="bq-note">
+                                            <div class="bq-note-item">
+                                                <div class="bq-note-text">
+                                                    <p>{{ calendar_for_view.calendar_info.description }}</p>
+                                                </div>
+                                            </div><!-- .bq-note-item -->
+                                        </div>
+                                    </div>
+                                    <div class="nk-divider divider md"></div>
+                                    <div class="nk-block">
+                                        <div class="nk-block-head nk-block-head-line">
+                                            <h6 class="title overline-title text-base">Note Status</h6>
+                                        </div><!-- .nk-block-head -->
+                                        {% if calendar_for_view.calendar_info.note != null %}
+                                            <div class="bq-note">
+                                                <div class="bq-note-item">
+                                                    <div class="bq-note-text">
+                                                        <p>{{ calendar_for_view.calendar_info.note }}</p>
+                                                    </div>
+                                                </div><!-- .bq-note-item -->
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                     <div class="nk-divider divider md"></div>
                                     <!-- Modal Content Code -->
                                 </div><!-- .card-inner -->
@@ -143,12 +172,14 @@
                                         <div class="custom-control custom-radio" style="margin-right: 5px">
                                             <input type="radio" id="customRadio1" name="status" value="1"
                                                    class="custom-control-input" {{ calendar_for_view.calendar_info.status == 'Approve' ? 'checked' : '' }}>
-                                            <label class="custom-control-label text-primary" for="customRadio1">Approve</label>
+                                            <label class="custom-control-label text-primary"
+                                                   for="customRadio1">Approve</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="customRadio2" name="status" value="2"
                                                    class="custom-control-input" {{ calendar_for_view.calendar_info.status == 'Reject' ? 'checked' : '' }}>
-                                            <label class="custom-control-label text-danger" for="customRadio2">Reject</label>
+                                            <label class="custom-control-label text-danger"
+                                                   for="customRadio2">Reject</label>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +187,8 @@
                                     <div class="form-group">
                                         <label class="form-label" for="note">Note</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control no-resize" id="note" name="note" placeholder="Note"></textarea>
+                                            <textarea class="form-control no-resize" id="note" name="note"
+                                                      placeholder="Note">{{ calendar_for_view.calendar_info.note }}</textarea>
                                         </div>
                                     </div>
                                 </div>
