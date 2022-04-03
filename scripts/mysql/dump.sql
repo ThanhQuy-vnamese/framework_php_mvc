@@ -111,6 +111,7 @@ CREATE TABLE `medical_appointments`
     `time_end`    timestamp DEFAULT CURRENT_TIMESTAMP,
     `description` text,
     `status`      int,
+    `note`        text DEFAULT NULL,
     `created_at`  timestamp DEFAULT CURRENT_TIMESTAMP,
     `updated_at`  timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`     int

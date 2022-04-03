@@ -19,9 +19,9 @@ class EditStatusCalendarUseCase
         $this->session = new Session();
     }
 
-    public function execute(int $calendar_id, int $status): bool
+    public function execute(int $calendar_id, int $status, string $note): bool
     {
-        $calendar = $this->buildCalendar($calendar_id, $status);
+        $calendar = $this->buildCalendar($calendar_id, $status, $note);
         $isSuccess = $this->calendarRepository->editStatusCalendar($calendar);
         if (!$isSuccess) {
             $this->session->setFlash('errorUpdateStatus', 'Update status fail');
@@ -31,8 +31,8 @@ class EditStatusCalendarUseCase
         return false;
     }
 
-    private function buildCalendar(int $calendar_id, int $status): Calendar
+    private function buildCalendar(int $calendar_id, int $status, string $note): Calendar
     {
-        return new Calendar($calendar_id, '', '', '', '', '', '', '', 0, $status);
+        return new Calendar($calendar_id, '', '', '', '', '', '', '', 0, $status, empty($note) ? null : $note);
     }
 }

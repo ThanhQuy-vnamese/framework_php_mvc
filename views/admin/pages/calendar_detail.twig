@@ -44,9 +44,11 @@
                                 </ul><!-- .nav-tabs -->
                                 <div class="card-inner">
                                     <div class="nk-block">
-                                        <button type="button" class="btn btn-dim btn-primary" data-toggle="modal"
-                                                data-target="#changeStatusModal">Change status
-                                        </button>
+                                        <div style="margin-bottom: 5px">
+                                            <button type="button" class="btn btn-dim btn-primary" data-toggle="modal"
+                                                    data-target="#changeStatusModal">Change status
+                                            </button>
+                                        </div>
                                         <div style="clear: both"></div>
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
                                             <h5 class="title">Calendar Information</h5>
@@ -138,29 +140,31 @@
                             <div class="row gy-4">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <div class="custom-control custom-radio">
+                                        <div class="custom-control custom-radio" style="margin-right: 5px">
                                             <input type="radio" id="customRadio1" name="status" value="1"
                                                    class="custom-control-input" {{ calendar_for_view.calendar_info.status == 'Approve' ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="customRadio1">Approve</label>
+                                            <label class="custom-control-label text-primary" for="customRadio1">Approve</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="customRadio2" name="status" value="2"
                                                    class="custom-control-input" {{ calendar_for_view.calendar_info.status == 'Reject' ? 'checked' : '' }}>
-                                            <label class="custom-control-label" for="customRadio2">Reject</label>
+                                            <label class="custom-control-label text-danger" for="customRadio2">Reject</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="default-textarea">Textarea</label>
+                                        <label class="form-label" for="note">Note</label>
                                         <div class="form-control-wrap">
-                                            <textarea class="form-control no-resize" id="default-textarea">Large text area content</textarea>
+                                            <textarea class="form-control no-resize" id="note" name="note" placeholder="Note"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-inner">
-                                <button class="btn btn-outline-secondary js-btn-cancel">Change</button>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary js-btn-cancel">Change</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
