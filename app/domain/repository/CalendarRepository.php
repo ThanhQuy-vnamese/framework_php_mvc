@@ -95,4 +95,60 @@ class CalendarRepository implements CalendarRepositoryInterface
         }
         return false;
     }
+
+    public function editCalendar(Calendar $calendar): bool
+    {
+        $sql = "UPDATE medical_appointments 
+                SET subject = '%s', full_name = '%s', date_start = '%s', date_end = '%s', time_start = '%s', time_end = '%s', description = '%s'
+                WHERE id = %s AND user_id = %s";
+        $query = sprintf(
+            $sql,
+            $calendar->getSubject(),
+            $calendar->getFullName(),
+            $calendar->getDateStart(),
+            $calendar->getDateEnd(),
+            $calendar->getTimeStart(),
+            $calendar->getTimeEnd(),
+            $calendar->getDescription(),
+            $calendar->getId(),
+            $calendar->getUserId()
+        );
+        if ($this->db->query($query)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getNumsCalendarByStartTimeAndEndTimeExceptCurrentCalendar(Calendar $calendar): int
+    {
+        $sql = "SELECT COUNT(*) AS count FROM `medical_appointments` 
+                WHERE ((date_start >= '%s' AND date_start < '%s') 
+                   OR (date_start <> date_end AND date_end > '%s' AND date_end <= '%s') 
+                   OR (date_start < '%s' AND date_end > '%s'))
+                   AND id <> %s";
+        $query = sprintf(
+            $sql,
+            $calendar->getDateStart(),
+            $calendar->getDateEnd(),
+            $calendar->getDateStart(),
+            $calendar->getDateEnd(),
+            $calendar->getDateStart(),
+            $calendar->getDateEnd(),
+            $calendar->getId()
+        );
+        $result = $this->db->query($query);
+        $row = $result->fetch_assoc();
+
+        return (int)$row['count'];
+    }
+
+    public function updateAttendees(int $old_doctor_id, int $new_doctor_id, int $calendar_id): bool
+    {
+        $sql = "UPDATE medical_appointment_attendees SET user_id = %s WHERE user_id = (SELECT id FROM medical_users WHERE id = %s AND role = 2) AND id_appointment = %s";
+        $query = sprintf($sql, $new_doctor_id, $old_doctor_id, $calendar_id);
+        if ($this->db->query($query)) {
+            return true;
+        }
+        return false;
+    }
 }

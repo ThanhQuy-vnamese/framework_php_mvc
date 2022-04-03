@@ -33,6 +33,12 @@
                     {% if(Session.hasFlash('errorUpdateStatus')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorUpdateStatus') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('successEditCalendar')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successEditCalendar') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorEditCalendar')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorEditCalendar') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -52,7 +58,9 @@
                                         <div style="clear: both"></div>
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
                                             <h5 class="title">Calendar Information</h5>
-                                            <button type="button" data-selected-doctor-id="{{ calendar_for_view.attendees_info.doctor.id }}" class="btn btn-primary js-btn-edit-calendar">Edit
+                                            <button type="button"
+                                                    data-selected-doctor-id="{{ calendar_for_view.attendees_info.doctor.id }}"
+                                                    class="btn btn-primary js-btn-edit-calendar">Edit
                                                 calendar
                                             </button>
                                         </div><!-- .nk-block-head -->
@@ -213,75 +221,85 @@
                         <h5 class="modal-title">Change status</h5>
                     </div>
                     <div class="modal-body">
-                        <div class="row gy-4">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="subject" class="form-label">Subject</label>
+                        <form action="{{ redirect('admin/post-calendar-edit') }}" method="post" id="edit-calendar">
+                            <input type="text" name="id" value="{{ calendar_for_view.calendar_info.id }}" hidden>
+                            <input type="text" name="doctor-id-selected" value="{{ calendar_for_view.attendees_info.doctor.id }}" hidden>
+                            <input type="text" id="current-doctor-id" name="current-doctor-id" value="{{ calendar_for_view.attendees_info.doctor.id }}" hidden>
+                            <div class="row gy-4">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label">Subject</label>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="subject"
+                                               value="{{ calendar_for_view.calendar_info.subject }}" name="subject">
+                                    </div>
                                 </div>
-                                <div class="form-control-wrap">
-                                    <input type="text" class="form-control" id="subject" value="{{ calendar_for_view.calendar_info.subject }}" name="subject">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="full-name" class="form-label">Full name</label>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="full-name"
+                                               value="{{ calendar_for_view.calendar_info.full_name }}" name="full-name">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="full-name" class="form-label">Full name</label>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="date" class="form-label">Date</label>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="date" class="form-control" id="date" name="date"
+                                               value="{{ calendar_for_view.calendar_info.date }}">
+                                    </div>
                                 </div>
-                                <div class="form-control-wrap">
-                                    <input type="text" class="form-control" id="full-name" value="{{ calendar_for_view.calendar_info.full_name }}" name="full-name">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="time-start" class="form-label">Time start</label>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="time" class="form-control" id="time-start" name="time-start"
+                                               value="{{ calendar_for_view.calendar_info.time_start }}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="date" class="form-label">Date</label>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="time-end" class="form-label">Time end</label>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="time" class="form-control" id="time-end" name="time-end"
+                                               value="{{ calendar_for_view.calendar_info.time_end }}">
+                                    </div>
                                 </div>
-                                <div class="form-control-wrap">
-                                    <input type="date" class="form-control" id="date" name="date" value="{{ calendar_for_view.calendar_info.date }}">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="doctor" class="form-label">Doctor</label>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <div id="select-doctor"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="time-start" class="form-label">Time start</label>
-                                </div>
-                                <div class="form-control-wrap">
-                                    <input type="time" class="form-control" id="time-start" name="time-start" value="{{ calendar_for_view.calendar_info.time_start }}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="time-end" class="form-label">Time end</label>
-                                </div>
-                                <div class="form-control-wrap">
-                                    <input type="time" class="form-control" id="time-end" name="time-end" value="{{ calendar_for_view.calendar_info.time_end }}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="doctor" class="form-label">Doctor</label>
-                                </div>
-                                <div class="form-control-wrap">
-                                    <div id="select-doctor"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="description" class="form-label">Description</label>
-                                </div>
-                                <div class="form-control-wrap">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description" class="form-label">Description</label>
+                                    </div>
+                                    <div class="form-control-wrap">
                                     <textarea
                                             class="form-control"
                                             name="description"
                                             id="description"
                                     ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                </div>
-                                <div class="form-control-wrap">
-                                    <button type="submit" class="btn btn-primary">Edit</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
