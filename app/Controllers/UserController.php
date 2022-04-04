@@ -35,6 +35,7 @@ class UserController extends BaseController
     }
     public function login(): string
     {
+
         return $this->twig->render('user/pages/login');
     }
     public function postLogin()
@@ -143,11 +144,18 @@ class UserController extends BaseController
         $address = $this->request->input->get('address');
         $phone = trim($this->request->input->get('phone'));
         $gender = $this->request->input->get('gender');
+        $qrName = $this->generateRandomString(15);
+        $qrCode = new QrCode();
 
+        $helper = new Helper();
+        $qr_profile = $helper->custom_link('user/profile')."?user_id=".$user_id;
+
+        $qrCode->create($qr_profile, $qrName);
         $dataUser = array(
             'email' => $email,
             'role' => $role,
-            'id' => $user_id
+            'id' => $user_id,
+            'qr_image' => $qrName . '.png'
         );
         $user = new User();
         $updateUserAccount =  $user->updateUserAccount($dataUser, $user_id);
@@ -228,20 +236,23 @@ class UserController extends BaseController
         }
 
 
-        $qrName = $this->generateRandomString(15);
-        $qrCode = new QrCode();
+        // $qrName = $this->generateRandomString(15);
+        // $qrCode = new QrCode();
 
-        $qrCode->create('content', $qrName);
+        // $helper = new Helper();
+        // $qr_profile = $helper->custom_link('user/profile')."?user_id=21";
+
+        // $qrCode->create('content', $qrName);
         $dataUser = array(
             'email' => $email,
             'password' => md5($password),
             'role' => $role,
-            'qr_image' => $qrName . '.png'
+            // 'qr_image' => $qrName . '.png'
         );
         $user = new User();
 
         $userId = $user->addUser($dataUser);
-        print_r($dataUser);
+        // print_r($dataUser);
         if (!$userId) {
             $session->setFlash('errorAddUser', 'Add user failed');
             $this->response->redirect('/user/register');

@@ -73,7 +73,13 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 \t\t\t<section class=\"pt-5 pb-5\">
 \t\t\t\t<div class=\"container\">
 \t\t\t\t\t<div class=\"row mb-md-2\">
-\t\t\t\t\t\t<div class=\"col-md-6 col-lg-4\">
+\t\t\t\t\t\t";
+        // line 34
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["data"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["blog"]) {
+            // line 35
+            echo "\t\t\t\t\t\t<div class=\"col-md-6 col-lg-4\">
 \t\t\t\t\t\t\t<a href=\"#\">
 \t\t\t\t\t\t\t\t<div class=\"card shadow-sm border-light mb-4\">
 \t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"position-relative\">
@@ -81,28 +87,47 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"card-body\">
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"font-weight-normal\">Thế giới ngày mai</h3>
+\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"font-weight-normal\">";
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "title", [], "any", false, false, false, 43), "html", null, true);
+            echo "</h3>
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
 \t\t\t\t\t\t\t\t\t\t\t<span class=\"small lh-120\" style=\"font-size: 100%\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Ngày tạo: 9H 15-07-2022</span>
+\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Ngày tạo: ";
+            // line 47
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "created_at", [], "any", false, false, false, 47), "html", null, true);
+            echo "</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
 \t\t\t\t\t\t\t\t\t\t\t<span class=\"small lh-120\" style=\"font-size: 100%\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: Anh Huỳnh</span>
+\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: ";
+            // line 51
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "first_name", [], "any", false, false, false, 51), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "last_name", [], "any", false, false, false, 51), "html", null, true);
+            echo "</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
 \t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-        // line 53
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/detail-blog"], "method", false, false, false, 53), "html", null, true);
-        echo "\" class=\"btn btn-info\">Xem chi tiết</a>
+            // line 54
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/detail-blog"], "method", false, false, false, 54), "html", null, true);
+            echo "?id=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "id", [], "any", false, false, false, 54), "html", null, true);
+            echo "\" class=\"btn btn-info\">Xem chi tiết</a>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</div>
+\t\t\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['blog'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 61
+        echo "\t\t\t\t\t</div>
 
-\t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"row py-4 mt-md-5\">
 \t\t\t\t\t\t<div class=\"col text-center\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-lg shadow btn-primary mt-1\">Browse all</a>
@@ -114,7 +139,7 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 71
+        // line 73
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "
 \t\t<!-- footer part end-->
@@ -137,7 +162,7 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 
     public function getDebugInfo()
     {
-        return array (  118 => 71,  97 => 53,  55 => 14,  47 => 9,  37 => 1,);
+        return array (  143 => 73,  129 => 61,  114 => 54,  106 => 51,  99 => 47,  92 => 43,  82 => 35,  78 => 34,  55 => 14,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -175,6 +200,7 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 \t\t\t<section class=\"pt-5 pb-5\">
 \t\t\t\t<div class=\"container\">
 \t\t\t\t\t<div class=\"row mb-md-2\">
+\t\t\t\t\t\t{% for blog in data %}
 \t\t\t\t\t\t<div class=\"col-md-6 col-lg-4\">
 \t\t\t\t\t\t\t<a href=\"#\">
 \t\t\t\t\t\t\t\t<div class=\"card shadow-sm border-light mb-4\">
@@ -183,25 +209,26 @@ class __TwigTemplate_f44b5381d79bab9514c858782bd347fde4e5bd6a22aef135117e9b34620
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"card-body\">
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"font-weight-normal\">Thế giới ngày mai</h3>
+\t\t\t\t\t\t\t\t\t\t\t<h3 class=\"font-weight-normal\">{{ blog.title }}</h3>
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
 \t\t\t\t\t\t\t\t\t\t\t<span class=\"small lh-120\" style=\"font-size: 100%\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Ngày tạo: 9H 15-07-2022</span>
+\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Ngày tạo: {{ blog.created_at }}</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
 \t\t\t\t\t\t\t\t\t\t\t<span class=\"small lh-120\" style=\"font-size: 100%\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: Anh Huỳnh</span>
+\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: {{ blog.first_name }} {{ blog.last_name }}</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
-\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('user/detail-blog') }}\" class=\"btn btn-info\">Xem chi tiết</a>
+\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('user/detail-blog') }}?id={{blog.id}}\" class=\"btn btn-info\">Xem chi tiết</a>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</div>
-
+\t\t\t\t\t\t{% endfor %}
 \t\t\t\t\t</div>
+
 \t\t\t\t\t<div class=\"row py-4 mt-md-5\">
 \t\t\t\t\t\t<div class=\"col text-center\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-lg shadow btn-primary mt-1\">Browse all</a>

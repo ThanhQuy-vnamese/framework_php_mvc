@@ -120,7 +120,7 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 \t\t\t\t\t<div class=\"col-lg-12\">
 \t\t\t\t\t\t<div class=\"breadcrumb_iner\">
 \t\t\t\t\t\t\t<div class=\"breadcrumb_iner_item\">
-\t\t\t\t\t\t\t\t<h2>Detail Doctor</h2>
+\t\t\t\t\t\t\t\t<h2>Detail Blog</h2>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -140,14 +140,10 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 \t\t\t\t\t\t\t\t\t<div class=\"mt-3\">
 \t\t\t\t\t\t\t\t\t\t<h4>";
         // line 99
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "doctorProfile"], "method", false, false, false, 99), "first_name", [], "any", false, false, false, 99), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 99), "first_name", [], "any", false, false, false, 99), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "doctorProfile"], "method", false, false, false, 99), "last_name", [], "any", false, false, false, 99), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 99), "last_name", [], "any", false, false, false, 99), "html", null, true);
         echo "</h4>
-\t\t\t\t\t\t\t\t\t\t<p class=\"text-secondary mb-1\">Full Stack Developer</p>
-\t\t\t\t\t\t\t\t\t\t<p class=\"text-muted font-size-sm\">Bay Area, San Francisco, CA</p>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\">Follow</button>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-outline-primary\">Message</button>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
@@ -158,13 +154,19 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 \t\t\t\t\t\t\t<div class=\"card-body\">
 \t\t\t\t\t\t\t\t<div class=\"row\">
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
-\t\t\t\t\t\t\t\t\t\t<h2 class=\"mb-0\">My blog name</h2>
+\t\t\t\t\t\t\t\t\t\t<h2 class=\"mb-0\">";
+        // line 110
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["blog"] ?? null), "title", [], "any", false, false, false, 110), "html", null, true);
+        echo "</h2>
 \t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<hr>
 \t\t\t\t\t\t\t\t<div class=\"row\">
-\t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+\t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">";
+        // line 116
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["blog"] ?? null), "content", [], "any", false, false, false, 116), "html", null, true);
+        echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<hr>
@@ -180,7 +182,7 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 135
+        // line 131
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "
 
@@ -204,7 +206,7 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 
     public function getDebugInfo()
     {
-        return array (  184 => 135,  143 => 99,  114 => 73,  48 => 10,  37 => 1,);
+        return array (  186 => 131,  168 => 116,  159 => 110,  143 => 99,  114 => 73,  48 => 10,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -289,7 +291,7 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 \t\t\t\t\t<div class=\"col-lg-12\">
 \t\t\t\t\t\t<div class=\"breadcrumb_iner\">
 \t\t\t\t\t\t\t<div class=\"breadcrumb_iner_item\">
-\t\t\t\t\t\t\t\t<h2>Detail Doctor</h2>
+\t\t\t\t\t\t\t\t<h2>Detail Blog</h2>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -307,11 +309,7 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 \t\t\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center\">
 \t\t\t\t\t\t\t\t\t<img src=\"https://bootdey.com/img/Content/avatar/avatar7.png\" alt=\"Admin\" class=\"rounded-circle\" width=\"150\">
 \t\t\t\t\t\t\t\t\t<div class=\"mt-3\">
-\t\t\t\t\t\t\t\t\t\t<h4>{{ session.getFlash('doctorProfile').first_name}} {{ session.getFlash('doctorProfile').last_name  }}</h4>
-\t\t\t\t\t\t\t\t\t\t<p class=\"text-secondary mb-1\">Full Stack Developer</p>
-\t\t\t\t\t\t\t\t\t\t<p class=\"text-muted font-size-sm\">Bay Area, San Francisco, CA</p>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\">Follow</button>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-outline-primary\">Message</button>
+\t\t\t\t\t\t\t\t\t\t<h4>{{ session.get('user').first_name}} {{ session.get('user').last_name}}</h4>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
@@ -322,13 +320,13 @@ class __TwigTemplate_20e9877dfdb56e36c280570ff3be8c95fb320be024c05a8fbdc75c92b99
 \t\t\t\t\t\t\t<div class=\"card-body\">
 \t\t\t\t\t\t\t\t<div class=\"row\">
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
-\t\t\t\t\t\t\t\t\t\t<h2 class=\"mb-0\">My blog name</h2>
+\t\t\t\t\t\t\t\t\t\t<h2 class=\"mb-0\">{{ blog.title }}</h2>
 \t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<hr>
 \t\t\t\t\t\t\t\t<div class=\"row\">
-\t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+\t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">{{ blog.content }}
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<hr>
