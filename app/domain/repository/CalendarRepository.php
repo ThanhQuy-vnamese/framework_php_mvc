@@ -25,8 +25,8 @@ class CalendarRepository implements CalendarRepositoryInterface
 
     public function addCalendar(Calendar $calendar): int
     {
-        $sql = "INSERT INTO medical_appointments (subject, full_name, date_start, date_end, time_start, time_end, description, user_id)
-                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)";
+        $sql = "INSERT INTO medical_appointments (subject, full_name, date_start, date_end, time_start, time_end, description, user_id, status)
+                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, %s)";
         $query = sprintf(
             $sql,
             $calendar->getSubject(),
@@ -36,7 +36,8 @@ class CalendarRepository implements CalendarRepositoryInterface
             $calendar->getTimeStart(),
             $calendar->getTimeEnd(),
             $calendar->getDescription(),
-            $calendar->getUserId()
+            $calendar->getUserId(),
+            $calendar->getStatus()
         );
         $this->db->query($query);
 

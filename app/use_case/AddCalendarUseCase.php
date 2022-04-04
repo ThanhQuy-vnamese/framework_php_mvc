@@ -14,6 +14,7 @@ class AddCalendarUseCase
     const TYPE_CONFLICT = 1;
     const TYPE_DOCTOR_EMPTY = 2;
     const TYPE_DOCTOR_NOT_EXIST = 3;
+    const DEFAULT_STATUS = 0;
 
     private CalendarRepositoryInterface $calendarRepository;
 
@@ -40,7 +41,7 @@ class AddCalendarUseCase
             return $this->buildError(true, self::TYPE_DOCTOR_EMPTY, 'Please chose a doctor!');
         }
 
-        if (is_null($this->calendarRepository->findUserByUserIdAndRole(1, 2)->getId())) {
+        if (is_null($this->calendarRepository->findUserByUserIdAndRole($doctor_id, 2)->getId())) {
             return $this->buildError(true, self::TYPE_DOCTOR_NOT_EXIST, 'Doctor is chosen not valid!');
         }
 
@@ -75,7 +76,8 @@ class AddCalendarUseCase
             $date . ' ' . $time_start,
             $date . ' ' . $time_end,
             $description,
-            $user_id
+            $user_id,
+            self::DEFAULT_STATUS
         );
     }
 
