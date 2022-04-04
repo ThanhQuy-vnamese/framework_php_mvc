@@ -39,13 +39,13 @@
 								<a class="nav-link" href="{{ helper.custom_link('contact') }}">Contact</a>
 							</li>
 							<li class="nav-item dropdown">
-								{% if(Session.hasFlash('user')) %}
+								{% if(Session.get('user') != '') %}
 									<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fa-solid fa-user"></i>
-										{{ session.getValue('user').first_name}}
+										{{ session.get('user').first_name}}
 									</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="{{ helper.custom_link('user/profile')}}?user_id={{ session.getValue('user').user_id}}">Profile</a>
+										<a class="dropdown-item" href="{{ helper.custom_link('user/profile')}}?user_id={{ session.get('user').user_id}}">Profile</a>
 										<a class="dropdown-item" href="{{ helper.custom_link('user/logout') }}">Logout</a>
 									</div>
 								{% else %}

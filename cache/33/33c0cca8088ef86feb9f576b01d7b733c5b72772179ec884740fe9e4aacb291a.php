@@ -100,86 +100,124 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
 \t<body>
 \t\t<div class=\"container roundeed bg-white mt-5 mb-5\">
-\t\t\t<div class=\"row\">
-\t\t\t\t<div class=\"col-md-3\">
-\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center p-3 py-5\"><img class=\"rounded-circle mt-5\" width=\"100%\" src=\"https://kontumtv.vn/wp-content/uploads/2020/02/donald_trump_sblu.jpg\" width=\"90\"><span class=\"font-weight-bold\">
-\t\t\t\t\t\t\t";
-        // line 70
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 70), "first_name", [], "any", false, false, false, 70), "html", null, true);
-        echo "
-\t\t\t\t\t\t\t";
-        // line 71
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 71), "last_name", [], "any", false, false, false, 71), "html", null, true);
-        echo "
-\t\t\t\t\t\t</span>
-\t\t\t\t\t\t<span>Việt Nam</span>
-
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-md-9\">
-\t\t\t\t\t<div class=\"p-3 py-5\">
-\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-3\">
-\t\t\t\t\t\t\t<h2 class=\"text-right\">Thông tin cá nhân</h2>
-
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t";
-        // line 83
-        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "updateUserError"], "method", false, false, false, 83)) {
-            // line 84
-            echo "\t\t\t\t\t\t\t<div class=\"alert alert-danger\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "updateUserError"], "method", false, false, false, 84), "html", null, true);
-            echo "</div>
-\t\t\t\t\t\t";
-        }
-        // line 86
-        echo "\t\t\t\t\t\t";
-        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "updateUser"], "method", false, false, false, 86)) {
-            // line 87
-            echo "\t\t\t\t\t\t\t<div class=\"alert alert-success\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "updateUser"], "method", false, false, false, 87), "html", null, true);
-            echo "</div>
-\t\t\t\t\t\t";
-        }
-        // line 89
-        echo "\t\t\t\t\t\t<form method=\"post\" method=\"post\" action=\"";
+\t\t\t<form method=\"post\" method=\"post\" action=\"";
+        // line 67
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/post-profile"]), "html", null, true);
+        echo "\" enctype=\"multipart/form-data\">
+\t\t\t\t<div class=\"row\">
+
+\t\t\t\t\t<div class=\"col-md-3\">
+\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center p-3 py-5\">
+\t\t\t\t\t\t\t<a href=\"";
+        // line 72
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => ""], "method", false, false, false, 72), "html", null, true);
         echo "\">
+\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d=\"M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.6 483.2 483.9 512 448.5 512H128.1C92.75 512 64.09 483.3 64.09 448V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5H575.8zM288 160C252.7 160 224 188.7 224 224C224 259.3 252.7 288 288 288C323.3 288 352 259.3 352 224C352 188.7 323.3 160 288 160zM256 320C211.8 320 176 355.8 176 400C176 408.8 183.2 416 192 416H384C392.8 416 400 408.8 400 400C400 355.8 364.2 320 320 320H256z\"/></svg>
+\t\t\t\t\t\t\t\t<span>Home</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t";
+        // line 76
+        if ((0 !== twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 76), "avatar", [], "any", false, false, false, 76), ""))) {
+            // line 77
+            echo "
+\t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/";
+            // line 78
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "getDirectoryUpload", [], "method", false, false, false, 78), "html", null, true);
+            echo "avatars/";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 78), "avatar", [], "any", false, false, false, 78), "html", null, true);
+            echo "\" width=\"90\">
+\t\t\t\t\t\t\t";
+        } else {
+            // line 80
+            echo "\t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "getDirectoryUpload", [], "method", false, false, false, 80), "html", null, true);
+            echo "avatars/donaltrump.jpg\" width=\"90\">
+\t\t\t\t\t\t\t";
+        }
+        // line 82
+        echo "\t\t\t\t\t\t\t<span class=\"font-weight-bold\">
+\t\t\t\t\t\t\t\t";
+        // line 83
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 83), "first_name", [], "any", false, false, false, 83), "html", null, true);
+        echo "
+\t\t\t\t\t\t\t\t";
+        // line 84
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 84), "last_name", [], "any", false, false, false, 84), "html", null, true);
+        echo "
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t<span>Việt Nam</span>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"col-md-9\">
+\t\t\t\t\t\t<div class=\"p-3 py-5\">
+\t\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-3\">
+\t\t\t\t\t\t\t\t<h2 class=\"text-right\">Thông tin cá nhân</h2>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t";
+        // line 94
+        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "updateUserError"], "method", false, false, false, 94)) {
+            // line 95
+            echo "\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "updateUserError"], "method", false, false, false, 95), "html", null, true);
+            echo "</div>
+\t\t\t\t\t\t\t";
+        }
+        // line 97
+        echo "\t\t\t\t\t\t\t";
+        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "errorImage"], "method", false, false, false, 97)) {
+            // line 98
+            echo "\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "errorImage"], "method", false, false, false, 98), "html", null, true);
+            echo "</div>
+\t\t\t\t\t\t\t";
+        }
+        // line 100
+        echo "\t\t\t\t\t\t\t";
+        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "updateUser"], "method", false, false, false, 100)) {
+            // line 101
+            echo "\t\t\t\t\t\t\t\t<div class=\"alert alert-success\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getFlash", [0 => "updateUser"], "method", false, false, false, 101), "html", null, true);
+            echo "</div>
+\t\t\t\t\t\t\t";
+        }
+        // line 103
+        echo "
 \t\t\t\t\t\t\t<input type=\"hidden\" name=\"user_id\" class=\"form-control\" value=\" ";
-        // line 90
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 90), "user_id", [], "any", false, false, false, 90), "html", null, true);
+        // line 104
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 104), "user_id", [], "any", false, false, false, 104), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t<input type=\"hidden\" name=\"id_profile\" class=\"form-control\" value=\" ";
-        // line 91
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 91), "id", [], "any", false, false, false, 91), "html", null, true);
+        // line 105
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 105), "id", [], "any", false, false, false, 105), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t<div class=\"row mt-2\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">First name
 \t\t\t\t\t\t\t\t\t</label><input type=\"text\" name=\"first-name\" class=\"form-control\" placeholder=\"first name\" value=\" ";
-        // line 95
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 95), "first_name", [], "any", false, false, false, 95), "html", null, true);
+        // line 109
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 109), "first_name", [], "any", false, false, false, 109), "html", null, true);
         echo "\"></div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-2\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Last name
 \t\t\t\t\t\t\t\t\t</label><input type=\"text\" name=\"last-name\" class=\"form-control\" placeholder=\"first name\" value=\" ";
-        // line 100
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 100), "last_name", [], "any", false, false, false, 100), "html", null, true);
+        // line 114
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 114), "last_name", [], "any", false, false, false, 114), "html", null, true);
         echo "\"></div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Ngày tháng năm sinh</label>
 \t\t\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" placeholder=\"headline\" name=\"birthday\" value=\"";
-        // line 105
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 105), "birthday", [], "any", false, false, false, 105), "html", null, true);
+        // line 119
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 119), "birthday", [], "any", false, false, false, 119), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Số điện thoại</label><input type=\"text\" class=\"form-control\" name=\"phone\" placeholder=\"headline\" value=\"";
-        // line 108
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 108), "phone", [], "any", false, false, false, 108), "html", null, true);
+        // line 122
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 122), "phone", [], "any", false, false, false, 122), "html", null, true);
         echo "\"></div>
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Số hộ chiếu/CMND</label><input type=\"text\" class=\"form-control\" placeholder=\"CMND\" name=\"cmnd\" value=\"\"></div>
@@ -187,19 +225,25 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Email</label><input type=\"mail\" name=\"email\" class=\"form-control\" placeholder=\"country\" value=\"";
-        // line 114
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 114), "email", [], "any", false, false, false, 114), "html", null, true);
+        // line 128
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 128), "email", [], "any", false, false, false, 128), "html", null, true);
         echo "\"></div>
-
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"row mt-3\">
+\t\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t\t<label class=\"labels\">Avatar</label><input type=\"file\" name=\"avatar\" class=\"form-control\" placeholder=\"avatar\" value=\"";
+        // line 132
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 132), "avatar", [], "any", false, false, false, 132), "html", null, true);
+        echo "\"></div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Gender</label>
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-10\">
 \t\t\t\t\t\t\t\t\t\t";
-        // line 121
-        if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 121), "gender", [], "any", false, false, false, 121), "male"))) {
-            // line 122
+        // line 138
+        if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 138), "gender", [], "any", false, false, false, 138), "male"))) {
+            // line 139
             echo "\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-check\">
 \t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-check-input\" type=\"radio\" name=\"gender\" id=\"gridRadios1\" value=\"male\" checked>
 \t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-check-label\" for=\"gridRadios1\">
@@ -214,10 +258,10 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t";
         }
-        // line 135
+        // line 152
         echo "\t\t\t\t\t\t\t\t\t\t";
-        if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 135), "gender", [], "any", false, false, false, 135), "female"))) {
-            // line 136
+        if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 152), "gender", [], "any", false, false, false, 152), "female"))) {
+            // line 153
             echo "\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-check\">
 \t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-check-input\" type=\"radio\" name=\"gender\" id=\"gridRadios1\" value=\"male\">
 \t\t\t\t\t\t\t\t\t\t\t\t<label class=\"form-check-label\" for=\"gridRadios1\">
@@ -232,15 +276,15 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t";
         }
-        // line 149
+        // line 166
         echo "\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Address</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"address\" value=\"";
-        // line 154
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 154), "address", [], "any", false, false, false, 154), "html", null, true);
+        // line 171
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 171), "address", [], "any", false, false, false, 171), "html", null, true);
         echo "\"></div>
 
 
@@ -261,10 +305,12 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 
-\t\t\t\t\t\t</form>
+
+\t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
+
 \t\t\t\t</div>
-\t\t\t</div>
+\t\t\t</form>
 \t\t</div>
 \t</body>
 </html></body></html></body></html>
@@ -283,7 +329,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
     public function getDebugInfo()
     {
-        return array (  243 => 154,  236 => 149,  221 => 136,  218 => 135,  203 => 122,  201 => 121,  191 => 114,  182 => 108,  176 => 105,  168 => 100,  160 => 95,  153 => 91,  149 => 90,  144 => 89,  138 => 87,  135 => 86,  129 => 84,  127 => 83,  112 => 71,  108 => 70,  37 => 1,);
+        return array (  287 => 171,  280 => 166,  265 => 153,  262 => 152,  247 => 139,  245 => 138,  236 => 132,  229 => 128,  220 => 122,  214 => 119,  206 => 114,  198 => 109,  191 => 105,  187 => 104,  184 => 103,  178 => 101,  175 => 100,  169 => 98,  166 => 97,  160 => 95,  158 => 94,  145 => 84,  141 => 83,  138 => 82,  132 => 80,  125 => 78,  122 => 77,  120 => 76,  113 => 72,  105 => 67,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -354,29 +400,43 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
 \t<body>
 \t\t<div class=\"container roundeed bg-white mt-5 mb-5\">
-\t\t\t<div class=\"row\">
-\t\t\t\t<div class=\"col-md-3\">
-\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center p-3 py-5\"><img class=\"rounded-circle mt-5\" width=\"100%\" src=\"https://kontumtv.vn/wp-content/uploads/2020/02/donald_trump_sblu.jpg\" width=\"90\"><span class=\"font-weight-bold\">
-\t\t\t\t\t\t\t{{ session.get('userProfile').first_name }}
-\t\t\t\t\t\t\t{{ session.get('userProfile').last_name }}
-\t\t\t\t\t\t</span>
-\t\t\t\t\t\t<span>Việt Nam</span>
+\t\t\t<form method=\"post\" method=\"post\" action=\"{{ redirect('user/post-profile') }}\" enctype=\"multipart/form-data\">
+\t\t\t\t<div class=\"row\">
 
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-md-9\">
-\t\t\t\t\t<div class=\"p-3 py-5\">
-\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-3\">
-\t\t\t\t\t\t\t<h2 class=\"text-right\">Thông tin cá nhân</h2>
+\t\t\t\t\t<div class=\"col-md-3\">
+\t\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center p-3 py-5\">
+\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('') }}\">
+\t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d=\"M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.6 483.2 483.9 512 448.5 512H128.1C92.75 512 64.09 483.3 64.09 448V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5H575.8zM288 160C252.7 160 224 188.7 224 224C224 259.3 252.7 288 288 288C323.3 288 352 259.3 352 224C352 188.7 323.3 160 288 160zM256 320C211.8 320 176 355.8 176 400C176 408.8 183.2 416 192 416H384C392.8 416 400 408.8 400 400C400 355.8 364.2 320 320 320H256z\"/></svg>
+\t\t\t\t\t\t\t\t<span>Home</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t{% if(session.get('userProfile').avatar != '') %}
 
+\t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/{{helper.getDirectoryUpload()}}avatars/{{session.get('userProfile').avatar}}\" width=\"90\">
+\t\t\t\t\t\t\t{% else %}
+\t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/{{helper.getDirectoryUpload()}}avatars/donaltrump.jpg\" width=\"90\">
+\t\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t\t\t<span class=\"font-weight-bold\">
+\t\t\t\t\t\t\t\t{{ session.get('userProfile').first_name }}
+\t\t\t\t\t\t\t\t{{ session.get('userProfile').last_name }}
+\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t<span>Việt Nam</span>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t\t{% if(Session.hasFlash('updateUserError')) %}
-\t\t\t\t\t\t\t<div class=\"alert alert-danger\">{{ session.getFlash('updateUserError') }}</div>
-\t\t\t\t\t\t{% endif %}
-\t\t\t\t\t\t{% if(Session.hasFlash('updateUser')) %}
-\t\t\t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('updateUser') }}</div>
-\t\t\t\t\t\t{% endif %}
-\t\t\t\t\t\t<form method=\"post\" method=\"post\" action=\"{{ redirect('user/post-profile') }}\">
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"col-md-9\">
+\t\t\t\t\t\t<div class=\"p-3 py-5\">
+\t\t\t\t\t\t\t<div class=\"d-flex justify-content-between align-items-center mb-3\">
+\t\t\t\t\t\t\t\t<h2 class=\"text-right\">Thông tin cá nhân</h2>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t{% if(Session.hasFlash('updateUserError')) %}
+\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">{{ session.getFlash('updateUserError') }}</div>
+\t\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t\t\t{% if(Session.hasFlash('errorImage')) %}
+\t\t\t\t\t\t\t\t<div class=\"alert alert-danger\">{{ session.getFlash('errorImage') }}</div>
+\t\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t\t\t{% if(Session.hasFlash('updateUser')) %}
+\t\t\t\t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('updateUser') }}</div>
+\t\t\t\t\t\t\t{% endif %}
+
 \t\t\t\t\t\t\t<input type=\"hidden\" name=\"user_id\" class=\"form-control\" value=\" {{ session.get('userProfile').user_id}}\">
 \t\t\t\t\t\t\t<input type=\"hidden\" name=\"id_profile\" class=\"form-control\" value=\" {{ session.get('userProfile').id}}\">
 \t\t\t\t\t\t\t<div class=\"row mt-2\">
@@ -402,7 +462,10 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Email</label><input type=\"mail\" name=\"email\" class=\"form-control\" placeholder=\"country\" value=\"{{ session.get('userProfile').email }}\"></div>
-
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<div class=\"row mt-3\">
+\t\t\t\t\t\t\t\t<div class=\"col-md-12\">
+\t\t\t\t\t\t\t\t\t<label class=\"labels\">Avatar</label><input type=\"file\" name=\"avatar\" class=\"form-control\" placeholder=\"avatar\" value=\"{{ session.get('userProfile').avatar }}\"></div>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
@@ -461,10 +524,12 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
 
-\t\t\t\t\t\t</form>
+
+\t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
+
 \t\t\t\t</div>
-\t\t\t</div>
+\t\t\t</form>
 \t\t</div>
 \t</body>
 </html></body></html></body></html>

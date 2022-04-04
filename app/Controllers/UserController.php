@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Core\Controller\BaseController;
 use App\Core\Request\Request;
+use App\Core\Helper\UploadFile;
 use App\Core\Session;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -28,6 +29,8 @@ class UserController extends BaseController
      */
     public function index(): string
     {
+        $session = new Session();
+        print_r($session->get('user'));
         return $this->twig->render('base');
     }
     public function login(): string
@@ -48,8 +51,11 @@ class UserController extends BaseController
         if (!empty($data)) {
             $getProfileById = (array)$user->getProfileByUserId($data[0]->id);
             $session = new Session();
+            
             $session->set('user', $getProfileById[0]);
+            // print_r($session->get('user'));
             $this->getViewByRole($data[0]->role);
+            
         } else {
             $session = new Session();
             $session->setFlash('errorLogin', "Tài khoản không hợp lệ");
@@ -92,8 +98,7 @@ class UserController extends BaseController
     }
     public function logout(): string
     {
-        $session = new Session();
-        $session->destroyFlash();
+        session_destroy();
         return $this->response->redirect('/');
     }
     public function getViewProfile(): string
@@ -105,6 +110,10 @@ class UserController extends BaseController
             // echo("<pre>");
             // print_r($getProfileById);
             $session = new Session();
+            // echo("<pre>");
+            // print_r($session->get('user'));
+            // $helper = new Helper();
+            // print_r($helper->getDirectoryUpload());
             
             $session->set('userProfile', $getProfileById[0]);
         }
@@ -118,7 +127,13 @@ class UserController extends BaseController
         $request = new Request();
         // echo("<pre>");
         // print_r($request->getAllInput());
+
+        $avatarFile = $this->generateRandomString(5).'_'.$_FILES['avatar']['name'];
+
+        $avatarFile_tmp =  $_FILES['avatar']['tmp_name'];
+      
         $user_id = trim($this->request->input->get('user_id'));
+        
         $firstName = trim($this->request->input->get('first-name'));
         $lastName = trim($this->request->input->get('last-name'));
         $email = trim($this->request->input->get('email'));
@@ -143,18 +158,39 @@ class UserController extends BaseController
             'gender' => $gender,
             'address' => $address,
             'phone' => $phone,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'avatar'=>$avatarFile
         ];
 
         $updateUserProfile = $user->updateUserProfile($dataUserProfile, $user_id);
         $session = new Session();
+     
         if ($updateUserAccount && $updateUserProfile) {
+            $this->uploadAvatar($avatarFile, $avatarFile_tmp, $user_id);
             $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
+           
             $this->response->redirect('/user/profile?user_id=' . $user_id);
         } else {
             $session->setFlash('updateUserError', "Cập nhật thất bại! ");
             $this->response->redirect('/user/profile?user_id=' . $user_id);
         }
+    }
+    public function uploadAvatar($avatarFile, $avatarFile_tmp, $user_id)
+    {
+        $allowtypes = array('jpg', 'png', 'jpeg', 'gif');
+        
+        $array_image = explode('.', $avatarFile);
+        $file_type =strtolower($array_image[1]);
+        // print_r($array_image[1]);
+        if (!in_array($file_type, $allowtypes))
+        {
+            $session = new Session();
+            $session->setFlash('errorImage', 'Chỉ được upload các định dạng JPG, PNG, JPEG, GIF');
+            $this->response->redirect('/user/profile?user_id='.$user_id);
+        }
+        $target_dir = 'public/upload/avatars'.'/'.basename($avatarFile);
+        // print_r($target_dir);
+        move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
     }
     public function getViewRegister(): string
     {

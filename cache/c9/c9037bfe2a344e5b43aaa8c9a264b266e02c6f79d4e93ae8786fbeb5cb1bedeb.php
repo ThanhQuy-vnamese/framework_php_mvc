@@ -107,13 +107,13 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t\t";
         // line 42
-        if (twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "hasFlash", [0 => "user"], "method", false, false, false, 42)) {
+        if ((0 !== twig_compare(twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "get", [0 => "user"], "method", false, false, false, 42), ""))) {
             // line 43
             echo "\t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fa-solid fa-user\"></i>
 \t\t\t\t\t\t\t\t\t\t";
             // line 45
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 45), "first_name", [], "any", false, false, false, 45), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 45), "first_name", [], "any", false, false, false, 45), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
@@ -121,7 +121,7 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
             // line 48
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/profile"], "method", false, false, false, 48), "html", null, true);
             echo "?user_id=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "getValue", [0 => "user"], "method", false, false, false, 48), "user_id", [], "any", false, false, false, 48), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 48), "user_id", [], "any", false, false, false, 48), "html", null, true);
             echo "\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
             // line 49
@@ -220,13 +220,13 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('contact') }}\">Contact</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
-\t\t\t\t\t\t\t\t{% if(Session.hasFlash('user')) %}
+\t\t\t\t\t\t\t\t{% if(Session.get('user') != '') %}
 \t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fa-solid fa-user\"></i>
-\t\t\t\t\t\t\t\t\t\t{{ session.getValue('user').first_name}}
+\t\t\t\t\t\t\t\t\t\t{{ session.get('user').first_name}}
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/profile')}}?user_id={{ session.getValue('user').user_id}}\">Profile</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/profile')}}?user_id={{ session.get('user').user_id}}\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/logout') }}\">Logout</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t{% else %}

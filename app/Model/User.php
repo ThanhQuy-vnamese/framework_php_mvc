@@ -126,7 +126,7 @@ class User extends DBModel
     public function getProfileByUserId($userID)
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu 
+                mp.first_name, mp.last_name, mp.avatar FROM medical_user_profiles mp left join medical_users mu 
         on mp.user_id = mu.id where user_id = ".$userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;

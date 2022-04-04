@@ -65,6 +65,7 @@ class Helper
                 $directory = 'public/upload/';
             }
         }
+
         return $directory;
     }
 }
