@@ -58,11 +58,17 @@
                                         <div style="clear: both"></div>
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
                                             <h5 class="title">Calendar Information</h5>
-                                            <button type="button"
-                                                    data-selected-doctor-id="{{ calendar_for_view.attendees_info.doctor.id }}"
-                                                    class="btn btn-primary js-btn-edit-calendar">Edit
-                                                calendar
-                                            </button>
+                                            <div>
+                                                <button type="button"
+                                                        data-selected-doctor-id="{{ calendar_for_view.attendees_info.doctor.id }}"
+                                                        class="btn btn-primary js-btn-edit-calendar">Edit
+                                                    calendar
+                                                </button>
+                                                <button type="button"
+                                                        class="btn btn-danger" data-toggle="modal" data-target="#deleteCalendarModal">
+                                                    Delete
+                                                </button>
+                                            </div>
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
@@ -300,6 +306,33 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal zoom" tabindex="-1" id="deleteCalendarModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                        <em class="icon ni ni-cross"></em>
+                    </a>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete calendar</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Are you sure delete calendar?</h4>
+                        Calendar <span style="font-weight: bold; font-size: 15px">{{ calendar_for_view.calendar_info.subject }}</span> after being deleted will not be able to recover.
+                        <form id="delete-user-form" action="{{ redirect('admin/post-calendar-delete') }}" method="post">
+                            <input type="text" hidden value="{{ calendar_for_view.calendar_info.id }}" name="id">
+                            <div class="card-inner">
+                                <div class="preview-block">
+                                    <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">Delete</button>
+                                    <button class="btn btn-xl btn-outline-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-light">
                     </div>
                 </div>
             </div>

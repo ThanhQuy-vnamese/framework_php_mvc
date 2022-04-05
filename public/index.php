@@ -17,6 +17,7 @@ use App\Controllers\admin\BlogListController;
 use App\Controllers\admin\CalendarIndexController;
 use App\Controllers\admin\ContactDetailController;
 use App\Controllers\admin\ContactListController;
+use App\Controllers\admin\DeleteCalendarController;
 use App\Controllers\admin\DeleteContactController;
 use App\Controllers\admin\DeleteHealthRecordController;
 use App\Controllers\admin\EditBlogController;
@@ -111,6 +112,7 @@ $app->router->get('/admin/calendar', [CalendarIndexController::class, 'getViewCa
 $app->router->get('/admin/calendar-detail', [ViewCalendarDetailController::class, 'getView']);
 $app->router->post('/admin/post-calendar-edit-status', [EditStatusCalendarController::class, 'editStatus']);
 $app->router->post('/admin/post-calendar-edit', [EditCalendarController::class, 'edit']);
+$app->router->post('/admin/post-calendar-delete', [DeleteCalendarController::class, 'delete']);
 
 // Internal API
 $app->router->post('/admin/ajax/add-calendar', [AddCalendarController::class, 'addCalendar']);

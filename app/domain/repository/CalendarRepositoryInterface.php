@@ -23,4 +23,6 @@ interface CalendarRepositoryInterface
     public function getNumsCalendarByStartTimeAndEndTimeExceptCurrentCalendar(Calendar $calendar): int;
 
     public function updateAttendees(int $old_doctor_id, int $new_doctor_id, int $calendar_id): bool;
+
+    public function deleteCalendar(int $calendar_id): bool;
 }

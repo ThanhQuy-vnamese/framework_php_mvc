@@ -154,4 +154,14 @@ class CalendarRepository implements CalendarRepositoryInterface
         }
         return false;
     }
+
+    public function deleteCalendar(int $calendar_id): bool
+    {
+        $sql = "DELETE FROM `medical_appointments` WHERE id = %s";
+        $query = sprintf($sql, $calendar_id);
+        if ($this->db->query($query)) {
+            return true;
+        }
+        return false;
+    }
 }
