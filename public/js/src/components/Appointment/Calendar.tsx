@@ -97,7 +97,9 @@ export const Calendar = () => {
                     handleNext: 'chevron-right'
                 }}
                 buttonText={{
-                    today: 'Today'
+                    today: 'Today',
+                    week: 'Week view',
+                    day: 'Day view'
                 }}
                 select={info => {
                     handleSelect(info.startStr, info.endStr);
