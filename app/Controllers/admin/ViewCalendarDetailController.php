@@ -24,6 +24,9 @@ class ViewCalendarDetailController extends BaseController
         $id = $this->request->input->getInt('id');
         $use_case = new GetCalendarDetailUseCase();
         $calendar_detail_for_view = $use_case->execute($id);
+        if (empty($calendar_detail_for_view)) {
+            $this->response->redirect('/admin/calendar');
+        }
         $calendar_info = $this->createResponse($calendar_detail_for_view);
         return $this->twig->render('admin/pages/calendar_detail', ['calendar_for_view' => $calendar_info]);
     }

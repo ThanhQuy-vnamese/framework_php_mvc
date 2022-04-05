@@ -17,9 +17,16 @@ class GetCalendarDetailUseCase
         $this->calendarQueryService = new CalendarQueryService();
     }
 
-    public function execute(int $id): CalendarInfoForViewDetailDto
+    /**
+     * @param int $id
+     * @return CalendarInfoForViewDetailDto|array
+     */
+    public function execute(int $id)
     {
         $calendar = $this->calendarQueryService->getCalendarById(1, $id);
+        if (is_null($calendar->getCalendarForView()->getId())) {
+            return [];
+        }
         $attendees = $this->calendarQueryService->getAllAttendeesByCalendarId($calendar->getCalendarForView()->getId());
         return new CalendarInfoForViewDetailDto($calendar->getCalendarForView(), $attendees);
     }
