@@ -50,10 +50,16 @@ export const Calendar = () => {
     };
 
     // TODO: Implement
-    const test = () => {
+    const handleNext = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        testRef.current.getApi().gotoDate('2022-03-20');
+        testRef.current.getApi().next();
+    };
+
+    const handlePrevious = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        testRef && testRef.current.getApi().prev();
     };
 
     return (
@@ -68,17 +74,30 @@ export const Calendar = () => {
                 selectable={true}
                 ref={testRef}
                 customButtons={{
-                    myCustomButton: {
-                        text: 'custom!',
+                    handleNext: {
+                        text: 'Next',
                         click: () => {
-                            test();
+                            handleNext();
+                        }
+                    },
+                    handlePrevious: {
+                        text: 'Previous',
+                        click: () => {
+                            handlePrevious();
                         }
                     }
                 }}
                 headerToolbar={{
-                    left: 'prev,next today myCustomButton',
+                    left: 'handlePrevious,handleNext today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                    right: 'timeGridWeek,timeGridDay'
+                }}
+                buttonIcons={{
+                    handlePrevious: 'chevron-left',
+                    handleNext: 'chevron-right'
+                }}
+                buttonText={{
+                    today: 'Today'
                 }}
                 select={info => {
                     handleSelect(info.startStr, info.endStr);
