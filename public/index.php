@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\admin\AddCalendarController;
+use App\Controllers\admin\QuickAddCalendarController;
 use App\Controllers\admin\AddHealthController;
 use App\Controllers\admin\AddMedicalFileController;
 use App\Controllers\admin\AddMedicineController;
@@ -14,6 +15,7 @@ use App\Controllers\admin\BlogAddController;
 use App\Controllers\admin\BlogController;
 use App\Controllers\admin\BlogDetailController;
 use App\Controllers\admin\BlogListController;
+use App\Controllers\admin\CalendarAddController;
 use App\Controllers\admin\CalendarIndexController;
 use App\Controllers\admin\ContactDetailController;
 use App\Controllers\admin\ContactListController;
@@ -113,9 +115,11 @@ $app->router->get('/admin/calendar-detail', [ViewCalendarDetailController::class
 $app->router->post('/admin/post-calendar-edit-status', [EditStatusCalendarController::class, 'editStatus']);
 $app->router->post('/admin/post-calendar-edit', [EditCalendarController::class, 'edit']);
 $app->router->post('/admin/post-calendar-delete', [DeleteCalendarController::class, 'delete']);
+$app->router->get('/admin/calendar-add', [CalendarAddController::class, 'getView']);
+$app->router->post('/admin/post-calendar-add', [AddCalendarController::class, 'add']);
 
 // Internal API
-$app->router->post('/admin/ajax/add-calendar', [AddCalendarController::class, 'addCalendar']);
+$app->router->post('/admin/ajax/add-calendar', [QuickAddCalendarController::class, 'addCalendar']);
 $app->router->get('/admin/ajax/get-doctor', [GetDoctorController::class, 'getDoctor']);
 $app->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'getCalendar']);
 $app->router->get('/admin/ajax/get-calendar-edit', [GetCalendarController::class, 'getCalendar']);

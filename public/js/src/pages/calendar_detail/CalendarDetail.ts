@@ -1,5 +1,8 @@
 import ReactDOM from 'react-dom';
-import { Doctors, selectDoctor } from './SelectDoctor';
+import {
+    Doctors,
+    selectDoctor
+} from '../../components/Appointment/SelectDoctor';
 import React from 'react';
 import { getDoctor } from './services/services';
 
@@ -38,11 +41,22 @@ export default class CalendarDetail {
         });
     }
 
+    private onChangeSelectDoctor(id: string) {
+        const currentDoctorIdElement =
+            document.getElementById('current-doctor-id');
+        currentDoctorIdElement &&
+            currentDoctorIdElement.setAttribute(
+                'value',
+                id !== null ? id.toString() : ''
+            );
+    }
+
     private renderSelectPicker() {
         ReactDOM.render(
             React.createElement(selectDoctor, {
                 doctors: this.doctors,
-                selected: this.selected
+                selected: this.selected,
+                onChange: this.onChangeSelectDoctor
             }),
             document.getElementById('select-doctor')
         );

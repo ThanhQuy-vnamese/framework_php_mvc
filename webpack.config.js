@@ -6,6 +6,7 @@ module.exports = {
         'index': path.join(__dirname, 'public/js/src', 'index.js'),
         'appointment': path.join(__dirname, 'public/js/src/pages/appointment', 'index.js'),
         'calendar_detail': path.join(__dirname, 'public/js/src/pages/calendar_detail', 'index.js'),
+        'calendar_add': path.join(__dirname, 'public/js/src/pages/calendar_add', 'index.js'),
     },
     output: {
         path: path.resolve(__dirname, 'public/js/dist'),

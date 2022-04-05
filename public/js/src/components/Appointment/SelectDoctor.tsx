@@ -1,6 +1,6 @@
 import { SelectPicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
-import { ReactNode, VFC } from 'react';
+import { VFC } from 'react';
 import { ItemDataType } from 'rsuite/esm/@types/common';
 
 export interface Doctors extends ItemDataType {
@@ -11,22 +11,20 @@ export interface Doctors extends ItemDataType {
 
 interface SelectDoctorProps {
     doctors: Doctors[];
-    selected: string;
+    selected?: string;
+    onChange: (id: string) => void;
 }
 
-export const selectDoctor: VFC<SelectDoctorProps> = ({ doctors, selected }) => {
+export const selectDoctor: VFC<SelectDoctorProps> = ({
+    doctors,
+    selected = undefined,
+    onChange
+}) => {
     return (
         <>
             <SelectPicker
                 onChange={value => {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    document
-                        .getElementById('current-doctor-id')
-                        .setAttribute(
-                            'value',
-                            value !== null ? value.toString() : ''
-                        );
+                    onChange(value.toString());
                 }}
                 data={doctors}
                 defaultValue={selected}

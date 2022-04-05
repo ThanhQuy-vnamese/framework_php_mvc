@@ -62,6 +62,10 @@ export const Calendar = () => {
         testRef && testRef.current.getApi().prev();
     };
 
+    const handleAddCalendar = () => {
+        window.location.replace('/admin/calendar-add');
+    };
+
     return (
         <>
             <FullCalendar
@@ -85,12 +89,18 @@ export const Calendar = () => {
                         click: () => {
                             handlePrevious();
                         }
+                    },
+                    handleAddCalendar: {
+                        text: 'Add calendar',
+                        click: () => {
+                            handleAddCalendar();
+                        }
                     }
                 }}
                 headerToolbar={{
-                    left: 'handlePrevious,handleNext today',
+                    left: 'handlePrevious,handleNext today timeGridWeek,timeGridDay',
                     center: 'title',
-                    right: 'timeGridWeek,timeGridDay'
+                    right: 'handleAddCalendar'
                 }}
                 buttonIcons={{
                     handlePrevious: 'chevron-left',

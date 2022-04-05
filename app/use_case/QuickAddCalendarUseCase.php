@@ -4,35 +4,26 @@ declare(strict_types=1);
 
 namespace App\use_case;
 
-use App\Core\Session;
 use App\domain\entity\Calendar;
 use App\domain\entity\CalendarAttendees;
 use App\domain\repository\CalendarRepository;
 use App\domain\repository\CalendarRepositoryInterface;
 
-class AddCalendarUseCase
+class QuickAddCalendarUseCase
 {
+    const TYPE_CONFLICT = 1;
+    const TYPE_DOCTOR_EMPTY = 2;
+    const TYPE_DOCTOR_NOT_EXIST = 3;
+    const TYPE_FULL_NAME_EMPTY = 4;
     const DEFAULT_STATUS = 0;
 
     private CalendarRepositoryInterface $calendarRepository;
-    private Session $session;
 
     public function __construct()
     {
         $this->calendarRepository = new CalendarRepository();
-        $this->session = new Session();
     }
 
-    /**
-     * @param string $subject
-     * @param string $full_name
-     * @param string $date
-     * @param string $time_start
-     * @param string $time_end
-     * @param string $description
-     * @param int $doctor_id
-     * @return false|int
-     */
     public function execute(
         string $subject,
         string $full_name,
@@ -44,28 +35,24 @@ class AddCalendarUseCase
     ) {
         $calendar = $this->buildCalendar($subject, $full_name, $date, $time_start, $time_end, $description, 1);
         if (empty($full_name)) {
-            $this->session->setFlash('errorAddCalendar', 'Please enter full name');
-            return false;
+            return $this->buildError(true, self::TYPE_FULL_NAME_EMPTY, 'Please enter full name');
         }
 
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
-            $this->session->setFlash('errorAddCalendar', 'Calendar is conflict');
-            return false;
+            return $this->buildError(true, self::TYPE_CONFLICT, 'Calendar is conflict!');
         }
 
         if (empty($doctor_id)) {
-            $this->session->setFlash('errorAddCalendar', 'Please chose a doctor');
-            return false;
+            return $this->buildError(true, self::TYPE_DOCTOR_EMPTY, 'Please chose a doctor!');
         }
 
         if (is_null($this->calendarRepository->findUserByUserIdAndRole($doctor_id, 2)->getId())) {
-            $this->session->setFlash('errorAddCalendar', 'Please chose a doctor');
-            return false;
+            return $this->buildError(true, self::TYPE_DOCTOR_NOT_EXIST, 'Doctor is chosen not valid!');
         }
 
         $calendar_id = $this->calendarRepository->addCalendar($calendar);
         if (!$calendar_id) {
-            return false;
+            return 0;
         }
 
         $user_created = $this->buildCalendarAttendees($calendar_id, 1);
@@ -73,7 +60,7 @@ class AddCalendarUseCase
         $this->calendarRepository->addCalendarAttendees($user_created);
         $this->calendarRepository->addCalendarAttendees($user_attendees);
 
-        return $calendar_id;
+        return $this->buildError(false);
     }
 
     private function buildCalendar(
@@ -102,5 +89,17 @@ class AddCalendarUseCase
     private function buildCalendarAttendees(int $calendar_id, int $user_id): CalendarAttendees
     {
         return new CalendarAttendees(null, $calendar_id, $user_id);
+    }
+
+    private function buildError(bool $has_error, int $error_type = 0, string $message = ''): array
+    {
+        $return_values = ['error' => ['hasError' => false]];
+        if (!$has_error) {
+            return $return_values;
+        }
+        $return_values['error']['hasError'] = $has_error;
+        $return_values['error']['type'] = $error_type;
+        $return_values['error']['message'] = $message;
+        return $return_values;
     }
 }
