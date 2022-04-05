@@ -7,10 +7,11 @@ namespace App\use_case;
 use App\Core\Session;
 use App\domain\entity\Calendar;
 use App\domain\repository\CalendarRepository;
+use App\domain\repository\CalendarRepositoryInterface;
 
 class EditStatusCalendarUseCase
 {
-    private CalendarRepository $calendarRepository;
+    private CalendarRepositoryInterface $calendarRepository;
     private Session $session;
 
     public function __construct()

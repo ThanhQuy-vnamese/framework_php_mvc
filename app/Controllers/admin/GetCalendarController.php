@@ -32,6 +32,7 @@ class GetCalendarController extends BaseController
             $temp['end'] = $calendar->getCalendarForView()->getDateEnd();
             $temp['description'] = $calendar->getCalendarForView()->getDescription();
             $temp['backgroundColor'] = $calendar->getCalendarForView()->getBackgroundColor();
+            $temp['allDay'] = $calendar->getCalendarForView()->getStatus() === 'Reject';
             $data[] = $temp;
         }
         return $data;

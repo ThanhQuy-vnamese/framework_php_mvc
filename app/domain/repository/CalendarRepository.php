@@ -57,9 +57,10 @@ class CalendarRepository implements CalendarRepositoryInterface
     public function getNumsCalendarByStartTimeAndEndTime(Calendar $calendar): int
     {
         $sql = "SELECT COUNT(*) AS count FROM `medical_appointments` 
-                WHERE (date_start >= '%s' AND date_start < '%s') 
+                WHERE ((date_start >= '%s' AND date_start < '%s') 
                    OR (date_start <> date_end AND date_end > '%s' AND date_end <= '%s') 
-                   OR (date_start < '%s' AND date_end > '%s')";
+                   OR (date_start < '%s' AND date_end > '%s'))
+                   AND status <> %s";
         $query = sprintf(
             $sql,
             $calendar->getDateStart(),
@@ -67,7 +68,8 @@ class CalendarRepository implements CalendarRepositoryInterface
             $calendar->getDateStart(),
             $calendar->getDateEnd(),
             $calendar->getDateStart(),
-            $calendar->getDateEnd()
+            $calendar->getDateEnd(),
+            2
         );
         $result = $this->db->query($query);
         $row = $result->fetch_assoc();

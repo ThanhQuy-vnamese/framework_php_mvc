@@ -7,10 +7,11 @@ namespace App\use_case;
 use App\Core\Session;
 use App\domain\entity\Calendar;
 use App\domain\repository\CalendarRepository;
+use App\domain\repository\CalendarRepositoryInterface;
 
 class EditCalendarUseCase
 {
-    private CalendarRepository $calendarRepository;
+    private CalendarRepositoryInterface $calendarRepository;
     private Session $session;
 
     public function __construct()
@@ -30,7 +31,7 @@ class EditCalendarUseCase
         int $user_id,
         int $current_doctor_id,
         int $selected_doctor_id
-    ) {
+    ): bool {
         $calendar = $this->buildCalendar(
             $calendar_id,
             $subject,

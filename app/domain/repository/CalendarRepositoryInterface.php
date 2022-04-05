@@ -17,4 +17,10 @@ interface CalendarRepositoryInterface
     public function findUserByUserIdAndRole(int $user_id, int $role): User;
 
     public function editStatusCalendar(Calendar $calendar): bool;
+
+    public function editCalendar(Calendar $calendar): bool;
+
+    public function getNumsCalendarByStartTimeAndEndTimeExceptCurrentCalendar(Calendar $calendar): int;
+
+    public function updateAttendees(int $old_doctor_id, int $new_doctor_id, int $calendar_id): bool;
 }

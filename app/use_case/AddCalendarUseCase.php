@@ -14,6 +14,7 @@ class AddCalendarUseCase
     const TYPE_CONFLICT = 1;
     const TYPE_DOCTOR_EMPTY = 2;
     const TYPE_DOCTOR_NOT_EXIST = 3;
+    const TYPE_FULL_NAME_EMPTY = 4;
     const DEFAULT_STATUS = 0;
 
     private CalendarRepositoryInterface $calendarRepository;
@@ -33,6 +34,10 @@ class AddCalendarUseCase
         int $doctor_id
     ) {
         $calendar = $this->buildCalendar($subject, $full_name, $date, $time_start, $time_end, $description, 1);
+        if (empty($full_name)) {
+            return $this->buildError(true, self::TYPE_FULL_NAME_EMPTY, 'Please enter full name');
+        }
+
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
             return $this->buildError(true, self::TYPE_CONFLICT, 'Calendar is conflict!');
         }
