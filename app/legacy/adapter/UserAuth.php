@@ -10,10 +10,10 @@ class UserAuth
     private string $email;
     private string $password;
     private int $status;
-    private string $token;
+    private ?string $token;
     private int $role;
 
-    public function __construct(int $id, string $email, string $password, int $status, string $token, int $role)
+    public function __construct(int $id, string $email, string $password, int $status, ?string $token, int $role)
     {
         $this->id = $id;
         $this->email = $email;
@@ -56,9 +56,9 @@ class UserAuth
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getToken(): string
+    public function getToken(): ?string
     {
         return $this->token;
     }

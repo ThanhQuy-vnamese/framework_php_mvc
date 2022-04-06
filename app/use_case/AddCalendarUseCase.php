@@ -9,6 +9,7 @@ use App\domain\entity\Calendar;
 use App\domain\entity\CalendarAttendees;
 use App\domain\repository\CalendarRepository;
 use App\domain\repository\CalendarRepositoryInterface;
+use App\legacy\Auth;
 
 class AddCalendarUseCase
 {
@@ -16,11 +17,13 @@ class AddCalendarUseCase
 
     private CalendarRepositoryInterface $calendarRepository;
     private Session $session;
+    private Auth $auth;
 
     public function __construct()
     {
         $this->calendarRepository = new CalendarRepository();
         $this->session = new Session();
+        $this->auth = new Auth();
     }
 
     /**
@@ -42,7 +45,15 @@ class AddCalendarUseCase
         string $description,
         int $doctor_id
     ) {
-        $calendar = $this->buildCalendar($subject, $full_name, $date, $time_start, $time_end, $description, 1);
+        $calendar = $this->buildCalendar(
+            $subject,
+            $full_name,
+            $date,
+            $time_start,
+            $time_end,
+            $description,
+            $this->auth->getUser()->getId()
+        );
         if (empty($full_name)) {
             $this->session->setFlash('errorAddCalendar', 'Please enter full name');
             return false;

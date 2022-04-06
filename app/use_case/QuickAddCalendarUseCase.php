@@ -8,6 +8,7 @@ use App\domain\entity\Calendar;
 use App\domain\entity\CalendarAttendees;
 use App\domain\repository\CalendarRepository;
 use App\domain\repository\CalendarRepositoryInterface;
+use App\legacy\Auth;
 
 class QuickAddCalendarUseCase
 {
@@ -18,10 +19,12 @@ class QuickAddCalendarUseCase
     const DEFAULT_STATUS = 0;
 
     private CalendarRepositoryInterface $calendarRepository;
+    private Auth $auth;
 
     public function __construct()
     {
         $this->calendarRepository = new CalendarRepository();
+        $this->auth = new Auth();
     }
 
     public function execute(
@@ -33,7 +36,15 @@ class QuickAddCalendarUseCase
         string $description,
         int $doctor_id
     ) {
-        $calendar = $this->buildCalendar($subject, $full_name, $date, $time_start, $time_end, $description, 1);
+        $calendar = $this->buildCalendar(
+            $subject,
+            $full_name,
+            $date,
+            $time_start,
+            $time_end,
+            $description,
+            $this->auth->getUser()->getId()
+        );
         if (empty($full_name)) {
             return $this->buildError(true, self::TYPE_FULL_NAME_EMPTY, 'Please enter full name');
         }
