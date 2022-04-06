@@ -71,4 +71,14 @@ class MedicalFileRepository implements MedicalFileRepositoryInterface
 
         return (int)$this->db->insert_id;
     }
+
+    public function deleteMedicalFileById(int $id): bool
+    {
+        $sql = "DELETE FROM `medical_medical_records` WHERE id = %s";
+        $query = sprintf($sql, $id);
+        if (!$this->db->query($query)) {
+            return false;
+        }
+        return true;
+    }
 }

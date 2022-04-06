@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\admin\AddCalendarController;
+use App\Controllers\admin\DeleteMedicalFileController;
 use App\Controllers\admin\LoginSampleController;
 use App\Controllers\admin\QuickAddCalendarController;
 use App\Controllers\admin\AddHealthController;
@@ -95,6 +96,7 @@ $app->router->get('/admin/ajax-medical-file-health', [MedicalFileController::cla
 $app->router->get('/admin/ajax-get-prescription', [ViewPrescriptionController::class, 'getPrescription'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-file-add', [AddMedicalFileController::class, 'addMedicalFile'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-file-edit', [EditMedicalFileController::class, 'editMedicalFile'], AdminAuthMiddleware::class);
+$app->router->post('/admin/post-medical-file-delete', [DeleteMedicalFileController::class, 'delete'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-health-add', [AddHealthController::class, 'addHealth'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::class, 'editHealth'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-prescription-add', [AddPrescriptionController::class, 'addPrescription'], AdminAuthMiddleware::class);

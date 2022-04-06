@@ -11,4 +11,6 @@ interface MedicalFileRepositoryInterface
     public function getMedicalFileByIdentityCard(string $identityCardId): MedicalFile;
 
     public function addMedicalFile(MedicalFile $medicalFile): int;
+
+    public function deleteMedicalFileById(int $id): bool;
 }
