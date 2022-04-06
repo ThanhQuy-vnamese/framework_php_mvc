@@ -38,7 +38,7 @@ class User extends DBModel
 
     function tableName(): string
     {
-        return 'users';
+        return 'medical_users';
     }
 
     function attributes(): array
