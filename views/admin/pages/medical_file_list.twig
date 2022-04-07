@@ -14,16 +14,21 @@
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
-                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                                            class="icon ni ni-menu-alt-r"></em></a>
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
-                                        <li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                        <li><a href="#" class="btn btn-white btn-outline-light"><em
+                                                        class="icon ni ni-download-cloud"></em><span>Export</span></a>
+                                        </li>
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                                                <a href="#" class="dropdown-toggle btn btn-icon btn-primary"
+                                                   data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="{{ redirect('admin/medical-file-add') }}"><span>Add Medical File</span></a></li>
+                                                        <li><a href="{{ redirect('admin/medical-file-add') }}"><span>Add Medical File</span></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -35,6 +40,12 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('successDeleteMedicalFile')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successDeleteMedicalFile') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorDeleteMedicalFile')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDeleteMedicalFile') }}</div>
+                    {% endif %}
                     <div class="card card-bordered card-stretch">
                         <div class="card-inner-group">
                             <div class="card-inner position-relative card-tools-toggle">
@@ -42,7 +53,8 @@
                                     <div class="card-tools mr-n1">
                                         <ul class="btn-toolbar gx-1">
                                             <li>
-                                                <a href="#" class="btn btn-icon search-toggle toggle-search" data-target="search"><em class="icon ni ni-search"></em></a>
+                                                <a href="#" class="btn btn-icon search-toggle toggle-search"
+                                                   data-target="search"><em class="icon ni ni-search"></em></a>
                                             </li><!-- li -->
                                             <li class="btn-toolbar-sep"></li><!-- li -->
                                         </ul><!-- .btn-toolbar -->
@@ -51,9 +63,12 @@
                                 <div class="card-search search-wrap" data-search="search">
                                     <div class="card-body">
                                         <div class="search-content">
-                                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search by user or email">
-                                            <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                            <a href="#" class="search-back btn btn-icon toggle-search"
+                                               data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                            <input type="text" class="form-control border-transparent form-focus-none"
+                                                   placeholder="Search by user or email">
+                                            <button class="search-submit btn btn-icon"><em
+                                                        class="icon ni ni-search"></em></button>
                                         </div>
                                     </div>
                                 </div><!-- .card-search -->
@@ -77,60 +92,73 @@
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
                                     {% for medicalFile in medicalFiles %}
-                                    <div class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                <label class="custom-control-label" for="uid1"></label>
-                                            </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>{{ medicalFile.id }}</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <div class="user-card">
-                                                <div class="user-avatar xs bg-primary">
-                                                    <span>AB</span>
-                                                </div>
-                                                <div class="user-name">
-                                                    <span class="tb-lead">{{ medicalFile.full_name }}</span>
+                                        <div class="nk-tb-item">
+                                            <div class="nk-tb-col nk-tb-col-check">
+                                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input" id="uid1">
+                                                    <label class="custom-control-label" for="uid1"></label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>{{ medicalFile.age }}</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>{{ medicalFile.gender }}</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span>{{ medicalFile.identity_card }}</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>{{ medicalFile.phone }}</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-xxl">
-                                            <span>{{ medicalFile.birthday }}</span>
-                                        </div>
-                                        <div class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-2">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/medical-file-detail', {'id': medicalFile.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset ...</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete file</span></a></li>
-                                                            </ul>
-                                                        </div>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span>{{ medicalFile.id }}</span>
+                                            </div>
+                                            <div class="nk-tb-col">
+                                                <div class="user-card">
+                                                    <div class="user-avatar xs bg-primary">
+                                                        <span>AB</span>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
+                                                    <div class="user-name">
+                                                        <span class="tb-lead">{{ medicalFile.full_name }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span>{{ medicalFile.age }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-sm">
+                                                <span>{{ medicalFile.gender }}</span>
+                                            </div>
+                                            <div class="nk-tb-col">
+                                                <span>{{ medicalFile.identity_card }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span>{{ medicalFile.phone }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-xxl">
+                                                <span>{{ medicalFile.birthday }}</span>
+                                            </div>
+                                            <div class="nk-tb-col nk-tb-col-tools">
+                                                <ul class="nk-tb-actions gx-2">
+                                                    <li>
+                                                        <div class="drodown">
+                                                            <a href="#"
+                                                               class="btn btn-sm btn-icon btn-trigger dropdown-toggle"
+                                                               data-toggle="dropdown"><em
+                                                                        class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li>
+                                                                        <a href="{{ redirect('admin/medical-file-detail', {'id': medicalFile.id}) }}"><em
+                                                                                    class="icon ni ni-eye"></em><span>View Details</span></a>
+                                                                    </li>
+                                                                    <li class="divider"></li>
+                                                                    <li><a href="#"><em
+                                                                                    class="icon ni ni-shield-star"></em><span>Reset ...</span></a>
+                                                                    </li>
+                                                                    <li class="divider"></li>
+                                                                    <li><a href="javascript:void(0)"
+                                                                           class="js-delete-medical-file"
+                                                                           data-medical-file-id="{{ medicalFile.id }}"
+                                                                           data-medical-file-name="{{ medicalFile.full_name }}"><em
+                                                                                    class="icon fas fa-trash-alt"></em><span>Delete file</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- .nk-tb-item -->
                                     {% endfor %}
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
@@ -139,7 +167,8 @@
                                     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><span class="page-link"><em class="icon ni ni-more-h"></em></span></li>
+                                    <li class="page-item"><span class="page-link"><em
+                                                    class="icon ni ni-more-h"></em></span></li>
                                     <li class="page-item"><a class="page-link" href="#">6</a></li>
                                     <li class="page-item"><a class="page-link" href="#">7</a></li>
                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
@@ -151,4 +180,39 @@
             </div>
         </div>
     </div>
+    <div class="modal zoom" tabindex="-1" id="deleteMedicalFileModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete medical file</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure delete medical file?</h4>
+                    Medical file of <span class="js-medical-file-full-name"
+                                          style="font-weight: bold; font-size: 15px"></span> after being deleted will
+                    not be able to recover.
+                    <form id="delete-medical-file-form" action="{{ redirect('admin/post-medical-file-delete') }}" method="post">
+                        <input type="text" hidden value="" name="medical-file-id">
+                        <div class="card-inner">
+                            <div class="preview-block">
+                                <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">
+                                    Delete
+                                </button>
+                                <button class="btn btn-xl btn-outline-secondary js-btn-cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <span class="sub-text">Modal Footer Text</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ createLink('js/dist/medical_file_list.js')}}"></script>
 {% endblock %}
