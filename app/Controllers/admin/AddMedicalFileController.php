@@ -35,6 +35,11 @@ class AddMedicalFileController extends BaseController
         $this->response->redirect('/admin/medical-file-detail', ['id' => $id]);
     }
 
+    private function convertDate(string $date) {
+        $originalDate = $date;
+        return date("Y-m-d", strtotime($originalDate));
+    }
+
     private function parseInput(): array
     {
         $firstName = $this->request->input->get('first-name');
@@ -55,7 +60,7 @@ class AddMedicalFileController extends BaseController
         for ($i = 1; $i <= 3; $i++) {
             $temp = [];
             $vaccineName = $this->request->input->get("name-${i}");
-            $date = $this->request->input->get("date-${i}");
+            $date = $this->convertDate($this->request->input->get("date-${i}"));
             if (empty($vaccineName) && empty($date)) {
                 continue;
             }

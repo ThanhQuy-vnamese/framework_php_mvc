@@ -11,18 +11,21 @@ use App\domain\repository\HealthInsuranceRepository;
 use App\domain\repository\HealthInsuranceRepositoryInterface;
 use App\domain\repository\MedicalFileRepository;
 use App\domain\repository\MedicalFileRepositoryInterface;
+use App\legacy\Auth;
 
 class AddMedicalFileUseCase
 {
     private MedicalFileRepositoryInterface $medicalFileRepository;
     private HealthInsuranceRepositoryInterface $healthInsuranceRepository;
     private Session $session;
+    private Auth $auth;
 
     public function __construct()
     {
         $this->medicalFileRepository = new MedicalFileRepository();
         $this->healthInsuranceRepository = new HealthInsuranceRepository();
         $this->session = new Session();
+        $this->auth = new Auth();
     }
 
     public function execute(
@@ -58,7 +61,8 @@ class AddMedicalFileUseCase
             $district,
             $wards,
             $way,
-            $covid_vaccination
+            $covid_vaccination,
+            $this->auth->getUser()->getId()
         );
         $idMedicalFile = $this->medicalFileRepository->addMedicalFile($medicalFileToInsert);
         if (!$idMedicalFile) {
@@ -112,7 +116,8 @@ class AddMedicalFileUseCase
         string $district,
         string $wards,
         string $way,
-        array $covid_vaccination
+        array $covid_vaccination,
+        int $user_id
     ): MedicalFile {
         return new MedicalFile(
             null,
@@ -128,7 +133,7 @@ class AddMedicalFileUseCase
             $wards,
             $province,
             serialize($covid_vaccination),
-            1
+            $user_id
         );
     }
 
