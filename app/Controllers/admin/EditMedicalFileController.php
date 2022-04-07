@@ -5,6 +5,7 @@ namespace App\Controllers\admin;
 
 use App\Core\Controller\BaseController;
 use App\Core\Session;
+use App\legacy\Auth;
 use App\Model\MedicalFile;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -28,6 +29,8 @@ class EditMedicalFileController extends BaseController
         $way = $this->request->input->get('house-number');
         $covidVaccination = $this->parseCovidInjection();
 
+        $auth = new Auth();
+
         $information = [
             'first_name' => $firstName,
             'last_name' => $lastName,
@@ -41,7 +44,7 @@ class EditMedicalFileController extends BaseController
             'wards' => $wards,
             'way' => $way,
             'covid_vaccination' => serialize($covidVaccination),
-            'user_id' => '1'
+            'user_id' => $auth->getUser()->getId(),
         ];
 
         $session = new Session();
