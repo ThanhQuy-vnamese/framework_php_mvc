@@ -1,15 +1,15 @@
-const SELECTOR_DELETE_MODAL = '#deleteMedicalFileModal';
-const SELECTOR_DELETE_LINK = '.js-delete-medical-file';
-const SELECTOR_FORM = '#delete-medical-file-form';
-const SELECTOR_FULL_NAME = '.js-medical-file-full-name';
-const SELECTOR_INPUT_ID = 'input[name="medical-file-id"]';
+const SELECTOR_DELETE_MODAL = '#deleteBlogModal';
+const SELECTOR_DELETE_LINK = '.js-delete-blog-link';
 const SELECTOR_CANCEL_BUTTON = '.js-btn-cancel';
+const SELECTOR_FORM = '#delete-blog-form';
+const SELECTOR_BLOG_TITLE = '.js-blog-title';
+const SELECTOR_INPUT_ID = 'input[name="blog-id"]';
 
-export default class MedicalFileList {
+export default class BlogList {
     private $modal: any;
     private $deleteLink: JQuery<HTMLAnchorElement>;
-    private $form: JQuery<HTMLFormElement>;
     private $cancelButton: JQuery<HTMLButtonElement>;
+    private $form: JQuery<HTMLFormElement>;
 
     constructor() {
         this.$modal = $(SELECTOR_DELETE_MODAL);
@@ -20,9 +20,9 @@ export default class MedicalFileList {
 
     private bindEvent() {
         this.$deleteLink.on('click', event => {
-            const id = $(event.currentTarget).data('medical-file-id');
-            const fullName = $(event.currentTarget).data('medical-file-name');
-            this.handleDelete(id, fullName);
+            const id = $(event.currentTarget).data('blog-id');
+            const title = $(event.currentTarget).data('blog-title');
+            this.handleDelete(id, title);
         });
         this.$cancelButton.on('click', event => {
             event.preventDefault();
@@ -31,7 +31,7 @@ export default class MedicalFileList {
     }
 
     private handleDelete(id: string, fullName: string) {
-        this.$modal.find(SELECTOR_FULL_NAME).text(fullName);
+        this.$modal.find(SELECTOR_BLOG_TITLE).text(fullName);
         this.$form.find(SELECTOR_INPUT_ID).attr('value', id);
         this.$modal.modal('show');
     }

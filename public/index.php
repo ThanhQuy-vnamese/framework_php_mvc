@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\admin\AddCalendarController;
+use App\Controllers\admin\DeleteBlogController;
 use App\Controllers\admin\DeleteMedicalFileController;
 use App\Controllers\admin\LoginSampleController;
 use App\Controllers\admin\QuickAddCalendarController;
@@ -110,6 +111,7 @@ $app->router->get('/admin/blog-add', [BlogController::class, 'getViewBlogAdd'], 
 $app->router->post('/admin/post-blog-add', [BlogAddController::class, 'addBlog'], AdminAuthMiddleware::class);
 $app->router->get('/admin/blog-detail', [BlogDetailController::class, 'getViewBlogDetail'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-edit-blog', [EditBlogController::class, 'editBlog'], AdminAuthMiddleware::class);
+$app->router->post('/admin/post-edit-delete', [DeleteBlogController::class, 'delete'], AdminAuthMiddleware::class);
 $app->router->get('/admin/contact-list', [ContactListController::class, 'getViewContactList'], AdminAuthMiddleware::class);
 $app->router->get('/admin/contact-detail', [ContactDetailController::class, 'getViewContactDetail'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-reply-contact', [ReplyContactController::class, 'replyContact'], AdminAuthMiddleware::class);
