@@ -1,3 +1,4 @@
+USE phpmvc;
 --
 --  `medical_users`
 --
