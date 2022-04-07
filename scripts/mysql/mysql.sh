@@ -10,3 +10,6 @@ $MYSQL -e "CREATE DATABASE IF NOT EXISTS phpmvc;"
 echo "Import database"
 $MYSQL -e "source /home/install/mysql/dump.sql;"
 
+echo "Import sample data"
+$MYSQL -e "source /home/install/mysql/sample_data.sql;"
+
