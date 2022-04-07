@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\domain\repository;
@@ -89,5 +90,16 @@ class BlogRepository implements BlogRepositoryInterface
         $query = sprintf($sql, $blog->getTitle(), $blog->getContent(), $blog->getAvatar(), $blog->getId());;
 
         return $this->db->query($query);
+    }
+
+    public function deleteBlogById(int $id): bool
+    {
+        $sql = "DELETE FROM medical_blogs WHERE id = %s";
+        $query = sprintf($sql, $id);
+        if (!$this->db->query($query)) {
+            return false;
+        }
+
+        return true;
     }
 }

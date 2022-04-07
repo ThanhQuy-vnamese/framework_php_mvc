@@ -88,28 +88,33 @@ CREATE TABLE `medical_contact_information`
     `user_id`    int
 );
 
-CREATE TABLE `medical_contact_reply` (
-     `id` int PRIMARY KEY AUTO_INCREMENT,
-     `email` varchar(255),
-     `phone` char(12),
-     `message` text,
-     `full_name` varchar(100),
-     `created_at` timestamp,
-     `user_id` int,
-     `contact_id` int
+CREATE TABLE `medical_contact_reply`
+(
+    `id`         int PRIMARY KEY AUTO_INCREMENT,
+    `email`      varchar(255),
+    `phone`      char(12),
+    `message`    text,
+    `full_name`  varchar(100),
+    `created_at` timestamp,
+    `user_id`    int,
+    `contact_id` int
 );
 
 CREATE TABLE `medical_appointments`
 (
-    `id`         int PRIMARY KEY AUTO_INCREMENT,
-    `subject`    varchar(100),
-    `date_start` timestamp DEFAULT CURRENT_TIMESTAMP,
-    `date_end`   timestamp DEFAULT CURRENT_TIMESTAMP,
-    `time_start` timestamp DEFAULT CURRENT_TIMESTAMP,
-    `time_end`   timestamp DEFAULT CURRENT_TIMESTAMP,
-    `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-    `user_id`    int
+    `id`          int PRIMARY KEY AUTO_INCREMENT,
+    `subject`     varchar(100),
+    `full_name`   varchar(50),
+    `date_start`  timestamp DEFAULT CURRENT_TIMESTAMP,
+    `date_end`    timestamp DEFAULT CURRENT_TIMESTAMP,
+    `time_start`  timestamp DEFAULT CURRENT_TIMESTAMP,
+    `time_end`    timestamp DEFAULT CURRENT_TIMESTAMP,
+    `description` text,
+    `status`      int,
+    `note`        text DEFAULT NULL,
+    `created_at`  timestamp DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`  timestamp DEFAULT CURRENT_TIMESTAMP,
+    `user_id`     int
 );
 
 CREATE TABLE `medical_appointment_attendees`
@@ -147,7 +152,7 @@ CREATE TABLE `medical_prescriptions`
     `medicine`   text,
     `address`    varchar(255),
     `note`       varchar(255),
-    `healths_id`  int,
+    `healths_id` int,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `user_id`    int
 );
@@ -161,7 +166,8 @@ ALTER TABLE `medical_appointments`
 ALTER TABLE `medical_contact_information`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `medical_contact_reply` ADD FOREIGN KEY (`contact_id`) REFERENCES `medical_contact_information` (`id`) ON DELETE CASCADE;
+ALTER TABLE `medical_contact_reply`
+    ADD FOREIGN KEY (`contact_id`) REFERENCES `medical_contact_information` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `medical_medical_records`
     ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;

@@ -162,7 +162,8 @@ class UserController extends BaseController
 
         $dataUser = [
             'status' => $status,
-            'role' => $role
+            'role' => $role,
+            'email' => $email
         ];
 
         if (!empty($password) && !empty($confirmPassword)) {
