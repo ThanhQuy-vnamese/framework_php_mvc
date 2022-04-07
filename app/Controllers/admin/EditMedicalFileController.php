@@ -33,11 +33,11 @@ class EditMedicalFileController extends BaseController
 
         $covidVaccination = [
             [
-                'type_medicine' => 'Verocell',
+                'type_vaccine' => 'Verocell',
                 'date' => '12/2/2022',
             ],
             [
-                'type_medicine' => 'Verocell',
+                'type_vaccine' => 'Verocell',
                 'date' => '13/2/2022',
             ],
         ];
