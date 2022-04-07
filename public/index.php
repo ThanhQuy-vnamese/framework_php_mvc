@@ -35,7 +35,7 @@ use App\Controllers\admin\GetDoctorController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
-use App\Controllers\admin\SampleController;
+use App\Controllers\SampleController;
 use App\Controllers\admin\UserController;
 use App\Controllers\admin\ViewCalendarDetailController;
 use App\Controllers\admin\ViewMedicineDetailController;

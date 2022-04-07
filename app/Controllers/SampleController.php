@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\admin;
+namespace App\Controllers;
 
 use App\Core\Controller\BaseController;
 use Twig\Error\LoaderError;
