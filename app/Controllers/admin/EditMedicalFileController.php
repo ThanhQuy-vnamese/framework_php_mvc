@@ -26,9 +26,6 @@ class EditMedicalFileController extends BaseController
         $district = $this->request->input->get('district');
         $wards = $this->request->input->get('wards');
         $way = $this->request->input->get('house-number');
-        $healthInsuranceNumber = $this->request->input->get('health-insurance-number');
-        $expirationDate = $this->request->input->get('expiration-date');
-        $way = $this->request->input->get('house-number');
         $covidVaccination = $this->request->input->get('covid_vaccination');
 
         $covidVaccination = [

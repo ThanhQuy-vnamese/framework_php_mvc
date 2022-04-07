@@ -395,6 +395,30 @@
                                                                         </div>
                                                                     </div>
                                                                     <hr class="preview-hr">
+                                                                    <span class="preview-title-lg overline-title">Covid vaccine information</span>
+                                                                    {% for covid_injection in medicalFile.covid_injections %}
+                                                                    <div class="row gy-4">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="name-{{ loop.index}}">Injection {{ loop.index}} - Name vaccine</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="text" class="form-control" name="name-{{ loop.index}}" id="name-{{ loop.index}}"
+                                                                                           value="{{ covid_injection.type_medicine }}" placeholder="Enter name">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="date-{{ loop.index}}">Injection {{ loop.index}} - Date</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <input type="date" class="form-control" name="date-{{ loop.index}}" id="date-{{ loop.index}}"
+                                                                                           value="{{ covid_injection.date }}" placeholder="Enter date">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor %}
+                                                                    <hr class="preview-hr">
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <button type="submit"
