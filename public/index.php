@@ -6,9 +6,11 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\admin\AddCalendarController;
+use App\Controllers\admin\AddMedicineTypeController;
 use App\Controllers\admin\DeleteBlogController;
 use App\Controllers\admin\DeleteMedicalFileController;
 use App\Controllers\admin\LoginSampleController;
+use App\Controllers\admin\MedicineTypeListController;
 use App\Controllers\admin\QuickAddCalendarController;
 use App\Controllers\admin\AddHealthController;
 use App\Controllers\admin\AddMedicalFileController;
@@ -103,6 +105,8 @@ $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::cl
 $app->router->post('/admin/post-prescription-add', [AddPrescriptionController::class, 'addPrescription'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-delete-health', [DeleteHealthRecordController::class, 'deleteHealth'], AdminAuthMiddleware::class);
 $app->router->get('/admin/medicine-list', [MedicineListController::class, 'getViewMedicineList'], AdminAuthMiddleware::class);
+$app->router->get('/admin/medicine-type-list', [MedicineTypeListController::class, 'getView'], AdminAuthMiddleware::class);
+$app->router->post('/admin/post-add-medicine-type', [AddMedicineTypeController::class, 'add'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-add-medicine', [AddMedicineController::class, 'addMedicine'], AdminAuthMiddleware::class);
 $app->router->get('/admin/medicine-detail', [ViewMedicineDetailController::class, 'getViewMedicineDetail'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-edit-medicine', [EditMedicineController::class, 'editMedicine'], AdminAuthMiddleware::class);

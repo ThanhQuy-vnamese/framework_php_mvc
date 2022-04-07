@@ -29,6 +29,9 @@ class MedicineListQueryService implements MedicineListQueryServiceInterface
                 FROM `medical_medicines` AS M INNER JOIN `medical_medicines_types` AS MT
                 ON m.`medicine_type_id`=MT.id";
         $result = $this->db->query($query);
+        if (!$result) {
+            return [];
+        }
         if ($result->num_rows === 0) {
             return [];
         }
