@@ -515,7 +515,7 @@
     $(document).ready(() => {
         const $modalViewDetail = $('#modalDetailHealths');
         $('.js-health-view-detail').on('click', (event) => {
-            const healthId = $(event.target).data('health-id');
+            const healthId = $(event.currentTarget).data('health-id');
             $.when(
                 $.ajax({
                     url: `ajax-medical-file-health?id=${healthId}`,

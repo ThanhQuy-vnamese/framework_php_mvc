@@ -22,7 +22,7 @@ class ViewPrescriptionQueryService implements ViewPrescriptionQueryServiceInterf
 
     public function getPrescription(int $health_id): PrescriptionDto
     {
-        $sql = "SELECT * FROM medical_prescriptions WHERE healths_id=%s;";
+        $sql = "SELECT * FROM medical_prescriptions WHERE healths_id= %s ORDER BY id DESC LIMIT 0,1;";
         $query = sprintf($sql, $health_id);
         $result = $this->db->query($query);
 
