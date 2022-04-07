@@ -20,6 +20,9 @@ class MedicineTypeQueryService implements MedicineTypeQueryServiceInterface
         $this->db = $query->getDatabase()->mysql;
     }
 
+    /**
+     * @return MedicineTypeListDto[]
+     */
     public function getAllMedicineType(): array
     {
         $query = "SELECT * FROM medical_medicines_types";

@@ -7,7 +7,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Medicine List</h3>
+                            <h3 class="nk-block-title page-title">Medicine Type List</h3>
                             <div class="nk-block-des text-soft">
                                 <p>You have total 2,595 users.</p>
                             </div>
@@ -149,7 +149,7 @@
                                         <div class="nk-tb-col"><span class="sub-text">Name</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
-                                    {% for medicine in medicines %}
+                                    {% for medicine_type in medicine_types %}
                                         <div class="nk-tb-item">
                                             <div class="nk-tb-col nk-tb-col-check">
                                                 <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -158,10 +158,10 @@
                                                 </div>
                                             </div>
                                             <div class="nk-tb-col tb-col-md">
-                                                <span>{{ medicine.id }}</span>
+                                                <span>{{ medicine_type.id }}</span>
                                             </div>
                                             <div class="nk-tb-col">
-                                                <span>{{ medicine.name }}</span>
+                                                <span>{{ medicine_type.name }}</span>
                                             </div>
                                             <div class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-2">
