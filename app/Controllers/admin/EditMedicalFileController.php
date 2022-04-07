@@ -26,18 +26,7 @@ class EditMedicalFileController extends BaseController
         $district = $this->request->input->get('district');
         $wards = $this->request->input->get('wards');
         $way = $this->request->input->get('house-number');
-        $covidVaccination = $this->request->input->get('covid_vaccination');
-
-        $covidVaccination = [
-            [
-                'type_vaccine' => 'Verocell',
-                'date' => '12/2/2022',
-            ],
-            [
-                'type_vaccine' => 'Verocell',
-                'date' => '13/2/2022',
-            ],
-        ];
+        $covidVaccination = $this->parseCovidInjection();
 
         $information = [
             'first_name' => $firstName,
@@ -85,6 +74,28 @@ class EditMedicalFileController extends BaseController
 
         $session->setFlash('successEditMedicalFile', 'Add medical file success');
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
+    }
+
+    private function convertDate(string $date) {
+        $originalDate = $date;
+        return date("Y-m-d", strtotime($originalDate));
+    }
+
+    private function parseCovidInjection(): array {
+        $covidVaccination = [];
+        for ($i = 1; $i <= 3; $i++) {
+            $temp = [];
+            $vaccineName = $this->request->input->get("name-${i}");
+            $date = $this->convertDate($this->request->input->get("date-${i}"));
+            if (empty($vaccineName) && empty($date)) {
+                continue;
+            }
+            $temp['type_vaccine'] = $vaccineName;
+            $temp['date'] = $date;
+            $covidVaccination[] = $temp;
+        }
+
+        return $covidVaccination;
     }
 
     private function validateHealthInsurance(array $healthInsurance): array
