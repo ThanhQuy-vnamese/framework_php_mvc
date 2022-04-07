@@ -1,7 +1,7 @@
 {% extends 'admin/components/base.twig' %}
 
 {% block content %}
-<div class="container-fluid">
+    <div class="container-fluid">
         <div class="nk-content-inner">
             <div class="nk-content-body">
                 <div class="nk-block-head nk-block-head-sm">
@@ -14,51 +14,65 @@
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
-                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                                            class="icon ni ni-menu-alt-r"></em></a>
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
-                                        <li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                        <li><a href="#" class="btn btn-white btn-outline-light"><em
+                                                        class="icon ni ni-download-cloud"></em><span>Export</span></a>
+                                        </li>
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                                                <a href="#" class="dropdown-toggle btn btn-icon btn-primary"
+                                                   data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#" data-toggle="modal" data-target="#modalDefault"><span>Add Medicine</span></a></li>
+                                                        <li><a href="#" data-toggle="modal" data-target="#modalDefault"><span>Add Medicine</span></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="modal fade" tabindex="-1" id="modalDefault">
                                                     <div class="modal-dialog modal-xl" role="document">
                                                         <div class="modal-content">
-                                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <a href="#" class="close" data-dismiss="modal"
+                                                               aria-label="Close">
                                                                 <em class="icon ni ni-cross"></em>
                                                             </a>
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title">Add Medicine</h5>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ redirect('admin/post-add-medicine') }}" method="post">
+                                                                <form action="{{ redirect('admin/post-add-medicine') }}"
+                                                                      method="post">
                                                                     <div class="card-inner">
                                                                         <div class="preview-block">
                                                                             <span class="preview-title-lg overline-title">Medicine Information</span>
                                                                             <div class="row gy-4">
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="form-label" for="name">Name</label>
+                                                                                        <label class="form-label"
+                                                                                               for="name">Name</label>
                                                                                         <div class="form-control-wrap">
-                                                                                            <input type="text" class="form-control" name="name"
-                                                                                                   id="name" placeholder="Enter Name">
+                                                                                            <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   name="name"
+                                                                                                   id="name"
+                                                                                                   placeholder="Enter Name">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="form-label" for="type">Type</label>
+                                                                                        <label class="form-label"
+                                                                                               for="type">Type</label>
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
-                                                                                                <select class="form-control" name="type" id="type">
-                                                                                                    <option value="1">Thuốc cảm</option>
-                                                                                                    <option value="2">Kháng sinh</option>
-                                                                                                    <option value="3">Kháng viêm</option>
+                                                                                                <select class="form-control"
+                                                                                                        name="type"
+                                                                                                        id="type">
+                                                                                                    {% for medicine_type in medicine_for_view.medicine_types %}
+                                                                                                        <option value="{{ medicine_type.id }}">{{ medicine_type.name }}</option>
+                                                                                                    {% endfor %}
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
@@ -66,21 +80,32 @@
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="form-label" for="quantity">Quantity</label>
+                                                                                        <label class="form-label"
+                                                                                               for="quantity">Quantity</label>
                                                                                         <div class="form-control-wrap">
-                                                                                            <input type="text" class="form-control" name="quantity"
-                                                                                                   id="quantity" placeholder="Enter quantity">
+                                                                                            <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   name="quantity"
+                                                                                                   id="quantity"
+                                                                                                   placeholder="Enter quantity">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="form-label" for="unit">Unit</label>
+                                                                                        <label class="form-label"
+                                                                                               for="unit">Unit</label>
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
-                                                                                                <select class="form-control" name="unit" id="unit">
-                                                                                                    <option value="hộp">Hộp</option>
-                                                                                                    <option value="viên">Viên</option>
+                                                                                                <select class="form-control"
+                                                                                                        name="unit"
+                                                                                                        id="unit">
+                                                                                                    <option value="hộp">
+                                                                                                        Hộp
+                                                                                                    </option>
+                                                                                                    <option value="viên">
+                                                                                                        Viên
+                                                                                                    </option>
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
@@ -88,9 +113,13 @@
                                                                                 </div>
                                                                                 <div class="col-sm-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="form-label" for="description">Description</label>
+                                                                                        <label class="form-label"
+                                                                                               for="description">Description</label>
                                                                                         <div class="form-control-wrap">
-                                                                                <textarea type="text" class="form-control" name="description" id="description"
+                                                                                <textarea type="text"
+                                                                                          class="form-control"
+                                                                                          name="description"
+                                                                                          id="description"
                                                                                           placeholder="Enter Last Name">11111111</textarea>
                                                                                         </div>
                                                                                     </div>
@@ -99,7 +128,10 @@
                                                                             <hr class="preview-hr">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <button type="submit" class="btn btn-success">Add medicine</button>
+                                                                                    <button type="submit"
+                                                                                            class="btn btn-success">Add
+                                                                                        medicine
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -131,7 +163,8 @@
                                     <div class="card-tools mr-n1">
                                         <ul class="btn-toolbar gx-1">
                                             <li>
-                                                <a href="#" class="btn btn-icon search-toggle toggle-search" data-target="search"><em class="icon ni ni-search"></em></a>
+                                                <a href="#" class="btn btn-icon search-toggle toggle-search"
+                                                   data-target="search"><em class="icon ni ni-search"></em></a>
                                             </li><!-- li -->
                                             <li class="btn-toolbar-sep"></li><!-- li -->
                                         </ul><!-- .btn-toolbar -->
@@ -140,9 +173,12 @@
                                 <div class="card-search search-wrap" data-search="search">
                                     <div class="card-body">
                                         <div class="search-content">
-                                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search by user or email">
-                                            <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                            <a href="#" class="search-back btn btn-icon toggle-search"
+                                               data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                            <input type="text" class="form-control border-transparent form-focus-none"
+                                                   placeholder="Search by user or email">
+                                            <button class="search-submit btn btn-icon"><em
+                                                        class="icon ni ni-search"></em></button>
                                         </div>
                                     </div>
                                 </div><!-- .card-search -->
@@ -161,40 +197,48 @@
                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Type</span></div>
                                         <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
                                     </div><!-- .nk-tb-item -->
-                                    {% for medicine in medicines %}
-                                    <div class="nk-tb-item">
-                                        <div class="nk-tb-col nk-tb-col-check">
-                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                <label class="custom-control-label" for="uid1"></label>
+                                    {% for medicine in medicine_for_view.medicines %}
+                                        <div class="nk-tb-item">
+                                            <div class="nk-tb-col nk-tb-col-check">
+                                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input" id="uid1">
+                                                    <label class="custom-control-label" for="uid1"></label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>{{ medicine.id }}</span>
-                                        </div>
-                                        <div class="nk-tb-col">
-                                            <span>{{ medicine.name }}</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>{{ medicine.type_name }}</span>
-                                        </div>
-                                        <div class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-2">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/medicine-detail', {'id': medicine.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#"><em class="icon fas fa-trash-alt"></em><span>Delete Medicine</span></a></li>
-                                                            </ul>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span>{{ medicine.id }}</span>
+                                            </div>
+                                            <div class="nk-tb-col">
+                                                <span>{{ medicine.name }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-md">
+                                                <span>{{ medicine.type_name }}</span>
+                                            </div>
+                                            <div class="nk-tb-col nk-tb-col-tools">
+                                                <ul class="nk-tb-actions gx-2">
+                                                    <li>
+                                                        <div class="drodown">
+                                                            <a href="#"
+                                                               class="btn btn-sm btn-icon btn-trigger dropdown-toggle"
+                                                               data-toggle="dropdown"><em
+                                                                        class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li>
+                                                                        <a href="{{ redirect('admin/medicine-detail', {'id': medicine.id}) }}"><em
+                                                                                    class="icon ni ni-eye"></em><span>View Details</span></a>
+                                                                    </li>
+                                                                    <li class="divider"></li>
+                                                                    <li><a href="#"><em
+                                                                                    class="icon fas fa-trash-alt"></em><span>Delete Medicine</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .nk-tb-item -->
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div><!-- .nk-tb-item -->
                                     {% endfor %}
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
@@ -203,7 +247,8 @@
                                     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><span class="page-link"><em class="icon ni ni-more-h"></em></span></li>
+                                    <li class="page-item"><span class="page-link"><em
+                                                    class="icon ni ni-more-h"></em></span></li>
                                     <li class="page-item"><a class="page-link" href="#">6</a></li>
                                     <li class="page-item"><a class="page-link" href="#">7</a></li>
                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
@@ -218,11 +263,12 @@
 {% endblock %}
 
 {% block javascript %}
-    {% verbatim  %}
-    <script>
-        tinymce.init({
-        selector: '#description'
-    });
-    </script>
-    {% endverbatim  %}
+{% verbatim  %}
+<script>
+    tinymce.init({
+    selector: '#description',
+    skin: false
+});
+</script>
+{% endverbatim  %}
 {% endblock %}
