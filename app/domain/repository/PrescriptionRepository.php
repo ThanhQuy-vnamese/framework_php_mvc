@@ -39,4 +39,25 @@ class PrescriptionRepository implements PrescriptionRepositoryInterface
 
         return (int)$this->db->insert_id;
     }
+
+    public function editPrescription(Prescription $prescription): bool
+    {
+        $sql = "UPDATE medical_prescriptions
+                SET name = '%s', age = %s, address = '%s', note = '%s', medicine = '%s', gender = '%s'
+                WHERE id = %s";
+        $query = sprintf(
+            $sql,
+            $prescription->getFullName(),
+            $prescription->getAge(),
+            $prescription->getAddress(),
+            $prescription->getNote(),
+            $prescription->getMedicineList(),
+            $prescription->getGender(),
+            $prescription->getId(),
+        );
+        if (!$this->db->query($query)) {
+            return false;
+        }
+        return true;
+    }
 }

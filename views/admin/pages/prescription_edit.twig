@@ -21,13 +21,15 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    {% if(Session.hasFlash('errorAddUser')) %}
-                        <div class="alert alert-danger">{{ session.getFlash('errorAddUser') }}</div>
+                    {% if(Session.hasFlash('errorUpdatePrescription')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorUpdatePrescription') }}</div>
                     {% endif %}
-                    <form id="edit-prescription-form" action="{{ redirect('admin/post-prescription-add') }}" method="post">
-                        <input type="text" name="medical-file-id" hidden value="{{ prescriptions.id }}">
+                    {% if(Session.hasFlash('successUpdatePrescription')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successUpdatePrescription') }}</div>
+                    {% endif %}
+                    <form id="edit-prescription-form" action="{{ redirect('admin/post-edit-prescription') }}" method="post">
+                        <input type="text" name="id" hidden value="{{ prescriptions.id }}">
                         <input type="text" name="user-id" hidden value="{{ prescriptions.user_id }}">
-                        <input type="text" name="health-id" hidden>
                         <div class="card-inner">
                             <div class="preview-block">
                                 <span class="preview-title-lg overline-title">Main Information</span>

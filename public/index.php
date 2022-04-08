@@ -9,6 +9,7 @@ use App\Controllers\admin\AddCalendarController;
 use App\Controllers\admin\AddMedicineTypeController;
 use App\Controllers\admin\DeleteBlogController;
 use App\Controllers\admin\DeleteMedicalFileController;
+use App\Controllers\admin\EditPrescriptionController;
 use App\Controllers\admin\GetPrescriptionEditView;
 use App\Controllers\admin\LoginSampleController;
 use App\Controllers\admin\MedicineTypeListController;
@@ -99,6 +100,7 @@ $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, '
 $app->router->get('/admin/ajax-medical-file-health', [MedicalFileController::class, 'getHealthDetail'], AdminAuthMiddleware::class);
 $app->router->get('/admin/ajax-get-prescription', [ViewPrescriptionController::class, 'getPrescription'], AdminAuthMiddleware::class);
 $app->router->get('/admin/prescription-edit', [GetPrescriptionEditView::class, 'get']);
+$app->router->post('/admin/post-edit-prescription', [EditPrescriptionController::class, 'editPrescription']);
 $app->router->post('/admin/post-medical-file-add', [AddMedicalFileController::class, 'addMedicalFile'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-file-edit', [EditMedicalFileController::class, 'editMedicalFile'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-file-delete', [DeleteMedicalFileController::class, 'delete'], AdminAuthMiddleware::class);
