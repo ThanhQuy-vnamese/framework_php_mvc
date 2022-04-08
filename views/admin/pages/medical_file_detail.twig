@@ -511,6 +511,9 @@
 
 {% block javascript %}
 {% verbatim  %}
+<script src="{% endverbatim  %}{{ createLink('js/dist/medical_file_detail.js')}}{% verbatim  %}"></script>
+{% endverbatim  %}
+{% verbatim  %}
 <script>
     $(document).ready(() => {
         const $modalViewDetail = $('#modalDetailHealths');
