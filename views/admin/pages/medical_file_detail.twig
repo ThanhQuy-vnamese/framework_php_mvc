@@ -50,6 +50,12 @@
                     {% if(Session.hasFlash('errorDeleteHealth')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorDeleteHealth') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('errorUpdatePrescription')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorUpdatePrescription') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successUpdatePrescription')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successUpdatePrescription') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">

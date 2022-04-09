@@ -25,7 +25,7 @@ class EditPrescriptionController extends BaseController
             $input['id']
         );
 
-        $this->response->redirect('/admin/prescription-edit', ['id' => $input['id']]);
+        $this->response->redirect('/admin/medical-file-detail', ['id' => $input['medical_file_id']]);
     }
 
     public function parseInput(): array

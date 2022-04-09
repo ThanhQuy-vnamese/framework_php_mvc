@@ -7,10 +7,11 @@ namespace App\use_case;
 use App\Core\Session;
 use App\domain\entity\Prescription;
 use App\domain\repository\PrescriptionRepository;
+use App\domain\repository\PrescriptionRepositoryInterface;
 
 class EditPrescriptionUseCase
 {
-    private PrescriptionRepository $prescriptionRepository;
+    private PrescriptionRepositoryInterface $prescriptionRepository;
     private Session $session;
 
     public function __construct()

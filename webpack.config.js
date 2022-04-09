@@ -9,6 +9,7 @@ module.exports = {
         'calendar_add': path.join(__dirname, 'public/js/src/pages/calendar_add', 'index.js'),
         'medical_file_list': path.join(__dirname, 'public/js/src/pages/medical_file_list', 'index.js'),
         'blog_list': path.join(__dirname, 'public/js/src/pages/blog_list', 'index.js'),
+        'medical_file_detail': path.join(__dirname, 'public/js/src/pages/medical_file_detail', 'index.js'),
     },
     output: {
         path: path.resolve(__dirname, 'public/js/dist'),

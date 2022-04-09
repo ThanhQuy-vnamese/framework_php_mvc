@@ -22,6 +22,7 @@ class GetPrescriptionEditView extends BaseController
     public function get(): string
     {
         $id = $this->request->input->getInt('id');
+        $medical_file_id = $this->request->input->getInt('medical-file-id');
         $use_case = new GetPrescriptionUseCase();
         $medicalRepository = new MedicalFileRepository();
         $medicines = $medicalRepository->getMedicineList();
@@ -29,7 +30,7 @@ class GetPrescriptionEditView extends BaseController
         $response = $this->createResponse($prescription);
         return $this->twig->render(
             'admin/pages/prescription_edit',
-            ['prescriptions' => $response, 'medicines' => $medicines]
+            ['prescriptions' => $response, 'medicines' => $medicines, 'medical_file_id' => $medical_file_id]
         );
     }
 
