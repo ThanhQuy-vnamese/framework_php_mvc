@@ -12,6 +12,7 @@ use App\Controllers\admin\DeleteMedicalFileController;
 use App\Controllers\admin\EditPrescriptionController;
 use App\Controllers\admin\GetPrescriptionEditView;
 use App\Controllers\admin\LoginSampleController;
+use App\Controllers\admin\LogoutController;
 use App\Controllers\admin\MedicineTypeListController;
 use App\Controllers\admin\QuickAddCalendarController;
 use App\Controllers\admin\AddHealthController;
@@ -131,6 +132,7 @@ $app->router->post('/admin/post-calendar-edit', [EditCalendarController::class, 
 $app->router->post('/admin/post-calendar-delete', [DeleteCalendarController::class, 'delete'], AdminAuthMiddleware::class);
 $app->router->get('/admin/calendar-add', [CalendarAddController::class, 'getView'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-calendar-add', [AddCalendarController::class, 'add'], AdminAuthMiddleware::class);
+$app->router->post('/admin/logout', [LogoutController::class, 'logout'], AdminAuthMiddleware::class);
 
 // Test
 $app->router->get('/admin/login', [LoginSampleController::class, 'getView']);

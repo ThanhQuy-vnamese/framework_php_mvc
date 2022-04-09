@@ -10,6 +10,7 @@ module.exports = {
         'medical_file_list': path.join(__dirname, 'public/js/src/pages/medical_file_list', 'index.js'),
         'blog_list': path.join(__dirname, 'public/js/src/pages/blog_list', 'index.js'),
         'medical_file_detail': path.join(__dirname, 'public/js/src/pages/medical_file_detail', 'index.js'),
+        'master': path.join(__dirname, 'public/js/src/pages/master', 'index.js'),
     },
     output: {
         path: path.resolve(__dirname, 'public/js/dist'),
