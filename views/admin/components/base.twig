@@ -50,8 +50,14 @@
                                                 <em class="icon ni ni-user-alt"></em>
                                             </div>
                                             <div class="user-info d-none d-md-block">
-                                                <div class="user-status">Administrator</div>
-                                                <div class="user-name dropdown-indicator">Nguyen Van A</div>
+                                                <div class="user-status">
+                                                    {% if Auth.user().role == 1 %}
+                                                        Administrator
+                                                    {% elseif Auth.user().role == 2 %}
+                                                        Doctor
+                                                    {% endif %}
+                                                </div>
+                                                <div class="user-name dropdown-indicator">{{ Auth.user().first_name }} {{ Auth.user().last_name }}</div>
                                             </div>
                                         </div>
                                     </a>
