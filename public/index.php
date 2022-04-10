@@ -40,6 +40,7 @@ use App\Controllers\admin\GetDoctorController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
+use App\Controllers\api\GetApiCalendarController;
 use App\Controllers\SampleController;
 use App\Controllers\admin\UserController;
 use App\Controllers\admin\ViewCalendarDetailController;
@@ -49,6 +50,7 @@ use App\Controllers\ApiController;
 use App\Core\Application;
 use App\Core\View\Twig;
 use App\Middleware\AdminAuthMiddleware;
+use App\Middleware\ApiMiddleware;
 use App\Model\User;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -145,5 +147,7 @@ $app->router->get('/admin/ajax/get-doctor', [GetDoctorController::class, 'getDoc
 $app->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'getCalendar']);
 $app->router->get('/admin/ajax/get-calendar-edit', [GetCalendarController::class, 'getCalendar']);
 
+// External Api
+$app->router->get('/api/get-calendar', [GetApiCalendarController::class, 'getCalendar'],  ApiMiddleware::class);
 
 $app->run();

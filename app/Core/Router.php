@@ -6,6 +6,8 @@ use App\Core\Controller\BaseController;
 use App\Core\Request\Request;
 use App\Core\Response\Response;
 
+use function Composer\Autoload\includeFile;
+
 class Router
 {
     protected array $router = [];
@@ -74,7 +76,10 @@ class Router
                 $middleware = [];
                 $middleware[0] = new $class['middleware']();
                 $middleware[1] = '__invoke';
-                call_user_func($middleware);
+                $func_response = call_user_func($middleware);
+                if (!empty($func_response)) {
+                    return $func_response;
+                }
             }
 
             /**@var BaseController $controller */
