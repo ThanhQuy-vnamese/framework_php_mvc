@@ -40,6 +40,7 @@ use App\Controllers\admin\GetDoctorController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
+use App\Controllers\api\AddCalendarApiController;
 use App\Controllers\api\GetApiCalendarController;
 use App\Controllers\api\GetAttendeesApiController;
 use App\Controllers\SampleController;
@@ -150,6 +151,7 @@ $app->router->get('/admin/ajax/get-calendar-edit', [GetCalendarController::class
 
 // External Api
 $app->router->get('/api/v1/get-calendar', [GetApiCalendarController::class, 'getCalendar'],  ApiMiddleware::class);
+$app->router->post('/api/v1/add-calendar', [AddCalendarApiController::class, 'add'], ApiMiddleware::class);
 $app->router->get('/api/v1/get-attendees', [GetAttendeesApiController::class, 'get'], ApiMiddleware::class);
 
 $app->run();
