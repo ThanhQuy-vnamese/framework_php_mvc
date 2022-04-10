@@ -68,8 +68,8 @@
                                                     <span>AB</span>
                                                 </div>
                                                 <div class="user-info">
-                                                    <span class="lead-text">Nguyen Van A</span>
-                                                    <span class="sub-text">nguyenvana@mail.com</span>
+                                                    <span class="lead-text">{{ Auth.user().first_name }} {{ Auth.user().last_name }}</span>
+                                                    <span class="sub-text">{{ Auth.user().email }}</span>
                                                 </div>
                                             </div>
                                         </div>
