@@ -1,15 +1,10 @@
 const path = require('path');
 require('@babel/polyfill');
+require('./entry');
 
 module.exports = {
-    entry: {
-        'index': path.join(__dirname, 'public/js/src', 'index.js'),
-        'appointment': path.join(__dirname, 'public/js/src/pages/appointment', 'index.js'),
-        'calendar_detail': path.join(__dirname, 'public/js/src/pages/calendar_detail', 'index.js'),
-        'calendar_add': path.join(__dirname, 'public/js/src/pages/calendar_add', 'index.js'),
-        'medical_file_list': path.join(__dirname, 'public/js/src/pages/medical_file_list', 'index.js'),
-        'blog_list': path.join(__dirname, 'public/js/src/pages/blog_list', 'index.js'),
-    },
+    // Update: Goto entry file to add file compile
+    entry: entry,
     output: {
         path: path.resolve(__dirname, 'public/js/dist'),
         filename: '[name].js'
