@@ -27,7 +27,7 @@ class GetDoctorQueryService implements GetDoctorQueryServiceInterface
      */
     public function getAllDoctor(): array
     {
-        $sql = "SELECT U.id, first_name, last_name, role FROM medical_users AS U INNER JOIN medical_user_profiles AS UP 
+        $sql = "SELECT U.id AS id, first_name, last_name, U.email, UP.phone, role FROM medical_users AS U INNER JOIN medical_user_profiles AS UP 
                 ON U.id = UP.user_id
                 WHERE role = %s";
         $query = sprintf($sql, ROLE_DOCTOR);
@@ -43,7 +43,9 @@ class GetDoctorQueryService implements GetDoctorQueryServiceInterface
                 (int)$row['id'],
                 $row['first_name'],
                 $row['last_name'],
-                (int)$row['role']
+                (int)$row['role'],
+                $row['email'],
+                $row['phone']
             );
         }
 
