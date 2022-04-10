@@ -6,9 +6,14 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\admin\AddCalendarController;
+use App\Controllers\admin\AddMedicineTypeController;
 use App\Controllers\admin\DeleteBlogController;
 use App\Controllers\admin\DeleteMedicalFileController;
+use App\Controllers\admin\EditPrescriptionController;
+use App\Controllers\admin\GetPrescriptionEditView;
 use App\Controllers\admin\LoginSampleController;
+use App\Controllers\admin\LogoutController;
+use App\Controllers\admin\MedicineTypeListController;
 use App\Controllers\admin\QuickAddCalendarController;
 use App\Controllers\admin\AddHealthController;
 use App\Controllers\admin\AddMedicalFileController;
@@ -35,6 +40,8 @@ use App\Controllers\admin\GetDoctorController;
 use App\Controllers\admin\MedicalFileController;
 use App\Controllers\admin\MedicineListController;
 use App\Controllers\admin\ReplyContactController;
+use App\Controllers\api\GetApiCalendarController;
+use App\Controllers\api\GetAttendeesApiController;
 use App\Controllers\SampleController;
 use App\Controllers\admin\UserController;
 use App\Controllers\admin\ViewCalendarDetailController;
@@ -44,6 +51,7 @@ use App\Controllers\ApiController;
 use App\Core\Application;
 use App\Core\View\Twig;
 use App\Middleware\AdminAuthMiddleware;
+use App\Middleware\ApiMiddleware;
 use App\Model\User;
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -95,6 +103,8 @@ $app->router->get('/admin/medical-file-list', [MedicalFileController::class, 'ge
 $app->router->get('/admin/medical-file-detail', [MedicalFileController::class, 'getViewMedicalFileDetail'], AdminAuthMiddleware::class);
 $app->router->get('/admin/ajax-medical-file-health', [MedicalFileController::class, 'getHealthDetail'], AdminAuthMiddleware::class);
 $app->router->get('/admin/ajax-get-prescription', [ViewPrescriptionController::class, 'getPrescription'], AdminAuthMiddleware::class);
+$app->router->get('/admin/prescription-edit', [GetPrescriptionEditView::class, 'get']);
+$app->router->post('/admin/post-edit-prescription', [EditPrescriptionController::class, 'editPrescription']);
 $app->router->post('/admin/post-medical-file-add', [AddMedicalFileController::class, 'addMedicalFile'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-file-edit', [EditMedicalFileController::class, 'editMedicalFile'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-medical-file-delete', [DeleteMedicalFileController::class, 'delete'], AdminAuthMiddleware::class);
@@ -103,6 +113,8 @@ $app->router->post('/admin/post-medical-health-edit', [MedicalFileController::cl
 $app->router->post('/admin/post-prescription-add', [AddPrescriptionController::class, 'addPrescription'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-delete-health', [DeleteHealthRecordController::class, 'deleteHealth'], AdminAuthMiddleware::class);
 $app->router->get('/admin/medicine-list', [MedicineListController::class, 'getViewMedicineList'], AdminAuthMiddleware::class);
+$app->router->get('/admin/medicine-type-list', [MedicineTypeListController::class, 'getView'], AdminAuthMiddleware::class);
+$app->router->post('/admin/post-add-medicine-type', [AddMedicineTypeController::class, 'add'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-add-medicine', [AddMedicineController::class, 'addMedicine'], AdminAuthMiddleware::class);
 $app->router->get('/admin/medicine-detail', [ViewMedicineDetailController::class, 'getViewMedicineDetail'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-edit-medicine', [EditMedicineController::class, 'editMedicine'], AdminAuthMiddleware::class);
@@ -123,6 +135,7 @@ $app->router->post('/admin/post-calendar-edit', [EditCalendarController::class, 
 $app->router->post('/admin/post-calendar-delete', [DeleteCalendarController::class, 'delete'], AdminAuthMiddleware::class);
 $app->router->get('/admin/calendar-add', [CalendarAddController::class, 'getView'], AdminAuthMiddleware::class);
 $app->router->post('/admin/post-calendar-add', [AddCalendarController::class, 'add'], AdminAuthMiddleware::class);
+$app->router->post('/admin/logout', [LogoutController::class, 'logout'], AdminAuthMiddleware::class);
 
 // Test
 $app->router->get('/admin/login', [LoginSampleController::class, 'getView']);
@@ -135,5 +148,8 @@ $app->router->get('/admin/ajax/get-doctor', [GetDoctorController::class, 'getDoc
 $app->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'getCalendar']);
 $app->router->get('/admin/ajax/get-calendar-edit', [GetCalendarController::class, 'getCalendar']);
 
+// External Api
+$app->router->get('/api/v1/get-calendar', [GetApiCalendarController::class, 'getCalendar'],  ApiMiddleware::class);
+$app->router->get('/api/v1/get-attendees', [GetAttendeesApiController::class, 'get'], ApiMiddleware::class);
 
 $app->run();

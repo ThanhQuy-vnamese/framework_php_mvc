@@ -6,6 +6,7 @@ namespace App\Controllers\admin;
 use App\Core\Controller\BaseController;
 use App\Core\Helper\UploadFile;
 use App\Core\Lib\QrCode;
+use App\Core\Mail\Mail;
 use App\Core\Session;
 use App\Model\User;
 use App\Repository\UserRepository;
@@ -123,6 +124,12 @@ class UserController extends BaseController
             $session->setFlash('errorAddUser', 'Add user failed');
             $this->response->redirect('/admin/user-add');
         }
+
+        $mail = new Mail();
+        $mail->setSubject('Verify account');
+        $mail->setBody('Please click to link to verify your account.');
+        $mail->setToAddress($email);
+        $mail->send();
 
         $session->setFlash('successAddUser', 'Add user success');
         $this->response->redirect('/admin/user-list');
