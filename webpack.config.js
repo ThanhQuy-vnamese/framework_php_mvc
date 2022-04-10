@@ -3,6 +3,7 @@ require('@babel/polyfill');
 require('./entry');
 
 module.exports = {
+    // Update: Goto entry file to add file compile
     entry: entry,
     output: {
         path: path.resolve(__dirname, 'public/js/dist'),
