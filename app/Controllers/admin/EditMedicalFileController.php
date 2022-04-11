@@ -105,13 +105,13 @@ class EditMedicalFileController extends BaseController
     {
         $healthInsuranceData = [
             'health_insurance' => false,
-            'id_medical_records' => $healthInsurance['medical_file_id']
+            'id_medical_records' => $healthInsurance['medical_file_id'],
+            'health_insurance_number' => $healthInsurance['health_insurance_number'],
+            'expiration_date' => $healthInsurance['expiration_date'],
         ];
 
         if (!empty($healthInsurance['health_insurance_number']) && !empty($healthInsurance['expiration_date'])) {
             $healthInsuranceData['health_insurance'] = true;
-            $healthInsuranceData['health_insurance_number'] = $healthInsurance['health_insurance_number'];
-            $healthInsuranceData['expiration_date'] = $healthInsurance['expiration_date'];
         }
 
         return $healthInsuranceData;
