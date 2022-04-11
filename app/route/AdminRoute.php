@@ -8,6 +8,7 @@ use App\Controllers\api\DeleteCalendarApiController;
 use App\Controllers\api\EditCalendarApiController;
 use App\Controllers\api\GetHealthController;
 use App\Controllers\api\GetMedicalFileApiController;
+use App\Controllers\api\GetPrescriptionApiController;
 use App\Core\Application;
 use App\Core\Router;
 use App\Controllers\admin\AddCalendarController;
@@ -291,5 +292,6 @@ class AdminRoute
         $this->router->get('/api/v1/get-doctors', [GetDoctorApiController::class, 'get'], ApiMiddleware::class);
         $this->router->get('/api/v1/get-medical-file', [GetMedicalFileApiController::class, 'get'], ApiMiddleware::class);
         $this->router->get('/api/v1/get-health', [GetHealthController::class, 'get'], ApiMiddleware::class);
+        $this->router->get('/api/v1/get-prescription', [GetPrescriptionApiController::class, 'get'], ApiMiddleware::class);
     }
 }
