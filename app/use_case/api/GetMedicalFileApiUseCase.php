@@ -7,10 +7,11 @@ namespace App\use_case\api;
 use App\dto\api\MedicalFileForApiDto;
 use App\errors\MedicalFile as MedicalFileError;
 use App\query_services\MedicalFileQueryService;
+use App\query_services\MedicalFileQueryServiceInterface;
 
 class GetMedicalFileApiUseCase
 {
-    private MedicalFileQueryService $medicalFileQueryService;
+    private MedicalFileQueryServiceInterface $medicalFileQueryService;
     private MedicalFileError $medicalFileError;
 
     public function __construct()
