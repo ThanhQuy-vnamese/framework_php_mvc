@@ -64,7 +64,6 @@ class Router
         $method = $this->request->getMethod();
         // TODO: Refactor
         $class = $this->router[$method][$path] ?? false;
-        var_dump($this->router);die;
         $callback = $class;
         unset($callback['middleware']);
         if ($callback === false) {
