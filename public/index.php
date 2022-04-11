@@ -45,7 +45,7 @@ $app->twig->addGlobalFunction('session', Application::$APPLICATION->session);
 
 $app->router->get('/', [SampleController::class, 'index']);
 $app->router->get('/api/users', [ApiController::class, 'getUser']);
-//$app->router->post('/api/login', [ApiController::class, 'login']);
+$app->router->post('/api/login', [ApiController::class, 'login']);
 
 $adminRoute = new AdminRoute($app);
 $adminRoute->register();
