@@ -24,16 +24,16 @@
 								<div class="" style="border:2px solid black; width:210px; height:210px;">
 									<img src="../public/upload/{{ qr_image}}" style="width:200px; height:200px;" alt="">
 								</div>
-								<a class="btn btn-primary btn-md" style="background-color: #55acee; width: 210px" href="{{ helper.redirect(link)}}" role="button">
+								<a class="btn btn-primary btn-md" style="background-color: #55acee; width: 210px" href="{{ redirect(link)}}" role="button">
 									Download QR Code</a>
 							</div>
 						{% endif %}
 					</div>
 					<div class="col-md-8 col-lg-9 col-xl-5 offset-xl-1">
 						{% if(is_exist_info == false)%}
-							<form method="post" action="{{ helper.redirect('/medican_insert') }}">
+							<form method="post" action="{{ redirect('/medican_insert') }}">
 							{% else %}
-								<form method="post" action="{{ helper.redirect('/medican_update') }}">
+								<form method="post" action="{{ redirect('/medican_update') }}">
 								{% endif %}
 								<div class="form-outline mb-4">
 									<label class="form-label text-uppercase text-danger" for="form1Example13">Địa chỉ email</label>

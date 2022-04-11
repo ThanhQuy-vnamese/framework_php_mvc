@@ -4,8 +4,8 @@
 		<div class="row align-items-center">
 			<div class="col-lg-12">
 				<nav class="navbar navbar-expand-lg navbar-light">
-					<a class="navbar-brand" href="{{ helper.custom_link('') }}">
-						<img src="{{ helper.custom_link('style/img/logo.png') }}" alt="logo">
+					<a class="navbar-brand" href="{{ createLink('') }}">
+						<img src="{{ createLink('style/img/logo.png') }}" alt="logo">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -14,29 +14,29 @@
 					<div class="collapse navbar-collapse main-menu-item justify-content-center" id="navbarSupportedContent">
 						<ul class="navbar-nav align-items-center">
 							<li class="nav-item active">
-								<a class="nav-link" href="{{ helper.custom_link('') }}">Home</a>
+								<a class="nav-link" href="{{ createLink('') }}">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ helper.custom_link('about') }}">About</a>
+								<a class="nav-link" href="{{ createLink('about') }}">About</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ helper.custom_link('user/blog') }}">Blog</a>
+								<a class="nav-link" href="{{ createLink('user/blog') }}">Blog</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ helper.custom_link('doctor') }}">Doctors</a>
+								<a class="nav-link" href="{{ createLink('doctor') }}">Doctors</a>
 							</li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									Service
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="{{ helper.custom_link('statistic-covid') }}">Thống kê covid</a>
-									<a class="dropdown-item" href="{{ helper.custom_link('book-clinic') }}">Xem lịch khám</a>
-									<a class="dropdown-item" href="{{ helper.custom_link('book-clinic') }}">Khai báo y tế</a>
+									<a class="dropdown-item" href="{{ createLink('statistic-covid') }}">Thống kê covid</a>
+									<a class="dropdown-item" href="{{ createLink('book-clinic') }}">Xem lịch khám</a>
+									<a class="dropdown-item" href="{{ createLink('book-clinic') }}">Khai báo y tế</a>
 								</div>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ helper.custom_link('contact') }}">Contact</a>
+								<a class="nav-link" href="{{ createLink('contact') }}">Contact</a>
 							</li>
 							<li class="nav-item dropdown">
 								{% if(Session.get('user') != '') %}
@@ -45,11 +45,11 @@
 										{{ session.get('user').first_name}}
 									</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="{{ helper.custom_link('user/profile')}}?user_id={{ session.get('user').user_id}}">Profile</a>
-										<a class="dropdown-item" href="{{ helper.custom_link('user/logout') }}">Logout</a>
+										<a class="dropdown-item" href="{{ createLink('user/profile')}}?user_id={{ session.get('user').user_id}}">Profile</a>
+										<a class="dropdown-item" href="{{ createLink('user/logout') }}">Logout</a>
 									</div>
 								{% else %}
-									<a class="btn_2 d-none d-lg-block" href="{{ helper.custom_link('user/login') }}">Login</a>
+									<a class="btn_2 d-none d-lg-block" href="{{ createLink('user/login') }}">Login</a>
 								{% endif %}
 							</li>
 							<li class="nav-item"></li>
