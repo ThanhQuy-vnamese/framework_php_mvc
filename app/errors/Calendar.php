@@ -46,6 +46,11 @@ class Calendar
             'code' => 'CAL-0006',
             'message' => 'Update attendees fail',
             'detail' => 'Re-check attendees and doctor'
-        ]
+        ],
+        [
+            'code' => 'CAL-0007',
+            'message' => 'Cannot find the calendar',
+            'detail' => 'Can not find the calendar specified or you don\'nt have permission on this calendar'
+        ],
     ];
 }
