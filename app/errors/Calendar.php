@@ -41,6 +41,11 @@ class Calendar
             'code' => 'CAL-0005',
             'message' => 'Add the calendar fail',
             'detail' => 'Check information and re-add the calendar'
+        ],
+        [
+            'code' => 'CAL-0006',
+            'message' => 'Update attendees fail',
+            'detail' => 'Re-check attendees and doctor'
         ]
     ];
 }

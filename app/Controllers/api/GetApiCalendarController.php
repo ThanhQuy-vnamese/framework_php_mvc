@@ -25,6 +25,7 @@ class GetApiCalendarController extends BaseController
         foreach ($calendars as $calendar_factory) {
             $temp = [];
             $temp['id'] = $calendar_factory->getCalendarForView()->getId();
+            $temp['full_name'] = $calendar_factory->getCalendarForView()->getFullName();
             $temp['subject'] = $calendar_factory->getCalendarForView()->getSubject();
             $temp['date_start'] = $calendar_factory->getCalendarForView()->getDateStart();
             $temp['date_end'] = $calendar_factory->getCalendarForView()->getDateEnd();

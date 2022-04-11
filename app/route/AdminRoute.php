@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\route;
 
+use App\Controllers\api\EditCalendarApiController;
 use App\Core\Application;
 use App\Core\Router;
 use App\Controllers\admin\AddCalendarController;
@@ -281,6 +282,7 @@ class AdminRoute
             ApiMiddleware::class
         );
         $this->router->post('/api/v1/add-calendar', [AddCalendarApiController::class, 'add'], ApiMiddleware::class);
+        $this->router->post('/api/v1/edit-calendar', [EditCalendarApiController::class, 'edit'], ApiMiddleware::class);
         $this->router->get('/api/v1/get-attendees', [GetAttendeesApiController::class, 'get'], ApiMiddleware::class);
         $this->router->get('/api/v1/get-doctors', [GetDoctorApiController::class, 'get'], ApiMiddleware::class);
     }

@@ -13,6 +13,9 @@ class ApiAuthentication
     public function authentication(): bool
     {
         $authentication = $this->headers['Medical-Authorization'] ?? '';
+        if (empty($authentication)) {
+            return false;
+        }
         $user = base64_decode($authentication);
         $info = explode('/', $user);
         $auth = new Authentication();
