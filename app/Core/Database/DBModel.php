@@ -47,7 +47,7 @@ abstract class DBModel extends Model
     }
 
     public function getInfoUserLogin($email) {
-        $sql = "SELECT * FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON u.id = UP.user_id WHERE email = '$email'";
+        $sql = "SELECT * FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id = UP.user_id WHERE email = '$email'";
         $result = Application::$APPLICATION->database->mysql->query($sql);
         return $result->fetch_object();
     }
