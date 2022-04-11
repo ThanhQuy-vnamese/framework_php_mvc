@@ -59,10 +59,14 @@ class Request {
                 }
             }
 
+            foreach ($_FILES as $key => $values) {
+                $input[$key] = $values;
+            }
+
             $paramsGetContent = (array)json_decode(file_get_contents('php://input'), true);
             if (!is_null($paramsGetContent)) {
                 foreach ($paramsGetContent as $key => $value) {
-                    $input[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    $input[$key] = $value;
                 }
             }
         }

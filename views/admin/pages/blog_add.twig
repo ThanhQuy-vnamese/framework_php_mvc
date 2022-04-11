@@ -12,7 +12,11 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
+                    {% if(Session.hasFlash('errorAddBlog')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddBlog') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
+                        <form action="{{ redirect('admin/post-blog-add') }}" enctype="multipart/form-data" method="post">
                         <div class="card-inner">
                             <div class="row gy-4">
                                 <div class="col-md-12">
@@ -44,12 +48,12 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Add Booking</button>
+                                        <button type="submit" class="btn btn-primary">Add blog</button>
                                     </div>
                                 </div>
                                 <!--col-->
                             </div>
-                            <!--row-->
+                        </form><!--row-->
                         </div><!-- .card-inner-group -->
                     </div><!-- .card -->
                 </div><!-- .nk-block -->
@@ -62,8 +66,9 @@
 {% verbatim  %}
 <script>
     tinymce.init({
-    selector: '#content'
-});
+        selector: '#content',
+        skin: false
+    });
 </script>
 {% endverbatim  %}
 {% endblock %}

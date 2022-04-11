@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: circleci/php:7.4.6
+      - image: cimg/php:7.4.26-node
     steps:
       - checkout
       - run:
@@ -13,11 +13,32 @@ jobs:
             cd scripts
             sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r deploy.sh root@${IPSERVER}:/home/install
             sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install && sh deploy.sh'
+  mysql:
+    docker:
+      - image: cimg/php:7.4.26-node
+    steps:
+      - checkout
+      - run:
+          name: "Init database"
+          command: |
+            sudo apt-get update
+            sudo apt-get install sshpass
+            cd scripts
+            sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r mysql root@${IPSERVER}:/home/install
+            sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install/mysql && sh mysql.sh'
 workflows:
   version: 2
   deploy-server:
     jobs:
       - deploy:
+          context: phpmvc
+          requires:
+            - mysql
+          filters:
+            branches:
+              only:
+                - master
+      - mysql:
           context: phpmvc
           filters:
             branches:

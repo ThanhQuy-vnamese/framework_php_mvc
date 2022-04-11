@@ -12332,7 +12332,7 @@ body.toggle-shown { overflow: hidden; }
 @media (min-width: 1200px) { .toggle-break-xl { transition: none; opacity: 1; visibility: visible; transform: translateY(0) !important; position: static; background: transparent; box-shadow: none; z-index: 1 !important; }
   .toggle-break-xl.collapse { display: block; } }
 
-@media (min-width: 1540px) { .toggle-break-xxl { transition: none; opacity: 1; visibility: visible; transform: translateY(0) !important; position: static; background: transparent; box-shadow: none; z-index: 1 !important; }
+@media (min-width: 660px) { .toggle-break-xxl { transition: none; opacity: 1; visibility: visible; transform: translateY(0) !important; position: static; background: transparent; box-shadow: none; z-index: 1 !important; }
   .toggle-break-xxl.collapse { display: block; } }
 
 .nav-switch { display: inline-flex; margin-bottom: 1.5rem; border: 1px solid #dbdfea; border-radius: 30px; padding: 5px; }

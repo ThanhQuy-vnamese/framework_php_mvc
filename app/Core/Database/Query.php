@@ -68,6 +68,7 @@ class Query extends AbstractQuery
         $strValue = $this->generateValuesToString($values);
         $db = $this->getDatabase();
         $query = "INSERT INTO $this->table ($strField) VALUES $strValue;";
+//        var_dump($query);die;
         $result = $db->mysql->query($query);
         if (!$result) {
             return false;
@@ -78,10 +79,11 @@ class Query extends AbstractQuery
     public function update(array $values, array $conditions): bool
     {
         $lastValue = end($values);
+        $lastKey = key($values);
         $strUpdateQuery = '';
         foreach ($values as $key => $value) {
             $strUpdateQuery .= $key . ' = ' . (is_int($value) ? $value : "'$value'");
-            if ($value != $lastValue) {
+            if ($value != $lastValue || $key != $lastKey) {
                 $strUpdateQuery .= ', ';
             }
         }

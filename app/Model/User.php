@@ -38,7 +38,7 @@ class User extends DBModel
 
     function tableName(): string
     {
-        return 'users';
+        return 'medical_users';
     }
 
     function attributes(): array
@@ -82,7 +82,7 @@ class User extends DBModel
 
     /**
      * @param string email
-     * @return 
+     * @return
      */
     public function getInfoFromEmail(string $email)
     {
@@ -181,5 +181,49 @@ class User extends DBModel
     {
         $query = new Query();
         return $query->table('medical_appointment_attendees')->insert($information);
+    }
+
+    public function getAllUsers(): array {
+        $query = new Query();
+        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id";
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getUser(string $id): array {
+        $query = new Query();
+        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function updateUser(string $id, array $information): bool {
+        $query = new Query();
+        return $query->table('medical_users')->update($information, ['id' => $id]);
+    }
+
+    public function deleteUser(string $id): bool {
+        $query = new Query();
+        return $query->table('medical_users')->condition(['id' => $id])->delete();
+    }
+
+    public function getEmailExceptUserId(string $user_id, string $email): int {
+        $sql = "SELECT * FROM medical_users WHERE email='$email' AND id <> '$user_id';";
+        $result = $this->getDatabase()->mysql->query($sql);
+        return $result->num_rows;
     }
 }
