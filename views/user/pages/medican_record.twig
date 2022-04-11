@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Infectious | Coronavirus (COVID 19) Medical HTML Template</title>
+		{{ include('user/components/head.twig') }}
+	</head>
+	<body>
+		{{ include('user/components/menu.twig')}}
+		<section class="vh-100">
+			<div class="container py-5">
+				<h2 class="text-center">Khai báo y tế</h2>
+				{% if(session.getFlash('message')) %}
+					<div class="alert alert-success">
+						{{ session.getFlash('message') }}
+					</div>
+				{%  endif %}
+				<div class="row d-flex align-items-center justify-content-center h-100">
+					<div class="col-md-7 col-lg-3 col-xl-6">
+						{% if(is_exist_info == true)%}
+							<div class="align-content-center">
+								<div class="" style="border:2px solid black; width:210px; height:210px;">
+									<img src="../public/upload/{{ qr_image}}" style="width:200px; height:200px;" alt="">
+								</div>
+								<a class="btn btn-primary btn-md" style="background-color: #55acee; width: 210px" href="{{ helper.redirect(link)}}" role="button">
+									Download QR Code</a>
+							</div>
+						{% endif %}
+					</div>
+					<div class="col-md-8 col-lg-9 col-xl-5 offset-xl-1">
+						{% if(is_exist_info == false)%}
+							<form method="post" action="{{ helper.redirect('/medican_insert') }}">
+							{% else %}
+								<form method="post" action="{{ helper.redirect('/medican_update') }}">
+								{% endif %}
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example13">Địa chỉ email</label>
+
+									<input type="email" id="form1Example13" class="form-control form-control-lg" name="email" placeholder="Enter a valid email address" value="{{ email }}" required/>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example03">Họ tên *</label>
+
+									<input type="text" id="form1Example03" class="form-control form-control-lg" name="full_name" placeholder="Enter your full name" value="{{ full_name }}" required/>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Địa chỉ thường trú</label>
+
+									<input type="text" id="form1Example23" class="form-control form-control-lg" name="address" placeholder="Enter your address" value="{{ address }}" required/>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Ngày sinh</label>
+
+									<input type="date" id="form1Example23" class="form-control form-control-lg" name="birthday" value="{{ birthday }}" required/>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Số điện thoại</label>
+
+									<input type="number" id="form1Example23" class="form-control form-control-lg" name="phone" value="{{ phone }}" pattern="^[+]{0,1}[0-9]{5,13}$" required/>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Giới tính</label>
+
+									<div class="form-check form-check-inline">
+										<label class="form-check-label"><input class="form-check-inline" {{ gender=='male'?'checked':''}} type="checkbox" name="gender" value="male">Male</label>
+										<label class="form-check-label"><input class="form-check-inline" {{ gender=='female'?'checked':''}} type="checkbox" name="gender" value="female">Female
+										</label>
+									</div>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Số thẻ BHYT</label>
+
+									<div class="form-check form-check-inline">
+										<label class="form-check-label"><input class="form-check-inline" {{ health_insurance==1?'checked':''}} type="checkbox" name="health_insurance" value="1">Yes</label>
+										<label class="form-check-label"><input class="form-check-inline" {{ health_insurance==0?'checked':''}} type="checkbox" name="health_insurance" value="0">No
+										</label>
+									</div>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Có tiếp xúc với bệnh nhân nhiễm covid trong 14 ngày hay không?</label>
+
+									<input type="text" id="form1Example23" class="form-control form-control-lg" name="way" placeholder="Enter your here" value="{{ way }}" required/>
+								</div>
+								<div class="form-outline mb-4">
+									<label class="form-label text-uppercase text-danger" for="form1Example23">Khai báo y tế</label>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label"><input class="form-check-inline" {{ 'dry_cough' in health?'checked':''}} type="checkbox" name="healths[]" value="dry_cough">DRY COUGH</label>
+										<label class="form-check-label"><input class="form-check-inline" {{ 'fever' in health?'checked':''}} type="checkbox" name="healths[]" value="fever">FEVER
+										</label>
+										<label class="form-check-label"><input class="form-check-inline" {{ 'headache' in health?'checked':''}} type="checkbox" name="healths[]" value="headache">HEADACHE
+										</label><br>
+										<label class="form-check-label"><input class="form-check-inline" {{ 'fatigue' in health?'checked':''}} type="checkbox" name="healths[]" value="fatigue">FATIGUE
+										</label>
+										<label class="form-check-label"><input class="form-check-inline" {{ 'runy_nose' in health?'checked':''}} type="checkbox" name="healths[]" value="runy_nose">RUNY NOSE
+										</label>
+										<label class="form-check-label"><input class="form-check-inline" {{ 'sore_throat' in health?'checked':''}} type="checkbox" name="healths[]" value="sore_throat">SORE THROAT
+										</label>
+									</div>
+								</div>
+
+								<!-- Submit button -->
+								<button type="submit" class="btn btn-primary btn-lg btn-block">Lưu</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--=== Javascript Plugins End ===-->
+		</body>
+	</body>
+</html>
