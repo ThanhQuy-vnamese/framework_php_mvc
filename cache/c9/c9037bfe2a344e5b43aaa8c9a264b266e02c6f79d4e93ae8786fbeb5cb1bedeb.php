@@ -42,11 +42,11 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t<nav class=\"navbar navbar-expand-lg navbar-light\">
 \t\t\t\t\t<a class=\"navbar-brand\" href=\"";
         // line 7
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => ""], "method", false, false, false, 7), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), [""]), "html", null, true);
         echo "\">
 \t\t\t\t\t\t<img src=\"";
         // line 8
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/img/logo.png"], "method", false, false, false, 8), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/logo.png"]), "html", null, true);
         echo "\" alt=\"logo\">
 \t\t\t\t\t</a>
 \t\t\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -58,25 +58,25 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t<li class=\"nav-item active\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
         // line 17
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => ""], "method", false, false, false, 17), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), [""]), "html", null, true);
         echo "\">Home</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
         // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "about"], "method", false, false, false, 20), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["about"]), "html", null, true);
         echo "\">About</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
         // line 23
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/blog"], "method", false, false, false, 23), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/blog"]), "html", null, true);
         echo "\">Blog</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
         // line 26
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "doctor"], "method", false, false, false, 26), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["doctor"]), "html", null, true);
         echo "\">Doctors</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
@@ -86,22 +86,22 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
         // line 33
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "statistic-covid"], "method", false, false, false, 33), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["statistic-covid"]), "html", null, true);
         echo "\">Thống kê covid</a>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
         // line 34
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "book-clinic"], "method", false, false, false, 34), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["book-clinic"]), "html", null, true);
         echo "\">Xem lịch khám</a>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
         // line 35
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "book-clinic"], "method", false, false, false, 35), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["book-clinic"]), "html", null, true);
         echo "\">Khai báo y tế</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
         // line 39
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "contact"], "method", false, false, false, 39), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["contact"]), "html", null, true);
         echo "\">Contact</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
@@ -119,20 +119,20 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
             // line 48
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/profile"], "method", false, false, false, 48), "html", null, true);
+            echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/profile"]), "html", null, true);
             echo "?user_id=";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 48), "user_id", [], "any", false, false, false, 48), "html", null, true);
             echo "\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
             // line 49
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/logout"], "method", false, false, false, 49), "html", null, true);
+            echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/logout"]), "html", null, true);
             echo "\">Logout</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t";
         } else {
             // line 52
             echo "\t\t\t\t\t\t\t\t\t<a class=\"btn_2 d-none d-lg-block\" href=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/login"], "method", false, false, false, 52), "html", null, true);
+            echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/login"]), "html", null, true);
             echo "\">Login</a>
 \t\t\t\t\t\t\t\t";
         }
@@ -185,8 +185,8 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t<div class=\"row align-items-center\">
 \t\t\t<div class=\"col-lg-12\">
 \t\t\t\t<nav class=\"navbar navbar-expand-lg navbar-light\">
-\t\t\t\t\t<a class=\"navbar-brand\" href=\"{{ helper.custom_link('') }}\">
-\t\t\t\t\t\t<img src=\"{{ helper.custom_link('style/img/logo.png') }}\" alt=\"logo\">
+\t\t\t\t\t<a class=\"navbar-brand\" href=\"{{ createLink('') }}\">
+\t\t\t\t\t\t<img src=\"{{ createLink('style/img/logo.png') }}\" alt=\"logo\">
 \t\t\t\t\t</a>
 \t\t\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
 \t\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>
@@ -195,29 +195,29 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t<div class=\"collapse navbar-collapse main-menu-item justify-content-center\" id=\"navbarSupportedContent\">
 \t\t\t\t\t\t<ul class=\"navbar-nav align-items-center\">
 \t\t\t\t\t\t\t<li class=\"nav-item active\">
-\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('') }}\">Home</a>
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ createLink('') }}\">Home</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('about') }}\">About</a>
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ createLink('about') }}\">About</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('user/blog') }}\">Blog</a>
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ createLink('user/blog') }}\">Blog</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('doctor') }}\">Doctors</a>
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ createLink('doctor') }}\">Doctors</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
 \t\t\t\t\t\t\t\t\tService
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('statistic-covid') }}\">Thống kê covid</a>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('book-clinic') }}\">Xem lịch khám</a>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('book-clinic') }}\">Khai báo y tế</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ createLink('statistic-covid') }}\">Thống kê covid</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ createLink('book-clinic') }}\">Xem lịch khám</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ createLink('book-clinic') }}\">Khai báo y tế</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ helper.custom_link('contact') }}\">Contact</a>
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ createLink('contact') }}\">Contact</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t\t{% if(Session.get('user') != '') %}
@@ -226,11 +226,11 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t\t\t\t{{ session.get('user').first_name}}
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/profile')}}?user_id={{ session.get('user').user_id}}\">Profile</a>
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ helper.custom_link('user/logout') }}\">Logout</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ createLink('user/profile')}}?user_id={{ session.get('user').user_id}}\">Profile</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ createLink('user/logout') }}\">Logout</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t{% else %}
-\t\t\t\t\t\t\t\t\t<a class=\"btn_2 d-none d-lg-block\" href=\"{{ helper.custom_link('user/login') }}\">Login</a>
+\t\t\t\t\t\t\t\t\t<a class=\"btn_2 d-none d-lg-block\" href=\"{{ createLink('user/login') }}\">Login</a>
 \t\t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\"></li>
@@ -254,6 +254,6 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t</div>
 </header>
 <!-- Header part end-->
-", "user/components/menu.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\components\\menu.twig");
+", "user/components/menu.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\components\\menu.twig");
     }
 }

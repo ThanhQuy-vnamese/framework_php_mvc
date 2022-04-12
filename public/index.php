@@ -56,6 +56,7 @@ $app->router->post('/doctor/post-book-clinic', [SampleController::class, 'postBo
 $app->router->get('/doctor/show-calendar', [MedicineController::class, 'showCalander']);
 
 $app->router->get('/contact', [SampleController::class, 'contact']);
+$app->router->post('/post-contact', [SampleController::class, 'postContact']);
 $app->router->get('/statistic-covid', [SampleController::class, 'StatisticCovid']);
 
 $app->router->get('/api/users', [ApiController::class, 'getUser']);

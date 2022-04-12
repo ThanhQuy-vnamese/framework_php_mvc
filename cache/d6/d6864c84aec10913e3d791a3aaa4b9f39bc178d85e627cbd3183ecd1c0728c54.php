@@ -43,7 +43,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t\t\t\t\t<a href=\"#\" class=\"footer_logo\">
 \t\t\t\t\t\t<img src=\"";
         // line 8
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/img/logo.png"], "method", false, false, false, 8), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/logo.png"]), "html", null, true);
         echo "\" alt=\"#\">
 \t\t\t\t\t</a>
 \t\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -153,57 +153,57 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 <!-- jquery plugins here-->
 <script src=\"";
         // line 115
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/jquery-1.12.1.min.js"], "method", false, false, false, 115), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery-1.12.1.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- popper js -->
 <script src=\"";
         // line 118
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/popper.min.js"], "method", false, false, false, 118), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/popper.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- bootstrap js -->
 <script src=\"";
         // line 121
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/bootstrap.min.js"], "method", false, false, false, 121), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/bootstrap.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- owl carousel js -->
 <script src=\"";
         // line 124
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/owl.carousel.min.js"], "method", false, false, false, 124), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/owl.carousel.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 125
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/jquery.nice-select.min.js"], "method", false, false, false, 125), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.nice-select.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- contact js -->
 <script src=\"";
         // line 128
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/jquery.ajaxchimp.min.js"], "method", false, false, false, 128), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.ajaxchimp.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 129
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/jquery.form.js"], "method", false, false, false, 129), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.form.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 130
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/jquery.validate.min.js"], "method", false, false, false, 130), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.validate.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 131
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/mail-script.js"], "method", false, false, false, 131), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/mail-script.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 132
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/contact.js"], "method", false, false, false, 132), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/contact.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- custom js -->
 <script src=\"";
         // line 135
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/js/custom.js"], "method", false, false, false, 135), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/custom.js"]), "html", null, true);
         echo "\"></script>
 ";
     }
@@ -232,7 +232,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t\t\t<div class=\"row justify-content-between\">
 \t\t\t\t<div class=\"col-xl-2 col-md-4 col-sm-6 single-footer-widget\">
 \t\t\t\t\t<a href=\"#\" class=\"footer_logo\">
-\t\t\t\t\t\t<img src=\"{{ helper.custom_link('style/img/logo.png') }}\" alt=\"#\">
+\t\t\t\t\t\t<img src=\"{{ createLink('style/img/logo.png') }}\" alt=\"#\">
 \t\t\t\t\t</a>
 \t\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 \t\t\t\t\t</p>
@@ -339,27 +339,27 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 <!-- footer part end-->
 
 <!-- jquery plugins here-->
-<script src=\"{{ helper.custom_link('style/js/jquery-1.12.1.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/jquery-1.12.1.min.js')}}\"></script>
 
 <!-- popper js -->
-<script src=\"{{ helper.custom_link('style/js/popper.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/popper.min.js')}}\"></script>
 
 <!-- bootstrap js -->
-<script src=\"{{ helper.custom_link('style/js/bootstrap.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/bootstrap.min.js')}}\"></script>
 
 <!-- owl carousel js -->
-<script src=\"{{ helper.custom_link('style/js/owl.carousel.min.js')}}\"></script>
-<script src=\"{{ helper.custom_link('style/js/jquery.nice-select.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/owl.carousel.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/jquery.nice-select.min.js')}}\"></script>
 
 <!-- contact js -->
-<script src=\"{{ helper.custom_link('style/js/jquery.ajaxchimp.min.js')}}\"></script>
-<script src=\"{{ helper.custom_link('style/js/jquery.form.js')}}\"></script>
-<script src=\"{{ helper.custom_link('style/js/jquery.validate.min.js')}}\"></script>
-<script src=\"{{ helper.custom_link('style/js/mail-script.js')}}\"></script>
-<script src=\"{{ helper.custom_link('style/js/contact.js')}}\"></script>
+<script src=\"{{ createLink('style/js/jquery.ajaxchimp.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/jquery.form.js')}}\"></script>
+<script src=\"{{ createLink('style/js/jquery.validate.min.js')}}\"></script>
+<script src=\"{{ createLink('style/js/mail-script.js')}}\"></script>
+<script src=\"{{ createLink('style/js/contact.js')}}\"></script>
 
 <!-- custom js -->
-<script src=\"{{ helper.custom_link('style/js/custom.js')}}\"></script>
-", "user/components/footer.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\components\\footer.twig");
+<script src=\"{{ createLink('style/js/custom.js')}}\"></script>
+", "user/components/footer.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\components\\footer.twig");
     }
 }

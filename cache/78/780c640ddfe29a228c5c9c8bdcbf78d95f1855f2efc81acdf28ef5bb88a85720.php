@@ -82,7 +82,12 @@ class __TwigTemplate_bbc8fb57a97d5cf94b0de1e5e0efcb335d65db8caf5796a851ceb59fcd5
             echo "\t\t\t\t\t\t<div class=\"col-md-6 col-lg-4\">
 \t\t\t\t\t\t\t<a href=\"#\">
 \t\t\t\t\t\t\t\t<div class=\"card shadow-sm border-light mb-4\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"position-relative\">
+\t\t\t\t\t\t\t\t\t<a href=\"";
+            // line 38
+            echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/detail-blog"]), "html", null, true);
+            echo "?id=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "id", [], "any", false, false, false, 38), "html", null, true);
+            echo "\" class=\"position-relative\">
 \t\t\t\t\t\t\t\t\t\t<img src=\"https://via.placeholder.com/500x350/5fa9f8/ffffff\" class=\"card-img-top\" alt=\"image\">
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"card-body\">
@@ -111,7 +116,7 @@ class __TwigTemplate_bbc8fb57a97d5cf94b0de1e5e0efcb335d65db8caf5796a851ceb59fcd5
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
 \t\t\t\t\t\t\t\t\t\t\t<a href=\"";
             // line 54
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/detail-blog"], "method", false, false, false, 54), "html", null, true);
+            echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/detail-blog"]), "html", null, true);
             echo "?id=";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["blog"], "id", [], "any", false, false, false, 54), "html", null, true);
             echo "\" class=\"btn btn-info\">Xem chi tiết</a>
@@ -162,7 +167,7 @@ class __TwigTemplate_bbc8fb57a97d5cf94b0de1e5e0efcb335d65db8caf5796a851ceb59fcd5
 
     public function getDebugInfo()
     {
-        return array (  143 => 73,  129 => 61,  114 => 54,  106 => 51,  99 => 47,  92 => 43,  82 => 35,  78 => 34,  55 => 14,  47 => 9,  37 => 1,);
+        return array (  148 => 73,  134 => 61,  119 => 54,  111 => 51,  104 => 47,  97 => 43,  87 => 38,  82 => 35,  78 => 34,  55 => 14,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -204,7 +209,7 @@ class __TwigTemplate_bbc8fb57a97d5cf94b0de1e5e0efcb335d65db8caf5796a851ceb59fcd5
 \t\t\t\t\t\t<div class=\"col-md-6 col-lg-4\">
 \t\t\t\t\t\t\t<a href=\"#\">
 \t\t\t\t\t\t\t\t<div class=\"card shadow-sm border-light mb-4\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"position-relative\">
+\t\t\t\t\t\t\t\t\t<a href=\"{{ createLink('user/detail-blog') }}?id={{blog.id}}\" class=\"position-relative\">
 \t\t\t\t\t\t\t\t\t\t<img src=\"https://via.placeholder.com/500x350/5fa9f8/ffffff\" class=\"card-img-top\" alt=\"image\">
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"card-body\">
@@ -220,7 +225,7 @@ class __TwigTemplate_bbc8fb57a97d5cf94b0de1e5e0efcb335d65db8caf5796a851ceb59fcd5
 \t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-map-marker-alt mr-2\"></i>Tác giả: {{ blog.first_name }} {{ blog.last_name }}</span>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"d-flex my-4\">
-\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('user/detail-blog') }}?id={{blog.id}}\" class=\"btn btn-info\">Xem chi tiết</a>
+\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ createLink('user/detail-blog') }}?id={{blog.id}}\" class=\"btn btn-info\">Xem chi tiết</a>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>

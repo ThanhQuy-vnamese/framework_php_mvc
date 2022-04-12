@@ -239,7 +239,7 @@ class __TwigTemplate_6e40229f87f497f1ba30a4dfe4723a709b202d93e1a49d8adeb2ee05027
 \t\t\t\t\t\t\t<div class=\"single_blog_img\">
 \t\t\t\t\t\t\t\t<img src=\"";
         // line 198
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "style/img/doctor/doctor_1.png"], "method", false, false, false, 198), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/doctor/doctor_1.png"]), "html", null, true);
         echo "\" alt=\"doctor\">
 \t\t\t\t\t\t\t\t<div class=\"social_icon\">
 \t\t\t\t\t\t\t\t\t<ul>
@@ -666,7 +666,7 @@ class __TwigTemplate_6e40229f87f497f1ba30a4dfe4723a709b202d93e1a49d8adeb2ee05027
 \t\t\t\t\t<div class=\"col-sm-6 col-lg-3\">
 \t\t\t\t\t\t<div class=\"single_blog_item\">
 \t\t\t\t\t\t\t<div class=\"single_blog_img\">
-\t\t\t\t\t\t\t\t<img src=\"{{ helper.custom_link('style/img/doctor/doctor_1.png') }}\" alt=\"doctor\">
+\t\t\t\t\t\t\t\t<img src=\"{{ createLink('style/img/doctor/doctor_1.png') }}\" alt=\"doctor\">
 \t\t\t\t\t\t\t\t<div class=\"social_icon\">
 \t\t\t\t\t\t\t\t\t<ul>
 \t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ti-facebook\"></i></a></li>
@@ -872,6 +872,6 @@ class __TwigTemplate_6e40229f87f497f1ba30a4dfe4723a709b202d93e1a49d8adeb2ee05027
 \t</body>
 
 </html>
-", "user/pages/home.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\pages\\home.twig");
+", "user/pages/home.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\pages\\home.twig");
     }
 }

@@ -213,7 +213,7 @@ class __TwigTemplate_ff49f6f069e35a31b33afb07627dd40c85594eb86a1eb4488a414a28082
             echo "\t\t\t\t<div class=\"col-12 col-sm-6 col-lg-3\">
 \t\t\t\t\t<a href=\"";
             // line 167
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "redirect", [0 => "/doctor/detail-doctor"], "method", false, false, false, 167), "html", null, true);
+            echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["doctor/detail-doctor"]), "html", null, true);
             echo "?user_id=";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "user_id", [], "any", false, false, false, 167), "html", null, true);
             echo "\">
@@ -458,7 +458,7 @@ class __TwigTemplate_ff49f6f069e35a31b33afb07627dd40c85594eb86a1eb4488a414a28082
 
 \t\t\t\t{% for user in getListUser %}
 \t\t\t\t<div class=\"col-12 col-sm-6 col-lg-3\">
-\t\t\t\t\t<a href=\"{{ helper.redirect('/doctor/detail-doctor') }}?user_id={{ user.user_id }}\">
+\t\t\t\t\t<a href=\"{{ redirect('doctor/detail-doctor') }}?user_id={{ user.user_id }}\">
 \t\t\t\t\t\t<div
 \t\t\t\t\t\t\tclass=\"single_advisor_profile wow fadeInUp\" data-wow-delay=\"0.2s\" style=\"visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;\">
 \t\t\t\t\t\t\t<!-- Team Thumb-->

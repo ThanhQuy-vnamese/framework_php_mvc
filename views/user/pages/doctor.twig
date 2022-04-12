@@ -164,7 +164,7 @@
 
 				{% for user in getListUser %}
 				<div class="col-12 col-sm-6 col-lg-3">
-					<a href="{{ helper.redirect('/doctor/detail-doctor') }}?user_id={{ user.user_id }}">
+					<a href="{{ redirect('doctor/detail-doctor') }}?user_id={{ user.user_id }}">
 						<div
 							class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
 							<!-- Team Thumb-->
