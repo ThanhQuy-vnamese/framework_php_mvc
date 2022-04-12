@@ -51,7 +51,9 @@ class Session
     public function get($key) {
         return $_SESSION[$key] ?? '';
     }
-
+    public function getValue($key) {
+        return $_SESSION[self::FLASH_MESSAGE][$key]['value'] ?? false;
+    }
     public function remove($key) {
         unset($_SESSION[$key]);
     }
