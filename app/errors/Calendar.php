@@ -46,6 +46,11 @@ class Calendar extends AbstractError
                 'message' => 'Cannot find the calendar',
                 'detail' => 'Can not find the calendar specified or you don\'nt have permission on this calendar'
             ],
+            [
+                'code' => 'CAL-0009',
+                'message' => 'Edit status fail',
+                'detail' => 'Please check the information is correct'
+            ],
         ];
     }
 }

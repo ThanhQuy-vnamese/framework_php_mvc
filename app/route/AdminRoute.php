@@ -7,6 +7,7 @@ namespace App\route;
 use App\Controllers\api\AddMedicalFileApiController;
 use App\Controllers\api\DeleteCalendarApiController;
 use App\Controllers\api\EditCalendarApiController;
+use App\Controllers\api\EditStatusCalendarApiController;
 use App\Controllers\api\GetHealthController;
 use App\Controllers\api\GetMedicalFileApiController;
 use App\Controllers\api\GetPrescriptionApiController;
@@ -291,6 +292,11 @@ class AdminRoute
         $this->router->post(
             '/api/v1/delete-calendar',
             [DeleteCalendarApiController::class, 'delete'],
+            ApiMiddleware::class
+        );
+        $this->router->post(
+            '/api/v1/edit-medical-file',
+            [EditStatusCalendarApiController::class, 'edit'],
             ApiMiddleware::class
         );
         $this->router->get('/api/v1/get-attendees', [GetAttendeesApiController::class, 'get'], ApiMiddleware::class);
