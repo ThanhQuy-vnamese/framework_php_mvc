@@ -44,7 +44,7 @@ class AddMedicalFileApiController extends BaseController
         $firstName = $this->request->input->get('first_name');
         $lastName = $this->request->input->get('last_name');
         $email = $this->request->input->get('email');
-        $gender = $this->request->input->get('gender');
+        $gender = $this->request->input->getInt('gender');
         $birthday = $this->request->input->get('birthday');
         $phone = $this->request->input->get('phone');
         $identityCard = $this->request->input->get('identity_card');
@@ -61,7 +61,7 @@ class AddMedicalFileApiController extends BaseController
             'first_name' => $firstName,
             'last_name' => $lastName,
             'email' => $email,
-            'gender' => $gender,
+            'gender' => $gender === 1 ? 'Male' : 'Female',
             'birthday' => $birthday,
             'phone' => $phone,
             'identity_card' => $identityCard,
