@@ -16,6 +16,21 @@ class MedicalFile extends AbstractError
                 'message' => 'Medical file not found',
                 'detail' => 'Can\'t find the medical file specified'
             ],
+            [
+                'code' => 'MED-0002',
+                'message' => 'Can\'t add the medical file',
+                'detail' => 'The identity card already exist'
+            ],
+            [
+                'code' => 'MED-0003',
+                'message' => 'Add the medical file fail',
+                'detail' => 'Check the information of the medical file'
+            ],
+            [
+                'code' => 'MED-0004',
+                'message' => 'Add health insurance fail',
+                'detail' => 'Check the information of the health insurance'
+            ],
         ];
     }
 }

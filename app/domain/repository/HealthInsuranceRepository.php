@@ -31,7 +31,6 @@ class HealthInsuranceRepository implements HealthInsuranceRepositoryInterface
             $health_insurance->getExpirationDate(),
             $health_insurance->getMedicalRecordsId()
         );
-//        var_dump($query);die;
         $this->db->query($query);
 
         return (int)$this->db->insert_id;
