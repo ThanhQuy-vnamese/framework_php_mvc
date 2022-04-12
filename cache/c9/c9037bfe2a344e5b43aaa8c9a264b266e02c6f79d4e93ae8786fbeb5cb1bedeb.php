@@ -148,7 +148,7 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t<div class=\"col-lg-12\">
 \t\t\t\t<form>
 \t\t\t\t\t<div class=\"input-group rounded\">
-\t\t\t\t\t\t<input type=\"search\" class=\"form-control rounded\" placeholder=\"Nhập tên bệnh viện cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
+\t\t\t\t\t\t<input type=\"search\" class=\"form-control rounded\" placeholder=\"Nhập bác sĩ cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
 \t\t\t\t\t\t<span id=\"search-addon\" style=\"padding-left:10px\">
 \t\t\t\t\t\t\t<input class=\"btn btn-info\" type=\"submit\" value=\"Search\"/>
 \t\t\t\t\t\t</span>
@@ -243,7 +243,7 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t<div class=\"col-lg-12\">
 \t\t\t\t<form>
 \t\t\t\t\t<div class=\"input-group rounded\">
-\t\t\t\t\t\t<input type=\"search\" class=\"form-control rounded\" placeholder=\"Nhập tên bệnh viện cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
+\t\t\t\t\t\t<input type=\"search\" class=\"form-control rounded\" placeholder=\"Nhập bác sĩ cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
 \t\t\t\t\t\t<span id=\"search-addon\" style=\"padding-left:10px\">
 \t\t\t\t\t\t\t<input class=\"btn btn-info\" type=\"submit\" value=\"Search\"/>
 \t\t\t\t\t\t</span>
