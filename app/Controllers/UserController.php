@@ -18,6 +18,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use App\Core\Lib\Token;
 use App\Core\Helper\Helper;
+use App\Core\Auth\Authentication;
 
 class UserController extends BaseController
 {
@@ -44,24 +45,25 @@ class UserController extends BaseController
         $password = $this->request->input->get('password');
         $information = array(
             'email' => $email,
-            'password' => md5($password)
+            'password' => password_hash($password, PASSWORD_DEFAULT)
         );
+        $authentication = new Authentication();
         $user = new User();
-        echo ("<pre>");
-        $data = (array)$user->userLogin($information);
-        if (!empty($data)) {
-            $getProfileById = (array)$user->getProfileByUserId($data[0]->id);
-            $session = new Session();
-            
-            $session->set('user', $getProfileById[0]);
-            // print_r($session->get('user'));
-            $this->getViewByRole($data[0]->role);
-            
-        } else {
+        $is_login = $authentication->login(['email' => $email, 'password' => $password]);
+        if (!$is_login) {
             $session = new Session();
             $session->setFlash('errorLogin', "Tài khoản không hợp lệ");
             $this->response->redirect('/user/login');
+        } else {
+            // $this->response->redirect('/admin/login');
+            // $data = (array)$user->userLogin($information);
+          
+            $session = new Session();
+
+            $getProfileById = (array)$session->get('user');
+            $this->getViewByRole($getProfileById['role']);
         }
+
     }
     /**
      * Dùng để chuyển trang cho từng role 
@@ -115,7 +117,7 @@ class UserController extends BaseController
             // print_r($session->get('user'));
             // $helper = new Helper();
             // print_r($helper->getDirectoryUpload());
-            
+
             $session->set('userProfile', $getProfileById[0]);
         }
         return $this->twig->render('user/pages/profile');
@@ -129,12 +131,12 @@ class UserController extends BaseController
         // echo("<pre>");
         // print_r($request->getAllInput());
 
-        $avatarFile = $this->generateRandomString(5).'_'.$_FILES['avatar']['name'];
+        $avatarFile = $this->generateRandomString(5) . '_' . $_FILES['avatar']['name'];
 
         $avatarFile_tmp =  $_FILES['avatar']['tmp_name'];
-      
+
         $user_id = trim($this->request->input->get('user_id'));
-        
+
         $firstName = trim($this->request->input->get('first-name'));
         $lastName = trim($this->request->input->get('last-name'));
         $email = trim($this->request->input->get('email'));
@@ -148,7 +150,7 @@ class UserController extends BaseController
         $qrCode = new QrCode();
 
         $helper = new Helper();
-        $qr_profile = $helper->custom_link('user/profile')."?user_id=".$user_id;
+        $qr_profile = $helper->custom_link('user/profile') . "?user_id=" . $user_id;
 
         $qrCode->create($qr_profile, $qrName);
         $dataUser = array(
@@ -167,16 +169,16 @@ class UserController extends BaseController
             'address' => $address,
             'phone' => $phone,
             'user_id' => $user_id,
-            'avatar'=>$avatarFile
+            'avatar' => $avatarFile
         ];
 
         $updateUserProfile = $user->updateUserProfile($dataUserProfile, $user_id);
         $session = new Session();
-     
+
         if ($updateUserAccount && $updateUserProfile) {
             $this->uploadAvatar($avatarFile, $avatarFile_tmp, $user_id);
             $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
-           
+
             $this->response->redirect('/user/profile?user_id=' . $user_id);
         } else {
             $session->setFlash('updateUserError', "Cập nhật thất bại! ");
@@ -186,17 +188,16 @@ class UserController extends BaseController
     public function uploadAvatar($avatarFile, $avatarFile_tmp, $user_id)
     {
         $allowtypes = array('jpg', 'png', 'jpeg', 'gif');
-        
+
         $array_image = explode('.', $avatarFile);
-        $file_type =strtolower($array_image[1]);
+        $file_type = strtolower($array_image[1]);
         // print_r($array_image[1]);
-        if (!in_array($file_type, $allowtypes))
-        {
+        if (!in_array($file_type, $allowtypes)) {
             $session = new Session();
             $session->setFlash('errorImage', 'Chỉ được upload các định dạng JPG, PNG, JPEG, GIF');
-            $this->response->redirect('/user/profile?user_id='.$user_id);
+            $this->response->redirect('/user/profile?user_id=' . $user_id);
         }
-        $target_dir = 'public/upload/avatars'.'/'.basename($avatarFile);
+        $target_dir = 'public/upload/avatars' . '/' . basename($avatarFile);
         // print_r($target_dir);
         move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
     }
@@ -245,7 +246,7 @@ class UserController extends BaseController
         // $qrCode->create('content', $qrName);
         $dataUser = array(
             'email' => $email,
-            'password' => md5($password),
+            'password' => password_hash($password, PASSWORD_DEFAULT),
             'role' => $role,
             // 'qr_image' => $qrName . '.png'
         );
@@ -286,7 +287,7 @@ class UserController extends BaseController
         $body = 'click here to active your account <a href="' . $full_link . '">' . $full_link . '</a>';
         $this->send_mail($email, $session, $subject, $body, $firstName);
     }
-  
+
     public function VerifyAccount()
     {
         $new_user = new User();
@@ -298,9 +299,9 @@ class UserController extends BaseController
         $role = $payload->role;
         $status = 1;
         $information = array(
-            'email'=>$email,
-            'status'=>$status,
-            'token'=>$token_res
+            'email' => $email,
+            'status' => $status,
+            'token' => $token_res
         );
         $result2 = $new_user->active_acc($information);
         $session = new Session();

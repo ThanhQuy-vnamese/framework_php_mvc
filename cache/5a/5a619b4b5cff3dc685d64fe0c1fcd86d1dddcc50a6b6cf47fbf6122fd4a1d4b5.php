@@ -81,7 +81,10 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-lg-7\">
 \t\t\t\t\t\t<div class=\"banner_img\">
-\t\t\t\t\t\t\t<img src=\"img/banner_img.png\" alt=\"\">
+\t\t\t\t\t\t\t<img src=\"";
+        // line 37
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/banner_img.png"]), "html", null, true);
+        echo "\" alt=\"\">
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
@@ -95,7 +98,10 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
 \t\t\t\t<div class=\"row justify-content-between align-items-center\">
 \t\t\t\t\t<div class=\"col-md-6 col-lg-6\">
 \t\t\t\t\t\t<div class=\"about_us_img\">
-\t\t\t\t\t\t\t<img src=\"img/top_service.png\" alt=\"\">
+\t\t\t\t\t\t\t<img src=\"";
+        // line 51
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/top_service.png"]), "html", null, true);
+        echo "\" alt=\"\">
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-md-6 col-lg-5\">
@@ -108,15 +114,24 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
         echo "\">learn more</a>
 \t\t\t\t\t\t\t<div class=\"banner_item\">
 \t\t\t\t\t\t\t\t<div class=\"single_item\">
-\t\t\t\t\t\t\t\t\t<img src=\"img/icon/banner_1.svg\" alt=\"\">
+\t\t\t\t\t\t\t\t\t<img src=\"";
+        // line 61
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/icon/banner_1.svg"]), "html", null, true);
+        echo "\" alt=\"\">
 \t\t\t\t\t\t\t\t\t<h5>Emergency</h5>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"single_item\">
-\t\t\t\t\t\t\t\t\t<img src=\"img/icon/banner_2.svg\" alt=\"\">
+\t\t\t\t\t\t\t\t\t<img src=\"";
+        // line 65
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/icon/banner_2.svg"]), "html", null, true);
+        echo "\" alt=\"\">
 \t\t\t\t\t\t\t\t\t<h5>Appointment</h5>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"single_item\">
-\t\t\t\t\t\t\t\t\t<img src=\"img/icon/banner_3.svg\" alt=\"\">
+\t\t\t\t\t\t\t\t\t<img src=\"";
+        // line 69
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/img/icon/banner_3.svg"]), "html", null, true);
+        echo "\" alt=\"\">
 \t\t\t\t\t\t\t\t\t<h5>Qualfied</h5>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
@@ -213,7 +228,7 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
 
     public function getDebugInfo()
     {
-        return array (  193 => 123,  184 => 116,  169 => 109,  154 => 97,  149 => 94,  145 => 93,  107 => 58,  74 => 30,  58 => 17,  49 => 11,  37 => 1,);
+        return array (  208 => 123,  199 => 116,  184 => 109,  169 => 97,  164 => 94,  160 => 93,  133 => 69,  126 => 65,  119 => 61,  113 => 58,  103 => 51,  86 => 37,  74 => 30,  58 => 17,  49 => 11,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -254,7 +269,7 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-lg-7\">
 \t\t\t\t\t\t<div class=\"banner_img\">
-\t\t\t\t\t\t\t<img src=\"img/banner_img.png\" alt=\"\">
+\t\t\t\t\t\t\t<img src=\"{{ createLink('style/img/banner_img.png') }}\" alt=\"\">
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
@@ -268,7 +283,7 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
 \t\t\t\t<div class=\"row justify-content-between align-items-center\">
 \t\t\t\t\t<div class=\"col-md-6 col-lg-6\">
 \t\t\t\t\t\t<div class=\"about_us_img\">
-\t\t\t\t\t\t\t<img src=\"img/top_service.png\" alt=\"\">
+\t\t\t\t\t\t\t<img src=\"{{ createLink('style/img/top_service.png') }}\" alt=\"\">
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-md-6 col-lg-5\">
@@ -278,15 +293,15 @@ class __TwigTemplate_b01980b48c9da652bce09a40b8eb3387f0b0130ce9581869ab0a67c266b
 \t\t\t\t\t\t\t<a class=\"btn_2 \" href=\"{{ createLink('about') }}\">learn more</a>
 \t\t\t\t\t\t\t<div class=\"banner_item\">
 \t\t\t\t\t\t\t\t<div class=\"single_item\">
-\t\t\t\t\t\t\t\t\t<img src=\"img/icon/banner_1.svg\" alt=\"\">
+\t\t\t\t\t\t\t\t\t<img src=\"{{ createLink('style/img/icon/banner_1.svg') }}\" alt=\"\">
 \t\t\t\t\t\t\t\t\t<h5>Emergency</h5>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"single_item\">
-\t\t\t\t\t\t\t\t\t<img src=\"img/icon/banner_2.svg\" alt=\"\">
+\t\t\t\t\t\t\t\t\t<img src=\"{{ createLink('style/img/icon/banner_2.svg') }}\" alt=\"\">
 \t\t\t\t\t\t\t\t\t<h5>Appointment</h5>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"single_item\">
-\t\t\t\t\t\t\t\t\t<img src=\"img/icon/banner_3.svg\" alt=\"\">
+\t\t\t\t\t\t\t\t\t<img src=\"{{ createLink('style/img/icon/banner_3.svg') }}\" alt=\"\">
 \t\t\t\t\t\t\t\t\t<h5>Qualfied</h5>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
