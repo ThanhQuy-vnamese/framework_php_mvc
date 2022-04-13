@@ -35,4 +35,41 @@ class HealthInsuranceRepository implements HealthInsuranceRepositoryInterface
 
         return (int)$this->db->insert_id;
     }
+
+    public function getHealthInsuranceByMedicalFileId(int $medical_file_id): HealthInsurance
+    {
+        $sql = "SELECT * FROM medical_medical_insurances WHERE id_medical_records = %s";
+        $query = sprintf($sql, $medical_file_id);
+        $result = $this->db->query($query);
+        if ($result->num_rows === 0) {
+            return new HealthInsurance(null);
+        }
+        $row = $result->fetch_assoc();
+        return new HealthInsurance(
+            $row['health_insurance_number'],
+            $row['health_insurance'],
+            $row['expiration_date'],
+            null,
+            (int)$row['id']
+        );
+    }
+
+    public function editHealthInsuranceByMedicalFileId(HealthInsurance $health_insurance): bool
+    {
+        $sql = "UPDATE medical_medical_insurances
+                SET health_insurance = %s, health_insurance_number = '%s', expiration_date = '%s'
+                WHERE id_medical_records = %s";
+        $query = sprintf(
+            $sql,
+            $health_insurance->getHealthInsurance(),
+            $health_insurance->getHealthInsuranceNumber(),
+            $health_insurance->getExpirationDate(),
+            $health_insurance->getMedicalRecordsId()
+        );
+        if (!$this->db->query($query)) {
+            return false;
+        }
+
+        return true;
+    }
 }
