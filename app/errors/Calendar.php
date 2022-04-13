@@ -51,6 +51,16 @@ class Calendar extends AbstractError
                 'message' => 'Edit status fail',
                 'detail' => 'Please check the information is correct'
             ],
+            [
+                'code' => 'CAL-0010',
+                'message' => 'The calendar id empty',
+                'detail' => 'Please enter the calendar id'
+            ],
+            [
+                'code' => 'CAL-0011',
+                'message' => 'The user id empty',
+                'detail' => 'Please enter the user id'
+            ],
         ];
     }
 }

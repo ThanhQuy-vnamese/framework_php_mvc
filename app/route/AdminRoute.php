@@ -295,7 +295,7 @@ class AdminRoute
             ApiMiddleware::class
         );
         $this->router->post(
-            '/api/v1/edit-medical-file',
+            '/api/v1/edit-status-calendar',
             [EditStatusCalendarApiController::class, 'edit'],
             ApiMiddleware::class
         );
