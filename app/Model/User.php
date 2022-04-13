@@ -158,6 +158,16 @@ class User extends DBModel
             return $result->fetch_all(MYSQLI_ASSOC);
         }
     }
+    public function getDoctorByKeyWord($keyword)
+    {
+        $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone, mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu on mp.user_id = mu.id
+        where mp.last_name like '%" . $keyword . "%' or mp.first_name like '%" . $keyword . "%' and role=1";
+        $result = $this->getDatabase()->mysql->query($query);
+        $numRows = $result->num_rows;
+        if ($numRows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+    }
     public function active_acc(array $information)
     {
         $query = new Query();
@@ -184,11 +194,11 @@ class User extends DBModel
     {
         $query = new Query();
         return $query->table('medical_contact_infomation')->insert([
-            'user_id'=>24,
-            'phone'=>$information['phone'],
-            'email'=>$information['email'],
-            'message'=>$information['message'],
-            'full_name'=>$information['full_name']
+            'user_id' => 24,
+            'phone' => $information['phone'],
+            'email' => $information['email'],
+            'message' => $information['message'],
+            'full_name' => $information['full_name']
         ]);
     }
     public function insertAppointmentAttendees(array $information, $doctor)

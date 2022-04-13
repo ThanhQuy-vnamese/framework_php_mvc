@@ -60,9 +60,9 @@
 		</div>
 		<div class="row align-items-center mb-5">
 			<div class="col-lg-12">
-				<form>
+				<form method="GET" action="{{ redirect('user/search-doctor') }}">
 					<div class="input-group rounded">
-						<input type="search" class="form-control rounded" placeholder="Nhập bác sĩ cần tìm" aria-label="Search" aria-describedby="search-addon"/>
+						<input type="search" name="keyword" class="form-control rounded" placeholder="Nhập bác sĩ cần tìm" aria-label="Search" aria-describedby="search-addon"/>
 						<span id="search-addon" style="padding-left:10px">
 							<input class="btn btn-info" type="submit" value="Search"/>
 						</span>

@@ -146,9 +146,12 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t</div>
 \t\t<div class=\"row align-items-center mb-5\">
 \t\t\t<div class=\"col-lg-12\">
-\t\t\t\t<form>
+\t\t\t\t<form method=\"GET\" action=\"";
+        // line 63
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/search-doctor"]), "html", null, true);
+        echo "\">
 \t\t\t\t\t<div class=\"input-group rounded\">
-\t\t\t\t\t\t<input type=\"search\" class=\"form-control rounded\" placeholder=\"Nhập bác sĩ cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
+\t\t\t\t\t\t<input type=\"search\" name=\"keyword\" class=\"form-control rounded\" placeholder=\"Nhập bác sĩ cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
 \t\t\t\t\t\t<span id=\"search-addon\" style=\"padding-left:10px\">
 \t\t\t\t\t\t\t<input class=\"btn btn-info\" type=\"submit\" value=\"Search\"/>
 \t\t\t\t\t\t</span>
@@ -174,7 +177,7 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 
     public function getDebugInfo()
     {
-        return array (  140 => 54,  134 => 52,  128 => 49,  122 => 48,  116 => 45,  112 => 43,  110 => 42,  104 => 39,  97 => 35,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
+        return array (  151 => 63,  140 => 54,  134 => 52,  128 => 49,  122 => 48,  116 => 45,  112 => 43,  110 => 42,  104 => 39,  97 => 35,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -241,9 +244,9 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t</div>
 \t\t<div class=\"row align-items-center mb-5\">
 \t\t\t<div class=\"col-lg-12\">
-\t\t\t\t<form>
+\t\t\t\t<form method=\"GET\" action=\"{{ redirect('user/search-doctor') }}\">
 \t\t\t\t\t<div class=\"input-group rounded\">
-\t\t\t\t\t\t<input type=\"search\" class=\"form-control rounded\" placeholder=\"Nhập bác sĩ cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
+\t\t\t\t\t\t<input type=\"search\" name=\"keyword\" class=\"form-control rounded\" placeholder=\"Nhập bác sĩ cần tìm\" aria-label=\"Search\" aria-describedby=\"search-addon\"/>
 \t\t\t\t\t\t<span id=\"search-addon\" style=\"padding-left:10px\">
 \t\t\t\t\t\t\t<input class=\"btn btn-info\" type=\"submit\" value=\"Search\"/>
 \t\t\t\t\t\t</span>
