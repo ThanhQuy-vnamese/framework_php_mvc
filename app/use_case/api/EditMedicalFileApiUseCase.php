@@ -72,13 +72,13 @@ class EditMedicalFileApiUseCase
         }
         $is_update_medical_file_success = $this->medicalFileRepository->updateMedicalFile($medical_file);
         if (!$is_update_medical_file_success) {
-            return [];
+            return $this->medicalFileError->getError('MED-0005');
         }
         $is_update_health_insurance_success = $this->healthInsuranceRepository->editHealthInsuranceByMedicalFileId(
             $health_insurance_for_update
         );
         if (!$is_update_health_insurance_success) {
-            return [];
+            return $this->medicalFileError->getError('MED-0006');
         }
 
         $medical_file_after_edit = $this->medicalFileQueryService->getMedicalFile($medical_file_id);

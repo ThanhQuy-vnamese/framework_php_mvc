@@ -31,6 +31,16 @@ class MedicalFile extends AbstractError
                 'message' => 'Add health insurance fail',
                 'detail' => 'Check the information of the health insurance'
             ],
+            [
+                'code' => 'MED-0005',
+                'message' => 'Edit the medical file fail',
+                'detail' => 'Check the information of the medical file'
+            ],
+            [
+                'code' => 'MED-0006',
+                'message' => 'Edit health insurance fail',
+                'detail' => 'Check the information of the health insurance'
+            ],
         ];
     }
 }
