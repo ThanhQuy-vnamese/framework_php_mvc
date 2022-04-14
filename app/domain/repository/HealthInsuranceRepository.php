@@ -46,8 +46,8 @@ class HealthInsuranceRepository implements HealthInsuranceRepositoryInterface
         }
         $row = $result->fetch_assoc();
         return new HealthInsurance(
+            (int)$row['health_insurance'],
             $row['health_insurance_number'],
-            $row['health_insurance'],
             $row['expiration_date'],
             null,
             (int)$row['id']

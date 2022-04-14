@@ -18,6 +18,7 @@ export const Calendar = () => {
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
     const [doctors, setDoctors] = useState<ItemDataType<string>[]>([]);
+    console.log(events);
     const testRef = useRef(null);
 
     useEffect(() => {
@@ -40,6 +41,8 @@ export const Calendar = () => {
     };
 
     const handleSelect = (startStr: string, endStr: string) => {
+        console.log(startStr);
+        console.log(endStr);
         const startArr = startStr.split('T');
         const timeStart = startArr[1].split('+');
         const endArr = endStr.split('T');
@@ -69,6 +72,7 @@ export const Calendar = () => {
     return (
         <>
             <FullCalendar
+                timeZone="Asia/Ho_Chi_Minh"
                 plugins={[interactionPlugin, timeGridPlugin]}
                 initialView="timeGridWeek"
                 slotMinTime="06:00:00"

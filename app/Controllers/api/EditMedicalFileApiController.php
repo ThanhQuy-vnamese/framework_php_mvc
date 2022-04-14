@@ -4,16 +4,39 @@ declare(strict_types=1);
 
 namespace App\Controllers\api;
 
-use App\Controllers\admin\BlogAddController;
+use App\Core\Controller\BaseController;
+use App\use_case\api\EditMedicalFileApiUseCase;
 
-class EditMedicalFileApiController extends BlogAddController
+class EditMedicalFileApiController extends BaseController
 {
-    public function edit() {
+    public function edit()
+    {
         $input = $this->parseInput();
+        $use_case = new EditMedicalFileApiUseCase();
+        $response = $use_case->execute(
+            $input['first_name'],
+            $input['last_name'],
+            $input['email'],
+            $input['gender'],
+            $input['birthday'],
+            $input['phone'],
+            $input['identity_card'],
+            $input['province'],
+            $input['district'],
+            $input['wards'],
+            $input['way'],
+            $input['covid_vaccination'],
+            $input['health_insurance_number'],
+            $input['expiration_date'],
+            $input['health_insurance'],
+            $input['id'],
+        );
+        return $this->response->json_encode($response);
     }
 
     private function parseInput(): array
     {
+        $id = $this->request->input->getInt('id');
         $firstName = $this->request->input->get('first_name');
         $lastName = $this->request->input->get('last_name');
         $email = $this->request->input->get('email');
@@ -30,6 +53,7 @@ class EditMedicalFileApiController extends BlogAddController
         $covid_vaccination = $this->generateCovidVaccination();
 
         return [
+            'id' => $id,
             'first_name' => $firstName,
             'last_name' => $lastName,
             'email' => $email,
@@ -41,6 +65,7 @@ class EditMedicalFileApiController extends BlogAddController
             'district' => $district,
             'wards' => $wards,
             'way' => $way,
+            'health_insurance' => (empty($healthInsuranceNumber) || empty($expiration_date)) ? 0 : 1,
             'covid_vaccination' => $covid_vaccination,
             'health_insurance_number' => $healthInsuranceNumber,
             'expiration_date' => $expiration_date

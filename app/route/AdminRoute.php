@@ -7,6 +7,7 @@ namespace App\route;
 use App\Controllers\api\AddMedicalFileApiController;
 use App\Controllers\api\DeleteCalendarApiController;
 use App\Controllers\api\EditCalendarApiController;
+use App\Controllers\api\EditMedicalFileApiController;
 use App\Controllers\api\EditStatusCalendarApiController;
 use App\Controllers\api\GetHealthController;
 use App\Controllers\api\GetMedicalFileApiController;
@@ -306,15 +307,20 @@ class AdminRoute
             [GetMedicalFileApiController::class, 'get'],
             ApiMiddleware::class
         );
+        $this->router->post(
+            '/api/v1/add-medical-file',
+            [AddMedicalFileApiController::class, 'add'],
+            ApiMiddleware::class
+        );
+        $this->router->post(
+            '/api/v1/edit-medical-file',
+            [EditMedicalFileApiController::class, 'edit'],
+            ApiMiddleware::class
+        );
         $this->router->get('/api/v1/get-health', [GetHealthController::class, 'get'], ApiMiddleware::class);
         $this->router->get(
             '/api/v1/get-prescription',
             [GetPrescriptionApiController::class, 'get'],
-            ApiMiddleware::class
-        );
-        $this->router->post(
-            '/api/v1/add-medical-file',
-            [AddMedicalFileApiController::class, 'add'],
             ApiMiddleware::class
         );
     }
