@@ -16,6 +16,8 @@ class QuickAddCalendarUseCase
     const TYPE_DOCTOR_EMPTY = 2;
     const TYPE_DOCTOR_NOT_EXIST = 3;
     const TYPE_FULL_NAME_EMPTY = 4;
+    const TYPE_TIME_START = 5;
+    const TYPE_TIME_END = 6;
     const DEFAULT_STATUS = 0;
 
     private CalendarRepositoryInterface $calendarRepository;
@@ -61,6 +63,11 @@ class QuickAddCalendarUseCase
             return $this->buildError(true, self::TYPE_DOCTOR_NOT_EXIST, 'Doctor is chosen not valid!');
         }
 
+        $error_time = $this->validateTime($time_start, $time_end);
+        if (!empty($error_time)) {
+            return $error_time;
+        }
+
         $calendar_id = $this->calendarRepository->addCalendar($calendar);
         if (!$calendar_id) {
             return 0;
@@ -72,6 +79,21 @@ class QuickAddCalendarUseCase
         $this->calendarRepository->addCalendarAttendees($user_attendees);
 
         return $this->buildError(false);
+    }
+
+    private function validateTime(string $time_start, string $time_end): array
+    {
+        $hour_start = explode(':', $time_start)[0];
+        $hour_end = explode(':', $time_end)[0];
+        $error = [];
+        if ((int)$hour_start < 6 || (int)$hour_start > 18) {
+            $error = $this->buildError(true, self::TYPE_TIME_START, 'Start time is less than 6');
+        }
+
+        if ((int)$hour_end > 18 || (int)$hour_end < 6) {
+            $error = $this->buildError(true, self::TYPE_TIME_END, 'Start end greater than 18');
+        }
+        return $error;
     }
 
     private function buildCalendar(

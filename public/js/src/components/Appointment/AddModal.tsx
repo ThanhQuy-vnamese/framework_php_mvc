@@ -10,6 +10,7 @@ import {
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { HOUR_END, HOUR_START } from './Calendar';
 
 interface AddModalProps {
     isShow: boolean;
@@ -83,6 +84,16 @@ export const AddModal: VFC<AddModalProps> = ({
             });
         }
         if (error.type === 4) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+        if (error.type === 5) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+        if (error.type === 6) {
             toast.error(error.message, {
                 position: toast.POSITION.TOP_RIGHT
             });
