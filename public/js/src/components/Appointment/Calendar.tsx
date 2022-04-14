@@ -11,9 +11,6 @@ import {
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { ToastContainer } from 'react-toastify';
 
-export const HOUR_START = 6;
-export const HOUR_END = 18;
-
 export const Calendar = () => {
     const [isShow, setIsShow] = useState(false);
     const [events, setEvents] = useState<GetCalendarResponse[]>([]);

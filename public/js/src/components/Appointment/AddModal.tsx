@@ -10,7 +10,6 @@ import {
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { HOUR_END, HOUR_START } from './Calendar';
 
 interface AddModalProps {
     isShow: boolean;
