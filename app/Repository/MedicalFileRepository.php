@@ -50,7 +50,7 @@ class MedicalFileRepository
     {
         $data['id'] = $heath['id'];
         $data['summary'] = $heath['summary'];
-        $data['symptom'] = $this->convertSymptom(unserialize($heath['healths']));
+//        $data['symptom'] = $this->convertSymptom(unserialize($heath['healths']));
         $data['note'] = $heath['note'];
         $data['medical_file_id'] = $heath['id_medical_records'];
         return $data;
