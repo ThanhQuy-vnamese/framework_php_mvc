@@ -530,12 +530,10 @@
                     url: `ajax-medical-file-health?id=${healthId}`,
                 })).done((response) => {
                     $modalViewDetail.find('.js-summary').text(response.summary);
-                    $modalViewDetail.find('.js-fever').text(response.symptom.fever);
-                    $modalViewDetail.find('.js-cold').text(response.symptom.cold);
-                    $modalViewDetail.find('.js-sore-throat').text(response.symptom.sore_throat);
                     $modalViewDetail.find('.js-advice').html(response.note);
                     $modalViewDetail.find('input[name="health-id"]').attr('value', response.id)
                     $modalViewDetail.find('input[name="summary"]').attr('value', response.summary)
+                    $modalViewDetail.find('textarea[name="description2"]').text(response.note)
                     $modalViewDetail.find('input[name="medical-file-id"]').attr('value', response.medical_file_id)
                     $('#modalDetailHealths').modal('show');
             });
