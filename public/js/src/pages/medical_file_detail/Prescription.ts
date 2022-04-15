@@ -12,7 +12,6 @@ export default class Prescription {
         const currentUrl = window.location.href;
         const url = new URL(currentUrl);
         const medicalFileId = url.searchParams.get('id');
-        console.log(medicalFileId);
         getHealth(healthId).then(result => {
             const newUrl = `/admin/prescription-edit?id=${result.data.id}&medical-file-id=${medicalFileId}`;
             window.location.replace(newUrl);

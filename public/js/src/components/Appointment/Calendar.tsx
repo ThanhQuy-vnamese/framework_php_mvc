@@ -18,7 +18,6 @@ export const Calendar = () => {
     const [timeStart, setTimeStart] = useState('');
     const [timeEnd, setTimeEnd] = useState('');
     const [doctors, setDoctors] = useState<ItemDataType<string>[]>([]);
-    console.log(events);
     const testRef = useRef(null);
 
     useEffect(() => {
