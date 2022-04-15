@@ -73,7 +73,7 @@ class QuickAddCalendarUseCase
             return 0;
         }
 
-        $user_created = $this->buildCalendarAttendees($calendar_id, 1);
+        $user_created = $this->buildCalendarAttendees($calendar_id, $this->auth->getUser()->getId());
         $user_attendees = $this->buildCalendarAttendees($calendar_id, $doctor_id);
         $this->calendarRepository->addCalendarAttendees($user_created);
         $this->calendarRepository->addCalendarAttendees($user_attendees);
