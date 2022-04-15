@@ -34,4 +34,6 @@ fi
 
 sed -i 's/\'\/public\'\;/\'\;/ /var/www/phpmvc/app/Core/View/Twig.php
 
+rm -rf /var/www/phpmvc/cache/*
+
 service httpd restart

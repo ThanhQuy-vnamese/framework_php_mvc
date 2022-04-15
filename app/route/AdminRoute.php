@@ -4,6 +4,16 @@ declare(strict_types=1);
 
 namespace App\route;
 
+use App\Controllers\admin\ViewBlogAddController;
+use App\Controllers\api\AddMedicalFileApiController;
+use App\Controllers\api\DeleteCalendarApiController;
+use App\Controllers\api\DeleteMedicalFileApiController;
+use App\Controllers\api\EditCalendarApiController;
+use App\Controllers\api\EditMedicalFileApiController;
+use App\Controllers\api\EditStatusCalendarApiController;
+use App\Controllers\api\GetHealthController;
+use App\Controllers\api\GetMedicalFileApiController;
+use App\Controllers\api\GetPrescriptionApiController;
 use App\Core\Application;
 use App\Core\Router;
 use App\Controllers\admin\AddCalendarController;
@@ -21,7 +31,6 @@ use App\Controllers\admin\AddMedicalFileController;
 use App\Controllers\admin\AddMedicineController;
 use App\Controllers\admin\AddPrescriptionController;
 use App\Controllers\admin\BlogAddController;
-use App\Controllers\admin\BlogController;
 use App\Controllers\admin\BlogDetailController;
 use App\Controllers\admin\BlogListController;
 use App\Controllers\admin\CalendarAddController;
@@ -189,7 +198,7 @@ class AdminRoute
             [BlogListController::class, 'getViewBlogList'],
             AdminAuthMiddleware::class
         );
-        $this->router->get('/admin/blog-add', [BlogController::class, 'getViewBlogAdd'], AdminAuthMiddleware::class);
+        $this->router->get('/admin/blog-add', [ViewBlogAddController::class, 'getViewBlogAdd'], AdminAuthMiddleware::class);
         $this->router->post('/admin/post-blog-add', [BlogAddController::class, 'addBlog'], AdminAuthMiddleware::class);
         $this->router->get(
             '/admin/blog-detail',
@@ -281,7 +290,44 @@ class AdminRoute
             ApiMiddleware::class
         );
         $this->router->post('/api/v1/add-calendar', [AddCalendarApiController::class, 'add'], ApiMiddleware::class);
+        $this->router->post('/api/v1/edit-calendar', [EditCalendarApiController::class, 'edit'], ApiMiddleware::class);
+        $this->router->post(
+            '/api/v1/delete-calendar',
+            [DeleteCalendarApiController::class, 'delete'],
+            ApiMiddleware::class
+        );
+        $this->router->post(
+            '/api/v1/edit-status-calendar',
+            [EditStatusCalendarApiController::class, 'edit'],
+            ApiMiddleware::class
+        );
         $this->router->get('/api/v1/get-attendees', [GetAttendeesApiController::class, 'get'], ApiMiddleware::class);
         $this->router->get('/api/v1/get-doctors', [GetDoctorApiController::class, 'get'], ApiMiddleware::class);
+        $this->router->get(
+            '/api/v1/get-medical-file',
+            [GetMedicalFileApiController::class, 'get'],
+            ApiMiddleware::class
+        );
+        $this->router->post(
+            '/api/v1/add-medical-file',
+            [AddMedicalFileApiController::class, 'add'],
+            ApiMiddleware::class
+        );
+        $this->router->post(
+            '/api/v1/edit-medical-file',
+            [EditMedicalFileApiController::class, 'edit'],
+            ApiMiddleware::class
+        );
+        $this->router->post(
+            '/api/v1/delete-medical-file',
+            [DeleteMedicalFileApiController::class, 'delete'],
+            ApiMiddleware::class
+        );
+        $this->router->get('/api/v1/get-health', [GetHealthController::class, 'get'], ApiMiddleware::class);
+        $this->router->get(
+            '/api/v1/get-prescription',
+            [GetPrescriptionApiController::class, 'get'],
+            ApiMiddleware::class
+        );
     }
 }

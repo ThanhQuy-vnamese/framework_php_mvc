@@ -13,7 +13,7 @@ class AddHealthController extends BaseController
     {
         $input = $this->parseInput();
         $useCase = new AddHealthUseCase();
-        $useCase->execute($input['summary'], $input['healths'], $input['note'], $input['medical_file_id']);
+        $useCase->execute($input['summary'], [], $input['note'], $input['medical_file_id']);
 
         $this->response->redirect('/admin/medical-file-detail', ['id' => $input['medical_file_id']]);
     }
@@ -22,17 +22,9 @@ class AddHealthController extends BaseController
     {
         $medicalFileId = $this->request->input->getInt('medical-file-id');
         $summary = $this->request->input->get('summary');
-        $fever = $this->request->input->get('fever');
-        $haveACold = $this->request->input->get('have-a-cold');
-        $soreThroat = $this->request->input->get('sore-throat');
         $note = $this->request->input->get('note');
 
         return [
-            'healths' => [
-                'fever' => $fever,
-                'cold' => $haveACold,
-                'sore_throat' => $soreThroat,
-            ],
             'medical_file_id' => $medicalFileId,
             'summary' => $summary,
             'note' => $note,

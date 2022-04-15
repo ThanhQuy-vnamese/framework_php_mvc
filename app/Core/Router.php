@@ -45,7 +45,7 @@ class Router
     {
         $this->router['post'][$path] = $callback;
         if (!empty($middleware)) {
-            $this->router['get'][$path]['middleware'] = $middleware;
+            $this->router['post'][$path]['middleware'] = $middleware;
         }
 
         return $this;

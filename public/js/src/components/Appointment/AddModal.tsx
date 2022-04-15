@@ -87,6 +87,16 @@ export const AddModal: VFC<AddModalProps> = ({
                 position: toast.POSITION.TOP_RIGHT
             });
         }
+        if (error.type === 5) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+        if (error.type === 6) {
+            toast.error(error.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
 
     const handleSubmit = async () => {
