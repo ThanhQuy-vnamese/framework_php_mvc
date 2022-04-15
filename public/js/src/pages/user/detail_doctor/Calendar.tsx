@@ -3,9 +3,10 @@ import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { useEffect, useRef, useState } from 'react';
 import { getCalendarDoctor } from './service/services';
+import { ItemDataType } from 'rsuite/esm/@types/common';
 
 export const Calendar = () => {
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState<ItemDataType<string>[]>([]);
     const calendarRef = useRef(null);
 
     function getDoctorId() {
