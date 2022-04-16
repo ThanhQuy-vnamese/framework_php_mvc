@@ -21,7 +21,10 @@ class ContactListController extends BaseController
      */
     public function getViewContactList(): string
     {
-        return $this->twig->render('admin/pages/contact_list', ['contact_list' => $this->getContactList()]);
+        return $this->twig->render(
+            'admin/pages/contact_list',
+            ['contact_list' => $this->getContactList(), 'total' => count($this->getContactList())]
+        );
     }
 
     public function getContactList(): array

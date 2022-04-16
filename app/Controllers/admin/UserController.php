@@ -26,7 +26,7 @@ class UserController extends BaseController
     {
         $userRepository = new UserRepository();
         $users = $userRepository->getAllUsers();
-        return $this->twig->render('admin/pages/user_list', ['users' => $users]);
+        return $this->twig->render('admin/pages/user_list', ['users' => $users, 'total' => count($users)]);
     }
 
     /**
