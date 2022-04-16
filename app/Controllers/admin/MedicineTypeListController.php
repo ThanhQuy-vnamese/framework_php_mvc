@@ -22,7 +22,10 @@ class MedicineTypeListController extends BaseController
     {
         $use_case = new MedicineTypeListUseCase();
         $medicine_types = $this->createResponse($use_case->execute());
-        return $this->twig->render('admin/pages/medicine_type_list', ['medicine_types' => $medicine_types]);
+        return $this->twig->render(
+            'admin/pages/medicine_type_list',
+            ['medicine_types' => $medicine_types, 'total' => count($medicine_types)]
+        );
     }
 
     /**

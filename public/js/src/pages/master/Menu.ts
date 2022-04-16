@@ -1,8 +1,8 @@
 const PAGES = [
     '/user',
     '/medical-file',
-    '/medicine',
     '/medicine-type',
+    '/medicine',
     '/blog',
     '/contact',
     '/calendar'
@@ -23,6 +23,8 @@ export default class Menu {
                     PAGES.find(page => this.currentUrl.includes(page)) ?? '';
                 if (href.includes(currentPage)) {
                     $(el).parent().attr('class', 'active current-page');
+                    // @ts-ignore
+                    break;
                 }
             });
         });
