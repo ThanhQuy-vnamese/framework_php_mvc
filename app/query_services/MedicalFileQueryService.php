@@ -6,7 +6,6 @@ namespace App\query_services;
 
 use App\Core\Database\Query;
 use App\dto\api\MedicalFileForApiDto;
-use App\dto\MedicalFileForSearchDto;
 
 class MedicalFileQueryService implements MedicalFileQueryServiceInterface
 {
@@ -23,7 +22,7 @@ class MedicalFileQueryService implements MedicalFileQueryServiceInterface
 
     public function getMedicalFile($id): MedicalFileForApiDto
     {
-        $sql = "SELECT MR.id, MR.first_name, MR.last_name, MR.gender, MR.birthday, MR.identity_card, MR.email, MR.phone, MR.way, MR.district, MR.wards, MR.province, MR.covid_vaccination, MR.user_id, MI.health_insurance, MI.health_insurance_number, MI.expiration_date
+        $sql = "SELECT MR.id, MR.first_name, MR.last_name, MR.gender, MR.birthday, MR.identity_card, MR.email, MR.phone, MR.way, MR.district, MR.wards, MR.province, MR.covid_vaccination, MR.user_id, MI.health_insurance, MI.health_insurance_number, MI.expiration_date 
             FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id = MI.id_medical_records
             WHERE MR.id = %s";
         $query = sprintf($sql, $id);
@@ -51,25 +50,5 @@ class MedicalFileQueryService implements MedicalFileQueryServiceInterface
             $row['health_insurance_number'],
             $row['expiration_date']
         );
-    }
-
-    public function getMedicalFileForSearch(string $key_word): array
-    {
-        $query = "SELECT * FROM `medical_medical_records`
-                WHERE last_name LIKE '%$key_word%' OR first_name LIKE '%$key_word%' OR email LIKE '%%s%' OR phone LIKE '%$key_word%';";
-        $result = $this->db->query($query);
-        $data = [];
-        if ($result->num_rows === 0) {
-            return $data;
-        }
-        while ($row = $result->fetch_assoc()) {
-            $data[(int)$row['id']] = new MedicalFileForSearchDto(
-                (int)$row['id'],
-                $row['first_name'],
-                $row['last_name'],
-                $row['phone']
-            );
-        }
-        return $data;
     }
 }

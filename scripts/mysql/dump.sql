@@ -195,6 +195,3 @@ ALTER TABLE `medical_prescriptions`
 
 ALTER TABLE `medical_prescriptions`
     ADD FOREIGN KEY (`healths_id`) REFERENCES `medical_healths` (`id`) ON DELETE CASCADE;
-
-
-ALTER TABLE medical_medical_records ADD FULLTEXT(first_name, last_name, email, phone);

@@ -9,6 +9,4 @@ use App\dto\api\MedicalFileForApiDto;
 interface MedicalFileQueryServiceInterface
 {
     public function getMedicalFile($id): MedicalFileForApiDto;
-
-    public function getMedicalFileForSearch(string $key_word): array;
 }
