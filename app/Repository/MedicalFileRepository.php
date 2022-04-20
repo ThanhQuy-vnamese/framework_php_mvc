@@ -121,6 +121,7 @@ class MedicalFileRepository
         $data['health_insurance'] = $medicalFile['health_insurance'] ?? '';
         $data['health_insurance_number'] = $medicalFile['health_insurance_number'] ?? '';
         $data['expiration_date'] = $medicalFile['expiration_date'] ?? '';
+        $data['qr_image'] = $medicalFile['qr_image'] ?? '';
 
         return $data;
     }

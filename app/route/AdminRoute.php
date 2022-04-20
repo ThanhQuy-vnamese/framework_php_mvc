@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\route;
 
+use App\Controllers\admin\GenerateQrController;
 use App\Controllers\admin\SearchMedicalFileController;
 use App\Controllers\admin\ViewBlogAddController;
 use App\Controllers\api\AddMedicalFileApiController;
@@ -272,6 +273,7 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post('/admin/logout', [LogoutController::class, 'logout'], AdminAuthMiddleware::class);
+        $this->router->post('/admin/re-generate-qr', [GenerateQrController::class, 'generate'], AdminAuthMiddleware::class);
 
 // Test
         $this->router->get('/admin/login', [LoginSampleController::class, 'getView']);

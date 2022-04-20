@@ -49,6 +49,12 @@
                     {% if(Session.hasFlash('successUpdatePrescription')) %}
                         <div class="alert alert-success">{{ session.getFlash('successUpdatePrescription') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('errorUpdateQr')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorUpdateQr') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successUpdateQr')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successUpdateQr') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -67,9 +73,15 @@
                                         <div class="nk-block">
                                             <div class="nk-block-head nk-block-head-sm nk-block-between">
                                                 <h5 class="title">Main Information</h5>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#modalDefault">Edit Information
-                                                </button>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                             data-target="#modalDefault">Edit Information
+                                                    </button>
+                                                    <button type="button"
+                                                            class="btn btn-warning" data-toggle="modal" data-target="#modalReGenerateQRImage">
+                                                        Re-generate QR image
+                                                    </button>
+                                                </div>
                                             </div><!-- .nk-block-head -->
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
@@ -169,7 +181,7 @@
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">QR</span>
-                                                        <span class="profile-ud-value"><img src="{{ createLink('') }}"
+                                                        <span class="profile-ud-value"><img src="{{ createLink('upload/qr_images/') }}{{ medicalFile.qr_image }}"
                                                                                             alt="Qr image"/></span>
                                                     </div>
                                                 </div>
@@ -503,6 +515,33 @@
                         </div><!-- .card-aside-wrap -->
                     </div><!-- .card -->
                 </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" id="modalReGenerateQRImage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+                <div class="modal-header">
+                    <h5 class="modal-title">Re-generate QR image</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure re-generate QR image?</h4>
+                    <form action="{{ redirect('admin/re-generate-qr') }}" method="post">
+                        <input type="text" hidden value="{{ medicalFile.id }}" name="medical-file-id">
+                        <div class="card-inner">
+                            <div class="preview-block">
+                                <button type="submit" class="btn btn-xl btn-warning" style="margin-right: 10px">Generate</button>
+                                <button class="btn btn-xl btn-secondary js-btn-cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <span class="sub-text">Modal Footer Text</span>
+                </div>
             </div>
         </div>
     </div>
