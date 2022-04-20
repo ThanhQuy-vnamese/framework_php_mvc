@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\use_case;
 
+use App\Core\Helper\Helper;
 use App\Core\Lib\QrCode;
 use App\Core\Session;
 use App\domain\entity\HealthInsurance;
@@ -21,6 +22,7 @@ class AddMedicalFileUseCase
     private Session $session;
     private Auth $auth;
     private QrCode $qrCode;
+    private Helper $helper;
 
     public function __construct()
     {
@@ -29,6 +31,7 @@ class AddMedicalFileUseCase
         $this->session = new Session();
         $this->auth = new Auth();
         $this->qrCode = new QrCode();
+        $this->helper = new Helper();
     }
 
     public function execute(
@@ -93,19 +96,9 @@ class AddMedicalFileUseCase
     }
 
     private function generateQrImage(): string {
-        $qrName = $this->generateRandomString(15);
+        $qrName = $this->helper->generateRandomString(15);
         $this->qrCode->create('content', $qrName);
         return $qrName . '.png';
-    }
-
-    private function generateRandomString(int $length = 10): string {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
     private function validateHealthInsurance(
