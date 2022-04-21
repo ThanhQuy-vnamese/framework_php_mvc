@@ -101,7 +101,11 @@
                                         <div class="nk-tb-col">
                                             <div class="user-card">
                                                 <div class="user-avatar xs bg-secondary">
-                                                    <span>AB</span>
+                                                    {% if user.avatar %}
+                                                        <div style="background-image: url('{{ createLink('upload/avatars/') }}{{ user.avatar }}');" class="avatar-xs"></div>
+                                                    {% else %}
+                                                        <span>AB</span>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="user-name">
                                                     <span class="tb-lead">{{ user.full_name }}</span>

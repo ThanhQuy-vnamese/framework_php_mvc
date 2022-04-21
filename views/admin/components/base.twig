@@ -30,6 +30,13 @@
             background-position: top;
             border-radius: 50%;
         }
+        .avatar-xs {
+            width: 26px;
+            height: 26px;
+            background-size: cover;
+            background-position: top;
+            border-radius: 50%;
+        }
     </style>
     {% block css %}
     {% endblock %}
@@ -63,7 +70,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <div class="user-toggle">
                                             <div class="user-avatar sm">
-                                                <div style="background-image: url('{{ createLink('upload/avatars/') }}{{ user.avatar }}');" class="avatar-sm"></div>
+                                                <div style="background-image: url('{{ createLink('upload/avatars/') }}{{ Auth.user().avatar }}');" class="avatar-sm"></div>
                                             </div>
                                             <div class="user-info d-none d-md-block">
                                                 <div class="user-status">
@@ -81,7 +88,7 @@
                                         <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                             <div class="user-card">
                                                 <div class="user-avatar">
-                                                    <div style="background-image: url('{{ createLink('upload/avatars/') }}{{ user.avatar }}');" class="avatar-sm"></div>
+                                                    <div style="background-image: url('{{ createLink('upload/avatars/') }}{{ Auth.user().avatar }}');" class="avatar-sm"></div>
                                                 </div>
                                                 <div class="user-info">
                                                     <span class="lead-text">{{ Auth.user().first_name }} {{ Auth.user().last_name }}</span>
