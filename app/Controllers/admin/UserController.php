@@ -207,7 +207,7 @@ class UserController extends BaseController
             'avatar' => $uploadFile->getFileName(),
         ];
         $user = new User();
-        $isSuccessUpdateAvatar = $user->updateUserProfile($userId, $data);
+        $isSuccessUpdateAvatar = $user->updateUserProfileForAdmin($userId, $data);
         if (!$isSuccessUpdateAvatar) {
             $session->setFlash('errorUpdateUser', 'Update user fail');
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
