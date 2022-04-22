@@ -7,6 +7,7 @@ use App\Core\Controller\BaseController;
 use App\Core\Helper\UploadFile;
 use App\Core\Mail\Mail;
 use App\Core\Session;
+use App\legacy\Auth;
 use App\Model\User;
 use App\Repository\UserRepository;
 use Twig\Error\LoaderError;
@@ -208,12 +209,20 @@ class UserController extends BaseController
         ];
         $user = new User();
         $isSuccessUpdateAvatar = $user->updateUserProfileForAdmin($userId, $data);
+        $this->updateInfoUserLogin((int)$userId);
         if (!$isSuccessUpdateAvatar) {
             $session->setFlash('errorUpdateUser', 'Update user fail');
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
         $session->setFlash('successUpdateUser', 'Update user success');
         $this->response->redirect('/admin/user-detail', ['id' => $userId]);
+    }
+
+    private function updateInfoUserLogin(int $user_id) {
+        $auth = new Auth();
+        if ($user_id === $auth->getUser()->getId()) {
+            $auth->getAuthentication()->updateInfoUserLogin();
+        }
     }
 
     public function deleteUser() {
