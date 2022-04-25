@@ -1,44 +1,58 @@
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { Items } from './Item';
+import { getTotalUser } from './service/services';
+
+interface OnChangeSelectedEvent {
+    selected: number;
+}
 
 export const PaginatedItems = ({ itemsPerPage }: { itemsPerPage: number }) => {
-    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
-    const [currentItems, setCurrentItems] = useState<number[]>([]);
     const [pageCount, setPageCount] = useState(0);
-    // Here we use item offsets; we could also use page offsets
-    // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
+    const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        // Fetch items from another resources.
-        const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        setCurrentItems(items.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(items.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
+        getTotalUser().then(response => {
+            setTotal(response.data.total);
+            setPageCount(Math.ceil(response.data.total / itemsPerPage));
+        });
+    }, [itemsPerPage]);
 
-    // Invoke when user click to request another page.
-    const handlePageClick = event => {
-        const newOffset = (event.selected * itemsPerPage) % items.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
+    const handlePageClick = (event: OnChangeSelectedEvent) => {
+        const newOffset = (event.selected * itemsPerPage) % total;
+        window.location.replace(
+            `/admin/user-list?page=${event.selected + 1}&offset=${newOffset}`
         );
-        setItemOffset(newOffset);
+    };
+
+    const currenPage = () => {
+        const currentUrl = window.location.href;
+        const url = new URL(currentUrl);
+        const pageNumber = url.searchParams.get('page') ?? '1';
+        return parseInt(pageNumber) - 1;
     };
 
     return (
         <>
-            <Items currentItems={currentItems} />
             <ReactPaginate
                 breakLabel="..."
-                nextLabel="next >"
+                nextLabel="Next >"
+                previousLabel="< Previous"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                previousLinkClassName="page-link"
+                nextClassName="page-item"
+                nextLinkClassName="page-link"
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+                containerClassName="pagination"
+                activeClassName="active"
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={5}
                 pageCount={pageCount}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
+                renderOnZeroPageCount={undefined}
+                disableInitialCallback={true}
+                initialPage={currenPage()}
             />
         </>
     );

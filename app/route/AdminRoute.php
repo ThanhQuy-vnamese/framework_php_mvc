@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\route;
 
 use App\Controllers\admin\GenerateQrController;
+use App\Controllers\admin\GetTotalUserController;
 use App\Controllers\admin\SearchMedicalFileController;
 use App\Controllers\admin\ViewBlogAddController;
 use App\Controllers\api\AddMedicalFileApiController;
@@ -286,6 +287,7 @@ class AdminRoute
         $this->router->get('/admin/ajax/get-calendar', [GetCalendarController::class, 'getCalendar']);
         $this->router->get('/admin/ajax/get-calendar-edit', [GetCalendarController::class, 'getCalendar']);
         $this->router->get('/admin/ajax/search-medical-file', [SearchMedicalFileController::class, 'search']);
+        $this->router->get('/admin/ajax/get-total-users', [GetTotalUserController::class, 'get']);
 
 // External Api
         $this->router->get(

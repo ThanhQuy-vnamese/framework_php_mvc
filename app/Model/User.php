@@ -10,6 +10,7 @@ class User extends DBModel
     public const STATUS_INACTIVE = 0;
     public const STATUS_ACTIVE = 1;
     public const STATUS_DELETED = 2;
+    public const LIMIT_USER = 10;
 
     public string $firstname = '';
     public string $lastname = '';
@@ -187,10 +188,11 @@ class User extends DBModel
         return $query->table('medical_appointment_attendees')->insert($information);
     }
 
-    public function getAllUsers(): array {
+    public function getAllUsers($offset): array {
         $query = new Query();
         $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
-                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id";
+                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id LIMIT %s, %s";
+        $sql = sprintf($sql, $offset, self::LIMIT_USER);
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {

@@ -6,7 +6,7 @@ export class Pagination {
     render() {
         ReactDOM.render(
             React.createElement(PaginatedItems, {
-                itemsPerPage: 4
+                itemsPerPage: 10
             }),
             document.getElementById('pagination')
         );

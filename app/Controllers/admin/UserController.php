@@ -24,8 +24,13 @@ class UserController extends BaseController
      */
     public function getViewUserList(): string
     {
+        if (!$this->request->input->has('offset')) {
+            $offset = 0;
+        } else {
+            $offset = $this->request->input->getInt('offset');
+        }
         $userRepository = new UserRepository();
-        $users = $userRepository->getAllUsers();
+        $users = $userRepository->getAllUsers($offset);
         return $this->twig->render('admin/pages/user_list', ['users' => $users, 'total' => count($users)]);
     }
 
