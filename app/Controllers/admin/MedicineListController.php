@@ -22,7 +22,10 @@ class MedicineListController extends BaseController
     {
         $use_case = new ViewMedicineListUseCase();
         $medicine_for_view = $this->createResponse($use_case->execute());
-        return $this->twig->render('admin/pages/medicine_list', ['medicine_for_view' => $medicine_for_view]);
+        return $this->twig->render(
+            'admin/pages/medicine_list',
+            ['medicine_for_view' => $medicine_for_view, 'total' => count($medicine_for_view['medicines'])]
+        );
     }
 
     private function createResponse(MedicineForListViewDto $medicines_list): array

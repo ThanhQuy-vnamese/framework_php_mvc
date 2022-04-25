@@ -20,6 +20,7 @@ class MedicalFile
     private string $province;
     private string $covid_vaccination;
     private ?int $user_id;
+    private ?string $qr_image;
 
     public function __construct(
         ?int $id,
@@ -35,7 +36,8 @@ class MedicalFile
         string $wards,
         string $province,
         string $covid_vaccination,
-        ?int $user_id = null
+        ?int $user_id = null,
+        ?string $qr_image = null
     ) {
         $this->id = $id;
         $this->first_name = $first_name;
@@ -51,6 +53,7 @@ class MedicalFile
         $this->province = $province;
         $this->covid_vaccination = $covid_vaccination;
         $this->user_id = $user_id;
+        $this->qr_image = $qr_image;
     }
 
     /**
@@ -163,5 +166,13 @@ class MedicalFile
     public function getUserId(): ?int
     {
         return $this->user_id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getQrImage(): ?string
+    {
+        return $this->qr_image;
     }
 }
