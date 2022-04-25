@@ -70,6 +70,10 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_users')->update($information, ['id'=>$userID]);
     }
+    public function updateUserProfileForAdmin(string $user_id, array $information): bool {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->update($information, ['user_id' => $user_id]);
+    }
     /**
      * @param array information
      * @return false|int|string
@@ -126,7 +130,7 @@ class User extends DBModel
     public function getProfileByUserId($userID)
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name, mp.avatar, mu.qr_image FROM medical_user_profiles mp left join medical_users mu 
+                mp.first_name, mp.last_name, mp.avatar, mu.qr_image FROM medical_user_profiles mp left join medical_users mu
         on mp.user_id = mu.id where user_id = ".$userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
@@ -149,7 +153,7 @@ class User extends DBModel
     public function getAllDoctor()
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu 
+                mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu
         on mp.user_id = mu.id where role=1";
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;

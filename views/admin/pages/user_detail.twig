@@ -14,14 +14,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="nk-block-head-content">
-                            <a href="html/user-list-regular.html"
-                               class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
-                                        class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                            <a href="html/user-list-regular.html"
-                               class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
-                                        class="icon ni ni-arrow-left"></em></a>
-                        </div>
+                        {% include('admin/components/back_button.twig') %}
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
@@ -108,12 +101,6 @@
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Phone</span>
                                                     <span class="profile-ud-value">0123456789</span>
-                                                </div>
-                                            </div>
-                                            <div class="profile-ud-item">
-                                                <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">QR</span>
-                                                    <span class="profile-ud-value"><img width="150" src="{{ createLink('upload/qr_images/') }}{{ user.qr_image }}" alt="Qr image" /></span>
                                                 </div>
                                             </div>
                                         </div><!-- .profile-ud-list -->
@@ -296,7 +283,7 @@
                                                         <div class="card-inner">
                                                             <div class="user-card user-card-s2">
                                                                 <div class="user-avatar lg bg-primary">
-                                                                    <img src="{{ createLink('upload/avatars/') }}{{ user.avatar }}" alt="">
+                                                                    <div style="background-image: url('{{ createLink('upload/avatars/') }}{{ user.avatar }}');" class="avatar-lg"></div>
                                                                 </div>
                                                                 <div class="user-info">
                                                                     <div class="badge badge-outline-light badge-pill ucap">

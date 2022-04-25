@@ -52,6 +52,12 @@ abstract class DBModel extends Model
         return $result->fetch_object();
     }
 
+    public function getInfoUserLoginById($id) {
+        $sql = "SELECT * FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id = UP.user_id WHERE U.id = $id";
+        $result = Application::$APPLICATION->database->mysql->query($sql);
+        return $result->fetch_object();
+    }
+
     public function limitSelect(): string
     {
         if (empty($this->attributes())) {

@@ -28,7 +28,7 @@ class MedicalFile extends DBModel
     public function getMedicalFileDetail(string $medicalFileId): array {
         $query = <<<SQL
                     SELECT MR.id, first_name, last_name, gender, birthday, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance,
-                           MI.health_insurance_number, MI.expiration_date, MI.id AS insurance_id
+                           MI.health_insurance_number, MI.expiration_date, MI.id AS insurance_id, MR.qr_image
                     FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records
                     WHERE MR.id=$medicalFileId
                 SQL;
