@@ -15,3 +15,7 @@ export const searchMedicalFile = (
 ): Promise<AxiosResponse<SearchMedicalFileResponse[]>> => {
     return axios.get(`/admin/ajax/search-medical-file?k=${keyWord}`);
 };
+
+export const getTotalMedicalFile = () => {
+    return axios.get('/admin/ajax/get-total-medical-files');
+};

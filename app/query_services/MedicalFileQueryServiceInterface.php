@@ -11,4 +11,6 @@ interface MedicalFileQueryServiceInterface
     public function getMedicalFile($id): MedicalFileForApiDto;
 
     public function getMedicalFileForSearch(string $key_word): array;
+
+    public function getTotalMedicalFile(): int;
 }
