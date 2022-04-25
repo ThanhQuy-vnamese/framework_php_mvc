@@ -72,4 +72,11 @@ class MedicalFileQueryService implements MedicalFileQueryServiceInterface
         }
         return $data;
     }
+
+    public function getTotalMedicalFile(): int {
+        $query = "SELECT count(*) AS total_medical_files FROM medical_medical_records;";
+        $result = $this->db->query($query);
+        $row = $result->fetch_assoc();
+        return (int)$row['total_medical_files'];
+    }
 }

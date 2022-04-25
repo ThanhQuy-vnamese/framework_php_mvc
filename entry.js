@@ -32,6 +32,11 @@ entry = {
         'public/js/src/pages/medical_file_detail',
         'index.js'
     ),
+    user_list: path.join(
+        __dirname,
+        'public/js/src/pages/user_list',
+        'index.js'
+    ),
     master: path.join(__dirname, 'public/js/src/pages/master', 'index.js'),
     'user/detail_doctor': path.join(__dirname, 'public/js/src/pages/user/detail_doctor', 'index.js')
 };

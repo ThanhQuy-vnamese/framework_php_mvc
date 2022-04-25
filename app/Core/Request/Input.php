@@ -29,6 +29,10 @@ class Input
         return (int)$value;
     }
 
+    public function has($key): bool {
+        return array_key_exists($key, $this->input);
+    }
+
     public function getString($key): string
     {
         $value = $this->input[$key] ?? '';

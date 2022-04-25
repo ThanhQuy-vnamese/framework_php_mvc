@@ -8,13 +8,16 @@ use App\Core\Database\Query;
 
 class MedicalFile extends DBModel
 {
+    public const LIMIT_QUERY = 10;
+
     public function rules(): array
     {
         return [];
     }
 
-    public function getMedicalFiles(): array {
-        $query = "SELECT id, first_name, last_name, gender, identity_card, birthday, phone FROM medical_medical_records;";
+    public function getMedicalFiles(int $offset): array {
+        $query = "SELECT id, first_name, last_name, gender, identity_card, birthday, phone FROM medical_medical_records LIMIT %s, %s;";
+        $query = sprintf($query, $offset, self::LIMIT_QUERY);
         $result = $this->getDatabase()->mysql->query($query);
         $data = [];
 
