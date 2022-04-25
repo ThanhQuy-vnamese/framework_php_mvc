@@ -1,4 +1,4 @@
-import {Pagination} from "./Pagination";
+import { UserPagination } from './UserPagination';
 
-const pagination = new Pagination();
+const pagination = new UserPagination();
 pagination.render();

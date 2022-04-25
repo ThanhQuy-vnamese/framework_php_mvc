@@ -1,17 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, VFC } from 'react';
 import ReactPaginate from 'react-paginate';
-import { getTotalUser } from './service/services';
+import { AxiosPromise } from 'axios';
 
 interface OnChangeSelectedEvent {
     selected: number;
 }
 
-export const PaginatedItems = ({ itemsPerPage }: { itemsPerPage: number }) => {
+interface PaginatedProps {
+    itemsPerPage: number;
+    path: string;
+    service: () => AxiosPromise;
+}
+
+export const Paginated: VFC<PaginatedProps> = ({
+    itemsPerPage,
+    path,
+    service
+}) => {
     const [pageCount, setPageCount] = useState(0);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        getTotalUser().then(response => {
+        service().then(response => {
             setTotal(response.data.total);
             setPageCount(Math.ceil(response.data.total / itemsPerPage));
         });
@@ -20,7 +30,7 @@ export const PaginatedItems = ({ itemsPerPage }: { itemsPerPage: number }) => {
     const handlePageClick = (event: OnChangeSelectedEvent) => {
         const newOffset = (event.selected * itemsPerPage) % total;
         window.location.replace(
-            `/admin/user-list?page=${event.selected + 1}&offset=${newOffset}`
+            `${path}?page=${event.selected + 1}&offset=${newOffset}`
         );
     };
 
