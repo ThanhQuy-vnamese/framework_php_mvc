@@ -8,10 +8,10 @@ use App\Model\MedicalFile;
 
 class MedicalFileRepository
 {
-    public function getMedicalFiles(): array
+    public function getMedicalFiles(int $offset): array
     {
         $medicalFile = new MedicalFile();
-        return $this->convertMedicalFile($medicalFile->getMedicalFiles());
+        return $this->convertMedicalFile($medicalFile->getMedicalFiles($offset));
     }
 
     public function getMedicalFileDetail(string $medicalFileId): array

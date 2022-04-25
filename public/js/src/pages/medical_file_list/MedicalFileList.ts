@@ -1,5 +1,8 @@
-import { searchMedicalFile } from './services/services';
+import { getTotalMedicalFile, searchMedicalFile } from './services/services';
 import { createUrl } from '../../components/url/url';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { Paginated } from '../../components/Pagination/Paginated';
 
 const SELECTOR_DELETE_MODAL = '#deleteMedicalFileModal';
 const SELECTOR_DELETE_LINK = '.js-delete-medical-file';
@@ -68,7 +71,19 @@ export default class MedicalFileList {
         this.$modal.modal('hide');
     }
 
+    private pagination() {
+        ReactDOM.render(
+            React.createElement(Paginated, {
+                itemsPerPage: 10,
+                path: '/admin/medical-file-list',
+                service: getTotalMedicalFile
+            }),
+            document.getElementById('pagination')
+        );
+    }
+
     public render() {
         this.bindEvent();
+        this.pagination();
     }
 }

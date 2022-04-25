@@ -33,7 +33,13 @@ class MedicalFileController extends BaseController
      */
     public function getViewMedicalFileList(): string
     {
-        $medicalFiles = $this->getMedicalFiles();
+        if ($this->request->input->has('offset')) {
+            $offset = $this->request->input->getInt('offset');
+        } else {
+            $offset = 0;
+        }
+
+        $medicalFiles = $this->getMedicalFiles($offset);
         return $this->twig->render(
             'admin/pages/medical_file_list',
             ['medicalFiles' => $medicalFiles, 'total' => count($medicalFiles)]
@@ -63,10 +69,10 @@ class MedicalFileController extends BaseController
         );
     }
 
-    public function getMedicalFiles(): array
+    public function getMedicalFiles(int $offset): array
     {
         $medicalFileRepository = new MedicalFileRepository();
-        return $medicalFileRepository->getMedicalFiles();
+        return $medicalFileRepository->getMedicalFiles($offset);
     }
 
     public function editHealth()
