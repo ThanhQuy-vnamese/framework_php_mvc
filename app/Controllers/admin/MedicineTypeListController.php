@@ -20,9 +20,18 @@ class MedicineTypeListController extends BaseController
      */
     public function getView(): string
     {
+        if (!$this->request->input->has('offset')) {
+            $offset = 0;
+        } else {
+            $offset = $this->request->input->getInt('offset');
+        }
+
         $use_case = new MedicineTypeListUseCase();
-        $medicine_types = $this->createResponse($use_case->execute());
-        return $this->twig->render('admin/pages/medicine_type_list', ['medicine_types' => $medicine_types]);
+        $medicine_types = $this->createResponse($use_case->execute($offset));
+        return $this->twig->render(
+            'admin/pages/medicine_type_list',
+            ['medicine_types' => $medicine_types, 'total' => count($medicine_types)]
+        );
     }
 
     /**

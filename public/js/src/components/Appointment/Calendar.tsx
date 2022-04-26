@@ -69,6 +69,7 @@ export const Calendar = () => {
     return (
         <>
             <FullCalendar
+                timeZone="Asia/Ho_Chi_Minh"
                 plugins={[interactionPlugin, timeGridPlugin]}
                 initialView="timeGridWeek"
                 slotMinTime="06:00:00"

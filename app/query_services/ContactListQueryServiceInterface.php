@@ -7,5 +7,7 @@ use App\dto\ContactListDto;
 
 interface ContactListQueryServiceInterface
 {
-    public function getContactForListView(): ContactListDto;
+    public function getContactForListView(int $offset): ContactListDto;
+
+    public function getTotalContact(): int;
 }

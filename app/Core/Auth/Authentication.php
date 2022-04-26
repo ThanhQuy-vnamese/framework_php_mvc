@@ -7,6 +7,7 @@ namespace App\Core\Auth;
 
 use App\Core\Cookie\Cookie;
 use App\Core\Session;
+use App\legacy\Auth;
 use App\Model\User;
 
 class Authentication
@@ -42,6 +43,13 @@ class Authentication
         $result = $user->getInfoUserLogin($where['email']);
 
         return $this->validate($result, $info['password']);
+    }
+
+    public function updateInfoUserLogin() {
+        $user = new User();
+        $auth = new Auth();
+        $result = $user->getInfoUserLoginById($auth->getUser()->getId());
+        $this->session->set('user', $result);
     }
 
     private function validate($result, $password): bool

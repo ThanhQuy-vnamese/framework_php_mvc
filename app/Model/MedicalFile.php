@@ -8,13 +8,16 @@ use App\Core\Database\Query;
 
 class MedicalFile extends DBModel
 {
+    public const LIMIT_QUERY = 10;
+
     public function rules(): array
     {
         return [];
     }
 
-    public function getMedicalFiles(): array {
-        $query = "SELECT id, first_name, last_name, gender, identity_card, birthday, phone FROM medical_medical_records;";
+    public function getMedicalFiles(int $offset): array {
+        $query = "SELECT id, first_name, last_name, gender, identity_card, birthday, phone FROM medical_medical_records LIMIT %s, %s;";
+        $query = sprintf($query, $offset, self::LIMIT_QUERY);
         $result = $this->getDatabase()->mysql->query($query);
         $data = [];
 
@@ -28,7 +31,7 @@ class MedicalFile extends DBModel
     public function getMedicalFileDetail(string $medicalFileId): array {
         $query = <<<SQL
                     SELECT MR.id, first_name, last_name, gender, birthday, identity_card, email, phone, way, district, wards, province, covid_vaccination, MR.created_at, user_id, MI.health_insurance,
-                           MI.health_insurance_number, MI.expiration_date, MI.id AS insurance_id
+                           MI.health_insurance_number, MI.expiration_date, MI.id AS insurance_id, MR.qr_image
                     FROM medical_medical_records AS MR INNER JOIN medical_medical_insurances AS MI ON MR.id=MI.id_medical_records
                     WHERE MR.id=$medicalFileId
                 SQL;

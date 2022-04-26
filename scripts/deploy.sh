@@ -34,4 +34,7 @@ fi
 
 sed -i 's/\'\/public\'\;/\'\;/ /var/www/phpmvc/app/Core/View/Twig.php
 
+rm -rf /var/www/phpmvc/cache/*
+chown -R apache.apache /var/www/phpmvc/public/upload
+
 service httpd restart

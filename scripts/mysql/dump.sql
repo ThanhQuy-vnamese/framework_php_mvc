@@ -8,7 +8,6 @@ CREATE TABLE `medical_users`
     `status`     boolean,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `token`      varchar(700),
-    `qr_image`   varchar(500),
     `face_id`    varchar(500),
     `role`       int(2)
 );
@@ -40,6 +39,7 @@ CREATE TABLE `medical_medical_records`
     `district`          varchar(50),
     `wards`             varchar(50),
     `province`          varchar(50),
+    `qr_image`          varchar(50),
     `covid_vaccination` text,
     `created_at`        timestamp,
     `user_id`           int
@@ -195,3 +195,6 @@ ALTER TABLE `medical_prescriptions`
 
 ALTER TABLE `medical_prescriptions`
     ADD FOREIGN KEY (`healths_id`) REFERENCES `medical_healths` (`id`) ON DELETE CASCADE;
+
+
+ALTER TABLE medical_medical_records ADD FULLTEXT(first_name, last_name, email, phone);

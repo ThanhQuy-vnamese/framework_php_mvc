@@ -7,22 +7,16 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Medical Files / <strong class="text-primary small">Nguyen
-                                    Van A</strong></h3>
+                            <h3 class="nk-block-title page-title">Medical Files / <strong
+                                    class="text-primary small">{{ medicalFile.first_name }} {{ medicalFile.last_name }}</strong>
+                            </h3>
                             <div class="nk-block-des text-soft">
                                 <ul class="list-inline">
-                                    <li>File ID: <span class="text-base">1</span></li>
+                                    <li>File ID: <span class="text-base">{{ medicalFile.id }}</span></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="nk-block-head-content">
-                            <a href="html/user-list-regular.html"
-                               class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
-                                        class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                            <a href="html/user-list-regular.html"
-                               class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
-                                        class="icon ni ni-arrow-left"></em></a>
-                        </div>
+                        {% include('admin/components/back_button.twig') %}
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
@@ -56,6 +50,12 @@
                     {% if(Session.hasFlash('successUpdatePrescription')) %}
                         <div class="alert alert-success">{{ session.getFlash('successUpdatePrescription') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('errorUpdateQr')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorUpdateQr') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successUpdateQr')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successUpdateQr') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -74,21 +74,30 @@
                                         <div class="nk-block">
                                             <div class="nk-block-head nk-block-head-sm nk-block-between">
                                                 <h5 class="title">Main Information</h5>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#modalDefault">Edit Information
-                                                </button>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#modalDefault">Edit Information
+                                                    </button>
+                                                    <button type="button"
+                                                            class="btn btn-warning" data-toggle="modal"
+                                                            data-target="#modalReGenerateQRImage">
+                                                        Re-generate QR image
+                                                    </button>
+                                                </div>
                                             </div><!-- .nk-block-head -->
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">First Name</span>
-                                                        <span class="profile-ud-value">{{ medicalFile.first_name }}</span>
+                                                        <span
+                                                            class="profile-ud-value">{{ medicalFile.first_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Last Name</span>
-                                                        <span class="profile-ud-value">{{ medicalFile.last_name }}</span>
+                                                        <span
+                                                            class="profile-ud-value">{{ medicalFile.last_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
@@ -118,7 +127,8 @@
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Identity card</span>
-                                                        <span class="profile-ud-value">{{ medicalFile.identity_card }}</span>
+                                                        <span
+                                                            class="profile-ud-value">{{ medicalFile.identity_card }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
@@ -156,7 +166,8 @@
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Have Health Insurance</span>
                                                         <span class="profile-ud-value">
-                                                        <span class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? 'Not Health Insurance' : 'Health Insurance' }}</span>
+                                                        <span
+                                                            class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? 'Not Health Insurance' : 'Health Insurance' }}</span>
                                                     </span>
                                                     </div>
                                                 </div>
@@ -164,20 +175,23 @@
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Health Insurance number</span>
-                                                        <span class="profile-ud-value">{{ medicalFile.health_insurance_number }}</span>
+                                                        <span
+                                                            class="profile-ud-value">{{ medicalFile.health_insurance_number }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">Expiration date</span>
-                                                        <span class="profile-ud-value">{{ medicalFile.expiration_date }}</span>
+                                                        <span
+                                                            class="profile-ud-value">{{ medicalFile.expiration_date }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
                                                         <span class="profile-ud-label">QR</span>
-                                                        <span class="profile-ud-value"><img src="{{ createLink('') }}"
-                                                                                            alt="Qr image"/></span>
+                                                        <span class="profile-ud-value"><img
+                                                                src="{{ createLink('upload/qr_images/') }}{{ medicalFile.qr_image }}"
+                                                                alt="Qr image"/></span>
                                                     </div>
                                                 </div>
                                             </div><!-- .profile-ud-list -->
@@ -238,21 +252,25 @@
                                                                                 <label class="form-label"
                                                                                        for="password">Gender</label>
                                                                                 <div class="form-control-wrap">
-                                                                                    <div class="custom-control custom-radio">
+                                                                                    <div
+                                                                                        class="custom-control custom-radio">
                                                                                         <input type="radio" id="nam"
                                                                                                name="gender"
                                                                                                class="custom-control-input"
                                                                                                value="Male" checked>
-                                                                                        <label class="custom-control-label"
-                                                                                               for="nam">Male</label>
+                                                                                        <label
+                                                                                            class="custom-control-label"
+                                                                                            for="nam">Male</label>
                                                                                     </div>
-                                                                                    <div class="custom-control custom-radio">
+                                                                                    <div
+                                                                                        class="custom-control custom-radio">
                                                                                         <input type="radio" id="nu"
                                                                                                name="gender"
                                                                                                class="custom-control-input"
                                                                                                value="Female">
-                                                                                        <label class="custom-control-label"
-                                                                                               for="nu">Female</label>
+                                                                                        <label
+                                                                                            class="custom-control-label"
+                                                                                            for="nu">Female</label>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -403,26 +421,38 @@
                                                                     <hr class="preview-hr">
                                                                     <span class="preview-title-lg overline-title">Covid vaccine information</span>
                                                                     {% for covid_injection in medicalFile.covid_injections %}
-                                                                    <div class="row gy-4">
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label class="form-label" for="name-{{ loop.index}}">Injection {{ loop.index}} - Name vaccine</label>
-                                                                                <div class="form-control-wrap">
-                                                                                    <input type="text" class="form-control" name="name-{{ loop.index}}" id="name-{{ loop.index}}"
-                                                                                           value="{{ covid_injection.type_medicine }}" placeholder="Enter name">
+                                                                        <div class="row gy-4">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-{{ loop.index }}">Injection {{ loop.index }}
+                                                                                        - Name vaccine</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-{{ loop.index }}"
+                                                                                               id="name-{{ loop.index }}"
+                                                                                               value="{{ covid_injection.type_medicine }}"
+                                                                                               placeholder="Enter name">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-{{ loop.index }}">Injection {{ loop.index }}
+                                                                                        - Date</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-{{ loop.index }}"
+                                                                                               id="date-{{ loop.index }}"
+                                                                                               value="{{ covid_injection.date }}"
+                                                                                               placeholder="Enter date">
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label class="form-label" for="date-{{ loop.index}}">Injection {{ loop.index}} - Date</label>
-                                                                                <div class="form-control-wrap">
-                                                                                    <input type="date" class="form-control" name="date-{{ loop.index}}" id="date-{{ loop.index}}"
-                                                                                           value="{{ covid_injection.date }}" placeholder="Enter date">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                     {% endfor %}
                                                                     <hr class="preview-hr">
                                                                     <div class="col-sm-6">
@@ -448,68 +478,38 @@
                                     </div><!-- .card-inner -->
                                 </div>
                             </div><!-- .card-content -->
-                            <div class="card-aside card-aside-right user-aside toggle-slide toggle-slide-right toggle-break-xxl toggle-screen-xxl"
-                                 data-content="userAside" data-toggle-screen="xxl" data-toggle-overlay="true"
-                                 data-toggle-body="true">
-                                <div class="card-inner-group" data-simplebar="init">
-                                    <div class="simplebar-wrapper" style="margin: 0px;">
-                                        <div class="simplebar-height-auto-observer-wrapper">
-                                            <div class="simplebar-height-auto-observer"></div>
-                                        </div>
-                                        <div class="simplebar-mask">
-                                            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-                                                <div class="simplebar-content-wrapper" tabindex="0" role="region"
-                                                     aria-label="scrollable content"
-                                                     style="height: auto; overflow: hidden;">
-                                                    <div class="simplebar-content" style="padding: 0px;">
-                                                        <div class="card-inner">
-                                                            <div class="user-card user-card-s2">
-                                                                <div class="user-avatar lg bg-primary">
-                                                                    <span>AB</span>
-                                                                </div>
-                                                                <div class="user-info">
-                                                                    <div class="badge badge-outline-light badge-pill ucap">
-                                                                        User
-                                                                    </div>
-                                                                    <h5>Nguyen Van A</h5>
-                                                                    <span class="sub-text">nguyenvana@mail.com</span>
-                                                                </div>
-                                                            </div>
-                                                        </div><!-- .card-inner -->
-                                                        <div class="card-inner">
-                                                            <form action="">
-                                                                <div class="form-group">
-                                                                    <label class="form-label" for="customFileLabel">Change
-                                                                        avatar</label>
-                                                                    <div class="form-control-wrap">
-                                                                        <div class="custom-file">
-                                                                            <input type="file" class="custom-file-input"
-                                                                                   id="customFile">
-                                                                            <label class="custom-file-label"
-                                                                                   for="customFile">Choose file</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group" align="center">
-                                                                    <div class="form-control-wrap">
-                                                                        <button type="submit" name="btn-submit"
-                                                                                class="btn btn-secondary">Change Avatar
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div><!-- .card-inner -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="simplebar-placeholder" style="width: auto; height: 819px;"></div>
-                                    </div>
-                                </div><!-- .card-inner -->
-                            </div><!-- .card-aside -->
                         </div><!-- .card-aside-wrap -->
                     </div><!-- .card -->
                 </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" id="modalReGenerateQRImage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+                <div class="modal-header">
+                    <h5 class="modal-title">Re-generate QR image</h5>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure re-generate QR image?</h4>
+                    <form action="{{ redirect('admin/re-generate-qr') }}" method="post">
+                        <input type="text" hidden value="{{ medicalFile.id }}" name="medical-file-id">
+                        <div class="card-inner">
+                            <div class="preview-block">
+                                <button type="submit" class="btn btn-xl btn-warning" style="margin-right: 10px">
+                                    Generate
+                                </button>
+                                <button class="btn btn-xl btn-secondary js-btn-cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <span class="sub-text">Modal Footer Text</span>
+                </div>
             </div>
         </div>
     </div>
@@ -530,12 +530,10 @@
                     url: `ajax-medical-file-health?id=${healthId}`,
                 })).done((response) => {
                     $modalViewDetail.find('.js-summary').text(response.summary);
-                    $modalViewDetail.find('.js-fever').text(response.symptom.fever);
-                    $modalViewDetail.find('.js-cold').text(response.symptom.cold);
-                    $modalViewDetail.find('.js-sore-throat').text(response.symptom.sore_throat);
                     $modalViewDetail.find('.js-advice').html(response.note);
                     $modalViewDetail.find('input[name="health-id"]').attr('value', response.id)
                     $modalViewDetail.find('input[name="summary"]').attr('value', response.summary)
+                    $modalViewDetail.find('textarea[name="description2"]').text(response.note)
                     $modalViewDetail.find('input[name="medical-file-id"]').attr('value', response.medical_file_id)
                     $('#modalDetailHealths').modal('show');
             });

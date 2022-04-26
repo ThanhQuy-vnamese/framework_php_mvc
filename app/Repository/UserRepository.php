@@ -7,10 +7,10 @@ use App\Model\User;
 
 class UserRepository
 {
-    public function getAllUsers(): array
+    public function getAllUsers($offset): array
     {
         $user = new User();
-        $users = $user->getAllUsers();
+        $users = $user->getAllUsers($offset);
         return $this->convertUser($users);
     }
 

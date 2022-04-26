@@ -6,5 +6,7 @@ namespace App\query_services;
 
 interface MedicineTypeQueryServiceInterface
 {
-    public function getAllMedicineType(): array;
+    public function getAllMedicineType(int $offset): array;
+
+    public function getTotalMedicineType(): int;
 }

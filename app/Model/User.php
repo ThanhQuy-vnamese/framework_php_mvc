@@ -10,6 +10,7 @@ class User extends DBModel
     public const STATUS_INACTIVE = 0;
     public const STATUS_ACTIVE = 1;
     public const STATUS_DELETED = 2;
+    public const LIMIT_USER = 10;
 
     public string $firstname = '';
     public string $lastname = '';
@@ -70,6 +71,10 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_users')->update($information, ['id' => $userID]);
     }
+    public function updateUserProfileForAdmin(string $user_id, array $information): bool {
+        $query = new Query();
+        return $query->table('medical_user_profiles')->update($information, ['user_id' => $user_id]);
+    }
     /**
      * @param array information
      * @return false|int|string
@@ -128,8 +133,8 @@ class User extends DBModel
     public function getProfileByUserId($userID)
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name, mp.avatar, mu.qr_image FROM medical_user_profiles mp left join medical_users mu 
-        on mp.user_id = mu.id where user_id = " . $userID;
+                mp.first_name, mp.last_name, mp.avatar, mu.qr_image FROM medical_user_profiles mp left join medical_users mu
+        on mp.user_id = mu.id where user_id = ".$userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
         if ($numRows > 0) {
@@ -150,7 +155,7 @@ class User extends DBModel
     public function getAllDoctor()
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu 
+                mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu
         on mp.user_id = mu.id where role=1";
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
@@ -207,11 +212,11 @@ class User extends DBModel
         return $query->table('medical_appointment_attendees')->insert($information);
     }
 
-    public function getAllUsers(): array
-    {
+    public function getAllUsers($offset): array {
         $query = new Query();
-        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
-                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id";
+        $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id LIMIT %s, %s";
+        $sql = sprintf($sql, $offset, self::LIMIT_USER);
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {
@@ -223,7 +228,7 @@ class User extends DBModel
     public function getUser(string $id): array
     {
         $query = new Query();
-        $sql = "SELECT U.id, U.email, U.status, U.qr_image, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
+        $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
                 FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];

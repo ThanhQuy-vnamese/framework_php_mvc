@@ -9,7 +9,7 @@
                         <div class="nk-block-head-content">
                             <h3 class="nk-block-title page-title">Medicine List</h3>
                             <div class="nk-block-des text-soft">
-                                <p>You have total 2,595 users.</p>
+                                <p>You have total {{ total }} medicine.</p>
                             </div>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
@@ -243,16 +243,7 @@
                                 </div><!-- .nk-tb-list -->
                             </div><!-- .card-inner -->
                             <div class="card-inner">
-                                <ul class="pagination justify-content-center justify-content-md-start">
-                                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><span class="page-link"><em
-                                                    class="icon ni ni-more-h"></em></span></li>
-                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul><!-- .pagination -->
+                                <div id="pagination"></div>
                             </div><!-- .card-inner -->
                         </div><!-- .card-inner-group -->
                     </div><!-- .card -->
@@ -263,6 +254,7 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="{{ createLink('js/dist/medicine_list.js')}}"></script>
 {% verbatim  %}
 <script>
     tinymce.init({

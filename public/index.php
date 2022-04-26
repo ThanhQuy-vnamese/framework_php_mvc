@@ -8,6 +8,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controllers\BlogController;
 use App\Controllers\SearchController;
 use App\Controllers\MedicineController;
+use App\Controllers\user\GetDoctorCalendarController;
 use App\Controllers\UserController;
 use App\Controllers\ApiController;
 use App\Controllers\SampleController;
@@ -85,6 +86,8 @@ $app->router->get('/verify', [UserController::class, 'VerifyAccount']);
 $app->router->get('/user/medican-record', [MedicineController::class, 'getViewMedicanRecord']);
 
 $app->router->get('/user/search-doctor', [SearchController::class, 'SearchDoctor']);
+// Calendar user
+$app->router->get('/user/ajax/get-doctor-calendar', [GetDoctorCalendarController::class, 'get']);
 
 $adminRoute = new AdminRoute($app);
 $adminRoute->register();

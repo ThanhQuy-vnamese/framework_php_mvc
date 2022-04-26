@@ -5,9 +5,9 @@ namespace App\Controllers\admin;
 
 use App\Core\Controller\BaseController;
 use App\Core\Helper\UploadFile;
-use App\Core\Lib\QrCode;
 use App\Core\Mail\Mail;
 use App\Core\Session;
+use App\legacy\Auth;
 use App\Model\User;
 use App\Repository\UserRepository;
 use Twig\Error\LoaderError;
@@ -24,9 +24,14 @@ class UserController extends BaseController
      */
     public function getViewUserList(): string
     {
+        if (!$this->request->input->has('offset')) {
+            $offset = 0;
+        } else {
+            $offset = $this->request->input->getInt('offset');
+        }
         $userRepository = new UserRepository();
-        $users = $userRepository->getAllUsers();
-        return $this->twig->render('admin/pages/user_list', ['users' => $users]);
+        $users = $userRepository->getAllUsers($offset);
+        return $this->twig->render('admin/pages/user_list', ['users' => $users, 'total' => count($users)]);
     }
 
     /**
@@ -88,16 +93,11 @@ class UserController extends BaseController
             $this->response->redirect('/admin/user-add');
         }
 
-        $qrName = $this->generateRandomString(15);
-        $qrCode = new QrCode();
-        $qrCode->create('content', $qrName);
-
         $dataUser = [
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'status' => $status,
             'role' => $role,
-            'qr_image' => $qrName . '.png'
         ];
 
         $user = new User();
@@ -133,16 +133,6 @@ class UserController extends BaseController
 
         $session->setFlash('successAddUser', 'Add user success');
         $this->response->redirect('/admin/user-list');
-    }
-
-    public function generateRandomString(int $length = 10): string {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
     public function updateUser() {
@@ -223,13 +213,21 @@ class UserController extends BaseController
             'avatar' => $uploadFile->getFileName(),
         ];
         $user = new User();
-        $isSuccessUpdateAvatar = $user->updateUserProfile($userId, $data);
+        $isSuccessUpdateAvatar = $user->updateUserProfileForAdmin($userId, $data);
+        $this->updateInfoUserLogin((int)$userId);
         if (!$isSuccessUpdateAvatar) {
             $session->setFlash('errorUpdateUser', 'Update user fail');
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
         $session->setFlash('successUpdateUser', 'Update user success');
         $this->response->redirect('/admin/user-detail', ['id' => $userId]);
+    }
+
+    private function updateInfoUserLogin(int $user_id) {
+        $auth = new Auth();
+        if ($user_id === $auth->getUser()->getId()) {
+            $auth->getAuthentication()->updateInfoUserLogin();
+        }
     }
 
     public function deleteUser() {

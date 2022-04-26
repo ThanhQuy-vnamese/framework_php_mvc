@@ -9,6 +9,7 @@ use App\dto\MedicineDto;
 
 class MedicineListQueryService implements MedicineListQueryServiceInterface
 {
+    public const LIMIT = 10;
     /**
      * @var false|\mysqli|null
      */
@@ -23,11 +24,12 @@ class MedicineListQueryService implements MedicineListQueryServiceInterface
     /**
      * @return MedicineDto[]|array
      */
-    public function getListMedicine(): array
+    public function getListMedicine(int $offset): array
     {
         $query = "SELECT M.id, M.name, MT.name AS type_name
                 FROM `medical_medicines` AS M INNER JOIN `medical_medicines_types` AS MT
-                ON m.`medicine_type_id`=MT.id";
+                ON m.`medicine_type_id`=MT.id LIMIT %s, %s";
+        $query = sprintf($query, $offset, self::LIMIT);
         $result = $this->db->query($query);
         if (!$result) {
             return [];
@@ -41,5 +43,13 @@ class MedicineListQueryService implements MedicineListQueryServiceInterface
         }
 
         return $data;
+    }
+
+    public function getTotalMedicine(): int
+    {
+        $query = "SELECT COUNT(*) AS total_medicines FROM medical_medicines;";
+        $result = $this->db->query($query);
+        $row = $result->fetch_assoc();
+        return (int)$row['total_medicines'];
     }
 }

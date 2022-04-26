@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controllers\admin;
@@ -32,8 +33,17 @@ class MedicalFileController extends BaseController
      */
     public function getViewMedicalFileList(): string
     {
-        $medicalFiles = $this->getMedicalFiles();
-        return $this->twig->render('admin/pages/medical_file_list', ['medicalFiles' => $medicalFiles]);
+        if ($this->request->input->has('offset')) {
+            $offset = $this->request->input->getInt('offset');
+        } else {
+            $offset = 0;
+        }
+
+        $medicalFiles = $this->getMedicalFiles($offset);
+        return $this->twig->render(
+            'admin/pages/medical_file_list',
+            ['medicalFiles' => $medicalFiles, 'total' => count($medicalFiles)]
+        );
     }
 
     /**
@@ -53,13 +63,16 @@ class MedicalFileController extends BaseController
             $this->response->redirect('/admin/medical-file-list');
         }
 
-        return $this->twig->render('admin/pages/medical_file_detail', ['medicalFile' => $medicalFile, 'healths' => $healths, 'medicines' => $medicines]);
+        return $this->twig->render(
+            'admin/pages/medical_file_detail',
+            ['medicalFile' => $medicalFile, 'healths' => $healths, 'medicines' => $medicines]
+        );
     }
 
-    public function getMedicalFiles(): array
+    public function getMedicalFiles(int $offset): array
     {
         $medicalFileRepository = new MedicalFileRepository();
-        return $medicalFileRepository->getMedicalFiles();
+        return $medicalFileRepository->getMedicalFiles($offset);
     }
 
     public function editHealth()
@@ -97,7 +110,8 @@ class MedicalFileController extends BaseController
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
-    public function getHealthDetail() {
+    public function getHealthDetail()
+    {
         $healthId = $this->request->input->get('id');
         $medicalFileRepository = new MedicalFileRepository();
         $health = $medicalFileRepository->getHealthDetail($healthId);

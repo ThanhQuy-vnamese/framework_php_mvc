@@ -45,7 +45,7 @@ class Router
     {
         $this->router['post'][$path] = $callback;
         if (!empty($middleware)) {
-            $this->router['get'][$path]['middleware'] = $middleware;
+            $this->router['post'][$path]['middleware'] = $middleware;
         }
 
         return $this;
@@ -63,10 +63,12 @@ class Router
         }
         $method = $this->request->getMethod();
         // TODO: Refactor
-        $class = $this->router[$method][$path] ?? false;
+        $class = $this->router[$method][$path] ?? [];
         $callback = $class;
-        unset($callback['middleware']);
-        if ($callback === false) {
+        if (array_key_exists('middleware', $callback)) {
+            unset($callback['middleware']);
+        }
+        if (empty($callback)) {
             $this->response->setStatusCode(404);
 
             return Application::$APPLICATION->twig->render('_404');

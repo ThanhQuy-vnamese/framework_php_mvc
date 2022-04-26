@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\use_case;
 
+use App\Core\Helper\Helper;
+use App\Core\Lib\QrCode;
 use App\Core\Session;
 use App\domain\entity\HealthInsurance;
 use App\domain\entity\MedicalFile;
@@ -19,6 +21,8 @@ class AddMedicalFileUseCase
     private HealthInsuranceRepositoryInterface $healthInsuranceRepository;
     private Session $session;
     private Auth $auth;
+    private QrCode $qrCode;
+    private Helper $helper;
 
     public function __construct()
     {
@@ -26,6 +30,8 @@ class AddMedicalFileUseCase
         $this->healthInsuranceRepository = new HealthInsuranceRepository();
         $this->session = new Session();
         $this->auth = new Auth();
+        $this->qrCode = new QrCode();
+        $this->helper = new Helper();
     }
 
     public function execute(
@@ -49,6 +55,7 @@ class AddMedicalFileUseCase
             $this->session->setFlash('errorAddMedicalFile', 'The identity card ....');
             return 0;
         }
+        $qrName = $this->generateQrImage();
         $medicalFileToInsert = $this->buildMedicalFile(
             $first_name,
             $last_name,
@@ -62,7 +69,8 @@ class AddMedicalFileUseCase
             $wards,
             $way,
             $covid_vaccination,
-            $this->auth->getUser()->getId()
+            $this->auth->getUser()->getId(),
+            $qrName
         );
         $idMedicalFile = $this->medicalFileRepository->addMedicalFile($medicalFileToInsert);
         if (!$idMedicalFile) {
@@ -85,6 +93,12 @@ class AddMedicalFileUseCase
         }
         $this->session->setFlash('successAddMedicalFile', 'Add medical file success');
         return $idMedicalFile;
+    }
+
+    private function generateQrImage(): string {
+        $qrName = $this->helper->generateRandomString(15);
+        $this->qrCode->create('content', $qrName);
+        return $qrName . '.png';
     }
 
     private function validateHealthInsurance(
@@ -117,7 +131,8 @@ class AddMedicalFileUseCase
         string $wards,
         string $way,
         array $covid_vaccination,
-        int $user_id
+        int $user_id,
+        string $qr_name
     ): MedicalFile {
         return new MedicalFile(
             null,
@@ -133,7 +148,8 @@ class AddMedicalFileUseCase
             $wards,
             $province,
             serialize($covid_vaccination),
-            $user_id
+            $user_id,
+            $qr_name
         );
     }
 

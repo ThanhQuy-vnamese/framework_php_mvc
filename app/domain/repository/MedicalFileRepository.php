@@ -49,8 +49,8 @@ class MedicalFileRepository implements MedicalFileRepositoryInterface
 
     public function addMedicalFile(MedicalFile $medicalFile): int
     {
-        $sql = "INSERT INTO medical_medical_records(first_name, last_name, gender, birthday, identity_card, email, phone, way, district, wards, province, covid_vaccination, user_id)
-                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)";
+        $sql = "INSERT INTO medical_medical_records(first_name, last_name, gender, birthday, identity_card, email, phone, way, district, wards, province, covid_vaccination, user_id, qr_image)
+                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, '%s')";
         $query = sprintf(
             $sql,
             $medicalFile->getFirstName(),
@@ -65,17 +65,55 @@ class MedicalFileRepository implements MedicalFileRepositoryInterface
             $medicalFile->getWards(),
             $medicalFile->getProvince(),
             $medicalFile->getCovidVaccination(),
-            $medicalFile->getUserId()
+            $medicalFile->getUserId(),
+            $medicalFile->getQrImage()
         );
         $this->db->query($query);
 
         return (int)$this->db->insert_id;
     }
 
+    public function updateMedicalFile(MedicalFile $medicalFile): bool
+    {
+        $sql = "UPDATE medical_medical_records
+                SET first_name = '%s', last_name = '%s', gender = '%s', birthday = '%s', identity_card = '%s', email = '%s',
+                    phone = '%s', way = '%s', district = '%s', wards = '%s', province = '%s', covid_vaccination = '%s'
+                WHERE id = %s";
+        $query = sprintf(
+            $sql,
+            $medicalFile->getFirstName(),
+            $medicalFile->getLastName(),
+            $medicalFile->getGender(),
+            $medicalFile->getBirthDay(),
+            $medicalFile->getIdentityCard(),
+            $medicalFile->getEmail(),
+            $medicalFile->getPhone(),
+            $medicalFile->getWay(),
+            $medicalFile->getDistrict(),
+            $medicalFile->getWards(),
+            $medicalFile->getProvince(),
+            $medicalFile->getCovidVaccination(),
+            $medicalFile->getId(),
+        );
+        if (!$this->db->query($query)) {
+            return false;
+        }
+        return true;
+    }
+
     public function deleteMedicalFileById(int $id): bool
     {
         $sql = "DELETE FROM `medical_medical_records` WHERE id = %s";
         $query = sprintf($sql, $id);
+        if (!$this->db->query($query)) {
+            return false;
+        }
+        return true;
+    }
+
+    public function updateQrImageNameByMedicalFileId(int $medical_file_id, string $qr_name): bool {
+        $sql = "UPDATE medical_medical_records SET qr_image = '%s' WHERE id = %s";
+        $query = sprintf($sql, $qr_name, $medical_file_id);
         if (!$this->db->query($query)) {
             return false;
         }
