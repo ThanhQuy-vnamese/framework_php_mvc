@@ -20,8 +20,14 @@ class MedicineListController extends BaseController
      */
     public function getViewMedicineList(): string
     {
+        if ($this->request->input->has('offset')) {
+            $offset = $this->request->input->getInt('offset');
+        } else {
+            $offset = 0;
+        }
+
         $use_case = new ViewMedicineListUseCase();
-        $medicine_for_view = $this->createResponse($use_case->execute());
+        $medicine_for_view = $this->createResponse($use_case->execute($offset));
         return $this->twig->render(
             'admin/pages/medicine_list',
             ['medicine_for_view' => $medicine_for_view, 'total' => count($medicine_for_view['medicines'])]

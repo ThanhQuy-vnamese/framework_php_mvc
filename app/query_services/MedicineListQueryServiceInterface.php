@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\query_services;
@@ -10,5 +11,7 @@ interface MedicineListQueryServiceInterface
     /**
      * @return MedicineDto[]|array
      */
-    public function getListMedicine(): array;
+    public function getListMedicine(int $offset): array;
+
+    public function getTotalMedicine(): int;
 }

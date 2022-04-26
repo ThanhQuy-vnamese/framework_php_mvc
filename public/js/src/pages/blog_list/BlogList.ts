@@ -1,3 +1,8 @@
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { Paginated } from '../../components/Pagination/Paginated';
+import { getTotalBlog } from './service/services';
+
 const SELECTOR_DELETE_MODAL = '#deleteBlogModal';
 const SELECTOR_DELETE_LINK = '.js-delete-blog-link';
 const SELECTOR_CANCEL_BUTTON = '.js-btn-cancel';
@@ -40,7 +45,19 @@ export default class BlogList {
         this.$modal.modal('hide');
     }
 
+    private renderPagination() {
+        ReactDOM.render(
+            React.createElement(Paginated, {
+                itemsPerPage: 10,
+                path: '/admin/blog-list',
+                service: getTotalBlog
+            }),
+            document.getElementById('pagination')
+        );
+    }
+
     public render() {
+        this.renderPagination();
         this.bindEvent();
     }
 }

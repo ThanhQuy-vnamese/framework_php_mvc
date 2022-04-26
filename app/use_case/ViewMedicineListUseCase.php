@@ -22,11 +22,12 @@ class ViewMedicineListUseCase
     }
 
     /**
+     * @param int $offset
      * @return MedicineForListViewDto
      */
-    public function execute(): MedicineForListViewDto
+    public function execute(int $offset): MedicineForListViewDto
     {
-        $medicine_list = $this->medicineQueryService->getListMedicine();
+        $medicine_list = $this->medicineQueryService->getListMedicine($offset);
         $medicine_type_list = $this->medicineTypeQueryService->getAllMedicineType();
         return new MedicineForListViewDto($medicine_list, $medicine_type_list);
     }
