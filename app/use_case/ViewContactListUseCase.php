@@ -16,8 +16,8 @@ class ViewContactListUseCase
         $this->contactListQueryService = new ContactListQueryService();
     }
 
-    public function execute(): ContactListDto
+    public function execute(int $offset): ContactListDto
     {
-        return $this->contactListQueryService->getContactForListView();
+        return $this->contactListQueryService->getContactForListView($offset);
     }
 }

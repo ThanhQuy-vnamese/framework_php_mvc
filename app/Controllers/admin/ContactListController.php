@@ -21,16 +21,21 @@ class ContactListController extends BaseController
      */
     public function getViewContactList(): string
     {
+        if ($this->request->input->has('offset')) {
+            $offset = $this->request->input->getInt('offset');
+        } else {
+            $offset = 0;
+        }
         return $this->twig->render(
             'admin/pages/contact_list',
-            ['contact_list' => $this->getContactList(), 'total' => count($this->getContactList())]
+            ['contact_list' => $this->getContactList($offset), 'total' => count($this->getContactList($offset))]
         );
     }
 
-    public function getContactList(): array
+    public function getContactList(int $offset): array
     {
         $viewContactListUseCase = new ViewContactListUseCase();
-        $contactList = $viewContactListUseCase->execute();
+        $contactList = $viewContactListUseCase->execute($offset);
         return $this->createResponseData($contactList);
     }
 
