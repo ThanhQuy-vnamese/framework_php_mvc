@@ -19,8 +19,8 @@ class MedicineTypeListUseCase
     /***
      * @return MedicineTypeListDto[]
      */
-    public function execute(): array
+    public function execute(int $offset): array
     {
-        return $this->medicineTypeListQueryService->getAllMedicineType();
+        return $this->medicineTypeListQueryService->getAllMedicineType($offset);
     }
 }

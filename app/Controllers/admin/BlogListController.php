@@ -19,8 +19,13 @@ class BlogListController extends BaseController
      */
     public function getViewBlogList(): string
     {
+        if ($this->request->input->has('offset')) {
+            $offset = $this->request->input->getInt('offset');
+        } else {
+            $offset = 0;
+        }
         $viewBlogListUseCase = new ViewBlogListUseCase();
-        $blogList = $viewBlogListUseCase->execute();
+        $blogList = $viewBlogListUseCase->execute($offset);
         $blogs = $this->createResponseData($blogList);
         return $this->twig->render('admin/pages/blog_list', ['blogs' => $blogs, 'total' => count($blogs)]);
     }
