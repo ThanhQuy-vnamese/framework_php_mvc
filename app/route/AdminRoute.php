@@ -6,6 +6,7 @@ namespace App\route;
 
 use App\Controllers\admin\GenerateQrController;
 use App\Controllers\admin\GetTotalMedicalFileController;
+use App\Controllers\admin\GetTotalMedicineController;
 use App\Controllers\admin\GetTotalUserController;
 use App\Controllers\admin\SearchMedicalFileController;
 use App\Controllers\admin\ViewBlogAddController;
@@ -290,6 +291,7 @@ class AdminRoute
         $this->router->get('/admin/ajax/search-medical-file', [SearchMedicalFileController::class, 'search']);
         $this->router->get('/admin/ajax/get-total-users', [GetTotalUserController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-medical-files', [GetTotalMedicalFileController::class, 'get']);
+        $this->router->get('/admin/ajax/get-total-medicines', [GetTotalMedicineController::class, 'get']);
 
 // External Api
         $this->router->get(
