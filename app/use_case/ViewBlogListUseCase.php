@@ -15,8 +15,8 @@ class ViewBlogListUseCase
         $this->blogListQueryService = new BlogListQueryService();
     }
 
-    public function execute(): array
+    public function execute(int $offset): array
     {
-        return $this->blogListQueryService->getBlogList();
+        return $this->blogListQueryService->getBlogList($offset);
     }
 }

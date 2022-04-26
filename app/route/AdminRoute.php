@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\route;
 
 use App\Controllers\admin\GenerateQrController;
+use App\Controllers\admin\GetTotalBlogListController;
 use App\Controllers\admin\GetTotalMedicalFileController;
 use App\Controllers\admin\GetTotalMedicineController;
 use App\Controllers\admin\GetTotalMedicineTypeController;
@@ -294,6 +295,7 @@ class AdminRoute
         $this->router->get('/admin/ajax/get-total-medical-files', [GetTotalMedicalFileController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-medicines', [GetTotalMedicineController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-medicines-types', [GetTotalMedicineTypeController::class, 'get']);
+        $this->router->get('/admin/ajax/get-total-blog', [GetTotalBlogListController::class, 'get']);
 
 // External Api
         $this->router->get(
