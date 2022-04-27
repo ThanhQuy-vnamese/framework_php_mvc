@@ -64,12 +64,12 @@ class User extends DBModel
     public function updateUserProfile(array $information, $userID)
     {
         $query = new Query();
-        return $query->table('medical_user_profiles')->update($information,['user_id'=>$userID]);
+        return $query->table('medical_user_profiles')->update($information, ['user_id' => $userID]);
     }
     public function updateUserAccount(array $information, $userID)
     {
         $query = new Query();
-        return $query->table('medical_users')->update($information, ['id'=>$userID]);
+        return $query->table('medical_users')->update($information, ['id' => $userID]);
     }
     public function updateUserProfileForAdmin(string $user_id, array $information): bool {
         $query = new Query();
@@ -124,9 +124,11 @@ class User extends DBModel
     public function userLogin(array $information)
     {
         $query = new Query();
-        return $query->table('medical_users')->condition(['email' => $information['email'],
-                                                          'password'=>$information['password'],
-                                                          'status'=>'1'])->get();
+        return $query->table('medical_users')->condition([
+            'email' => $information['email'],
+            'password' => $information['password'],
+            'status' => '1'
+        ])->get();
     }
     public function getProfileByUserId($userID)
     {
@@ -135,20 +137,19 @@ class User extends DBModel
         on mp.user_id = mu.id where user_id = ".$userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
-                if ($numRows > 0) {
-                    return $result->fetch_all(MYSQLI_ASSOC);
-                }
-
+        if ($numRows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
     public function getUserIdByMail($email)
     {
         $query = new Query();
-        return $query->table('medical_users')->condition(['email'=>$email])->get();
+        return $query->table('medical_users')->condition(['email' => $email])->get();
     }
     public function updatePassword($userID, $new_password)
     {
         $query = new Query();
-        return $query->table('medical_users')->update(['password'=>$new_password], ['id'=>$userID]);
+        return $query->table('medical_users')->update(['password' => $new_password], ['id' => $userID]);
     }
 
     public function getAllDoctor()
@@ -158,29 +159,52 @@ class User extends DBModel
         on mp.user_id = mu.id where role=1";
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
-                if ($numRows > 0) {
-                    return $result->fetch_all(MYSQLI_ASSOC);
-                }
+        if ($numRows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+    public function getDoctorByKeyWord($keyword)
+    {
+        $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone, mp.first_name, mp.last_name FROM medical_user_profiles mp left join medical_users mu on mp.user_id = mu.id
+        where mp.last_name like '%" . $keyword . "%' or mp.first_name like '%" . $keyword . "%' and role=1";
+        $result = $this->getDatabase()->mysql->query($query);
+        $numRows = $result->num_rows;
+        if ($numRows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
     }
     public function active_acc(array $information)
     {
         $query = new Query();
-        return $query->table('medical_users')->update(['status'=>$information['status'],
-                                                        'token'=>$information['token']
-                                                        ], ['email'=>$information['email']]);
+        return $query->table('medical_users')->update([
+            'status' => $information['status'],
+            'token' => $information['token']
+        ], ['email' => $information['email']]);
     }
 
     public function insertAppointment(array $information)
     {
         $query = new Query();
         return $query->table('medical_appointments')->insert(
-            ['user_id'=>$information['user_id'],
-            'date_start' =>$information['date_start'],
-            'time_start' => $information['time_start'],
-            'created_at'=>$information['created_at'],
-            'subject'=> $information['subject'],
-            ]);
-
+            [
+                'user_id' => $information['user_id'],
+                'date_start' => $information['date_start'],
+                'time_start' => $information['time_start'],
+                'created_at' => $information['created_at'],
+                'subject' => $information['subject'],
+            ]
+        );
+    }
+    public function InsertContact(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_contact_infomation')->insert([
+            'user_id' => 24,
+            'phone' => $information['phone'],
+            'email' => $information['email'],
+            'message' => $information['message'],
+            'full_name' => $information['full_name']
+        ]);
     }
     public function insertAppointmentAttendees(array $information, $doctor)
     {
@@ -201,7 +225,8 @@ class User extends DBModel
         return $data;
     }
 
-    public function getUser(string $id): array {
+    public function getUser(string $id): array
+    {
         $query = new Query();
         $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
                 FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
@@ -217,17 +242,20 @@ class User extends DBModel
         return $data;
     }
 
-    public function updateUser(string $id, array $information): bool {
+    public function updateUser(string $id, array $information): bool
+    {
         $query = new Query();
         return $query->table('medical_users')->update($information, ['id' => $id]);
     }
 
-    public function deleteUser(string $id): bool {
+    public function deleteUser(string $id): bool
+    {
         $query = new Query();
         return $query->table('medical_users')->condition(['id' => $id])->delete();
     }
 
-    public function getEmailExceptUserId(string $user_id, string $email): int {
+    public function getEmailExceptUserId(string $user_id, string $email): int
+    {
         $sql = "SELECT * FROM medical_users WHERE email='$email' AND id <> '$user_id';";
         $result = $this->getDatabase()->mysql->query($sql);
         return $result->num_rows;
