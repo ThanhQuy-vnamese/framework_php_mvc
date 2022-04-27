@@ -42,11 +42,15 @@ class MedicineController extends BaseController
         // echo("<pre>");
         // print_r($id_user['id']);
         $user = new User();
-        $data_user = !empty((array)$user->getMedicianRecordById($id_user['id']))?(array)$user->getMedicianRecordById($id_user['id']):'insert';
+        $data_user = (array)$user->getMedicianRecordById($id_user['id']);
         // echo("<pre>");
-        // print_r((array)$data_user[0]);
-
-        return $this->twig->render('user/pages/medican_record', ['data_user'=>(array)$data_user[0]]);
+        // print_r($data_user);
+        if(!empty($data_user))
+        {
+            return $this->twig->render('user/pages/medican_record', ['data_user'=>(array)$data_user[0]]);
+        }
+        return $this->twig->render('user/pages/medican_record', ['data_user'=>'']);
+     
     }
     public function postMedicanRecord()
     {
