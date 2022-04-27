@@ -187,13 +187,29 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_appointments')->insert(
             [
+                'full_name'=>$information['full_name'],
                 'user_id' => $information['user_id'],
                 'date_start' => $information['date_start'],
                 'time_start' => $information['time_start'],
                 'created_at' => $information['created_at'],
                 'subject' => $information['subject'],
+                'status'=>$information['status']
             ]
         );
+    }
+    public function getLastestAppointment()
+    {
+        $query = "SELECT *FROM medical_appointments WHERE id=( SELECT max(id) FROM medical_appointments)";
+        $result = $this->getDatabase()->mysql->query($query);
+        $numRows = $result->num_rows;
+        if ($numRows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+    public function insertAppointmentAttendes(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_appointment_attendees')->insert($information);
     }
     public function InsertContact(array $information)
     {
@@ -206,7 +222,7 @@ class User extends DBModel
             'full_name' => $information['full_name']
         ]);
     }
-    public function insertAppointmentAttendees(array $information, $doctor)
+    public function insertAppointmentAttendees(array $information)
     {
         $query = new Query();
         return $query->table('medical_appointment_attendees')->insert($information);
@@ -276,6 +292,22 @@ class User extends DBModel
     {
         $query = new Query();
         return $query->table('medical_medical_records')->update($information, ['user_id' => $user_id]);
+    }
+    public function getAppointmentByUser($user_id)
+    {
+        $query = new Query();
+        $sql ="SELECT ma.full_name, ma.status, ma.date_start, ma.description, ma.subject FROM `medical_appointments` ma join medical_users mu 
+        on ma.user_id = mu.id WHERE mu.id=".$user_id;
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
     }
     
 }

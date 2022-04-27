@@ -55,6 +55,7 @@ $app->router->get('/doctor', [UserController::class, 'getListDoctor'], UserAuthM
 $app->router->get('/doctor/detail-doctor', [UserController::class, 'getDetailDoctor'], UserAuthMiddleware::class);
 
 $app->router->get('/doctor/book-clinic', [SampleController::class, 'bookClinic'], UserAuthMiddleware::class);
+$app->router->get('/user/book-list-clinic', [SampleController::class, 'getListBookClinic'], UserAuthMiddleware::class);
 $app->router->post('/doctor/post-book-clinic', [SampleController::class, 'postBookClinic'], UserAuthMiddleware::class);
 $app->router->get('/doctor/show-calendar', [MedicineController::class, 'showCalander'], UserAuthMiddleware::class);
 

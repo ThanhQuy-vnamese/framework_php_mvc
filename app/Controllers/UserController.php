@@ -431,8 +431,10 @@ class UserController extends BaseController
             $session = new Session();
             $user = new User();
             $getProfileById = $user->getProfileByUserId($id);
-            $session->set('doctorProfile', $getProfileById[0]);
+            // echo("<pre>");
+            // print_r($getProfileById);
+            // $session->set('doctorProfile', $getProfileById[0]);
         }
-        return $this->twig->render('user/pages/detail-doctor');
+        return $this->twig->render('user/pages/detail-doctor', ['doctorProfile'=>$getProfileById[0]]);
     }
 }

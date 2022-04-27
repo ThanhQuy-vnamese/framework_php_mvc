@@ -1,9 +1,2 @@
-/******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!********************************!*\
-  !*** ./public/js/src/index.js ***!
-  \********************************/
 console.log(123);
-/******/ })()
-;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBQUEsT0FBTyxDQUFDQyxHQUFSLENBQVksR0FBWixFIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcGhwbXZjLy4vcHVibGljL2pzL3NyYy9pbmRleC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zb2xlLmxvZygxMjMpO1xyXG4iXSwibmFtZXMiOlsiY29uc29sZSIsImxvZyJdLCJzb3VyY2VSb290IjoiIn0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJtYXBwaW5ncyI6IkFBQUFBLFFBQVFDLElBQUkiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9waHBtdmMvLi9wdWJsaWMvanMvc3JjL2luZGV4LmpzIl0sInNvdXJjZXNDb250ZW50IjpbImNvbnNvbGUubG9nKDEyMyk7XHJcbiJdLCJuYW1lcyI6WyJjb25zb2xlIiwibG9nIl0sInNvdXJjZVJvb3QiOiIifQ==
