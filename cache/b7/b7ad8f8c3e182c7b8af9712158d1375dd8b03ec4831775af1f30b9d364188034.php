@@ -278,7 +278,7 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t\t\t<h3 class=\"c-black\">First time here?</h3>
 \t\t\t\t\t\t\t\t\t\t<a href=\"";
         // line 215
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => "user/register"], "method", false, false, false, 215), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["user/register"]), "html", null, true);
         echo "\" class=\"btn btn-custom\">Sign up</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<h5 class=\"c-black mb-4 mt-n1\">Or Sign In With</h5>
@@ -531,7 +531,7 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t<div class=\"content text-center\">
 \t\t\t\t\t\t\t\t\t<div class=\"border-bottom pb-5 mb-5\">
 \t\t\t\t\t\t\t\t\t\t<h3 class=\"c-black\">First time here?</h3>
-\t\t\t\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('user/register') }}\" class=\"btn btn-custom\">Sign up</a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"{{ createLink('user/register') }}\" class=\"btn btn-custom\">Sign up</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<h5 class=\"c-black mb-4 mt-n1\">Or Sign In With</h5>
 \t\t\t\t\t\t\t\t\t<div class=\"socials\">
@@ -549,6 +549,6 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t</div>
 \t</body>
 </html>
-", "user/pages/login.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\pages\\login.twig");
+", "user/pages/login.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\pages\\login.twig");
     }
 }

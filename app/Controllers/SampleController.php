@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Core\Controller\BaseController;
+use App\Model\Blog;
 use App\Core\Request\Request;
 use App\Core\Session;
 use App\Model\User;
@@ -21,7 +22,11 @@ class SampleController extends BaseController
      */
     public function index(): string
     {
-        return $this->twig->render('user/pages/home');
+        $blog = new Blog();
+        $getAllBlog = (array)$blog->getAllBlog();
+        $user = new User();
+        $getAllDoctor = $user->getAllDoctor();
+        return $this->twig->render('user/pages/home', ['getAllBlog'=>$getAllBlog, 'getAllDoctor'=>$getAllDoctor]);
     }
     public function about(): string
     {
@@ -63,6 +68,40 @@ class SampleController extends BaseController
     public function contact()
     {
         return $this->twig->render('user/pages/contact');
+    }
+    public function postContact()
+    {
+        $request = new Request();
+        $session = new Session();
+        $user = new User();
+        $userid = $session->get('user')['id'];
+
+        $fullname = $this->request->input->get('fullname');
+        $email = $this->request->input->get('email');
+        $message = $this->request->input->get('message');
+        $phone = $this->request->input->get('phone');
+        
+        $information = array(
+            'phone'=>$phone,
+            'user_id'=>$userid,
+            'full_name'=>$fullname,
+            'email'=>$email,
+            'created_at'=>date("Y/m/d"),
+            'message'=>$message
+        );
+        // echo("<pre>");
+        // print_r($information);
+        // $user->InsertContact($information);
+        if($user->InsertContact($information))
+        {
+            $session->setFlash('successContact', 'Create contact success!');
+            $this->response->redirect('/contact');
+        }
+        else{
+            $session->setFlash('errorContact', 'Create contact failed!');
+            $this->response->redirect('/contact');
+        }
+
     }
     public function StatisticCovid()
     {
