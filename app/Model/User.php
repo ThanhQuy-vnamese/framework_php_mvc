@@ -133,7 +133,7 @@ class User extends DBModel
     public function getProfileByUserId($userID)
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name, mp.avatar, mu.qr_image FROM medical_user_profiles mp left join medical_users mu
+                mp.first_name, mp.last_name, mp.avatar FROM medical_user_profiles mp left join medical_users mu
         on mp.user_id = mu.id where user_id = ".$userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
@@ -260,4 +260,22 @@ class User extends DBModel
         $result = $this->getDatabase()->mysql->query($sql);
         return $result->num_rows;
     }
+
+    public function getMedicianRecordById($user_id)
+    {
+        $query = new Query();
+        return $query->table('medical_medical_records')->condition(['user_id' => $user_id])->get();
+    }
+
+    public function insertMedicianRecord($information)
+    {
+        $query = new Query();
+        return $query->table('medical_medical_records')->insert($information);
+    }
+    public function updateMedicianRecord($user_id ,$information)
+    {
+        $query = new Query();
+        return $query->table('medical_medical_records')->update($information, ['user_id' => $user_id]);
+    }
+    
 }

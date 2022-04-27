@@ -231,9 +231,10 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t\t<div class=\"row gutters-sm\">
+\t\t\t\t<div class=\"row gutters\">
 \t\t\t\t\t<h2>Lịch làm việc</h2>
 \t\t\t\t</div>
+                <div id=\"calendar\"></div>
 
 \t\t\t</div>
 \t\t</div>
@@ -242,12 +243,15 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 176
+        // line 177
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "
 
 \t\t<!-- footer part end-->
-
+        <script src=\"";
+        // line 180
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["js/dist/user/detail_doctor.js"]), "html", null, true);
+        echo "\"></script>
 \t</body>
 
 </html>
@@ -266,7 +270,7 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 
     public function getDebugInfo()
     {
-        return array (  246 => 176,  222 => 159,  213 => 153,  192 => 135,  180 => 126,  166 => 117,  143 => 99,  114 => 73,  48 => 10,  37 => 1,);
+        return array (  253 => 180,  247 => 177,  222 => 159,  213 => 153,  192 => 135,  180 => 126,  166 => 117,  143 => 99,  114 => 73,  48 => 10,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -436,9 +440,10 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t\t<div class=\"row gutters-sm\">
+\t\t\t\t<div class=\"row gutters\">
 \t\t\t\t\t<h2>Lịch làm việc</h2>
 \t\t\t\t</div>
+                <div id=\"calendar\"></div>
 
 \t\t\t</div>
 \t\t</div>
@@ -449,7 +454,7 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t{{ include('user/components/footer.twig')}}
 
 \t\t<!-- footer part end-->
-
+        <script src=\"{{ createLink('js/dist/user/detail_doctor.js') }}\"></script>
 \t</body>
 
 </html>
