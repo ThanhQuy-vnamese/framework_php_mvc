@@ -11,6 +11,7 @@ use App\Controllers\admin\GetTotalMedicalFileController;
 use App\Controllers\admin\GetTotalMedicineController;
 use App\Controllers\admin\GetTotalMedicineTypeController;
 use App\Controllers\admin\GetTotalUserController;
+use App\Controllers\admin\HealthDeclarationAddController;
 use App\Controllers\admin\SearchMedicalFileController;
 use App\Controllers\admin\ViewBlogAddController;
 use App\Controllers\api\AddMedicalFileApiController;
@@ -280,6 +281,11 @@ class AdminRoute
         );
         $this->router->post('/admin/logout', [LogoutController::class, 'logout'], AdminAuthMiddleware::class);
         $this->router->post('/admin/re-generate-qr', [GenerateQrController::class, 'generate'], AdminAuthMiddleware::class);
+        $this->router->get(
+            '/admin/health-declaration-add',
+            [HealthDeclarationAddController::class, 'getView'],
+            AdminAuthMiddleware::class
+        );
 
 // Test
         $this->router->get('/admin/login', [LoginSampleController::class, 'getView']);

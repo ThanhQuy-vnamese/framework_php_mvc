@@ -1,0 +1,241 @@
+{% extends 'admin/components/base.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between g-3">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Users / <strong
+                                    class="text-primary small">Add</strong></h3>
+                        </div>
+                        {% include('admin/components/back_button.twig') %}
+                    </div>
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    {% if(Session.hasFlash('successAddMedicalFile')) %}
+                        <div class="alert alert-success">{{ session.getFlash('successAddMedicalFile') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorAddMedicalFile')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorAddMedicalFile') }}</div>
+                    {% endif %}
+                    <form action="{{ redirect('admin/post-medical-file-add') }}" method="post">
+                        <div class="card-inner">
+                            <div class="preview-block">
+                                <span class="preview-title-lg overline-title">Main Information</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="first-name">Full name</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="first-name"
+                                                       id="first-name" placeholder="Enter First Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">Declare to others</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">Gender</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="nam" name="gender" value="Male"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="nam">Male</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="nu" name="gender" value="Female"
+                                                           class="custom-control-input">
+                                                    <label class="custom-control-label" for="nu">Female</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="birthday">Birthday</label>
+                                            <div class="form-control-wrap">
+                                                <input type="date" class="form-control" name="birthday" id="birthday"
+                                                       placeholder="Enter Birthday">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="city">Province/City</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="province"
+                                                       id="city" placeholder="Enter Province/City">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="district">District</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="district"
+                                                       id="district" placeholder="Enter District">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="wards">Wards</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="wards"
+                                                       id="wards" placeholder="Enter Wards">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="house-number">House number - Way</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="way"
+                                                       id="house-number" placeholder="Enter House number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone">Phone</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="phone" id="phone"
+                                                       placeholder="Enter Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">Email</label>
+                                            <div class="form-control-wrap">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                       placeholder="Enter Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="identity-card">Identity card</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="identity-card"
+                                                       id="identity-card" placeholder="Enter Identity card">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">Declare information</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">Did you pass through any
+                                                country/territory within 14 days?</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-go" name="go" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-go">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-go" name="go" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-go">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">
+                                                Within 14 of you, do you have any signs of fever, cough, shortness of
+                                                breath, sore throat?</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-signal" name="signal" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-signal">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-signal" name="signal" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-signal">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">
+                                                In the past 14, have you been in contact with someone who is sick or
+                                                suspected of having covid?</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-contact" name="contact" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-contact">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-contact" name="contact" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-contact">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">
+                                                In the past 14 days, have you been in contact with someone from a
+                                                country with COVID-19?</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-country-covid" name="country-covid" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-country-covid">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-country-covid" name="country-covid" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-country-covid">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">
+                                                Within 14 days, have you been in contact with someone with symptoms (fever, cough, shortness of breath, sore throat)?</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-symptoms" name="symptoms" value="1"
+                                                           class="custom-control-input">
+                                                    <label class="custom-control-label" for="yes-symptoms">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-symptoms" name="symptoms" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-symptoms">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
