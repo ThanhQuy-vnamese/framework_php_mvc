@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\route;
 
+use App\Controllers\admin\AddHealthDeclarationController;
 use App\Controllers\admin\GenerateQrController;
 use App\Controllers\admin\GetTotalBlogListController;
 use App\Controllers\admin\GetTotalContactController;
@@ -284,6 +285,11 @@ class AdminRoute
         $this->router->get(
             '/admin/health-declaration-add',
             [HealthDeclarationAddController::class, 'getView'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->post(
+            '/admin/post-health-declaration-add',
+            [AddHealthDeclarationController::class, 'add'],
             AdminAuthMiddleware::class
         );
 
