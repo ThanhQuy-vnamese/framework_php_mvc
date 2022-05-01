@@ -60,4 +60,37 @@ class HealthDeclarationQueryService implements HealthDeclarationQueryServiceInte
             $row['created_at']
         );
     }
+
+    /**
+     * @return HealthDeclarationDto[]
+     */
+    public function getAllHealthDeclarationWithPagination(): array
+    {
+        $query = "SELECT * FROM `medical_health_declaration`";
+        $result = $this->db->query($query);
+        $data = [];
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[(int)$row['id']] = new HealthDeclarationDto(
+                (int)$row['id'],
+                $row['full_name'],
+                $row['gender'],
+                $row['birthday'],
+                $row['identity_card'],
+                $row['email'],
+                $row['phone'],
+                $row['way'],
+                $row['district'],
+                $row['wards'],
+                $row['province'],
+                $row['health_declaration'],
+                (int)$row['user_id'],
+                $row['created_at']
+            );
+        }
+        return $data;
+    }
 }

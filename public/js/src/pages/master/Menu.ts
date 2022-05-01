@@ -5,7 +5,8 @@ const PAGES = [
     '/medicine',
     '/blog',
     '/contact',
-    '/calendar'
+    '/calendar',
+    '/health'
 ];
 
 export default class Menu {
