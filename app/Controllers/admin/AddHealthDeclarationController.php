@@ -41,10 +41,19 @@ class AddHealthDeclarationController extends BaseController
             '',
             $this->createHealthDeclarationInput($go, $signal, $contact, $country_covid, $symptoms)
         );
+        if (!$id) {
+            $this->response->redirect('/admin/health-declaration-add');
+        }
+        $this->response->redirect('/admin/health-declaration-detail', ['id' => $id]);
     }
 
-    private function createHealthDeclarationInput(int $go, int $signal, int $contact, int $country_covid, int $symptoms): string
-    {
+    private function createHealthDeclarationInput(
+        int $go,
+        int $signal,
+        int $contact,
+        int $country_covid,
+        int $symptoms
+    ): string {
         return serialize([
             'go' => $go,
             'signal' => $signal,

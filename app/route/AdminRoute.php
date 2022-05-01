@@ -13,6 +13,7 @@ use App\Controllers\admin\GetTotalMedicineController;
 use App\Controllers\admin\GetTotalMedicineTypeController;
 use App\Controllers\admin\GetTotalUserController;
 use App\Controllers\admin\HealthDeclarationAddController;
+use App\Controllers\admin\HealthDeclarationDetailController;
 use App\Controllers\admin\SearchMedicalFileController;
 use App\Controllers\admin\ViewBlogAddController;
 use App\Controllers\api\AddMedicalFileApiController;
@@ -290,6 +291,11 @@ class AdminRoute
         $this->router->post(
             '/admin/post-health-declaration-add',
             [AddHealthDeclarationController::class, 'add'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->get(
+            '/admin/health-declaration-detail',
+            [HealthDeclarationDetailController::class, 'getView'],
             AdminAuthMiddleware::class
         );
 
