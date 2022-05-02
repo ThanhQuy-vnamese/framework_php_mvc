@@ -163,6 +163,7 @@ class UserController extends BaseController
         $wards = $this->request->input->get('wards');
         $province = $this->request->input->get('province');
         $identity_card = $this->request->input->get('identity-card');
+        $language = $this->request->input->get('language');
 
         $session = new Session();
         $userRepository = new UserRepository();
@@ -172,10 +173,15 @@ class UserController extends BaseController
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
         }
 
+        $settings = [
+            'language' => $language
+        ];
+
         $dataUser = [
             'status' => $status,
             'role' => $role,
-            'email' => $email
+            'email' => $email,
+            'setting' => serialize($settings)
         ];
 
         if (!empty($password) && !empty($confirmPassword)) {
