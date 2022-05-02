@@ -8,7 +8,7 @@ CREATE TABLE `medical_users`
     `status`     boolean,
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `token`      varchar(700),
-    `face_id`    varchar(500),
+    `setting`   text,
     `role`       int(2)
 );
 
