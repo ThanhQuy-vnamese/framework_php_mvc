@@ -14,15 +14,20 @@ CREATE TABLE `medical_users`
 
 CREATE TABLE `medical_user_profiles`
 (
-    `id`         int PRIMARY KEY AUTO_INCREMENT,
-    `first_name` varchar(255),
-    `last_name`  varchar(255),
-    `birthday`   date,
-    `gender`     char(7),
-    `avatar`     varchar(255),
-    `address`    varchar(100),
-    `phone`      varchar(12),
-    `user_id`    int
+    `id`            int PRIMARY KEY AUTO_INCREMENT,
+    `first_name`    varchar(50),
+    `last_name`     varchar(50),
+    `birthday`      date,
+    `gender`        char(7),
+    `avatar`        varchar(255),
+    `address`       varchar(100),
+    `identity_card` varchar(20),
+    `phone`         varchar(12),
+    `way`           varchar(255),
+    `district`      varchar(50),
+    `wards`         varchar(50),
+    `province`      varchar(50),
+    `user_id`       int
 );
 
 CREATE TABLE `medical_medical_records`
