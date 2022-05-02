@@ -133,7 +133,7 @@ class User extends DBModel
     public function getProfileByUserId($userID)
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name, mp.avatar, mu.qr_image FROM medical_user_profiles mp left join medical_users mu
+                mp.first_name, mp.last_name, mp.avatar FROM medical_user_profiles mp left join medical_users mu
         on mp.user_id = mu.id where user_id = ".$userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
@@ -228,8 +228,7 @@ class User extends DBModel
     public function getUser(string $id): array
     {
         $query = new Query();
-        $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
-                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
+        $sql = "SELECT * FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];
         if ($result->num_rows === 0) {

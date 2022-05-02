@@ -81,8 +81,32 @@
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Address</span>
-                                                    <span class="profile-ud-value">{{ user.address }}</span>
+                                                    <span class="profile-ud-label">Way</span>
+                                                    <span class="profile-ud-value">{{ user.way }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">District</span>
+                                                    <span class="profile-ud-value">{{ user.district }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">Wards</span>
+                                                    <span class="profile-ud-value">{{ user.wards }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">Province</span>
+                                                    <span class="profile-ud-value">{{ user.province }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">Identity card</span>
+                                                    <span class="profile-ud-value">{{ user.identity_card }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -214,10 +238,46 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="address">Address</label>
+                                                                            <label class="form-label" for="way">Way</label>
                                                                             <div class="form-control-wrap">
-                                                                                <input type="text" class="form-control" name="address" id="address"
-                                                                                       placeholder="Enter Address" value="{{ user.address }}">
+                                                                                <input type="text" class="form-control" name="way" id="way"
+                                                                                       placeholder="Enter way" value="{{ user.way }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="district">District</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="district" id="district"
+                                                                                       placeholder="Enter district" value="{{ user.district }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="wards">Wards</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="wards" id="wards"
+                                                                                       placeholder="Enter wards" value="{{ user.wards }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="province">Province</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="province" id="province"
+                                                                                       placeholder="Enter province" value="{{ user.province }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="identity-card">Identity card</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="identity-card" id="identity-card"
+                                                                                       placeholder="Enter identity card" value="{{ user.identity_card }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
