@@ -98,11 +98,16 @@ class UserController extends BaseController
             $this->response->redirect('/admin/user-add');
         }
 
+        $default_setting = [
+            'language' => 'eng'
+        ];
+
         $dataUser = [
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'status' => $status,
             'role' => $role,
+            'setting' => serialize($default_setting)
         ];
 
         $user = new User();
