@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\route;
 
+use App\Controllers\admin\AddHealthDeclarationController;
 use App\Controllers\admin\GenerateQrController;
 use App\Controllers\admin\GetTotalBlogListController;
 use App\Controllers\admin\GetTotalContactController;
+use App\Controllers\admin\GetTotalHealthDeclarationController;
 use App\Controllers\admin\GetTotalMedicalFileController;
 use App\Controllers\admin\GetTotalMedicineController;
 use App\Controllers\admin\GetTotalMedicineTypeController;
 use App\Controllers\admin\GetTotalUserController;
+use App\Controllers\admin\HealthDeclarationAddController;
+use App\Controllers\admin\HealthDeclarationDetailController;
+use App\Controllers\admin\HealthDeclarationListController;
 use App\Controllers\admin\SearchMedicalFileController;
 use App\Controllers\admin\ViewBlogAddController;
 use App\Controllers\api\AddMedicalFileApiController;
@@ -206,7 +211,11 @@ class AdminRoute
             [BlogListController::class, 'getViewBlogList'],
             AdminAuthMiddleware::class
         );
-        $this->router->get('/admin/blog-add', [ViewBlogAddController::class, 'getViewBlogAdd'], AdminAuthMiddleware::class);
+        $this->router->get(
+            '/admin/blog-add',
+            [ViewBlogAddController::class, 'getViewBlogAdd'],
+            AdminAuthMiddleware::class
+        );
         $this->router->post('/admin/post-blog-add', [BlogAddController::class, 'addBlog'], AdminAuthMiddleware::class);
         $this->router->get(
             '/admin/blog-detail',
@@ -279,7 +288,31 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post('/admin/logout', [LogoutController::class, 'logout'], AdminAuthMiddleware::class);
-        $this->router->post('/admin/re-generate-qr', [GenerateQrController::class, 'generate'], AdminAuthMiddleware::class);
+        $this->router->post(
+            '/admin/re-generate-qr',
+            [GenerateQrController::class, 'generate'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->get(
+            '/admin/health-declaration-list',
+            [HealthDeclarationListController::class, 'getView'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->get(
+            '/admin/health-declaration-add',
+            [HealthDeclarationAddController::class, 'getView'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->post(
+            '/admin/post-health-declaration-add',
+            [AddHealthDeclarationController::class, 'add'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->get(
+            '/admin/health-declaration-detail',
+            [HealthDeclarationDetailController::class, 'getView'],
+            AdminAuthMiddleware::class
+        );
 
 // Test
         $this->router->get('/admin/login', [LoginSampleController::class, 'getView']);
@@ -298,6 +331,7 @@ class AdminRoute
         $this->router->get('/admin/ajax/get-total-medicines-types', [GetTotalMedicineTypeController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-blog', [GetTotalBlogListController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-contact', [GetTotalContactController::class, 'get']);
+        $this->router->get('/admin/ajax/get-total-health-declaration', [GetTotalHealthDeclarationController::class, 'get']);
 
 // External Api
         $this->router->get(

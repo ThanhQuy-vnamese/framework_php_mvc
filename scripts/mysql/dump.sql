@@ -14,15 +14,20 @@ CREATE TABLE `medical_users`
 
 CREATE TABLE `medical_user_profiles`
 (
-    `id`         int PRIMARY KEY AUTO_INCREMENT,
-    `first_name` varchar(255),
-    `last_name`  varchar(255),
-    `birthday`   date,
-    `gender`     char(7),
-    `avatar`     varchar(255),
-    `address`    varchar(100),
-    `phone`      varchar(12),
-    `user_id`    int
+    `id`            int PRIMARY KEY AUTO_INCREMENT,
+    `first_name`    varchar(50),
+    `last_name`     varchar(50),
+    `birthday`      date,
+    `gender`        char(7),
+    `avatar`        varchar(255),
+    `address`       varchar(100),
+    `identity_card` varchar(20),
+    `phone`         varchar(12),
+    `way`           varchar(255),
+    `district`      varchar(50),
+    `wards`         varchar(50),
+    `province`      varchar(50),
+    `user_id`       int
 );
 
 CREATE TABLE `medical_medical_records`
@@ -41,6 +46,24 @@ CREATE TABLE `medical_medical_records`
     `province`          varchar(50),
     `qr_image`          varchar(50),
     `covid_vaccination` text,
+    `created_at`        timestamp,
+    `user_id`           int
+);
+
+CREATE TABLE `medical_health_declaration`
+(
+    `id`                int PRIMARY KEY AUTO_INCREMENT,
+    `full_name`        varchar(50),
+    `gender`            char(7),
+    `birthday`          date,
+    `identity_card`     varchar(20),
+    `email`             varchar(255),
+    `phone`             char(12),
+    `way`               varchar(255),
+    `district`          varchar(50),
+    `wards`             varchar(50),
+    `province`          varchar(50),
+    `health_declaration`text,
     `created_at`        timestamp,
     `user_id`           int
 );
@@ -195,6 +218,9 @@ ALTER TABLE `medical_prescriptions`
 
 ALTER TABLE `medical_prescriptions`
     ADD FOREIGN KEY (`healths_id`) REFERENCES `medical_healths` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `medical_health_declaration`
+    ADD FOREIGN KEY (`user_id`) REFERENCES `medical_users` (`id`) ON DELETE CASCADE;
 
 
 ALTER TABLE medical_medical_records ADD FULLTEXT(first_name, last_name, email, phone);

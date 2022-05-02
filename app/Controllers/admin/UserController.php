@@ -75,6 +75,11 @@ class UserController extends BaseController
         $address = $this->request->input->get('address');
         $phone = $this->request->input->get('phone');
         $gender = $this->request->input->get('gender');
+        $way = $this->request->input->get('way');
+        $district = $this->request->input->get('district');
+        $wards = $this->request->input->get('wards');
+        $province = $this->request->input->get('province');
+        $identity_card = $this->request->input->get('identity-card');
 
         $session = new Session();
 
@@ -115,7 +120,12 @@ class UserController extends BaseController
             'gender' => $gender,
             'address' => $address,
             'phone' => $phone,
-            'user_id' => $userId
+            'user_id' => $userId,
+            'way' => $way,
+            'district' => $district,
+            'wards' => $wards,
+            'province' => $province,
+            'identity_card' => $identity_card
         ];
 
         $idUserProfile = $user->addUserProfile($dataUserProfile);
@@ -148,6 +158,11 @@ class UserController extends BaseController
         $address = $this->request->input->get('address');
         $phone = $this->request->input->get('phone');
         $gender = $this->request->input->get('gender');
+        $way = $this->request->input->get('way');
+        $district = $this->request->input->get('district');
+        $wards = $this->request->input->get('wards');
+        $province = $this->request->input->get('province');
+        $identity_card = $this->request->input->get('identity-card');
 
         $session = new Session();
         $userRepository = new UserRepository();
@@ -186,9 +201,15 @@ class UserController extends BaseController
             'gender' => $gender,
             'address' => $address,
             'phone' => $phone,
+            'way' => $way,
+            'district' => $district,
+            'wards' => $wards,
+            'province' => $province,
+            'identity_card' => $identity_card
         ];
 
-        $isUpdateUserProfileSuccess = $user->updateUserProfile($idUser, $dataUserProfile);
+        $isUpdateUserProfileSuccess = $user->updateUserProfileForAdmin($idUser, $dataUserProfile);
+        $this->updateInfoUserLogin((int)$idUser);
         if (!$isUpdateUserProfileSuccess) {
             $session->setFlash('errorUpdateUser', 'Update user fail');
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
