@@ -86,22 +86,27 @@ class Helper
     public function getPage(): string
     {
         $path = $_SERVER['REQUEST_URI'];
-        if (strpos($path, '/user')) {
-            return 'user';
-        } elseif (strpos($path, '/medicine')) {
-            return 'medicine';
-        } elseif (strpos($path, '/medical-file')) {
-            return 'medical-file';
-        } elseif (strpos($path, '/blog')) {
-            return 'blog';
-        } elseif (strpos($path, '/contact')) {
-            return 'contact';
-        } elseif (strpos($path, '/health-declaration')) {
-            return 'health-declaration';
-        } elseif (strpos($path, '/calendar')) {
-            return 'calendar';
+        if ($path === '/public/' || $path === '/') {
+            return 'users/home';
         }
-        return 'user';
+        if (strpos($path, '/admin/user-')) {
+            return 'admin/user';
+        } elseif (strpos($path, '/admin/medicine')) {
+            return 'admin/medicine';
+        } elseif (strpos($path, '/admin/medical-file')) {
+            return 'admin/medical-file';
+        } elseif (strpos($path, '/admin/blog')) {
+            return 'admin/blog';
+        } elseif (strpos($path, '/admin/contact')) {
+            return 'admin/contact';
+        } elseif (strpos($path, '/admin/health-declaration')) {
+            return 'admin/health-declaration';
+        } elseif (strpos($path, '/admin/calendar')) {
+            return 'admin/calendar';
+        } elseif (strpos($path, '/user/')) {
+            return 'users/home';
+        }
+        return 'users/home';
     }
 
     public function getSettings(): Helper {
