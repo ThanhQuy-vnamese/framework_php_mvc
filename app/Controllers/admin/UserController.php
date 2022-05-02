@@ -188,7 +188,7 @@ class UserController extends BaseController
             'phone' => $phone,
         ];
 
-        $isUpdateUserProfileSuccess = $user->updateUserProfile($idUser, $dataUserProfile);
+        $isUpdateUserProfileSuccess = $user->updateUserProfileForAdmin($idUser, $dataUserProfile);
         if (!$isUpdateUserProfileSuccess) {
             $session->setFlash('errorUpdateUser', 'Update user fail');
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);

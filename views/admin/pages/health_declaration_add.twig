@@ -14,12 +14,6 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    {% if(Session.hasFlash('successAddMedicalFile')) %}
-                        <div class="alert alert-success">{{ session.getFlash('successAddMedicalFile') }}</div>
-                    {% endif %}
-                    {% if(Session.hasFlash('errorAddMedicalFile')) %}
-                        <div class="alert alert-danger">{{ session.getFlash('errorAddMedicalFile') }}</div>
-                    {% endif %}
                     <form action="{{ redirect('admin/post-health-declaration-add') }}" method="post">
                         <div class="card-inner">
                             <div class="preview-block">
@@ -30,7 +24,7 @@
                                             <label class="form-label" for="full-name">Full name</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="full-name"
-                                                       id="full-name" placeholder="Enter First Name" value="Nguyen Van A">
+                                                       id="full-name" placeholder="Enter First Name" value="{{ default_value.full_name }}">
                                             </div>
                                         </div>
                                     </div>
@@ -44,12 +38,12 @@
                                             <div class="form-control-wrap">
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="nam" name="gender" value="Male"
-                                                           class="custom-control-input" checked>
+                                                           class="custom-control-input" {{ default_value.gender == 'Male' ? 'checked' : '' }}>
                                                     <label class="custom-control-label" for="nam">Male</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="nu" name="gender" value="Female"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" {{ default_value.gender == 'Female' ? 'checked' : '' }}>
                                                     <label class="custom-control-label" for="nu">Female</label>
                                                 </div>
                                             </div>
@@ -60,7 +54,7 @@
                                             <label class="form-label" for="birthday">Birthday</label>
                                             <div class="form-control-wrap">
                                                 <input type="date" class="form-control" name="birthday" id="birthday"
-                                                       placeholder="Enter Birthday">
+                                                       placeholder="Enter Birthday" value="{{ default_value.birthday }}">
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +63,7 @@
                                             <label class="form-label" for="city">Province/City</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="province"
-                                                       id="city" placeholder="Enter Province/City" value="City">
+                                                       id="city" placeholder="Enter Province/City" value="{{ default_value.province }}">
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +72,7 @@
                                             <label class="form-label" for="district">District</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="district"
-                                                       id="district" placeholder="Enter District" value="District">
+                                                       id="district" placeholder="Enter District" value="{{ default_value.district }}">
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +81,7 @@
                                             <label class="form-label" for="wards">Wards</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="wards"
-                                                       id="wards" placeholder="Enter Wards" value="Wards">
+                                                       id="wards" placeholder="Enter Wards" value="{{ default_value.wards }}">
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +90,7 @@
                                             <label class="form-label" for="house-number">House number - Way</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="way"
-                                                       id="house-number" placeholder="Enter House number" value="Way">
+                                                       id="house-number" placeholder="Enter House number" value="{{ default_value.way }}">
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +99,7 @@
                                             <label class="form-label" for="phone">Phone</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="phone" id="phone"
-                                                       placeholder="Enter Phone" value="12345567">
+                                                       placeholder="Enter Phone" value="{{ default_value.phone }}">
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +108,7 @@
                                             <label class="form-label" for="email">Email</label>
                                             <div class="form-control-wrap">
                                                 <input type="email" class="form-control" name="email" id="email"
-                                                       placeholder="Enter Email" value="abc@mail.com">
+                                                       placeholder="Enter Email" value="{{ default_value.email }}">
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +117,7 @@
                                             <label class="form-label" for="identity-card">Identity card</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="identity-card"
-                                                       id="identity-card" placeholder="Enter Identity card" value="11111111">
+                                                       id="identity-card" placeholder="Enter Identity card" value="{{ default_value.identity_card }}">
                                             </div>
                                         </div>
                                     </div>
