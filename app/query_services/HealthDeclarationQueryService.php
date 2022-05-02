@@ -9,6 +9,8 @@ use App\dto\HealthDeclarationDto;
 
 class HealthDeclarationQueryService implements HealthDeclarationQueryServiceInterface
 {
+    public const LIMIT = 10;
+
     /**
      * @var false|\mysqli|null
      */
@@ -64,9 +66,10 @@ class HealthDeclarationQueryService implements HealthDeclarationQueryServiceInte
     /**
      * @return HealthDeclarationDto[]
      */
-    public function getAllHealthDeclarationWithPagination(): array
+    public function getAllHealthDeclarationWithPagination(int $offset): array
     {
-        $query = "SELECT * FROM `medical_health_declaration`";
+        $query = "SELECT * FROM `medical_health_declaration` LIMIT %s, %s";
+        $query = sprintf($query, $offset, self::LIMIT);
         $result = $this->db->query($query);
         $data = [];
         if ($result->num_rows === 0) {
@@ -92,5 +95,13 @@ class HealthDeclarationQueryService implements HealthDeclarationQueryServiceInte
             );
         }
         return $data;
+    }
+
+    public function getTotalHealthDeclaration(): int
+    {
+        $query = "SELECT count(*) AS total_health_declarations FROM medical_health_declaration;";
+        $result = $this->db->query($query);
+        $row = $result->fetch_assoc();
+        return (int)$row['total_health_declarations'];
     }
 }

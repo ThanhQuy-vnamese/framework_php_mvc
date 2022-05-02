@@ -20,8 +20,13 @@ class HealthDeclarationListController extends BaseController
      */
     public function getView(): string
     {
+        if ($this->request->input->has('offset')) {
+            $offset = $this->request->input->getInt('offset');
+        } else {
+            $offset = 0;
+        }
         $use_case = new HealthDeclarationListUseCase();
-        $health_declarations = $this->createResponse($use_case->execute());
+        $health_declarations = $this->createResponse($use_case->execute($offset));
         return $this->twig->render(
             '/admin/pages/health_declaration_list',
             ['health_declarations' => $health_declarations]

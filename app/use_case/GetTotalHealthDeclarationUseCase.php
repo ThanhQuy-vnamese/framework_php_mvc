@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\use_case;
 
-use App\dto\HealthDeclarationDto;
 use App\query_services\HealthDeclarationQueryService;
 use App\query_services\HealthDeclarationQueryServiceInterface;
 
-class HealthDeclarationListUseCase
+class GetTotalHealthDeclarationUseCase
 {
     private HealthDeclarationQueryServiceInterface $healthDeclarationQueryService;
 
@@ -17,11 +16,8 @@ class HealthDeclarationListUseCase
         $this->healthDeclarationQueryService = new HealthDeclarationQueryService();
     }
 
-    /**
-     * @return HealthDeclarationDto[]
-     */
-    public function execute(int $offset): array
+    public function execute(): int
     {
-        return $this->healthDeclarationQueryService->getAllHealthDeclarationWithPagination($offset);
+        return $this->healthDeclarationQueryService->getTotalHealthDeclaration();
     }
 }
