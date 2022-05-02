@@ -27,7 +27,7 @@ class BlogListController extends BaseController
         $viewBlogListUseCase = new ViewBlogListUseCase();
         $blogList = $viewBlogListUseCase->execute($offset);
         $blogs = $this->createResponseData($blogList);
-        return $this->twig->render('admin/pages/blog_list', ['blog' => $blogs, 'total' => count($blogs)]);
+        return $this->twig->render('admin/pages/blog_list', ['blogs' => $blogs, 'total' => count($blogs)]);
     }
 
     private function createResponseData(array $blogList): array
