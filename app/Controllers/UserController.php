@@ -147,16 +147,16 @@ class UserController extends BaseController
         echo("<pre>");
         // print_r($dataUserProfile);
         $updateUserProfile = $user->updateUserProfile($dataUserProfile, $user_id);
-        print_r($updateUserAccount);
-        // if ($updateUserAccount && $updateUserProfile) {
-        //     $this->uploadAvatar($avatarFile, $avatarFile_tmp, $user_id);
-        //     $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
+        // print_r($updateUserAccount);
+        if ($updateUserAccount && $updateUserProfile) {
+            $this->uploadAvatar($avatarFile, $avatarFile_tmp, $user_id);
+            $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
 
-        //     $this->response->redirect('/user/profile?user_id=' . $user_id);
-        // } else {
-        //     $session->setFlash('updateUserError', "Cập nhật thất bại! ");
-        //     $this->response->redirect('/user/profile?user_id=' . $user_id);
-        // }
+            $this->response->redirect('/user/profile?user_id=' . $user_id);
+        } else {
+            $session->setFlash('updateUserError', "Cập nhật thất bại! ");
+            $this->response->redirect('/user/profile?user_id=' . $user_id);
+        }
     }
     public function uploadAvatar($avatarFile, $avatarFile_tmp, $user_id)
     {

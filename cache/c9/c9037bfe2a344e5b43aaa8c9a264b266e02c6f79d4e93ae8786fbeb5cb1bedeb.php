@@ -97,48 +97,52 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/medican-record"]), "html", null, true);
         echo "?user_id=";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 35), "user_id", [], "any", false, false, false, 35), "html", null, true);
+        echo "\">Hồ sơ bệnh án</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+        // line 36
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/medical-healths"]), "html", null, true);
         echo "\">Khai báo y tế</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
-        // line 39
+        // line 40
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["contact"]), "html", null, true);
         echo "\">Contact</a>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t\t";
-        // line 42
-        if ((0 !== twig_compare(twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "get", [0 => "user"], "method", false, false, false, 42), ""))) {
-            // line 43
+        // line 43
+        if ((0 !== twig_compare(twig_get_attribute($this->env, $this->source, ($context["Session"] ?? null), "get", [0 => "user"], "method", false, false, false, 43), ""))) {
+            // line 44
             echo "\t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"blog.html\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fa-solid fa-user\"></i>
 \t\t\t\t\t\t\t\t\t\t";
-            // line 45
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 45), "first_name", [], "any", false, false, false, 45), "html", null, true);
+            // line 46
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 46), "first_name", [], "any", false, false, false, 46), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-            // line 48
+            // line 49
             echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/profile"]), "html", null, true);
             echo "?user_id=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 48), "user_id", [], "any", false, false, false, 48), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 49), "user_id", [], "any", false, false, false, 49), "html", null, true);
             echo "\">Profile</a>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-            // line 49
+            // line 50
             echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/logout"]), "html", null, true);
             echo "\">Logout</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t";
         } else {
-            // line 52
+            // line 53
             echo "\t\t\t\t\t\t\t\t\t<a class=\"btn_2 d-none d-lg-block\" href=\"";
             echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/login"]), "html", null, true);
             echo "\">Login</a>
 \t\t\t\t\t\t\t\t";
         }
-        // line 54
+        // line 55
         echo "\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\"></li>
 \t\t\t\t\t\t</ul>
@@ -149,7 +153,7 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t<div class=\"row align-items-center mb-5\">
 \t\t\t<div class=\"col-lg-12\">
 \t\t\t\t<form method=\"GET\" action=\"";
-        // line 63
+        // line 64
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["user/search-doctor"]), "html", null, true);
         echo "\">
 \t\t\t\t\t<div class=\"input-group rounded\">
@@ -179,7 +183,7 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 
     public function getDebugInfo()
     {
-        return array (  153 => 63,  142 => 54,  136 => 52,  130 => 49,  124 => 48,  118 => 45,  114 => 43,  112 => 42,  106 => 39,  97 => 35,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
+        return array (  157 => 64,  146 => 55,  140 => 53,  134 => 50,  128 => 49,  122 => 46,  118 => 44,  116 => 43,  110 => 40,  103 => 36,  97 => 35,  93 => 34,  89 => 33,  79 => 26,  73 => 23,  67 => 20,  61 => 17,  49 => 8,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -218,7 +222,8 @@ class __TwigTemplate_bb5751dd610a2263fe5d44706f18bb17ec52f32a1135c77e3c2dd1faa81
 \t\t\t\t\t\t\t\t<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ redirect('statistic-covid') }}\">Thống kê covid</a>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ redirect('book-clinic') }}\">Xem lịch khám</a>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ redirect('user/medican-record') }}?user_id={{ session.get('user').user_id}}\">Khai báo y tế</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ redirect('user/medican-record') }}?user_id={{ session.get('user').user_id}}\">Hồ sơ bệnh án</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ redirect('user/medical-healths') }}\">Khai báo y tế</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t<li class=\"nav-item\">

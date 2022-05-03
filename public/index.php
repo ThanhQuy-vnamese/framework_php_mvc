@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\BlogController;
 use App\Controllers\SearchController;
+use App\Controllers\MedicalHealthsController;
 use App\Controllers\MedicineController;
 use App\Controllers\user\GetDoctorCalendarController;
 use App\Controllers\UserController;
@@ -90,7 +91,9 @@ $app->router->get('/user/medican-record', [MedicineController::class, 'getViewMe
 $app->router->post('/user/post-medican-record', [MedicineController::class, 'postMedicanRecord'], UserAuthMiddleware::class);
 $app->router->post('/user/update-medican-record', [MedicineController::class, 'updateMedicanRecord'], UserAuthMiddleware::class);
 
-
+// Khai báo y te
+$app->router->get('/user/medical-healths', [MedicalHealthsController::class, 'index'], UserAuthMiddleware::class);
+$app->router->post('/user/post-medical-healths',  [MedicalHealthsController::class, 'store'], UserAuthMiddleware::class);
 $app->router->get('/user/search-doctor', [SearchController::class, 'SearchDoctor'], UserAuthMiddleware::class);
 // Calendar user
 $app->router->get('/user/ajax/get-doctor-calendar', [GetDoctorCalendarController::class, 'get'], UserAuthMiddleware::class);

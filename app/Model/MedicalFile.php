@@ -128,4 +128,9 @@ class MedicalFile extends DBModel
 
         return $data;
     }
+    public function addMedicalHealths(array $information)
+    {
+        $query = new Query();
+        return $query->table('medical_health_declaration')->insert($information);
+    }
 }
