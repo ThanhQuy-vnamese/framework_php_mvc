@@ -4,9 +4,17 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Model\User;
+use App\translates\Translate;
 
 class UserRepository
 {
+    private Translate $translate;
+
+    public function __construct()
+    {
+        $this->translate = new Translate();
+    }
+
     public function getAllUsers($offset): array
     {
         $user = new User();
@@ -72,8 +80,8 @@ class UserRepository
     private function getStatus($status): array
     {
         if ($status == '1') {
-            return ['code' => '1', 'name' => 'Active'];
+            return ['code' => '1', 'name' => $this->translate->getLanguage('active')];
         }
-        return ['code' => '0', 'name' => 'Inactive'];
+        return ['code' => '0', 'name' => $this->translate->getLanguage('inactive')];
     }
 }
