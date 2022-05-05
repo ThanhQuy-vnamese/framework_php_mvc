@@ -16,7 +16,7 @@ class AdminAuthMiddleware extends BaseMiddleware
         if (!$auth->getAuthentication()->isLogin() && ($auth->getUser()->getRole() !== 1 || $auth->getUser()->getRole(
                 ) !== 2)) {
             $response = new Response();
-            $response->redirect('/admin/login');
+            $response->redirect('/user/login');
         }
     }
 }
