@@ -13,6 +13,7 @@ use App\Controllers\admin\GetTotalMedicalFileController;
 use App\Controllers\admin\GetTotalMedicineController;
 use App\Controllers\admin\GetTotalMedicineTypeController;
 use App\Controllers\admin\GetTotalUserController;
+use App\Controllers\admin\GetUserSettingController;
 use App\Controllers\admin\HealthDeclarationAddController;
 use App\Controllers\admin\HealthDeclarationDetailController;
 use App\Controllers\admin\HealthDeclarationListController;
@@ -332,6 +333,7 @@ class AdminRoute
         $this->router->get('/admin/ajax/get-total-blog', [GetTotalBlogListController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-contact', [GetTotalContactController::class, 'get']);
         $this->router->get('/admin/ajax/get-total-health-declaration', [GetTotalHealthDeclarationController::class, 'get']);
+        $this->router->get('/ajax/get-user-setting', [GetUserSettingController::class, 'get']);
 
 // External Api
         $this->router->get(
