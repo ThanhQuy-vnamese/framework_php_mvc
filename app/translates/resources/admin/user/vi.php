@@ -16,5 +16,8 @@ const LANGUAGES = [
     'last_name' => 'Tên',
     'email_address' => 'Địa chỉ email',
     'active' => 'Đã kích hoạt',
-    'inactive' => 'Chưa kích hoạt'
+    'inactive' => 'Chưa kích hoạt',
+    'administrator_permission' => 'Quản trị',
+    'doctor_permission' => 'Bác sĩ',
+    'user_permission' => 'Người dùng'
 ];
