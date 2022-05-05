@@ -33,5 +33,11 @@ const LANGUAGES = [
     'choose_file' => 'Chọn file',
     'users' => 'Người dùng',
     'user_id' => 'Mã người dùng',
-    'password' => 'Mật khẩu'
+    'password' => 'Mật khẩu',
+    'confirm_password' => 'Xác nhận mật khẩu',
+    'language' => 'Ngôn ngữ',
+    'english' => 'Tiếng Anh',
+    'vietnamese' => 'Tiếng Việt',
+    'male' => 'Nam',
+    'female' => 'Nữ'
 ];
