@@ -68,12 +68,12 @@ class UserRepository
     private function getRole(string $role): array
     {
         if ($role === '1') {
-            return ['code' => $role, 'name' => 'Administrator'];
+            return ['code' => $role, 'name' => $this->translate->getLanguage('administrator_permission')];
         }
         if ($role === '2') {
-            return ['code' => $role, 'name' => 'Doctor'];
+            return ['code' => $role, 'name' => $this->translate->getLanguage('user_permission')];
         } else {
-            return ['code' => '3', 'name' => 'User'];
+            return ['code' => '3', 'name' => $this->translate->getLanguage('user_permission')];
         }
     }
 

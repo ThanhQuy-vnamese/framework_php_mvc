@@ -16,5 +16,8 @@ const LANGUAGES = [
     'last_name' => 'Last name',
     'email_address' => 'Email address',
     'active' => 'Active',
-    'inactive' => 'Inactive'
+    'inactive' => 'Inactive',
+    'administrator_permission' => 'Administrator',
+    'doctor_permission' => 'Doctor',
+    'user_permission' => 'User'
 ];
