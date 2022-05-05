@@ -7,9 +7,9 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Users Lists</h3>
+                            <h3 class="nk-block-title page-title">{{ translate('user_list') }}</h3>
                             <div class="nk-block-des text-soft">
-                                <p>You have total {{ total }} users.</p>
+                                <p>{{ translate('total_mess') }} {{ total }} {{ translate('user') }}.</p>
                             </div>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
@@ -17,13 +17,12 @@
                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
-                                        <li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
                                                 <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="{{ redirect('admin/user-add') }}"><span>Add User</span></a></li>
+                                                        <li><a href="{{ redirect('admin/user-add') }}"><span>{{ translate('add_user') }}</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -134,11 +133,11 @@
                                                         <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/user-detail', {'id': user.id}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li><a href="{{ redirect('admin/user-detail', {'id': user.id}) }}"><em class="icon ni ni-eye"></em><span>{{ translate('view_detail') }}</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="javascript:void(0)" class="js-reset-password" data-id-user="{{ user.id }}"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
+                                                                <li><a href="javascript:void(0)" class="js-reset-password" data-id-user="{{ user.id }}"><em class="icon ni ni-shield-star"></em><span>{{ translate('reset_pass') }}</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="javascript:void(0)" class="js-delete-user" data-id-user="{{ user.id }}" data-user-full-name="{{ user.full_name }}"><em class="icon ni ni-user-cross-fill"></em><span>Delete user</span></a></li>
+                                                                <li><a href="javascript:void(0)" class="js-delete-user" data-id-user="{{ user.id }}" data-user-full-name="{{ user.full_name }}"><em class="icon ni ni-user-cross-fill"></em><span>{{ translate('delete_user') }}</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -204,7 +203,7 @@
                                                     <em class="icon ni ni-cross"></em>
                                                 </a>
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Reset Password</h5>
+                                                    <h5 class="modal-title">{{ translate('delete_user') }}</h5>
                                                 </div>
                                                 <div class="modal-body">
                                                     <h4>Are you sure delete user?</h4>

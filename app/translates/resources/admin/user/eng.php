@@ -9,6 +9,13 @@ const LANGUAGES = [
     'birthday' => 'Birthday',
     'status' => 'Status',
     'action' => 'Action',
+    'user_list' => 'User list',
+    'total_mess' => 'You have total',
+    'user' => 'user(s)',
+    'add_user' => 'Add user',
+    'view_detail' => 'View detail',
+    'reset_pass' => 'Reset pass',
+    'delete_user' => 'Delete user',
         // User detail
     'login_information' => 'Login Information',
     'personal' => 'Personal',

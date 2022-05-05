@@ -9,6 +9,13 @@ const LANGUAGES = [
     'birthday' => 'Ngày sinh',
     'status' => 'Trạng thái',
     'action' => 'Hành động',
+    'user_list' => 'Danh sách user',
+    'total_mess' => 'Bạn có tổng cộng',
+    'user' => 'người dùng',
+    'add_user' => 'Thêm người dùng',
+    'view_detail' => 'Xem chi tiết',
+    'reset_pass' => 'Reset mật khẩu',
+    'delete_user' => 'Xóa người dùng',
     // User detail
     'login_information' => 'Thông tin đăng nhập',
     'personal' => 'Cá nhân',
