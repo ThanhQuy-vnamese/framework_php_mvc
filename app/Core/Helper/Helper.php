@@ -89,21 +89,21 @@ class Helper
         if ($path === '/public/' || $path === '/') {
             return 'users/home';
         }
-        if (strpos($path, '/admin/user-')) {
+        if (strpos($path, 'admin/user-')) {
             return 'admin/user';
-        } elseif (strpos($path, '/admin/medicine')) {
+        } elseif (strpos($path, 'admin/medicine')) {
             return 'admin/medicine';
-        } elseif (strpos($path, '/admin/medical-file')) {
+        } elseif (strpos($path, 'admin/medical-file')) {
             return 'admin/medical-file';
-        } elseif (strpos($path, '/admin/blog')) {
+        } elseif (strpos($path, 'admin/blog')) {
             return 'admin/blog';
-        } elseif (strpos($path, '/admin/contact')) {
+        } elseif (strpos($path, 'admin/contact')) {
             return 'admin/contact';
-        } elseif (strpos($path, '/admin/health-declaration')) {
+        } elseif (strpos($path, 'admin/health-declaration')) {
             return 'admin/health-declaration';
-        } elseif (strpos($path, '/admin/calendar')) {
+        } elseif (strpos($path, 'admin/calendar')) {
             return 'admin/calendar';
-        } elseif (strpos($path, '/user/')) {
+        } elseif (strpos($path, 'user/')) {
             return 'users/home';
         }
         return 'users/home';

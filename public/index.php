@@ -50,7 +50,7 @@ if (!empty($_SESSION['user'])) {
     $page = $helper->getPage();
     $lang = $helper->getSettings()->getLanguage();
     $language = $page . '/' . $lang . '.php';
-    require_once __DIR__ . '/../app/translates/' . $language;
+    require_once __DIR__ . '/../app/translates/resources/' . $language;
 }
 
 //$app->on(Application::EVENT_BEFORE_REQUEST, function() {
