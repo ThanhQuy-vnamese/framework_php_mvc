@@ -36,7 +36,6 @@ use App\Controllers\admin\DeleteBlogController;
 use App\Controllers\admin\DeleteMedicalFileController;
 use App\Controllers\admin\EditPrescriptionController;
 use App\Controllers\admin\GetPrescriptionEditView;
-use App\Controllers\admin\LoginSampleController;
 use App\Controllers\admin\LogoutController;
 use App\Controllers\admin\MedicineTypeListController;
 use App\Controllers\admin\QuickAddCalendarController;
@@ -314,10 +313,6 @@ class AdminRoute
             [HealthDeclarationDetailController::class, 'getView'],
             AdminAuthMiddleware::class
         );
-
-// Test
-        $this->router->get('/admin/login', [LoginSampleController::class, 'getView']);
-        $this->router->post('/admin/post-login', [LoginSampleController::class, 'login']);
 
 
 // Internal API
