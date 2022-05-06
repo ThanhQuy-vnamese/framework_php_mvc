@@ -2,5 +2,8 @@
 
 const COMMON_LANGUAGES = [
     // Menu
-    'manage_user' => 'Manage users'
+    'manage_user' => 'Manage users',
+    // Button
+    'delete' => 'Delete',
+    'cancel' => 'Cancel',
 ];

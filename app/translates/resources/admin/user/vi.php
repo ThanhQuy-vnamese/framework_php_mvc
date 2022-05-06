@@ -14,8 +14,10 @@ const LANGUAGES = [
     'user' => 'người dùng',
     'add_user' => 'Thêm người dùng',
     'view_detail' => 'Xem chi tiết',
-    'reset_pass' => 'Reset mật khẩu',
+    'reset_password' => 'Reset mật khẩu',
     'delete_user' => 'Xóa người dùng',
+    'title_delete' => 'Bạn có chắc chắn là xóa user?',
+    'title_delete_after' => 'sau khi bị delete là user không thể phục hồi',
     // User detail
     'login_information' => 'Thông tin đăng nhập',
     'personal' => 'Cá nhân',
