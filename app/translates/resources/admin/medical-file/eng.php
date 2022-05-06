@@ -33,5 +33,14 @@ const LANGUAGES = [
     'expiration_date' => 'Expiration date',
     'qr_code' => 'Qr code',
     'not_health_insurance' => 'Not Health Insurance',
-    'health_insurance' => 'Health Insurance'
+    'health_insurance' => 'Health Insurance',
+    'edit_information' => 'Edit information',
+    're_generate_qr_image' => 'Re-generate QR image',
+    'covid_vaccination' => 'Covid vaccine information',
+    'injection' => 'Injection',
+    'name_vaccine' => 'Name vaccine',
+    'vaccination_date' => 'Date',
+    'edit' => 'Edit',
+    'title_generate_qr' => 'Are you sure re-generate QR image?',
+    'generate' => 'Generate'
 ];

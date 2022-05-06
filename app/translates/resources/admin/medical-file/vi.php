@@ -32,5 +32,14 @@ const LANGUAGES = [
     'expiration_date' => 'Ngày hết hạn',
     'qr_code' => 'Mã Qr',
     'not_health_insurance' => 'Không có bảo hiểm',
-    'health_insurance' => 'Có bảo hiểm'
+    'health_insurance' => 'Có bảo hiểm',
+    'edit_information' => 'Chỉnh sửa thông tin',
+    're_generate_qr_image' => 'Tạo lại Qr',
+    'covid_vaccination' => 'Thông tin tiêm chủng',
+    'injection' => 'Mũi',
+    'name_vaccine' => 'Tên vaccine',
+    'vaccination_date' => 'Ngày tiêm',
+    'edit' => 'Sửa',
+    'title_generate_qr' => 'Bạn có chắc muốn tạo lại QR',
+    'generate' => 'Tạo'
 ];
