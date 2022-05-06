@@ -89,7 +89,8 @@ class Twig
 
     public function addTranslateFunction() {
         $function = new TwigFunction('translate', function ($key = '') {
-            return LANGUAGES[$key] ?? '';
+            $languages = array_merge(LANGUAGES, COMMON_LANGUAGES);
+            return $languages[$key] ?? '';
         });
         return $function;
     }

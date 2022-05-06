@@ -8,6 +8,7 @@ class Translate
 {
     public function getLanguage(string $key = ''): string
     {
-        return LANGUAGES[$key] ?? '';
+        $languages = array_merge(LANGUAGES, COMMON_LANGUAGES);
+        return $languages[$key] ?? '';
     }
 }

@@ -7,7 +7,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Medical Files / <strong
+                            <h3 class="nk-block-title page-title">{{ translate('medical_file') }} / <strong
                                     class="text-primary small">{{ medicalFile.first_name }} {{ medicalFile.last_name }}</strong>
                             </h3>
                             <div class="nk-block-des text-soft">
@@ -62,18 +62,18 @@
                                 <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card" id="nav-tab">
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab" href="#nav-personal">
-                                            <em class="icon ni ni-user-circle"></em><span>Personal</span></a>
+                                            <em class="icon ni ni-user-circle"></em><span>{{ translate('personal') }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#nav-health">
-                                            <em class="icon fas fa-hand-holding-medical"></em><span>Health</span></a>
+                                            <em class="icon fas fa-hand-holding-medical"></em><span>{{ translate('health') }}</span></a>
                                     </li>
                                 </ul><!-- .nav-tabs -->
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="card-inner tab-pane fade show active" id="nav-personal">
                                         <div class="nk-block">
                                             <div class="nk-block-head nk-block-head-sm nk-block-between">
-                                                <h5 class="title">Main Information</h5>
+                                                <h5 class="title">{{ translate('main_information') }}</h5>
                                                 <div>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                                             data-target="#modalDefault">Edit Information
@@ -88,70 +88,70 @@
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">First Name</span>
+                                                        <span class="profile-ud-label">{{ translate('first_name') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.first_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Last Name</span>
+                                                        <span class="profile-ud-label">{{ translate('last_name') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.last_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Birthday</span>
+                                                        <span class="profile-ud-label">{{ translate('birthday') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.birthday }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Gender</span>
+                                                        <span class="profile-ud-label">{{ translate('gender') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.gender }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Phone</span>
+                                                        <span class="profile-ud-label">{{ translate('phone') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.phone }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Email</span>
+                                                        <span class="profile-ud-label">{{ translate('email_address') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.email }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Identity card</span>
+                                                        <span class="profile-ud-label">{{ translate('identity_card') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.identity_card }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Province/City</span>
+                                                        <span class="profile-ud-label">{{ translate('province') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.province }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">District</span>
+                                                        <span class="profile-ud-label">{{ translate('district') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.district }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Wards</span>
+                                                        <span class="profile-ud-label">{{ translate('wards') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.wards }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">House number/Way</span>
+                                                        <span class="profile-ud-label">{{ translate('way') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.way }}</span>
                                                     </div>
                                                 </div>
@@ -159,36 +159,36 @@
                                         </div><!-- .nk-block -->
                                         <div class="nk-block">
                                             <div class="nk-block-head nk-block-head-line">
-                                                <h6 class="title overline-title text-base">Other Information</h6>
+                                                <h6 class="title overline-title text-base">{{ translate('other_information') }}</h6>
                                             </div><!-- .nk-block-head -->
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Have Health Insurance</span>
+                                                        <span class="profile-ud-label">{{ translate('have_health_insurance') }}</span>
                                                         <span class="profile-ud-value">
                                                         <span
-                                                            class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? 'Not Health Insurance' : 'Health Insurance' }}</span>
+                                                            class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? translate('not_health_insurance') : translate('health_insurance') }}</span>
                                                     </span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item"></div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Health Insurance number</span>
+                                                        <span class="profile-ud-label">{{ translate('health_insurance_number') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.health_insurance_number }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Expiration date</span>
+                                                        <span class="profile-ud-label">{{ translate('expiration_date') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.expiration_date }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">QR</span>
+                                                        <span class="profile-ud-label">{{ translate('qr_code') }}</span>
                                                         <span class="profile-ud-value"><img
                                                                 src="{{ createLink('upload/qr_images/') }}{{ medicalFile.qr_image }}"
                                                                 alt="Qr image"/></span>
