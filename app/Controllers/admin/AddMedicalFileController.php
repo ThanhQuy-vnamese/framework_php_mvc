@@ -60,10 +60,12 @@ class AddMedicalFileController extends BaseController
         for ($i = 1; $i <= 3; $i++) {
             $temp = [];
             $vaccineName = $this->request->input->get("name-${i}");
-            $date = $this->convertDate($this->request->input->get("date-${i}"));
+            $date = $this->request->input->get("date-${i}");
             if (empty($vaccineName) && empty($date)) {
                 continue;
             }
+            $date = $this->convertDate($date);
+
             $temp['type_vaccine'] = $vaccineName;
             $temp['date'] = $date;
             $covidVaccination[] = $temp;
