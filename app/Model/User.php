@@ -244,8 +244,7 @@ class User extends DBModel
     public function getUser(string $id): array
     {
         $query = new Query();
-        $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
-                FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
+        $sql = "SELECT * FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id WHERE U.id='$id'";
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];
         if ($result->num_rows === 0) {

@@ -10,6 +10,7 @@ import {
 } from '../../pages/appointment/services/services';
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { ToastContainer } from 'react-toastify';
+import i18n from '../../common/translate/i18n';
 
 export const Calendar = () => {
     const [isShow, setIsShow] = useState(false);
@@ -92,7 +93,7 @@ export const Calendar = () => {
                         }
                     },
                     handleAddCalendar: {
-                        text: 'Add calendar',
+                        text: i18n.t('admin.calendar.button.add'),
                         click: () => {
                             handleAddCalendar();
                         }

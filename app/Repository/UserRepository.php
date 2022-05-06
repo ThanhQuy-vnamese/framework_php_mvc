@@ -4,9 +4,17 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Model\User;
+use App\translates\Translate;
 
 class UserRepository
 {
+    private Translate $translate;
+
+    public function __construct()
+    {
+        $this->translate = new Translate();
+    }
+
     public function getAllUsers($offset): array
     {
         $user = new User();
@@ -46,6 +54,11 @@ class UserRepository
             $temp['qr_image'] = $user['qr_image'] ?? '';
             $temp['status'] = $this->getStatus($user['status']) ?? '';
             $temp['avatar'] = $user['avatar'] ?? '';
+            $temp['way'] = $user['way'] ?? '';
+            $temp['district'] = $user['district'] ?? '';
+            $temp['wards'] = $user['wards'] ?? '';
+            $temp['province'] = $user['province'] ?? '';
+            $temp['identity_card'] = $user['identity_card'] ?? '';
             $data[] = $temp;
         }
 
@@ -55,20 +68,20 @@ class UserRepository
     private function getRole(string $role): array
     {
         if ($role === '1') {
-            return ['code' => $role, 'name' => 'Administrator'];
+            return ['code' => $role, 'name' => $this->translate->getLanguage('administrator_permission')];
         }
         if ($role === '2') {
-            return ['code' => $role, 'name' => 'Doctor'];
+            return ['code' => $role, 'name' => $this->translate->getLanguage('user_permission')];
         } else {
-            return ['code' => '3', 'name' => 'User'];
+            return ['code' => '3', 'name' => $this->translate->getLanguage('user_permission')];
         }
     }
 
     private function getStatus($status): array
     {
         if ($status == '1') {
-            return ['code' => '1', 'name' => 'Active'];
+            return ['code' => '1', 'name' => $this->translate->getLanguage('active')];
         }
-        return ['code' => '0', 'name' => 'Inactive'];
+        return ['code' => '0', 'name' => $this->translate->getLanguage('inactive')];
     }
 }
