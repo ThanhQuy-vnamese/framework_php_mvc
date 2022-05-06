@@ -7,7 +7,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Medicine List</h3>
+                            <h3 class="nk-block-title page-title">{{ translate('medicine_list') }}</h3>
                             <div class="nk-block-des text-soft">
                                 <p>You have total {{ total }} medicine.</p>
                             </div>
@@ -18,16 +18,13 @@
                                             class="icon ni ni-menu-alt-r"></em></a>
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
-                                        <li><a href="#" class="btn btn-white btn-outline-light"><em
-                                                        class="icon ni ni-download-cloud"></em><span>Export</span></a>
-                                        </li>
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
                                                 <a href="#" class="dropdown-toggle btn btn-icon btn-primary"
                                                    data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#" data-toggle="modal" data-target="#modalDefault"><span>Add Medicine</span></a>
+                                                        <li><a href="#" data-toggle="modal" data-target="#modalDefault"><span>{{ translate('add_medicine') }}</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -39,19 +36,19 @@
                                                                 <em class="icon ni ni-cross"></em>
                                                             </a>
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Add Medicine</h5>
+                                                                <h5 class="modal-title">{{ translate('add_medicine') }}</h5>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form action="{{ redirect('admin/post-add-medicine') }}"
                                                                       method="post">
                                                                     <div class="card-inner">
                                                                         <div class="preview-block">
-                                                                            <span class="preview-title-lg overline-title">Medicine Information</span>
+                                                                            <span class="preview-title-lg overline-title">{{ translate('medicine_information') }}</span>
                                                                             <div class="row gy-4">
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
                                                                                         <label class="form-label"
-                                                                                               for="name">Name</label>
+                                                                                               for="name">{{ translate('name') }}</label>
                                                                                         <div class="form-control-wrap">
                                                                                             <input type="text"
                                                                                                    class="form-control"
@@ -64,7 +61,7 @@
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
                                                                                         <label class="form-label"
-                                                                                               for="type">Type</label>
+                                                                                               for="type">{{ translate('type') }}</label>
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
                                                                                                 <select class="form-control"
@@ -81,7 +78,7 @@
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
                                                                                         <label class="form-label"
-                                                                                               for="quantity">Quantity</label>
+                                                                                               for="quantity">{{ translate('quantity') }}</label>
                                                                                         <div class="form-control-wrap">
                                                                                             <input type="text"
                                                                                                    class="form-control"
@@ -94,7 +91,7 @@
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
                                                                                         <label class="form-label"
-                                                                                               for="unit">Unit</label>
+                                                                                               for="unit">{{ translate('unit') }}</label>
                                                                                         <div class="form-control-wrap ">
                                                                                             <div class="form-control-select">
                                                                                                 <select class="form-control"
@@ -114,13 +111,13 @@
                                                                                 <div class="col-sm-12">
                                                                                     <div class="form-group">
                                                                                         <label class="form-label"
-                                                                                               for="description">Description</label>
+                                                                                               for="description">{{ translate('description') }}</label>
                                                                                         <div class="form-control-wrap">
                                                                                 <textarea type="text"
                                                                                           class="form-control"
                                                                                           name="description"
                                                                                           id="description"
-                                                                                          placeholder="Enter Last Name">11111111</textarea>
+                                                                                          placeholder="Enter Last Name"></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -129,8 +126,7 @@
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
                                                                                     <button type="submit"
-                                                                                            class="btn btn-success">Add
-                                                                                        medicine
+                                                                                            class="btn btn-success">{{ translate('add_medicine') }}
                                                                                     </button>
                                                                                 </div>
                                                                             </div>
@@ -139,7 +135,6 @@
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer bg-light">
-                                                                <span class="sub-text">Modal Footer Text</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -193,9 +188,9 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col"><span class="sub-text">Id</span></div>
-                                        <div class="nk-tb-col"><span class="sub-text">Name</span></div>
-                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Type</span></div>
-                                        <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
+                                        <div class="nk-tb-col"><span class="sub-text">{{ translate('name') }}</span></div>
+                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">{{ translate('type') }}</span></div>
+                                        <div class="nk-tb-col nk-tb-col-tools text-right">{{ translate('action') }}</div>
                                     </div><!-- .nk-tb-item -->
                                     {% for medicine in medicine_for_view.medicines %}
                                         <div class="nk-tb-item">
@@ -226,11 +221,11 @@
                                                                 <ul class="link-list-opt no-bdr">
                                                                     <li>
                                                                         <a href="{{ redirect('admin/medicine-detail', {'id': medicine.id}) }}"><em
-                                                                                    class="icon ni ni-eye"></em><span>View Details</span></a>
+                                                                                    class="icon ni ni-eye"></em><span>{{ translate('view_detail') }}</span></a>
                                                                     </li>
                                                                     <li class="divider"></li>
                                                                     <li><a href="#"><em
-                                                                                    class="icon fas fa-trash-alt"></em><span>Delete Medicine</span></a>
+                                                                                    class="icon fas fa-trash-alt"></em><span>{{ translate('delete_medicine') }}</span></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
