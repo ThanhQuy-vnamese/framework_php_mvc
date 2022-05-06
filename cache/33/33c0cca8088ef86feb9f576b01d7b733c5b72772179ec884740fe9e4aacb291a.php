@@ -110,7 +110,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center p-3 py-5\">
 \t\t\t\t\t\t\t<a href=\"";
         // line 72
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "custom_link", [0 => ""], "method", false, false, false, 72), "html", null, true);
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), [""]), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 576 512\"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d=\"M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.6 483.2 483.9 512 448.5 512H128.1C92.75 512 64.09 483.3 64.09 448V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5H575.8zM288 160C252.7 160 224 188.7 224 224C224 259.3 252.7 288 288 288C323.3 288 352 259.3 352 224C352 188.7 323.3 160 288 160zM256 320C211.8 320 176 355.8 176 400C176 408.8 183.2 416 192 416H384C392.8 416 400 408.8 400 400C400 355.8 364.2 320 320 320H256z\"/></svg>
 \t\t\t\t\t\t\t\t<span>Home</span>
@@ -132,23 +132,8 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
             echo "avatars/donaltrump.jpg\" width=\"90\">
 \t\t\t\t\t\t\t";
         }
-        // line 81
-        echo "
-\t\t\t\t\t\t\t<a href=\"/";
-        // line 82
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "getDirectoryUpload", [], "method", false, false, false, 82), "html", null, true);
-        echo "qr_images/";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 82), "qr_image", [], "any", false, false, false, 82), "html", null, true);
-        echo "\" download>
-\t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/";
-        // line 83
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["helper"] ?? null), "getDirectoryUpload", [], "method", false, false, false, 83), "html", null, true);
-        echo "qr_images/";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "userProfile"], "method", false, false, false, 83), "qr_image", [], "any", false, false, false, 83), "html", null, true);
-        echo "\" width=\"90\">
-\t\t\t\t\t\t\t\tDownload Qr Code
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t</div>
+        // line 86
+        echo "\t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-md-9\">
 \t\t\t\t\t\t<div class=\"p-3 py-5\">
@@ -291,17 +276,9 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
 
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"row mt-3 \">
-\t\t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t\t\t<label class=\"labels\">Country</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"country\" value=\"Country\">
-
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"row mt-3 \">
-\t\t\t\t\t\t\t\t<div class=\"col-md-12\">
-\t\t\t\t\t\t\t\t\t<label class=\"labels\">State/Region</label><input type=\"text\" class=\"form-control\" value=\"Boston\" name=\"state\" placeholder=\"state\"></div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"row mt-3\">
+\t\t\t\t\t\t\t";
+        // line 184
+        echo "\t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<input class=\"btn btn-danger btn-lg btn-block\" type=\"submit\" value=\"Lưu\">
 \t\t\t\t\t\t\t\t</div>
@@ -331,7 +308,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
     public function getDebugInfo()
     {
-        return array (  289 => 170,  282 => 165,  267 => 152,  264 => 151,  249 => 138,  247 => 137,  238 => 131,  231 => 127,  222 => 121,  216 => 118,  208 => 113,  200 => 108,  193 => 104,  189 => 103,  186 => 102,  180 => 100,  177 => 99,  171 => 97,  168 => 96,  162 => 94,  160 => 93,  145 => 83,  139 => 82,  136 => 81,  130 => 79,  122 => 77,  120 => 76,  113 => 72,  105 => 67,  37 => 1,);
+        return array (  281 => 184,  274 => 170,  267 => 165,  252 => 152,  249 => 151,  234 => 138,  232 => 137,  223 => 131,  216 => 127,  207 => 121,  201 => 118,  193 => 113,  185 => 108,  178 => 104,  174 => 103,  171 => 102,  165 => 100,  162 => 99,  156 => 97,  153 => 96,  147 => 94,  145 => 93,  136 => 86,  130 => 79,  122 => 77,  120 => 76,  113 => 72,  105 => 67,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -407,7 +384,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
 \t\t\t\t\t<div class=\"col-md-3\">
 \t\t\t\t\t\t<div class=\"d-flex flex-column align-items-center text-center p-3 py-5\">
-\t\t\t\t\t\t\t<a href=\"{{ helper.custom_link('') }}\">
+\t\t\t\t\t\t\t<a href=\"{{ createLink('') }}\">
 \t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 576 512\"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d=\"M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.6 483.2 483.9 512 448.5 512H128.1C92.75 512 64.09 483.3 64.09 448V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5H575.8zM288 160C252.7 160 224 188.7 224 224C224 259.3 252.7 288 288 288C323.3 288 352 259.3 352 224C352 188.7 323.3 160 288 160zM256 320C211.8 320 176 355.8 176 400C176 408.8 183.2 416 192 416H384C392.8 416 400 408.8 400 400C400 355.8 364.2 320 320 320H256z\"/></svg>
 \t\t\t\t\t\t\t\t<span>Home</span>
 \t\t\t\t\t\t\t</a>
@@ -416,11 +393,11 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t{% else %}
 \t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/{{helper.getDirectoryUpload()}}avatars/donaltrump.jpg\" width=\"90\">
 \t\t\t\t\t\t\t{% endif %}
-
+{# 
 \t\t\t\t\t\t\t<a href=\"/{{helper.getDirectoryUpload()}}qr_images/{{session.get('userProfile').qr_image}}\" download>
 \t\t\t\t\t\t\t\t<img class=\"rounded-circle mt-5\" width=\"100%\" src=\"/{{helper.getDirectoryUpload()}}qr_images/{{session.get('userProfile').qr_image}}\" width=\"90\">
 \t\t\t\t\t\t\t\tDownload Qr Code
-\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</a> #}
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col-md-9\">
@@ -509,7 +486,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 
 
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"row mt-3 \">
+\t\t\t\t\t\t\t{# <div class=\"row mt-3 \">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">Country</label><input type=\"text\" class=\"form-control\" placeholder=\"country\" name=\"country\" value=\"Country\">
 
@@ -518,7 +495,7 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t\t\t\t\t\t<div class=\"row mt-3 \">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<label class=\"labels\">State/Region</label><input type=\"text\" class=\"form-control\" value=\"Boston\" name=\"state\" placeholder=\"state\"></div>
-\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div> #}
 \t\t\t\t\t\t\t<div class=\"row mt-3\">
 \t\t\t\t\t\t\t\t<div class=\"col-md-12\">
 \t\t\t\t\t\t\t\t\t<input class=\"btn btn-danger btn-lg btn-block\" type=\"submit\" value=\"Lưu\">
@@ -534,6 +511,6 @@ class __TwigTemplate_2ff136e483c44fb1a79d322540a23e0f399dd61a6db1a50ef42463ec685
 \t\t</div>
 \t</body>
 </html></body></html></body></html>
-", "user/pages/profile.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\pages\\profile.twig");
+", "user/pages/profile.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\pages\\profile.twig");
     }
 }

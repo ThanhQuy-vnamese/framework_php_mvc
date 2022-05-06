@@ -61,32 +61,10 @@ class UserController extends BaseController
             $session = new Session();
 
             $getProfileById = (array)$session->get('user');
-            $this->getViewByRole($getProfileById['role']);
+            $this->response->redirect('/');
         }
 
     }
-    /**
-     * Dùng để chuyển trang cho từng role 
-     */
-    public function getViewByRole($role)
-    {
-        switch ($role) {
-            case '1':
-                return $this->response->redirect('/');
-            case '2':
-                return $this->response->redirect('/admin/user-list');
-        }
-    }
-    public function getViewUserList(): string
-    {
-        return $this->twig->render('admin/pages/user_list');
-    }
-    /**
-     * @return string
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
     public function getViewUserAdd(): string
     {
         return $this->twig->render('admin/pages/user_add');
@@ -110,13 +88,8 @@ class UserController extends BaseController
             $userId = $_GET['user_id'];
             $user = new User();
             $getProfileById = (array)$user->getProfileByUserId($userId);
-            // echo("<pre>");
-            // print_r($getProfileById);
+
             $session = new Session();
-            // echo("<pre>");
-            // print_r($session->get('user'));
-            // $helper = new Helper();
-            // print_r($helper->getDirectoryUpload());
 
             $session->set('userProfile', $getProfileById[0]);
         }
@@ -157,7 +130,7 @@ class UserController extends BaseController
             'email' => $email,
             'role' => $role,
             'id' => $user_id,
-            'qr_image' => $qrName . '.png'
+           
         );
         $user = new User();
         $updateUserAccount =  $user->updateUserAccount($dataUser, $user_id);
@@ -171,10 +144,10 @@ class UserController extends BaseController
             'user_id' => $user_id,
             'avatar' => $avatarFile
         ];
-
+        echo("<pre>");
+        // print_r($dataUserProfile);
         $updateUserProfile = $user->updateUserProfile($dataUserProfile, $user_id);
-        $session = new Session();
-
+        // print_r($updateUserAccount);
         if ($updateUserAccount && $updateUserProfile) {
             $this->uploadAvatar($avatarFile, $avatarFile_tmp, $user_id);
             $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
@@ -198,8 +171,8 @@ class UserController extends BaseController
             $this->response->redirect('/user/profile?user_id=' . $user_id);
         }
         $target_dir = 'public/upload/avatars' . '/' . basename($avatarFile);
-        // print_r($target_dir);
-        move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
+        print_r($target_dir);
+        move_uploaded_file($avatarFile_tmp, $target_dir);
     }
     public function getViewRegister(): string
     {
@@ -458,8 +431,10 @@ class UserController extends BaseController
             $session = new Session();
             $user = new User();
             $getProfileById = $user->getProfileByUserId($id);
-            $session->set('doctorProfile', $getProfileById[0]);
+            // echo("<pre>");
+            // print_r($getProfileById);
+            // $session->set('doctorProfile', $getProfileById[0]);
         }
-        return $this->twig->render('user/pages/detail-doctor');
+        return $this->twig->render('user/pages/detail-doctor', ['doctorProfile'=>$getProfileById[0]]);
     }
 }
