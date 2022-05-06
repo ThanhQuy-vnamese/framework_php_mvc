@@ -7,4 +7,5 @@ const COMMON_LANGUAGES = [
     // Button
     'delete' => 'Delete',
     'cancel' => 'Cancel',
+    'back' => 'Back'
 ];

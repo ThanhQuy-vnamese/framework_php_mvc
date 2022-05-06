@@ -8,4 +8,5 @@ const COMMON_LANGUAGES = [
     // Button
     'delete' => 'Xóa',
     'cancel' => 'Hủy',
+    'back' => 'Trở về'
 ];
