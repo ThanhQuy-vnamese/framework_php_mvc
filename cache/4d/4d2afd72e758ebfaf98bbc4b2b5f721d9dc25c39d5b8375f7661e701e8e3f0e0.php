@@ -79,6 +79,10 @@ class __TwigTemplate_12056ed0fbc05bf0d6053e7424384a62e3e5bf67c3d50e6949f23840c5f
         echo "\t\t\t\t\t<form action=\"";
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["doctor/post-book-clinic"]), "html", null, true);
         echo "\" method=\"post\">
+\t\t\t\t\t\t<input type=\"hidden\" name=\"id_doctor\" value=";
+        // line 31
+        echo twig_escape_filter($this->env, ($context["id_doctor"] ?? null), "html", null, true);
+        echo ">
 \t\t\t\t\t\t<div class=\"form-group row\">
 \t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Họ</label>
 \t\t\t\t\t\t\t<div class=\"col-sm-9\">
@@ -138,7 +142,7 @@ class __TwigTemplate_12056ed0fbc05bf0d6053e7424384a62e3e5bf67c3d50e6949f23840c5f
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 89
+        // line 90
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "</body>
 </html></body></html>
@@ -157,7 +161,7 @@ class __TwigTemplate_12056ed0fbc05bf0d6053e7424384a62e3e5bf67c3d50e6949f23840c5f
 
     public function getDebugInfo()
     {
-        return array (  142 => 89,  79 => 30,  73 => 28,  71 => 27,  58 => 17,  47 => 9,  37 => 1,);
+        return array (  146 => 90,  84 => 31,  79 => 30,  73 => 28,  71 => 27,  58 => 17,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -192,6 +196,7 @@ class __TwigTemplate_12056ed0fbc05bf0d6053e7424384a62e3e5bf67c3d50e6949f23840c5f
 \t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('makeAppointment') }}</div>
 \t\t\t\t{% endif %}
 \t\t\t\t\t<form action=\"{{ redirect('doctor/post-book-clinic') }}\" method=\"post\">
+\t\t\t\t\t\t<input type=\"hidden\" name=\"id_doctor\" value={{ id_doctor }}>
 \t\t\t\t\t\t<div class=\"form-group row\">
 \t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Họ</label>
 \t\t\t\t\t\t\t<div class=\"col-sm-9\">

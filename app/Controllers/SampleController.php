@@ -37,33 +37,70 @@ class SampleController extends BaseController
     {
         $session = new Session();
         // print_r($session->get('doctorProfile')['id']);
-        return $this->twig->render('user/pages/book_clinic');
+        $id_doctor = $_GET['doctor_id'];
+        return $this->twig->render('user/pages/book_clinic', ['id_doctor'=>$id_doctor]);
     }
     public function postBookClinic()
     {
         $session = new Session();
         $request = new Request();
-
+        // echo("<pre>");
+        // print_r($request->getAllInput());
+        $id_doctor = $this->request->input->get('id_doctor');
         $dateBook = $this->request->input->get('date');
         $timeBook = $this->request->input->get('time');
         $subject = $this->request->input->get('description');
+        $first_name = $this->request->input->get('first-name');
+        $last_name = $this->request->input->get('last-name');
 
-        $id_doctor = $session->get('doctorProfile')['id'];
-        $id_user =  $session->get('user')['user_id'];
-        echo($id_doctor . " - ".$id_user);
+        $data_user =  (array)$session->get('user');
+        $id_user = $data_user['id'];
+
+        // echo($id_doctor . " - ".$id_user);
         $user = new User();
-        $information = array(
-            // 'id_doctor'=>$id_doctor,
+        $information_user = array(
+            'full_name'=> $first_name." ".$last_name,
             'user_id'=>$id_user,
             'date_start' =>$dateBook,
             'time_start' => $timeBook,
             'created_at'=>date("Y/m/d"),
             'subject'=> $subject,
+            'status'=>'0'
         );
+        //print_r($information_user);
 
-        $user->insertAppointment($information);
+        //Insert cuộc hẹn vào
+        $user->insertAppointment($information_user);
+
+        // Insert người tham dự cuộc hẹn
+        $getLastestAppoiment =  (array)$user->getLastestAppointment()[0];
+        $doctor_attendes = array(
+            // 'id_doctor'=>$id_doctor,
+            'id_appointment'=>$getLastestAppoiment['id'],
+            'user_id'=>$id_doctor,
+        );
+        $user_attend = array(
+            'id_appointment'=>$getLastestAppoiment['id'],
+            'user_id'=>$id_user,
+        );
+        $user->insertAppointmentAttendees($doctor_attendes);
+        $user->insertAppointmentAttendees($user_attend);
         $session->setFlash('makeAppointment', "Tạo lịch hẹn thành công! Vui lòng chờ phản hồi từ bác sĩ ");
-        $this->response->redirect('/doctor/book-clinic');
+        $this->response->redirect('/user/book-list-clinic');
+    }
+
+    public function getListBookClinic()
+    {
+        $user = new User();
+        $session = new Session();
+        $data_user =  (array)$session->get('user');
+        $id_user = $data_user['id'];
+
+        $getListAppointment =$user->getAppointmentByUser($id_user);
+        // echo("<pre>");
+        // print_r($getListAppointment);
+ 
+        return $this->twig->render('user/pages/list_book_clinic', ['list_book'=>$getListAppointment]);
     }
     public function contact()
     {

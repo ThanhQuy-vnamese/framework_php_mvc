@@ -28,6 +28,7 @@
 					<div class="alert alert-success">{{ session.getFlash('makeAppointment') }}</div>
 				{% endif %}
 					<form action="{{ redirect('doctor/post-book-clinic') }}" method="post">
+						<input type="hidden" name="id_doctor" value={{ id_doctor }}>
 						<div class="form-group row">
 							<label for="name" class="col-sm-3 col-form-label">Họ</label>
 							<div class="col-sm-9">

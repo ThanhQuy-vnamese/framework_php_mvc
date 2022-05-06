@@ -79,6 +79,10 @@ class __TwigTemplate_edb4955590e0bdd040146c66336b335f5b69314356690bb1219ee3944a9
         echo "\t\t\t\t\t<form action=\"";
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["doctor/post-book-clinic"]), "html", null, true);
         echo "\" method=\"post\">
+\t\t\t\t\t\t<input type=\"hidden\" name=\"id_doctor\" value=";
+        // line 31
+        echo twig_escape_filter($this->env, ($context["id_doctor"] ?? null), "html", null, true);
+        echo ">
 \t\t\t\t\t\t<div class=\"form-group row\">
 \t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Họ</label>
 \t\t\t\t\t\t\t<div class=\"col-sm-9\">
@@ -138,7 +142,7 @@ class __TwigTemplate_edb4955590e0bdd040146c66336b335f5b69314356690bb1219ee3944a9
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 89
+        // line 90
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "</body>
 </html></body></html>
@@ -157,7 +161,7 @@ class __TwigTemplate_edb4955590e0bdd040146c66336b335f5b69314356690bb1219ee3944a9
 
     public function getDebugInfo()
     {
-        return array (  142 => 89,  79 => 30,  73 => 28,  71 => 27,  58 => 17,  47 => 9,  37 => 1,);
+        return array (  146 => 90,  84 => 31,  79 => 30,  73 => 28,  71 => 27,  58 => 17,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -192,6 +196,7 @@ class __TwigTemplate_edb4955590e0bdd040146c66336b335f5b69314356690bb1219ee3944a9
 \t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('makeAppointment') }}</div>
 \t\t\t\t{% endif %}
 \t\t\t\t\t<form action=\"{{ redirect('doctor/post-book-clinic') }}\" method=\"post\">
+\t\t\t\t\t\t<input type=\"hidden\" name=\"id_doctor\" value={{ id_doctor }}>
 \t\t\t\t\t\t<div class=\"form-group row\">
 \t\t\t\t\t\t\t<label for=\"name\" class=\"col-sm-3 col-form-label\">Họ</label>
 \t\t\t\t\t\t\t<div class=\"col-sm-9\">
@@ -252,6 +257,6 @@ class __TwigTemplate_edb4955590e0bdd040146c66336b335f5b69314356690bb1219ee3944a9
 \t\t<!-- footer part start-->
 \t\t{{ include('user/components/footer.twig')}}</body>
 </html></body></html>
-", "user/pages/book_clinic.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc - template-done - Copy\\views\\user\\pages\\book_clinic.twig");
+", "user/pages/book_clinic.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\pages\\book_clinic.twig");
     }
 }
