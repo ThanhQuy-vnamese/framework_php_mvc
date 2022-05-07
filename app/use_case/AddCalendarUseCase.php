@@ -45,6 +45,31 @@ class AddCalendarUseCase
         string $description,
         int $doctor_id
     ) {
+        if (empty($date)) {
+            $this->session->setFlash('errorAddCalendar', 'Please enter date');
+            return false;
+        }
+
+        if (empty($time_start)) {
+            $this->session->setFlash('errorAddCalendar', 'Please enter time start');
+            return false;
+        }
+
+        if (empty($time_end)) {
+            $this->session->setFlash('errorAddCalendar', 'Please enter time end');
+            return false;
+        }
+
+        if (empty($full_name)) {
+            $this->session->setFlash('errorAddCalendar', 'Please enter full name');
+            return false;
+        }
+
+        if (empty($doctor_id)) {
+            $this->session->setFlash('errorAddCalendar', 'Please chose a doctor');
+            return false;
+        }
+
         $calendar = $this->buildCalendar(
             $subject,
             $full_name,
@@ -54,18 +79,9 @@ class AddCalendarUseCase
             $description,
             $this->auth->getUser()->getId()
         );
-        if (empty($full_name)) {
-            $this->session->setFlash('errorAddCalendar', 'Please enter full name');
-            return false;
-        }
 
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
             $this->session->setFlash('errorAddCalendar', 'Calendar is conflict');
-            return false;
-        }
-
-        if (empty($doctor_id)) {
-            $this->session->setFlash('errorAddCalendar', 'Please chose a doctor');
             return false;
         }
 

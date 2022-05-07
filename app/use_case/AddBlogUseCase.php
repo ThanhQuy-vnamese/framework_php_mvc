@@ -43,7 +43,7 @@ class AddBlogUseCase
         $isSuccess = $upload->upload('blog/avatars/');
 
         if (!$isSuccess) {
-            $this->session->setFlash('errorAddBlog', 'Upload avatar fail');
+            $this->session->setFlash('errorAddBlog', 'Upload blog avatar fail');
             return false;
         }
 

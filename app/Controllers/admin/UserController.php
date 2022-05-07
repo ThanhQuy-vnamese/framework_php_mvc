@@ -238,7 +238,7 @@ class UserController extends BaseController
 
         $session = new Session();
         if (!$isSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', 'Update avatar fail');
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
         $data = [
@@ -248,7 +248,7 @@ class UserController extends BaseController
         $isSuccessUpdateAvatar = $user->updateUserProfileForAdmin($userId, $data);
         $this->updateInfoUserLogin((int)$userId);
         if (!$isSuccessUpdateAvatar) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', 'Update avatar fail');
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
         $session->setFlash('successUpdateUser', 'Update user success');

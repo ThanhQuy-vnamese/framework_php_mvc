@@ -22,15 +22,27 @@ class HealthInsuranceRepository implements HealthInsuranceRepositoryInterface
 
     public function addHealthInsurance(HealthInsurance $health_insurance): int
     {
-        $sql = "INSERT INTO medical_medical_insurances (health_insurance, health_insurance_number, expiration_date, id_medical_records)
+        if (empty($health_insurance->getExpirationDate())) {
+            $sql = "INSERT INTO medical_medical_insurances (health_insurance, health_insurance_number, id_medical_records)
+                VALUES (%s, '%s', %s)";
+            $query = sprintf(
+                $sql,
+                $health_insurance->getHealthInsurance(),
+                $health_insurance->getHealthInsuranceNumber(),
+                $health_insurance->getMedicalRecordsId()
+            );
+        } else {
+            $sql = "INSERT INTO medical_medical_insurances (health_insurance, health_insurance_number, expiration_date, id_medical_records)
                 VALUES (%s, '%s', '%s', %s)";
-        $query = sprintf(
-            $sql,
-            $health_insurance->getHealthInsurance(),
-            $health_insurance->getHealthInsuranceNumber(),
-            $health_insurance->getExpirationDate(),
-            $health_insurance->getMedicalRecordsId()
-        );
+            $query = sprintf(
+                $sql,
+                $health_insurance->getHealthInsurance(),
+                $health_insurance->getHealthInsuranceNumber(),
+                $health_insurance->getExpirationDate(),
+                $health_insurance->getMedicalRecordsId()
+            );
+        }
+
         $this->db->query($query);
 
         return (int)$this->db->insert_id;
