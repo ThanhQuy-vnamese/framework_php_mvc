@@ -6,6 +6,8 @@ const COMMON_LANGUAGES = [
     'manage_medical_files' => 'Manage medical files',
     'manage_medicine' => 'Manage medicine',
     'manage_medicine_type' => 'Manage medicine type',
+    'manage_blog' => 'Manage blog',
+
     // Button
     'delete' => 'Delete',
     'cancel' => 'Cancel',
