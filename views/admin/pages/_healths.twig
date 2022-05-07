@@ -6,11 +6,14 @@
     </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
         {% for injection in medicalFile.covid_injections %}
-            <div class="profile-ud-item">
+            <div class="profile-ud-item" >
                 <div class="profile-ud wider">
-                    <span class="profile-ud-label">{{ translate('injection') }} {{ injection.injection }}</span>
-                    <div class="profile-ud-value">{{ translate('medicine') }}: {{ injection.type_medicine }}</div>
-                    <div class="profile-ud-value">{{ translate('vaccination_date') }}: {{ injection.date }}</div>
+                    <span class="profile-ud-label">{{ translate('injection') }} {{ injection.injection }} - {{ translate('name_vaccine') }}:</span>
+                    <div class="profile-ud-value">{{ injection.type_medicine }}</div>
+                </div>
+                <div class="profile-ud wider">
+                    <span class="profile-ud-label">{{ translate('injection') }} {{ injection.injection }} - {{ translate('vaccination_date') }} </span>
+                    <div class="profile-ud-value"> {{ injection.date }}</div>
                 </div>
             </div>
         {% endfor %}

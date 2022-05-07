@@ -22,8 +22,8 @@ class HealthDeclarationRepository implements HealthDeclarationRepositoryInterfac
 
     public function addHealthDeclaration(HealthDeclaration $health_declaration): int
     {
-        $sql = "INSERT INTO `medical_health_declaration`(`full_name`, `gender`, `birthday`, `identity_card`, `email`, `phone`, `way`, `district`, `wards`, `province`, `qr_image`, `health_declaration`, `user_id`)
-                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)";
+        $sql = "INSERT INTO `medical_health_declaration`(`full_name`, `gender`, `birthday`, `identity_card`, `email`, `phone`, `way`, `district`, `wards`, `province`, `health_declaration`, `user_id`)
+                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)";
         $query = sprintf(
             $sql,
             $health_declaration->getFullName(),
@@ -36,7 +36,6 @@ class HealthDeclarationRepository implements HealthDeclarationRepositoryInterfac
             $health_declaration->getDistrict(),
             $health_declaration->getWards(),
             $health_declaration->getProvince(),
-            $health_declaration->getQrImage(),
             $health_declaration->getHealthDeclaration(),
             $health_declaration->getUserId()
         );
