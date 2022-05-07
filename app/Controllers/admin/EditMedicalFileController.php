@@ -75,7 +75,6 @@ class EditMedicalFileController extends BaseController
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successEditMedicalFile', 'Add medical file success');
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
