@@ -138,7 +138,7 @@ class AddMedicalFileUseCase
             $first_name,
             $last_name,
             $gender,
-            $birthday,
+            empty($birthday) ? null : $birthday,
             $identity_card,
             $email,
             $phone,
