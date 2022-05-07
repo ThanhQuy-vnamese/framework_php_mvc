@@ -60,5 +60,10 @@ const LANGUAGES = [
     'alert_delete_health' => 'Are you sure delete health?',
     'prefix_content_delete' => 'The medical examination history have id',
     'suffix_content_delete' => 'after being deleted will not be able to recover.',
-    'edit_prescription' => 'Edit prescription'
+    'edit_prescription' => 'Edit prescription',
+
+    //Medical file add
+    'add' => 'Add',
+    'male' => 'Male',
+    'female' => 'Female'
 ];
