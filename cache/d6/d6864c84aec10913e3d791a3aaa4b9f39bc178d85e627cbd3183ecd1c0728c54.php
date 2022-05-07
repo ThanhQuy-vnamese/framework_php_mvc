@@ -39,7 +39,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t<div class=\"footer section_padding\">
 \t\t<div class=\"container\">
 \t\t\t<div class=\"row justify-content-between\">
-\t\t\t\t<div class=\"col-xl-2 col-md-4 col-sm-6 single-footer-widget\">
+\t\t\t\t<div class=\"col-xl-6 col-md-6 col-sm-6 single-footer-widget\">
 \t\t\t\t\t<a href=\"#\" class=\"footer_logo\">
 \t\t\t\t\t\t<img src=\"";
         // line 8
@@ -63,37 +63,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t\t\t\t\t\t</a>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Quick Links</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">About us</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Online payment</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Careers</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Explore</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">In the community</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">IU health foundation</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Family support</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Business solution</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Community clinic</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-6 single-footer-widget\">
-\t\t\t\t\t<h4>Resources</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Lights were season</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Their is let wherein</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">which given over</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Without given She</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Isn two signs think</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-3 col-sm-6 col-md-6 single-footer-widget\">
+\t\t\t\t<div class=\"col-xl-6 col-sm-6 col-md-6 single-footer-widget\">
 \t\t\t\t\t<h4>Newsletter</h4>
 \t\t\t\t\t<p>Seed good winged wherein which night multiply midst does not fruitful</p>
 \t\t\t\t\t<div class=\"form-wrap\" id=\"mc_embed_signup\">
@@ -152,57 +122,57 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 
 <!-- jquery plugins here-->
 <script src=\"";
-        // line 115
+        // line 85
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery-1.12.1.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- popper js -->
 <script src=\"";
-        // line 118
+        // line 88
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/popper.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- bootstrap js -->
 <script src=\"";
-        // line 121
+        // line 91
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/bootstrap.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- owl carousel js -->
 <script src=\"";
-        // line 124
+        // line 94
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/owl.carousel.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 125
+        // line 95
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.nice-select.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- contact js -->
 <script src=\"";
-        // line 128
+        // line 98
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.ajaxchimp.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 129
+        // line 99
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.form.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 130
+        // line 100
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.validate.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 131
+        // line 101
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/mail-script.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 132
+        // line 102
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/contact.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- custom js -->
 <script src=\"";
-        // line 135
+        // line 105
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/custom.js"]), "html", null, true);
         echo "\"></script>
 ";
@@ -220,7 +190,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 
     public function getDebugInfo()
     {
-        return array (  206 => 135,  200 => 132,  196 => 131,  192 => 130,  188 => 129,  184 => 128,  178 => 125,  174 => 124,  168 => 121,  162 => 118,  156 => 115,  46 => 8,  37 => 1,);
+        return array (  176 => 105,  170 => 102,  166 => 101,  162 => 100,  158 => 99,  154 => 98,  148 => 95,  144 => 94,  138 => 91,  132 => 88,  126 => 85,  46 => 8,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -230,7 +200,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t<div class=\"footer section_padding\">
 \t\t<div class=\"container\">
 \t\t\t<div class=\"row justify-content-between\">
-\t\t\t\t<div class=\"col-xl-2 col-md-4 col-sm-6 single-footer-widget\">
+\t\t\t\t<div class=\"col-xl-6 col-md-6 col-sm-6 single-footer-widget\">
 \t\t\t\t\t<a href=\"#\" class=\"footer_logo\">
 \t\t\t\t\t\t<img src=\"{{ createLink('style/img/logo.png') }}\" alt=\"#\">
 \t\t\t\t\t</a>
@@ -251,37 +221,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t\t\t\t\t\t</a>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Quick Links</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">About us</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Online payment</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Careers</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Explore</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">In the community</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">IU health foundation</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Family support</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Business solution</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Community clinic</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-6 single-footer-widget\">
-\t\t\t\t\t<h4>Resources</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Lights were season</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Their is let wherein</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">which given over</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Without given She</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Isn two signs think</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-3 col-sm-6 col-md-6 single-footer-widget\">
+\t\t\t\t<div class=\"col-xl-6 col-sm-6 col-md-6 single-footer-widget\">
 \t\t\t\t\t<h4>Newsletter</h4>
 \t\t\t\t\t<p>Seed good winged wherein which night multiply midst does not fruitful</p>
 \t\t\t\t\t<div class=\"form-wrap\" id=\"mc_embed_signup\">

@@ -144,10 +144,7 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
         echo " ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "last_name", [], "any", false, false, false, 99), "html", null, true);
         echo "</h4>
-\t\t\t\t\t\t\t\t\t\t<p class=\"text-secondary mb-1\">Full Stack Developer</p>
 \t\t\t\t\t\t\t\t\t\t<p class=\"text-muted font-size-sm\">Bay Area, San Francisco, CA</p>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\">Follow</button>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-outline-primary\">Message</button>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
@@ -162,10 +159,10 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-9 text-secondary\">
 \t\t\t\t\t\t\t\t\t\t";
-        // line 117
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "first_name", [], "any", false, false, false, 117), "html", null, true);
+        // line 114
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "first_name", [], "any", false, false, false, 114), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "last_name", [], "any", false, false, false, 117), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "last_name", [], "any", false, false, false, 114), "html", null, true);
         echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -176,8 +173,8 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-9 text-secondary\">
 \t\t\t\t\t\t\t\t\t\t";
-        // line 126
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "email", [], "any", false, false, false, 126), "html", null, true);
+        // line 123
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "email", [], "any", false, false, false, 123), "html", null, true);
         echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -188,8 +185,8 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-9 text-secondary\">
 \t\t\t\t\t\t\t\t\t\t";
-        // line 135
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "phone", [], "any", false, false, false, 135), "html", null, true);
+        // line 132
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "phone", [], "any", false, false, false, 132), "html", null, true);
         echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -209,8 +206,8 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-9 text-secondary\">
 \t\t\t\t\t\t\t\t\t\t";
-        // line 153
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "address", [], "any", false, false, false, 153), "html", null, true);
+        // line 150
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "address", [], "any", false, false, false, 150), "html", null, true);
         echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -218,12 +215,12 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t\t\t<div class=\"row\">
 \t\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"btn btn-info \" href=\"";
-        // line 159
+        // line 156
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["doctor/book-clinic"]), "html", null, true);
         echo "?doctor_id=";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "user_id", [], "any", false, false, false, 159), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["doctorProfile"] ?? null), "user_id", [], "any", false, false, false, 156), "html", null, true);
         echo "&user_id=";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 159), "user_id", [], "any", false, false, false, 159), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "get", [0 => "user"], "method", false, false, false, 156), "user_id", [], "any", false, false, false, 156), "html", null, true);
         echo "\">Đặt lịch khám</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -243,13 +240,13 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 
 \t\t<!-- footer part start-->
 \t\t";
-        // line 177
+        // line 174
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "
 
 \t\t<!-- footer part end-->
         <script src=\"";
-        // line 180
+        // line 177
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["js/dist/user/detail_doctor.js"]), "html", null, true);
         echo "\"></script>
 \t</body>
@@ -270,7 +267,7 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 
     public function getDebugInfo()
     {
-        return array (  253 => 180,  247 => 177,  222 => 159,  213 => 153,  192 => 135,  180 => 126,  166 => 117,  143 => 99,  114 => 73,  48 => 10,  37 => 1,);
+        return array (  250 => 177,  244 => 174,  219 => 156,  210 => 150,  189 => 132,  177 => 123,  163 => 114,  143 => 99,  114 => 73,  48 => 10,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -374,10 +371,7 @@ class __TwigTemplate_073958b997676f22f2d90eb830c2fe902d58d8d2e920c3daf7654a99ef8
 \t\t\t\t\t\t\t\t\t<img src=\"https://bootdey.com/img/Content/avatar/avatar7.png\" alt=\"Admin\" class=\"rounded-circle\" width=\"150\">
 \t\t\t\t\t\t\t\t\t<div class=\"mt-3\">
 \t\t\t\t\t\t\t\t\t\t<h4>{{ doctorProfile.first_name}} {{doctorProfile.last_name  }}</h4>
-\t\t\t\t\t\t\t\t\t\t<p class=\"text-secondary mb-1\">Full Stack Developer</p>
 \t\t\t\t\t\t\t\t\t\t<p class=\"text-muted font-size-sm\">Bay Area, San Francisco, CA</p>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary\">Follow</button>
-\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-outline-primary\">Message</button>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
