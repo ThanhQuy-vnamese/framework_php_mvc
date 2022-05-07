@@ -1,16 +1,16 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between">
-        <h5 class="title">Covid Vaccination</h5>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHealth">Add healths
+        <h5 class="title">{{ translate('covid_vaccination') }}</h5>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAddHealth">{{ translate('add_health') }}
         </button>
     </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
         {% for injection in medicalFile.covid_injections %}
             <div class="profile-ud-item">
                 <div class="profile-ud wider">
-                    <span class="profile-ud-label">Injection {{ injection.injection }}</span>
-                    <div class="profile-ud-value">Medicine: {{ injection.type_medicine }}</div>
-                    <div class="profile-ud-value">Date: {{ injection.date }}</div>
+                    <span class="profile-ud-label">{{ translate('injection') }} {{ injection.injection }}</span>
+                    <div class="profile-ud-value">{{ translate('medicine') }}: {{ injection.type_medicine }}</div>
+                    <div class="profile-ud-value">{{ translate('vaccination_date') }}: {{ injection.date }}</div>
                 </div>
             </div>
         {% endfor %}
@@ -19,7 +19,7 @@
 <div class="nk-divider divider md"></div>
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between">
-        <h5 class="title">Medical Examination History</h5>
+        <h5 class="title">{{ translate('medical_examination_history') }}</h5>
     </div><!-- .nk-block-head -->
     <div class="profile-ud-list">
 
@@ -35,9 +35,9 @@
                 </div>
             </div>
             <div class="nk-tb-col"><span class="sub-text">Id</span></div>
-            <div class="nk-tb-col"><span class="sub-text">Summary</span></div>
-            <div class="nk-tb-col tb-col-md"><span class="sub-text">Date of the examination</span></div>
-            <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
+            <div class="nk-tb-col"><span class="sub-text">{{ translate('summary') }}</span></div>
+            <div class="nk-tb-col tb-col-md"><span class="sub-text">{{ translate('date_of_the_examination') }}</span></div>
+            <div class="nk-tb-col nk-tb-col-tools text-right">{{ translate('action') }}</div>
         </div><!-- .nk-tb-item -->
         {% for health in healths %}
             <div class="nk-tb-item">
@@ -65,25 +65,25 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="link-list-opt no-bdr">
                                         <li><a href="javascript:void(0)" class="js-health-view-detail"
-                                               data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>View Details</span></a>
+                                               data-health-id="{{ health.id }}"><em class="icon ni ni-eye"></em><span>{{ translate('view_detail') }}</span></a>
                                         </li>
                                         <li class="divider"></li>
                                         <li><a href="javascript:void(0)" class="js-view-prescription"
                                                data-health-id="{{ health.id }}">
-                                                <em class="icon fas fa-prescription"></em><span>Views prescription</span></a>
+                                                <em class="icon fas fa-prescription"></em><span>{{ translate('views_prescription') }}</span></a>
                                         </li>
                                         <li><a href="javascript:void(0)" class="js-add-prescription"
                                                data-health-id="{{ health.id }}"><em
-                                                        class="icon fas fa-prescription"></em><span>Add prescription</span></a>
+                                                        class="icon fas fa-prescription"></em><span>{{ translate('add_prescription') }}</span></a>
                                         </li>
                                         <li><a href="javascript:void(0)" class="js-edit-prescription"
                                                data-health-id="{{ health.id }}"><em
-                                                        class="icon fas fa-prescription"></em><span>Edit prescription</span></a>
+                                                        class="icon fas fa-prescription"></em><span>{{ translate('edit_prescription') }}</span></a>
                                         </li>
                                         <li class="divider"></li>
                                         <li><a href="javascript:void(0)" class="js-delete-health"
                                                data-health-id="{{ health.id }}" data-medical-file-id="{{ medicalFile.id }}"><em
-                                                        class="icon fas fa-trash-alt"></em><span>Delete healths</span></a>
+                                                        class="icon fas fa-trash-alt"></em><span>{{ translate('delete_health') }}</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -103,7 +103,7 @@
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Healths Information</h5>
+                <h5 class="modal-title">{{ translate('medical_examination_history') }}</h5>
             </div>
             <div class="modal-body">
                 <form action="{{ redirect('admin/post-medical-health-edit') }}" method="post">
@@ -111,9 +111,9 @@
                     <input type="text" name="medical-file-id" hidden value="">
                     <div class="card-inner">
                         <div class="preview-block">
-                            <span class="preview-title-lg overline-title">Main Information</span>
+                            <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                             <div class="nk-block">
-                                <span class="preview-title-lg overline-title">Summary</span>
+                                <span class="preview-title-lg overline-title">{{ translate('summary') }}</span>
                                 <div class="bq-note">
                                     <div class="bq-note-item">
                                         <div class="bq-note-text">
@@ -122,7 +122,7 @@
                                     </div><!-- .bq-note-item -->
                                 </div><!-- .bq-note -->
                             </div><!-- .nk-block -->
-                            <span class="preview-title-lg overline-title">Doctor's advice</span>
+                            <span class="preview-title-lg overline-title">{{ translate('doctor_advice') }}</span>
                             <div class="bq-note">
                                 <div class="bq-note-item">
                                     <div class="bq-note-text">
@@ -131,11 +131,11 @@
                                 </div><!-- .bq-note-item -->
                             </div><!-- .bq-note -->
                             <hr class="preview-hr">
-                            <span class="preview-title-lg overline-title">Edit information</span>
+                            <span class="preview-title-lg overline-title">{{ translate('edit_information') }}</span>
                             <div class="row gy-4">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="summary">Summary</label>
+                                        <label class="form-label" for="summary">{{ translate('summary') }}</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="summary" id="summary"
                                                    placeholder="Enter Summary">
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="description">Description</label>
+                                        <label class="form-label" for="description">{{ translate('description') }}</label>
                                         <div class="form-control-wrap">
                                             <textarea type="text" class="form-control" name="description2"
                                                       id="description"
@@ -156,16 +156,14 @@
                             <hr class="preview-hr">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Edit</button>
+                                    <button type="submit" class="btn btn-success">{{ translate('edit') }}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer bg-light">
-                <span class="sub-text">Modal Footer Text</span>
-            </div>
+            <div class="modal-footer bg-light"></div>
         </div>
     </div>
 </div>
@@ -176,38 +174,38 @@
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Prescription Information</h5>
+                <h5 class="modal-title">{{ translate('prescription_information') }}</h5>
             </div>
             <div class="modal-body">
                 <form action="">
                     <div class="card-inner">
                         <div class="preview-block">
-                            <span class="preview-title-lg overline-title">Main Information</span>
+                            <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                             <div class="nk-block">
                                 <div class="profile-ud-list">
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
-                                            <span class="profile-ud-label">Full name</span>
+                                            <span class="profile-ud-label">{{ translate('full_name') }}</span>
                                             <div class="profile-ud-value js-full-name"></div>
                                         </div>
                                     </div>
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
-                                            <span class="profile-ud-label">Gender - Age</span>
+                                            <span class="profile-ud-label">{{ translate('gender') }} - {{ translate('age') }}</span>
                                             <div class="profile-ud-value"><span class="js-gender"></span> - <span
                                                         class="js-age">11</span></div>
                                         </div>
                                     </div>
                                     <div class="profile-ud-item">
                                         <div class="profile-ud wider">
-                                            <span class="profile-ud-label">Address</span>
+                                            <span class="profile-ud-label">{{ translate('address') }}</span>
                                             <div class="profile-ud-value js-address">123 Gò Vấp, TPHCM</div>
                                         </div>
                                     </div>
                                 </div><!-- .profile-ud-list -->
                             </div><!-- .nk-block -->
                             <hr class="preview-hr">
-                            <span class="preview-title-lg overline-title">Prescription information</span>
+                            <span class="preview-title-lg overline-title">{{ translate('prescription_information') }}</span>
                             <div class="row gy-4">
                                 <div class="col-sm-12">
                                     <div class="table-responsive">
@@ -215,9 +213,9 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Dosage</th>
+                                                <th scope="col">{{ translate('name') }}</th>
+                                                <th scope="col">{{ translate('quantity') }}</th>
+                                                <th scope="col">{{ translate('`dosage`') }}</th>
                                             </tr>
                                             </thead>
                                             <tbody class="js-medicine-list"></tbody>
@@ -235,9 +233,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer bg-light">
-                <span class="sub-text">Modal Footer Text</span>
-            </div>
+            <div class="modal-footer bg-light"></div>
         </div>
     </div>
 </div>
@@ -248,18 +244,18 @@
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Add Healths</h5>
+                <h5 class="modal-title">{{ translate('add_health') }}</h5>
             </div>
             <div class="modal-body">
                 <form action="{{ redirect('admin/post-medical-health-add') }}" method="post">
                     <input type="text" name="medical-file-id" hidden value="{{ medicalFile.id }}">
                     <div class="card-inner">
                         <div class="preview-block">
-                            <span class="preview-title-lg overline-title">Main Information</span>
+                            <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                             <div class="row gy-4">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="summary">Summary</label>
+                                        <label class="form-label" for="summary">{{ translate('summay=ry') }}</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="summary" id="summary"
                                                    placeholder="Enter Summary">
@@ -268,7 +264,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="note">Description</label>
+                                        <label class="form-label" for="note">{{ translate('description') }}</label>
                                         <div class="form-control-wrap">
                                             <textarea type="text" class="form-control" name="note" id="note"
                                                       placeholder="Enter description"></textarea>
@@ -279,16 +275,14 @@
                             <hr class="preview-hr">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Add healths</button>
+                                    <button type="submit" class="btn btn-success">{{ translate('add_health') }}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer bg-light">
-                <span class="sub-text">Modal Footer Text</span>
-            </div>
+            <div class="modal-footer bg-light"></div>
         </div>
     </div>
 </div>
@@ -299,7 +293,7 @@
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Add Prescription</h5>
+                <h5 class="modal-title">{{ translate('add_prescription') }}</h5>
             </div>
             <div class="modal-body">
                 <form id="add-prescription-form" action="{{ redirect('admin/post-prescription-add') }}" method="post">
@@ -308,11 +302,11 @@
                     <input type="text" name="health-id" hidden>
                     <div class="card-inner">
                         <div class="preview-block">
-                            <span class="preview-title-lg overline-title">Main Information</span>
+                            <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                             <div class="row gy-4">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="full-name">Full name</label>
+                                        <label class="form-label" for="full-name">{{ translate('full_name') }}</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="full-name" id="full-name"
                                                    placeholder="Enter full-name"
@@ -322,7 +316,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="password">Gender</label>
+                                        <label class="form-label" for="password">{{ translate('gender') }}</label>
                                         <div class="form-control-wrap">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="male" name="gender"
@@ -339,7 +333,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="age">Age</label>
+                                        <label class="form-label" for="age">{{ translate('age') }}</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="age" id="age"
                                                    placeholder="Enter Age" value="{{ medicalFile.age }}">
@@ -348,7 +342,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="address">Address</label>
+                                        <label class="form-label" for="address">{{ translate('address') }}</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control" name="address" id="address"
                                                    placeholder="Enter address" value="{{ medicalFile.full_address }}">
@@ -357,7 +351,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="note">Description</label>
+                                        <label class="form-label" for="note">{{ translate('description') }}</label>
                                         <div class="form-control-wrap">
                                             <textarea type="text" class="form-control" name="note" id="note"
                                                       placeholder="Enter Last Name">11111111</textarea>
@@ -369,7 +363,7 @@
                                 <div class="row gy-4">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label class="form-label" for="select-name-{{ count }}">Name {{ count }}</label>
+                                            <label class="form-label" for="select-name-{{ count }}">{{ translate('name') }} {{ count }}</label>
                                             <div class="form-control-wrap">
                                                 <select class="form-control selectpicker" id="select-name-{{ count }}" data-live-search="true" name="name-{{ count }}">
                                                     <option data-tokens="---">----</option>
@@ -383,7 +377,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="form-label"
-                                                   for="quantity-{{ count }}">Quantity {{ count }}</label>
+                                                   for="quantity-{{ count }}">{{ translate('quantity') }} {{ count }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="quantity-{{ count }}"
                                                        id="quantity-{{ count }}"
@@ -394,7 +388,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="form-label"
-                                                   for="dosage-{{ count }}">Dosage {{ count }}</label>
+                                                   for="dosage-{{ count }}">{{ translate('dosage') }} {{ count }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="dosage-{{ count }}"
                                                        id="dosage-{{ count }}"
@@ -407,16 +401,14 @@
                             <hr class="preview-hr">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Add healths</button>
+                                    <button type="submit" class="btn btn-success">{{ translate('add_prescription') }}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer bg-light">
-                <span class="sub-text">Modal Footer Text</span>
-            </div>
+            <div class="modal-footer bg-light"></div>
         </div>
     </div>
 </div>
@@ -427,28 +419,26 @@
                 <em class="icon ni ni-cross"></em>
             </a>
             <div class="modal-header">
-                <h5 class="modal-title">Delete health</h5>
+                <h5 class="modal-title">{{ translate('delete_health') }}</h5>
             </div>
             <div class="modal-body">
-                <h4>Are you sure delete health?</h4>
-                Health have id <span class="js-health-id" style="font-weight: bold; font-size: 15px"></span>
-                after being deleted will not be able to recover.
+                <h4>{{ translate('alert_delete_health') }}</h4>
+                {{ translate('prefix_content_delete') }} <span class="js-health-id" style="font-weight: bold; font-size: 15px"></span>
+                {{ translate('suffix_content_delete') }}
                 <form id="delete-health-form" action="{{ redirect('admin/post-delete-health') }}" method="post">
                     <input type="text" hidden value="" name="health-id">
                     <input type="text" hidden value="" name="medical-file-id">
                     <div class="card-inner">
                         <div class="preview-block">
                             <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">
-                                Delete
+                                {{ translate('delete') }}
                             </button>
-                            <button class="btn btn-xl btn-outline-secondary js-btn-cancel">Cancel</button>
+                            <button class="btn btn-xl btn-outline-secondary js-btn-cancel">{{ translate('cancel') }}</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer bg-light">
-                <span class="sub-text">Modal Footer Text</span>
-            </div>
+            <div class="modal-footer bg-light"></div>
         </div>
     </div>
 </div>
