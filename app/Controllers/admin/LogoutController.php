@@ -12,6 +12,6 @@ class LogoutController extends BaseController
     public function logout() {
         $use_case = new LogoutUseCase();
         $use_case->execute();
-        $this->response->redirect('/admin/login');
+        $this->response->json_encode([]);
     }
 }
