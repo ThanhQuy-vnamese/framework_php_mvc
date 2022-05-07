@@ -29,7 +29,10 @@ class HealthDeclarationListController extends BaseController
         $health_declarations = $this->createResponse($use_case->execute($offset));
         return $this->twig->render(
             '/admin/pages/health_declaration_list',
-            ['health_declarations' => $health_declarations]
+            [
+                'health_declarations' => $health_declarations,
+                'total' => count($health_declarations)
+            ]
         );
     }
 
