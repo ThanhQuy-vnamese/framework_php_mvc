@@ -81,8 +81,8 @@ class AddMedicalFileUseCase
         $healthInsurance = $this->validateHealthInsurance($health_insurance_number, $expiration_date);
         $healthInsuranceForInsert = $this->buildHealthInsurance(
             $healthInsurance['health_insurance'],
-            (string)$healthInsurance['health_insurance_number'],
-            (string)$healthInsurance['expiration_date'],
+            (string)($healthInsurance['health_insurance_number'] ?? ''),
+            (string)($healthInsurance['expiration_date'] ?? null),
             $idMedicalFile
         );
 
@@ -91,7 +91,6 @@ class AddMedicalFileUseCase
             $this->session->setFlash('errorAddMedicalFile', 'Add medical file fail');
             return 0;
         }
-        $this->session->setFlash('successAddMedicalFile', 'Add medical file success');
         return $idMedicalFile;
     }
 
@@ -156,7 +155,7 @@ class AddMedicalFileUseCase
     private function buildHealthInsurance(
         int $health_insurance,
         string $health_insurance_number,
-        string $expiration_date,
+        ?string $expiration_date,
         int $medical_records_id
     ): HealthInsurance {
         return new HealthInsurance($health_insurance, $health_insurance_number, $expiration_date, $medical_records_id);
