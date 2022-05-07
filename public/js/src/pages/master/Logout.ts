@@ -11,7 +11,7 @@ export default class Logout {
 
     private handleLogout() {
         logout().then(() => {
-            window.location.replace('/admin/login');
+            window.location.replace('/');
         });
     }
 

@@ -59,5 +59,10 @@ const LANGUAGES = [
     'alert_delete_health' => 'Bạn có chắc là muốn xóa lịch sử khám bệnh?',
     'prefix_content_delete' => 'Lịch sử khám bệnh có mã là ',
     'suffix_content_delete' => 'Sau khi xóa sẽ không thể phục hồi.',
-    'edit_prescription' => 'Sửa đơn thuốc'
+    'edit_prescription' => 'Sửa đơn thuốc',
+
+    //Medical file add
+    'add' => 'Thêm',
+    'male' => 'Nam',
+    'female' => 'Nữ'
 ];
