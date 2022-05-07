@@ -61,7 +61,7 @@ class AddMedicalFileController extends BaseController
             $temp = [];
             $vaccineName = $this->request->input->get("name-${i}");
             $date = $this->request->input->get("date-${i}");
-            if (empty($vaccineName) && empty($date)) {
+            if (empty($vaccineName) || empty($date)) {
                 continue;
             }
             $date = $this->convertDate($date);

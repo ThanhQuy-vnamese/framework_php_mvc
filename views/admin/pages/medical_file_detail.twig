@@ -76,12 +76,12 @@
                                                 <h5 class="title">{{ translate('main_information') }}</h5>
                                                 <div>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#modalDefault">Edit Information
+                                                            data-target="#modalDefault">{{ translate('edit_information') }}
                                                     </button>
                                                     <button type="button"
                                                             class="btn btn-warning" data-toggle="modal"
                                                             data-target="#modalReGenerateQRImage">
-                                                        Re-generate QR image
+                                                        {{ translate('re_generate_qr_image') }}
                                                     </button>
                                                 </div>
                                             </div><!-- .nk-block-head -->
@@ -205,7 +205,7 @@
                                                         <em class="icon ni ni-cross"></em>
                                                     </a>
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Edit Information</h5>
+                                                        <h5 class="modal-title">{{ translate('edit_information') }}</h5>
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="{{ redirect('admin/post-medical-file-edit') }}"
@@ -216,13 +216,12 @@
                                                                    value="{{ medicalFile.insurance_id }}">
                                                             <div class="card-inner">
                                                                 <div class="preview-block">
-                                                                    <span class="preview-title-lg overline-title">Main Information</span>
+                                                                    <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                                                                     <div class="row gy-4">
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="first-name">First
-                                                                                    Name</label>
+                                                                                       for="first-name">{{ translate('first_name') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -236,7 +235,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="last-name">Last Name</label>
+                                                                                       for="last-name">{{ translate('last_name') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -250,7 +249,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="password">Gender</label>
+                                                                                       for="password">{{ translate('gender') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <div
                                                                                         class="custom-control custom-radio">
@@ -278,7 +277,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="birthday">Birthday</label>
+                                                                                       for="birthday">{{ translate('birthday') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="date"
                                                                                            class="form-control"
@@ -290,7 +289,7 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="phone">Phone</label>
+                                                                                <label class="form-label" for="phone">{{ translate('phone') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -302,7 +301,7 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="email">Email</label>
+                                                                                <label class="form-label" for="email">{{ translate('email_address') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="email"
                                                                                            class="form-control"
@@ -315,8 +314,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="identity-card">Identity
-                                                                                    card</label>
+                                                                                       for="identity-card">{{ translate('identity_card') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -330,7 +328,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="province">Province/City</label>
+                                                                                       for="province">{{ translate('province') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -344,7 +342,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="district">District</label>
+                                                                                       for="district">{{ translate('district') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -357,7 +355,7 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="wards">Wards</label>
+                                                                                <label class="form-label" for="wards">{{ translate('wards') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -371,8 +369,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="house-number">House
-                                                                                    number/Way</label>
+                                                                                       for="house-number">{{ translate('way') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -385,13 +382,12 @@
                                                                         </div>
                                                                     </div>
                                                                     <hr class="preview-hr">
-                                                                    <span class="preview-title-lg overline-title">Other information</span>
+                                                                    <span class="preview-title-lg overline-title">{{ translate('other_information') }}</span>
                                                                     <div class="row gy-4">
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="health-insurance-number">Health
-                                                                                    Insurance number</label>
+                                                                                       for="health-insurance-number">{{ translate('health_insurance_number') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -405,8 +401,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="expiration-date">Expiration
-                                                                                    date</label>
+                                                                                       for="expiration-date">{{ translate('expiration_date') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="date"
                                                                                            class="form-control"
@@ -419,14 +414,14 @@
                                                                         </div>
                                                                     </div>
                                                                     <hr class="preview-hr">
-                                                                    <span class="preview-title-lg overline-title">Covid vaccine information</span>
+                                                                    <span class="preview-title-lg overline-title">{{ translate('covid_vaccination') }}</span>
                                                                     {% for covid_injection in medicalFile.covid_injections %}
                                                                         <div class="row gy-4">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-label"
-                                                                                           for="name-{{ loop.index }}">Injection {{ loop.index }}
-                                                                                        - Name vaccine</label>
+                                                                                           for="name-{{ loop.index }}">{{ translate('injection') }} {{ loop.index }}
+                                                                                        - {{ translate('name_vaccine') }}</label>
                                                                                     <div class="form-control-wrap">
                                                                                         <input type="text"
                                                                                                class="form-control"
@@ -440,8 +435,8 @@
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-label"
-                                                                                           for="date-{{ loop.index }}">Injection {{ loop.index }}
-                                                                                        - Date</label>
+                                                                                           for="date-{{ loop.index }}">{{ translate('injection') }} {{ loop.index }}
+                                                                                        - {{ translate('vaccination_date') }}</label>
                                                                                     <div class="form-control-wrap">
                                                                                         <input type="date"
                                                                                                class="form-control"
@@ -458,7 +453,7 @@
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <button type="submit"
-                                                                                    class="btn btn-success">Edit
+                                                                                    class="btn btn-success">{{ translate('edit') }}
                                                                             </button>
                                                                         </div>
                                                                     </div>
@@ -467,7 +462,6 @@
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer bg-light">
-                                                        <span class="sub-text">Modal Footer Text</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -491,24 +485,23 @@
                     <em class="icon ni ni-cross"></em>
                 </a>
                 <div class="modal-header">
-                    <h5 class="modal-title">Re-generate QR image</h5>
+                    <h5 class="modal-title">{{ translate('re_generate_qr_image') }}</h5>
                 </div>
                 <div class="modal-body">
-                    <h4>Are you sure re-generate QR image?</h4>
+                    <h4>{{ translate('title_generate_qr') }}</h4>
                     <form action="{{ redirect('admin/re-generate-qr') }}" method="post">
                         <input type="text" hidden value="{{ medicalFile.id }}" name="medical-file-id">
                         <div class="card-inner">
                             <div class="preview-block">
                                 <button type="submit" class="btn btn-xl btn-warning" style="margin-right: 10px">
-                                    Generate
+                                    {{ translate('generate') }}
                                 </button>
-                                <button class="btn btn-xl btn-secondary js-btn-cancel">Cancel</button>
+                                <button class="btn btn-xl btn-secondary js-btn-cancel">{{ translate('cancel') }}</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer bg-light">
-                    <span class="sub-text">Modal Footer Text</span>
                 </div>
             </div>
         </div>
