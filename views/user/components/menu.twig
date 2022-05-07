@@ -53,6 +53,15 @@
 									<a class="btn_2 d-none d-lg-block" href="{{ redirect('user/login') }}">Login</a>
 								{% endif %}
 							</li>
+                            {% if Auth.user().role == 1 or Auth.user().role == 2 %}
+                                <li class="nav-item">
+                                    {% if Auth.user().role == 1 %}
+                                        <a href="{{ redirect('admin/user-list') }}"><i class="fa-solid fa-gear fa-xl"></i></a>
+                                    {% elseif Auth.user().role == 2 %}
+                                        <a href="{{ redirect('admin/calendar') }}"><i class="fa-solid fa-gear fa-xl"></i></a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
 							<li class="nav-item"></li>
 						</ul>
 					</div>

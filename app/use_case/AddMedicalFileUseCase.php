@@ -55,6 +55,10 @@ class AddMedicalFileUseCase
             $this->session->setFlash('errorAddMedicalFile', 'The identity card ....');
             return 0;
         }
+        if (empty($birthday)) {
+            $this->session->setFlash('errorAddMedicalFile', 'Please enter birthday');
+            return 0;
+        }
         $qrName = $this->generateQrImage();
         $medicalFileToInsert = $this->buildMedicalFile(
             $first_name,

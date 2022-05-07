@@ -28,7 +28,7 @@ class MedicineListQueryService implements MedicineListQueryServiceInterface
     {
         $query = "SELECT M.id, M.name, MT.name AS type_name
                 FROM `medical_medicines` AS M INNER JOIN `medical_medicines_types` AS MT
-                ON m.`medicine_type_id`=MT.id LIMIT %s, %s";
+                ON M.`medicine_type_id`=MT.id LIMIT %s, %s";
         $query = sprintf($query, $offset, self::LIMIT);
         $result = $this->db->query($query);
         if (!$result) {

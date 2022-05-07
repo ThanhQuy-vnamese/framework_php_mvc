@@ -10,7 +10,7 @@ class MedicalFile
     private string $first_name;
     private string $last_name;
     private string $gender;
-    private ?string $birth_day;
+    private string $birth_day;
     private string $identity_card;
     private string $email;
     private string $phone;
@@ -27,7 +27,7 @@ class MedicalFile
         string $first_name,
         string $last_name,
         string $gender,
-        ?string $birth_day,
+        string $birth_day,
         string $identity_card,
         string $email,
         string $phone,
@@ -89,9 +89,9 @@ class MedicalFile
     }
 
     /**
-     * @return ?string
+     * @return string
      */
-    public function getBirthDay(): ?string
+    public function getBirthDay(): string
     {
         return $this->birth_day;
     }
