@@ -7,8 +7,8 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Calendar / <strong
-                                        class="text-primary small">Add</strong></h3>
+                            <h3 class="nk-block-title page-title">{{ translate('calendar') }} / <strong
+                                        class="text-primary small">{{ translate('add') }}</strong></h3>
                         </div>
                         {% include('admin/components/back_button.twig') %}
                     </div>
@@ -23,52 +23,52 @@
                                 <div class="row gy-4 container-sm">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="subject">Subject</label>
+                                            <label class="form-label" for="subject">{{ translate('subject') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="subject"
-                                                       id="subject" placeholder="Enter subject">
+                                                       id="subject" placeholder="{{ translate('subject') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="full-name">Full name</label>
+                                            <label class="form-label" for="full-name">{{ translate('full_name') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="full-name" id="full-name"
-                                                       placeholder="Enter full name">
+                                                       placeholder="{{ translate('full_name') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="date">Date</label>
+                                            <label class="form-label" for="date">{{ translate('date') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="date" class="form-control" name="date" id="date"
-                                                       placeholder="Enter first name">
+                                                       placeholder="{{ translate('date') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="time-start">Time start</label>
+                                            <label class="form-label" for="time-start">{{ translate('time_start') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="time" class="form-control" name="time-start" id="time-start"
-                                                       placeholder="Enter time start">
+                                                       placeholder="{{ translate('time_start') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="time-end">Time end</label>
+                                            <label class="form-label" for="time-end">{{ translate('time_end') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="time" class="form-control" name="time-end" id="time-end"
-                                                       placeholder="Enter time start">
+                                                       placeholder="{{ translate('time_end') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="select-doctor">Doctor</label>
+                                            <label class="form-label" for="select-doctor">{{ translate('doctor') }}</label>
                                             <div class="form-control-wrap">
                                                 <div id="select-doctor"></div>
                                                 <input type="text" id="doctor-id" name="doctor-id" hidden value="">
@@ -77,10 +77,10 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="description">Description</label>
+                                            <label class="form-label" for="description">{{ translate('description') }}</label>
                                             <div class="form-control-wrap">
                                                 <textarea class="form-control" name="description"
-                                                       id="description" placeholder="Enter description">
+                                                       id="description" placeholder="{{ translate('description') }}">
                                                 </textarea>
                                             </div>
                                         </div>
@@ -89,7 +89,7 @@
                                 <hr class="preview-hr">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success">Add</button>
+                                        <button type="submit" class="btn btn-success">{{ translate('add') }}</button>
                                     </div>
                                 </div>
                             </div>
