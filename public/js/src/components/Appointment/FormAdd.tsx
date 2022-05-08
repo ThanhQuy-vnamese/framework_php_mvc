@@ -2,6 +2,7 @@ import { SelectPicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import { VFC } from 'react';
 import { ItemDataType } from 'rsuite/esm/@types/common';
+import i18n from '../../common/translate/i18n';
 
 interface FormAddProps {
     defaultDate: string;
@@ -36,7 +37,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-12">
                     <div className="form-group">
                         <label className="form-label" htmlFor="subject">
-                            Subject
+                            {i18n.t('admin.calendar.popup.subject')}
                         </label>
                         <div className="form-control-wrap">
                             <input
@@ -52,7 +53,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-6">
                     <div className="form-group">
                         <label className="form-label" htmlFor="full-name">
-                            Full name
+                            {i18n.t('admin.calendar.popup.fullName')}
                         </label>
                         <div className="form-control-wrap">
                             <input
@@ -68,7 +69,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-6">
                     <div className="form-group">
                         <label className="form-label" htmlFor="date">
-                            Date
+                            {i18n.t('admin.calendar.popup.date')}
                         </label>
                         <div className="form-control-wrap">
                             <input
@@ -85,7 +86,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-6">
                     <div className="form-group">
                         <label className="form-label" htmlFor="time-start">
-                            Time start
+                            {i18n.t('admin.calendar.popup.timeStart')}
                         </label>
                         <div className="form-control-wrap">
                             <input
@@ -104,7 +105,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-6">
                     <div className="form-group">
                         <label className="form-label" htmlFor="time-end">
-                            Time end
+                            {i18n.t('admin.calendar.popup.timeEnd')}
                         </label>
                         <div className="form-control-wrap">
                             <input
@@ -121,7 +122,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-6">
                     <div className="form-group">
                         <label className="form-label" htmlFor="doctor">
-                            Doctor
+                            {i18n.t('admin.calendar.popup.doctor')}
                         </label>
                         <div className="form-control-wrap">
                             <SelectPicker
@@ -140,7 +141,7 @@ export const FormAdd: VFC<FormAddProps> = ({
                 <div className="col-md-12">
                     <div className="form-group">
                         <label className="form-label" htmlFor="description">
-                            Description
+                            {i18n.t('admin.calendar.popup.description')}
                         </label>
                         <div className="form-control-wrap">
                             <textarea
