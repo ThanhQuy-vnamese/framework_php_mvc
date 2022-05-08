@@ -18,4 +18,17 @@ const LANGUAGES = [
     'doctor' => 'Bác sĩ',
     'description' => 'Mô tả',
     'note_status' => 'Ghi chú trạng thái',
+    'note' => 'Ghi chú',
+
+    //Edit calendar
+    'edit_calendar' => 'Sửa lịch',
+    'time_start' => 'Giờ bắt đầu',
+    'time_end' => 'Giờ kết thúc',
+    'delete_calendar' => 'Xóa lịch',
+    'alert' => 'Bạn có chắc chắn muốn xóa lịch?',
+    'suffix_delete' => 'sau khi xóa sẽ không thể phục hồi',
+
+    //Add calendar
+    'add' => 'Thêm',
+    'date' => 'Ngày',
 ];

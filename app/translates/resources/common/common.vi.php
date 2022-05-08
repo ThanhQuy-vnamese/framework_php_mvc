@@ -9,6 +9,7 @@ const COMMON_LANGUAGES = [
     'manage_blog' => 'Quản lí bài viết',
     'manage_contact' => 'Quản lí liên hệ',
     'manage_health_declaration' => 'Quản lí khai báo y tế',
+    'calendar' => 'Lịch',
 
     // Button
     'delete' => 'Xóa',

@@ -54,9 +54,7 @@
                                             <div>
                                                 <button type="button"
                                                         data-selected-doctor-id="{{ calendar_for_view.attendees_info.doctor.id }}"
-                                                        class="btn btn-primary js-btn-edit-calendar">Edit
-                                                    calendar
-                                                </button>
+                                                        class="btn btn-primary js-btn-edit-calendar">{{ translate('edit_calendar') }}</button>
                                                 <button type="button"
                                                         class="btn btn-danger" data-toggle="modal" data-target="#deleteCalendarModal">
                                                     Delete
@@ -168,7 +166,7 @@
                         <em class="icon ni ni-cross"></em>
                     </a>
                     <div class="modal-header">
-                        <h5 class="modal-title">Change status</h5>
+                        <h5 class="modal-title">{{ translate('change_status') }}</h5>
                     </div>
                     <div class="modal-body">
                         <form action="{{ redirect('admin/post-calendar-edit-status') }}" method="post">
@@ -180,28 +178,28 @@
                                             <input type="radio" id="customRadio1" name="status" value="1"
                                                    class="custom-control-input" {{ calendar_for_view.calendar_info.status == 'Approve' ? 'checked' : '' }}>
                                             <label class="custom-control-label text-primary"
-                                                   for="customRadio1">Approve</label>
+                                                   for="customRadio1">{{ translate('approve') }}</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="customRadio2" name="status" value="2"
                                                    class="custom-control-input" {{ calendar_for_view.calendar_info.status == 'Reject' ? 'checked' : '' }}>
                                             <label class="custom-control-label text-danger"
-                                                   for="customRadio2">Reject</label>
+                                                   for="customRadio2">{{ translate('reject') }}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="note">Note</label>
+                                        <label class="form-label" for="note">{{ translate('note') }}</label>
                                         <div class="form-control-wrap">
                                             <textarea class="form-control no-resize" id="note" name="note"
-                                                      placeholder="Note">{{ calendar_for_view.calendar_info.note }}</textarea>
+                                                      placeholder="{{ translate('note') }}">{{ calendar_for_view.calendar_info.note }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <button class="btn btn-primary js-btn-cancel">Change</button>
+                                        <button class="btn btn-primary js-btn-cancel">{{ translate('change_status') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +215,7 @@
                         <em class="icon ni ni-cross"></em>
                     </a>
                     <div class="modal-header">
-                        <h5 class="modal-title">Change status</h5>
+                        <h5 class="modal-title">{{ translate('edit_calendar') }}</h5>
                     </div>
                     <div class="modal-body">
                         <form action="{{ redirect('admin/post-calendar-edit') }}" method="post" id="edit-calendar">
@@ -227,7 +225,7 @@
                             <div class="row gy-4">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="subject" class="form-label">Subject</label>
+                                        <label for="subject" class="form-label">{{ translate('subject') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <input type="text" class="form-control" id="subject"
@@ -236,7 +234,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="full-name" class="form-label">Full name</label>
+                                        <label for="full-name" class="form-label">{{ translate('full_name') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <input type="text" class="form-control" id="full-name"
@@ -245,7 +243,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="date" class="form-label">Date</label>
+                                        <label for="date" class="form-label">{{ translate('date_start') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <input type="date" class="form-control" id="date" name="date"
@@ -254,7 +252,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="time-start" class="form-label">Time start</label>
+                                        <label for="time-start" class="form-label">{{ translate('time_start') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <input type="time" class="form-control" id="time-start" name="time-start"
@@ -263,7 +261,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="time-end" class="form-label">Time end</label>
+                                        <label for="time-end" class="form-label">{{ translate('time_end') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <input type="time" class="form-control" id="time-end" name="time-end"
@@ -272,7 +270,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="doctor" class="form-label">Doctor</label>
+                                        <label for="doctor" class="form-label">{{ translate('doctor') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <div id="select-doctor"></div>
@@ -280,7 +278,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="description" class="form-label">Description</label>
+                                        <label for="description" class="form-label">{{ translate('description') }}</label>
                                     </div>
                                     <div class="form-control-wrap">
                                     <textarea
@@ -294,7 +292,7 @@
                                     <div class="form-group">
                                     </div>
                                     <div class="form-control-wrap">
-                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                        <button type="submit" class="btn btn-primary">{{ translate('edit_calendar') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -310,17 +308,17 @@
                         <em class="icon ni ni-cross"></em>
                     </a>
                     <div class="modal-header">
-                        <h5 class="modal-title">Delete calendar</h5>
+                        <h5 class="modal-title">{{ translate('delete_calendar') }}</h5>
                     </div>
                     <div class="modal-body">
-                        <h4>Are you sure delete calendar?</h4>
-                        Calendar <span style="font-weight: bold; font-size: 15px">{{ calendar_for_view.calendar_info.subject }}</span> after being deleted will not be able to recover.
+                        <h4>{{ translate('alert') }}</h4>
+                        {{ translate('calendar') }} <span style="font-weight: bold; font-size: 15px">{{ calendar_for_view.calendar_info.subject }}</span> {{ translate('suffix_delete') }}
                         <form id="delete-user-form" action="{{ redirect('admin/post-calendar-delete') }}" method="post">
                             <input type="text" hidden value="{{ calendar_for_view.calendar_info.id }}" name="id">
                             <div class="card-inner">
                                 <div class="preview-block">
-                                    <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">Delete</button>
-                                    <button class="btn btn-xl btn-outline-secondary">Cancel</button>
+                                    <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">{{ translate('delete') }}</button>
+                                    <button class="btn btn-xl btn-outline-secondary">{{ translate('cancel') }}</button>
                                 </div>
                             </div>
                         </form>

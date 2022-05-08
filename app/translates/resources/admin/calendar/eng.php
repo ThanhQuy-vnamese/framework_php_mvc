@@ -18,4 +18,17 @@ const LANGUAGES = [
     'doctor' => 'Doctor',
     'description' => 'Description',
     'note_status' => 'Note status',
+    'note' => 'Note',
+
+    //Edit calendar
+    'edit_calendar' => 'Edit calendar',
+    'time_start' => 'Time start',
+    'time_end' => 'Time end',
+    'delete_calendar' => 'Delete calendar',
+    'alert' => 'Are you sure delete calendar?',
+    'suffix_delete' => 'after being deleted will not be able to recover.',
+
+    //Add calendar
+    'add' => 'Add',
+    'date' => 'Date'
 ];

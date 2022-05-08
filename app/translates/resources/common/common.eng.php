@@ -9,6 +9,7 @@ const COMMON_LANGUAGES = [
     'manage_blog' => 'Manage blog',
     'manage_contact' => 'Manage contact',
     'manage_health_declaration' => 'Manage health declaration',
+    'calendar' => 'Calendar',
 
     // Button
     'delete' => 'Delete',
