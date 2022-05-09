@@ -117,7 +117,7 @@
                                             <div class="modal-body">
                                                 <h4>{{ translate('alert') }}</h4>
                                                 {{ translate('prefix_delete') }} <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> {{ translate('suffix_delete') }}
-                                                <form id="delete-contact-form" action="{{ redirect('admin/post-delete-contact') }}" method="post">
+                                                <form id="delete-contact-form" action="{{ redirect('admin/post-contact-delete') }}" method="post">
                                                     <input type="text" hidden value="" name="email">
                                                     <div class="card-inner">
                                                         <div class="preview-block">

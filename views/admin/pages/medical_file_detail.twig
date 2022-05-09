@@ -674,7 +674,7 @@
                 </div>
                 <div class="modal-body">
                     <h4>{{ translate('title_generate_qr') }}</h4>
-                    <form action="{{ redirect('admin/re-generate-qr') }}" method="post">
+                    <form action="{{ redirect('admin/post-medical-file-re-generate-qr') }}" method="post">
                         <input type="text" hidden value="{{ medicalFile.id }}" name="medical-file-id">
                         <div class="card-inner">
                             <div class="preview-block">

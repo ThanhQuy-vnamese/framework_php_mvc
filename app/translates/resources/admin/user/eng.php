@@ -48,5 +48,9 @@ const LANGUAGES = [
     'english' => 'English',
     'vietnamese' => 'Vietnamese',
     'male' => 'Male',
-    'female' => 'Female'
+    'female' => 'Female',
+    'update_avatar_success' => 'Update avatar success',
+    'update_avatar_fail' => 'Update avatar fail',
+    'update_user_success' => 'Update user success',
+    'update_user_fail' => 'Update user fail',
 ];

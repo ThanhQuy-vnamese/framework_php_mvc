@@ -156,7 +156,7 @@
                                                     <h5 class="modal-title">{{ translate('reset_password') }}</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ redirect('admin/post-reset-password') }}" method="post">
+                                                    <form action="{{ redirect('admin/post-user-reset-password') }}" method="post">
                                                         <input type="text" hidden value="" name="user-id">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
@@ -207,7 +207,7 @@
                                                 <div class="modal-body">
                                                     <h4>{{ translate('title_delete') }}</h4>
                                                     {{ translate('users') }} <span class="js-user-full-name" style="font-weight: bold; font-size: 15px"></span> {{ translate('title_delete_after') }}
-                                                    <form id="delete-user-form" action="{{ redirect('admin/post-delete-user') }}" method="post">
+                                                    <form id="delete-user-form" action="{{ redirect('admin/post-user-delete') }}" method="post">
                                                         <input type="text" hidden value="" name="user-id">
                                                         <div class="card-inner">
                                                             <div class="preview-block">

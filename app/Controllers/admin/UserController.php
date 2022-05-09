@@ -10,12 +10,16 @@ use App\Core\Session;
 use App\legacy\Auth;
 use App\Model\User;
 use App\Repository\UserRepository;
+use App\translates\Translate;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 class UserController extends BaseController
 {
+    public function getTranslate(): Translate {
+        return new Translate();
+    }
     /**
      * @return string
      * @throws LoaderError
@@ -201,7 +205,7 @@ class UserController extends BaseController
         $user = new User();
         $isUpdateUserSuccess = $user->updateUser($idUser, $dataUser);
         if (!$isUpdateUserSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_user_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
         }
 
@@ -222,11 +226,11 @@ class UserController extends BaseController
         $isUpdateUserProfileSuccess = $user->updateUserProfileForAdmin($idUser, $dataUserProfile);
         $this->updateInfoUserLogin((int)$idUser);
         if (!$isUpdateUserProfileSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_user_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
         }
 
-        $session->setFlash('successUpdateUser', 'Update user success');
+        $session->setFlash('successUpdateUser', $this->getTranslate()->getLanguage('update_user_success'));
         $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
     }
 
@@ -238,7 +242,7 @@ class UserController extends BaseController
 
         $session = new Session();
         if (!$isSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update avatar fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_avatar_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
         $data = [
@@ -248,10 +252,10 @@ class UserController extends BaseController
         $isSuccessUpdateAvatar = $user->updateUserProfileForAdmin($userId, $data);
         $this->updateInfoUserLogin((int)$userId);
         if (!$isSuccessUpdateAvatar) {
-            $session->setFlash('errorUpdateUser', 'Update avatar fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_avatar_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
-        $session->setFlash('successUpdateUser', 'Update user success');
+        $session->setFlash('successUpdateUser', $this->getTranslate()->getLanguage('update_avatar_success'));
         $this->response->redirect('/admin/user-detail', ['id' => $userId]);
     }
 
