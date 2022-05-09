@@ -20,5 +20,7 @@ const LANGUAGES = [
     'delete_medicine' => 'Delete medicine',
     'medicine' => 'Medicine',
     'edit_medicine' => 'Edit medicine',
-    'medicine_name' => 'Medicine name'
+    'medicine_name' => 'Medicine name',
+
+    'add_medicine_fail' => 'Add medicine fail'
 ];

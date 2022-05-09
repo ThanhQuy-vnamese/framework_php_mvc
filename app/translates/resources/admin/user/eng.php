@@ -48,5 +48,20 @@ const LANGUAGES = [
     'english' => 'English',
     'vietnamese' => 'Vietnamese',
     'male' => 'Male',
-    'female' => 'Female'
+    'female' => 'Female',
+
+
+    'update_avatar_success' => 'Update avatar success',
+    'update_avatar_fail' => 'Update avatar fail',
+    'update_user_success' => 'Update user success',
+    'update_user_fail' => 'Update user fail',
+    'please_enter_password' => 'Please enter password',
+    'password_not_match' => 'Password not match',
+    'email_already_exist' => 'Email already exists',
+    'add_user_fail' => 'Add user fail',
+    'add_user_profile_fail' => 'Add user profile fail',
+    'delete_user_fail' => 'Delete user fail',
+    'delete_user_success' => 'Delete user success',
+    'reset_password_fail' => 'Reset password fail',
+    'reset_password_success' => 'Reset password success',
 ];

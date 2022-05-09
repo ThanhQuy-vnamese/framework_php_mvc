@@ -23,7 +23,7 @@ class PrescriptionRepository implements PrescriptionRepositoryInterface
     public function addPrescription(Prescription $prescription): int
     {
         $sql = "INSERT INTO medical_prescriptions(name, age, address, gender, note, medicine, healths_id, user_id)
-                VALUES ('%s', %s, '%s', '%s', '%s', %s, %s)";
+                VALUES ('%s', %s, '%s', '%s', '%s', '%s' , %s, %s)";
         $query = sprintf(
             $sql,
             $prescription->getFullName(),

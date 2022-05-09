@@ -7,12 +7,15 @@ use App\Core\Controller\BaseController;
 use App\Core\Session;
 use App\legacy\Auth;
 use App\Model\MedicalFile;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
+use App\translates\Translate;
 
 class EditMedicalFileController extends BaseController
 {
+    public function getTranslate(): Translate
+    {
+        return new Translate();
+    }
+
     public function editMedicalFile() {
         $medicalFileId = $this->request->input->get('medical-file-id');
         $insuranceId = $this->request->input->get('insurance-id');
@@ -50,14 +53,14 @@ class EditMedicalFileController extends BaseController
         $session = new Session();
         $medicalFile = new MedicalFile();
         if ($medicalFile->getInfoByIdentityCardExceptCurrent($identityCard, $medicalFileId) > 0) {
-            $session->setFlash('errorEditMedicalFile', 'The identity card ....');
+            $session->setFlash('errorEditMedicalFile', $this->getTranslate()->getLanguage('identity_card_exist'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
         $isSuccessUpdateMedicalFileId = $medicalFile->updateMedicalFile($information, $medicalFileId);
 
         if (!$isSuccessUpdateMedicalFileId) {
-            $session->setFlash('errorEditMedicalFile', 'Add medical file fail');
+            $session->setFlash('errorEditMedicalFile', $this->getTranslate()->getLanguage('update_medical_file_fail'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
@@ -71,7 +74,7 @@ class EditMedicalFileController extends BaseController
         $isSuccess = $medicalFile->updateHealthInsurance($healthInsuranceData, $insuranceId);
 
         if (!$isSuccess) {
-            $session->setFlash('errorEditMedicalFile', 'Add medical file fail');
+            $session->setFlash('errorEditMedicalFile', $this->getTranslate()->getLanguage('update_health_insurance'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
