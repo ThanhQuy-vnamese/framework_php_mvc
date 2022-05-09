@@ -20,5 +20,7 @@ const LANGUAGES = [
     'delete_medicine' => 'Xóa thuốc',
     'medicine' => 'Thuốc',
     'edit_medicine' => 'Sửa thuốc',
-    'medicine_name' => 'Tên thuốc'
+    'medicine_name' => 'Tên thuốc',
+
+    'add_medicine_fail' => 'Thêm medicine thất bại'
 ];

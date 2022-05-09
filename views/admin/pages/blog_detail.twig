@@ -25,7 +25,7 @@
                                     <h5 class="modal-title">{{ translate('edit_blog') }}</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ redirect('admin/post-edit-blog') }}" enctype="multipart/form-data" method="post">
+                                    <form action="{{ redirect('admin/post-blog-edit') }}" enctype="multipart/form-data" method="post">
                                         <input type="text" hidden name="id" value="{{ blog.id }}">
                                         <div class="card-inner">
                                             <div class="preview-block">

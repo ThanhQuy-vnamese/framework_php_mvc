@@ -65,5 +65,14 @@ const LANGUAGES = [
     //Medical file add
     'add' => 'Add',
     'male' => 'Male',
-    'female' => 'Female'
+    'female' => 'Female',
+
+    'identity_card_exist' => 'The identity card existed',
+    'require_birthday' => 'Please enter birthday',
+    'add_medical_file_fail' => 'Add medical file fail',
+    'add_health_insurance' => 'Add health insurance fail',
+    'update_medical_file_fail' => 'Add medical file fail',
+    'update_health_insurance' => 'Add health insurance fail',
+    'delete_medical_file_fail' => 'Delete medical file fail',
+    'delete_medical_file_success' => 'Delete medical file success',
 ];

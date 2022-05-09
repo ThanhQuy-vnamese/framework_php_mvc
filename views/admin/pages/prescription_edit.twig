@@ -14,7 +14,7 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    <form id="edit-prescription-form" action="{{ redirect('admin/post-edit-prescription') }}" method="post">
+                    <form id="edit-prescription-form" action="{{ redirect('admin/post-prescription-edit') }}" method="post">
                         <input type="text" name="id" hidden value="{{ prescriptions.id }}">
                         <input type="text" name="user-id" hidden value="{{ prescriptions.user_id }}">
                         <input type="text" name="medical-file-id" hidden value="{{ medical_file_id }}">

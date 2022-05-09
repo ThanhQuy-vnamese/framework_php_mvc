@@ -64,5 +64,14 @@ const LANGUAGES = [
     //Medical file add
     'add' => 'Thêm',
     'male' => 'Nam',
-    'female' => 'Nữ'
+    'female' => 'Nữ',
+
+    'identity_card_exist' => 'CMND/CCCD đã tồn tại',
+    'require_birthday' => 'Vui lòng chọn ngày sinh',
+    'add_medical_file_fail' => 'Thêm hồ sơ bệnh nhân không thành công',
+    'add_health_insurance' => 'Thêm BHYT không thành công',
+    'update_medical_file_fail' => 'Chỉnh sửa hồ sơ bệnh nhân không thành công',
+    'update_health_insurance' => 'Chỉnh sửa BHYT không thành công',
+    'delete_medical_file_fail' => 'Xóa hồ sơ bệnh nhân không thành công',
+    'delete_medical_file_success' => 'Xóa hồ sơ bệnh nhân thành công',
 ];

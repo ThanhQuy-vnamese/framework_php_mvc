@@ -100,12 +100,12 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-reset-password',
+            '/admin/post-user-reset-password',
             [UserController::class, 'resetPassword'],
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-delete-user',
+            '/admin/post-user-delete',
             [UserController::class, 'deleteUser'],
             AdminAuthMiddleware::class
         );
@@ -140,7 +140,7 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->get('/admin/prescription-edit', [GetPrescriptionEditView::class, 'get']);
-        $this->router->post('/admin/post-edit-prescription', [EditPrescriptionController::class, 'editPrescription']);
+        $this->router->post('/admin/post-prescription-edit', [EditPrescriptionController::class, 'editPrescription']);
         $this->router->post(
             '/admin/post-medical-file-add',
             [AddMedicalFileController::class, 'addMedicalFile'],
@@ -172,7 +172,7 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-delete-health',
+            '/admin/post-health-delete',
             [DeleteHealthRecordController::class, 'deleteHealth'],
             AdminAuthMiddleware::class
         );
@@ -187,12 +187,12 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-add-medicine-type',
+            '/admin/post-medicine-type-add',
             [AddMedicineTypeController::class, 'add'],
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-add-medicine',
+            '/admin/post-medicine-add',
             [AddMedicineController::class, 'addMedicine'],
             AdminAuthMiddleware::class
         );
@@ -202,7 +202,7 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-edit-medicine',
+            '/admin/post-medicine-edit',
             [EditMedicineController::class, 'editMedicine'],
             AdminAuthMiddleware::class
         );
@@ -223,12 +223,12 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-edit-blog',
+            '/admin/post-blog-edit',
             [EditBlogController::class, 'editBlog'],
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-edit-delete',
+            '/admin/post-blog-delete',
             [DeleteBlogController::class, 'delete'],
             AdminAuthMiddleware::class
         );
@@ -243,12 +243,12 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-reply-contact',
+            '/admin/post-contact-reply',
             [ReplyContactController::class, 'replyContact'],
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-delete-contact',
+            '/admin/post-contact-delete',
             [DeleteContactController::class, 'deleteContact'],
             AdminAuthMiddleware::class
         );
@@ -289,7 +289,7 @@ class AdminRoute
         );
         $this->router->post('/admin/logout', [LogoutController::class, 'logout'], AdminAuthMiddleware::class);
         $this->router->post(
-            '/admin/re-generate-qr',
+            '/admin/post-medical-file-re-generate-qr',
             [GenerateQrController::class, 'generate'],
             AdminAuthMiddleware::class
         );
