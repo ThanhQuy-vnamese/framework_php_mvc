@@ -25,7 +25,7 @@ INSERT INTO `medical_users` (`id`, `email`, `password`, `status`, `created_at`, 
 (18, 'doctor17@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
 (19, 'doctor18@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
 (20, 'doctor19@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
-(21, 'doctor20@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2);
+(21, 'doctor20@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
 (22, 'doctor21@mail.com', '$2y$10$3VWXVhKAV/KLTw.JW0NkhehTro4ILrX4bbnqjo53PpBa4uFVin24C', 1, '2022-04-07 10:17:03', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
 (23, 'doctor22@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
 (24, 'doctor23@mail.com', '$2y$10$xjsU2yjsWVhPM.GHqCgSDuR7UThvOEtm9InjuqIOZfjmsK.a86tLm', 1, '2022-04-07 10:17:24', NULL, 'a:1:{s:8:"language";s:3:"eng";}', 2),
