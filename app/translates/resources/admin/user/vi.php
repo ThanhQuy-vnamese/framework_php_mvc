@@ -49,8 +49,18 @@ const LANGUAGES = [
     'vietnamese' => 'Tiếng Việt',
     'male' => 'Nam',
     'female' => 'Nữ',
+
     'update_avatar_success' => 'Cập nhật avatar thành công',
     'update_avatar_fail' => 'Cập nhật avatar thất bại',
     'update_user_success' => 'Cập nhật user thành công',
     'update_user_fail' => 'Cập nhật user thất bại',
+    'please_enter_password' => 'Vui lòng nhập mật khẩu',
+    'password_not_match' => 'Mật khẩu không khớp',
+    'email_already_exist' => 'Email đã tồn tại',
+    'add_user_fail' => 'Thêm user thất bại',
+    'add_user_profile_fail' => 'Thêm thông tin user thất bại',
+    'delete_user_fail' => 'Xóa user thất bại',
+    'delete_user_success' => 'Xóa user thành công',
+    'reset_password_fail' => 'Tạo lại mật khẩu lỗi',
+    'reset_password_success' => 'Tạo lại mật khẩu thành công',
 ];

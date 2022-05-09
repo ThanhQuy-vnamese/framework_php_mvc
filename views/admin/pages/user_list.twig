@@ -34,9 +34,6 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    {% if(Session.hasFlash('successAddUser')) %}
-                        <div class="alert alert-success">{{ session.getFlash('successAddUser') }}</div>
-                    {% endif %}
                     {% if(Session.hasFlash('successResetPassword')) %}
                         <div class="alert alert-success">{{ session.getFlash('successResetPassword') }}</div>
                     {% endif %}
