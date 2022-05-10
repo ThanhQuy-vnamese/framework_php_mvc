@@ -12,8 +12,8 @@ jobs:
             sudo apt-get install sshpass
             ls -al
             cd scripts
-#            sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r deploy.sh root@${IPSERVER}:/home/install
-#            sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install && sh deploy.sh'
+            sshpass -p "${PASSWORDSERVER}" scp -o StrictHostKeyChecking=no -r deploy.sh root@${IPSERVER}:/home/install
+            sshpass -p "${PASSWORDSERVER}" ssh -o StrictHostKeyChecking=no root@${IPSERVER} 'cd /home/install && sh deploy.sh'
   mysql:
     docker:
       - image: cimg/php:7.4.26-node
