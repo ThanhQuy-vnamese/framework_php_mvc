@@ -20,4 +20,8 @@ const LANGUAGES = [
     'alert' => 'Are you sure delete contact?',
     'prefix_delete' => 'Contact have email',
     'suffix_delete' => 'after being deleted will not be able to recover.',
+
+    'reply_fail' => 'Reply contact fail',
+    'delete_fail' => 'Fail to delete contact',
+    'delete_success' => 'Success to delete contact',
 ];

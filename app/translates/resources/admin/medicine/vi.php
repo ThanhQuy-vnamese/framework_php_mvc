@@ -22,5 +22,7 @@ const LANGUAGES = [
     'edit_medicine' => 'Sửa thuốc',
     'medicine_name' => 'Tên thuốc',
 
-    'add_medicine_fail' => 'Thêm medicine thất bại'
+    'add_medicine_fail' => 'Thêm medicine thất bại',
+    'add_medicine_type_fail' => 'Thêm loại thuốc không thành công',
+    'add_medicine_type_success' => 'Thêm loại thuốc thành công'
 ];

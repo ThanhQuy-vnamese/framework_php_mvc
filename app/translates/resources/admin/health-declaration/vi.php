@@ -31,5 +31,8 @@ const LANGUAGES = [
 
     //Health declaration
     'personal_information' => 'Thông tin cá nhân',
-    'time' => 'Thời gian khai báo'
+    'time' => 'Thời gian khai báo',
+
+    'add_health_declaration_success' => 'Thêm khai báo thành công',
+    'add_health_declaration_fail' => 'Thêm khai báo thất bại',
 ];

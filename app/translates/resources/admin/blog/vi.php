@@ -23,5 +23,13 @@ const LANGUAGES = [
     //Delete blog
     'blog' => 'Bài viết',
     'alert' => 'Bạn có chắc là muốn xóa blog?',
-    'suffix_delete' => 'sau khi bị delete sẽ không thể phục hồi'
+    'suffix_delete' => 'sau khi bị delete sẽ không thể phục hồi',
+
+    'upload_avatar_fail' => 'Chỉnh sửa ảnh đại diện không thành công',
+    'require_title' => 'Vui lòng nhập tiêu đề',
+    'require_content' => 'Vui lòng nhập nội dung',
+    'edit_fail' => 'Chỉnh sửa blog không thành công',
+    'edit_success' => 'Chỉnh sửa blog thành công',
+    'delete_fail' => 'Xóa blog không thành công',
+    'delete_success' => 'Xóa blog thành công',
 ];

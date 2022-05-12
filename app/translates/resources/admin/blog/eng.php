@@ -23,5 +23,13 @@ const LANGUAGES = [
     //Delete blog
     'blog' => 'Blog',
     'alert' => 'Are you sure delete blog?',
-    'suffix_delete' => 'after being deleted will not be able to recover.'
+    'suffix_delete' => 'after being deleted will not be able to recover.',
+
+    'upload_avatar_fail' => 'Upload blog avatar fail',
+    'require_title' => 'Please enter the title',
+    'require_content' => 'Please enter the content',
+    'edit_fail' => 'Edit blog fail',
+    'edit_success' => 'Edit blog success',
+    'delete_fail' => 'Delete blog fail',
+    'delete_success' => 'Delete blog success',
 ];

@@ -16,5 +16,8 @@ export const calendar = {
         timeEnd: 'Giờ kết thúc',
         doctor: 'Bác sĩ',
         description: 'Mô tả'
+    },
+    message: {
+        addCalendarSuccess: 'Thêm lịch thành công'
     }
 };
