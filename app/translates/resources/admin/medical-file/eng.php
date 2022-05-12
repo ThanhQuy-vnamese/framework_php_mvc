@@ -75,4 +75,18 @@ const LANGUAGES = [
     'update_health_insurance' => 'Add health insurance fail',
     'delete_medical_file_fail' => 'Delete medical file fail',
     'delete_medical_file_success' => 'Delete medical file success',
+
+    'add_health_fail' => 'Add medical examination fail',
+    'add_health_success' => 'Add medical examination success',
+    'edit_health_fail' => 'Edit medical examination fail',
+    'edit_health_success' => 'Edit medical examination success',
+
+    'prescription' => 'Prescription',
+
+    'edit_prescription_fail' => 'Edit prescription fail',
+    'edit_prescription_success' => 'Edit prescription success',
+    'add_prescription_fail' => 'Add prescription fail',
+    'add_prescription_success' => 'Add prescription success',
+    'delete_health_success' => 'Delete medical examination fail',
+    'delete_health_fail' => 'Delete medical examination success',
 ];

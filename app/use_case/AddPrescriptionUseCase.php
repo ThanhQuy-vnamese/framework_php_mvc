@@ -7,16 +7,19 @@ namespace App\use_case;
 use App\Core\Session;
 use App\domain\entity\Prescription;
 use App\domain\repository\PrescriptionRepository;
+use App\translates\Translate;
 
 class AddPrescriptionUseCase
 {
     private PrescriptionRepository $prescriptionRepository;
     private Session $session;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->prescriptionRepository = new PrescriptionRepository();
         $this->session = new Session();
+        $this->translate = new Translate();
     }
 
     public function execute(
@@ -42,10 +45,10 @@ class AddPrescriptionUseCase
         $id = $this->prescriptionRepository->addPrescription($prescription);
 
         if (!$id) {
-            $this->session->setFlash('errorAddPrescription', 'Add prescription fail');
+            $this->session->setFlash('errorAddPrescription', $this->translate->getLanguage('add_prescription_fail'));
             return;
         }
-        $this->session->setFlash('successAddPrescription', 'Add prescription success');
+        $this->session->setFlash('successAddPrescription', $this->translate->getLanguage('add_prescription_success'));
     }
 
     public function buildPrescription(

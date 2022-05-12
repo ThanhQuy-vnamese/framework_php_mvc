@@ -74,4 +74,18 @@ const LANGUAGES = [
     'update_health_insurance' => 'Chỉnh sửa BHYT không thành công',
     'delete_medical_file_fail' => 'Xóa hồ sơ bệnh nhân không thành công',
     'delete_medical_file_success' => 'Xóa hồ sơ bệnh nhân thành công',
+
+    'add_health_fail' => 'Thêm phiếu khám không thành công',
+    'add_health_success' => 'Thêm phiếu khám thành công',
+    'edit_health_fail' => 'Sửa phiếu khám không thành công',
+    'edit_health_success' => 'Sửa phiếu khám thành công',
+
+    'prescription' => 'Đơn thuốc',
+
+    'edit_prescription_fail' => 'Sửa đơn thuốc không thành công',
+    'edit_prescription_success' => 'Sửa đơn thuốc thành công',
+    'add_prescription_fail' => 'Thêm đơn thuốc không thành công',
+    'add_prescription_success' => 'Thêm đơn thuốc thành công',
+    'delete_health_success' => 'Xóa lịch sử khám bệnh thành công',
+    'delete_health_fail' => 'Xóa lịch sử khám bệnh không thành công',
 ];

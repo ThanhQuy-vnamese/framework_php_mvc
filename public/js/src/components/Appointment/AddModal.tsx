@@ -116,9 +116,12 @@ export const AddModal: VFC<AddModalProps> = ({
                 if (error.hasError) {
                     handleShowError(error);
                 } else {
-                    toast.success('Add calendar success!', {
-                        position: toast.POSITION.TOP_RIGHT
-                    });
+                    toast.success(
+                        i18n.t('admin.calendar.message.addCalendarSuccess'),
+                        {
+                            position: toast.POSITION.TOP_RIGHT
+                        }
+                    );
                     onClickClose();
                 }
             })

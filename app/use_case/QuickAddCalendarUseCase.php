@@ -9,6 +9,7 @@ use App\domain\entity\CalendarAttendees;
 use App\domain\repository\CalendarRepository;
 use App\domain\repository\CalendarRepositoryInterface;
 use App\legacy\Auth;
+use App\translates\Translate;
 
 class QuickAddCalendarUseCase
 {
@@ -22,11 +23,13 @@ class QuickAddCalendarUseCase
 
     private CalendarRepositoryInterface $calendarRepository;
     private Auth $auth;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->calendarRepository = new CalendarRepository();
         $this->auth = new Auth();
+        $this->translate = new Translate();
     }
 
     public function execute(
@@ -48,19 +51,19 @@ class QuickAddCalendarUseCase
             $this->auth->getUser()->getId()
         );
         if (empty($full_name)) {
-            return $this->buildError(true, self::TYPE_FULL_NAME_EMPTY, 'Please enter full name');
+            return $this->buildError(true, self::TYPE_FULL_NAME_EMPTY, $this->translate->getLanguage('enter_full_name'));
         }
 
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
-            return $this->buildError(true, self::TYPE_CONFLICT, 'Calendar is conflict!');
+            return $this->buildError(true, self::TYPE_CONFLICT, $this->translate->getLanguage('conflict_calendar'));
         }
 
         if (empty($doctor_id)) {
-            return $this->buildError(true, self::TYPE_DOCTOR_EMPTY, 'Please chose a doctor!');
+            return $this->buildError(true, self::TYPE_DOCTOR_EMPTY, $this->translate->getLanguage('choose_doctor'));
         }
 
         if (is_null($this->calendarRepository->findUserByUserIdAndRole($doctor_id, 2)->getId())) {
-            return $this->buildError(true, self::TYPE_DOCTOR_NOT_EXIST, 'Doctor is chosen not valid!');
+            return $this->buildError(true, self::TYPE_DOCTOR_NOT_EXIST, $this->translate->getLanguage('valid_doctor'));
         }
 
         $error_time = $this->validateTime($time_start, $time_end);
@@ -87,11 +90,11 @@ class QuickAddCalendarUseCase
         $hour_end = explode(':', $time_end)[0];
         $error = [];
         if ((int)$hour_start < 6 || (int)$hour_start > 18) {
-            $error = $this->buildError(true, self::TYPE_TIME_START, 'Start time is less than 6');
+            $error = $this->buildError(true, self::TYPE_TIME_START, $this->translate->getLanguage('time_start_less'));
         }
 
         if ((int)$hour_end > 18 || (int)$hour_end < 6) {
-            $error = $this->buildError(true, self::TYPE_TIME_END, 'Start end greater than 18');
+            $error = $this->buildError(true, self::TYPE_TIME_END, $this->translate->getLanguage('time_end_over'));
         }
         return $error;
     }

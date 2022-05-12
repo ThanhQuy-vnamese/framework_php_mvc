@@ -31,5 +31,8 @@ const LANGUAGES = [
 
     //Health declaration
     'personal_information' => 'Personal information',
-    'time' => 'Time declare'
+    'time' => 'Time declare',
+
+    'add_health_declaration_success' => 'Add health declaration success',
+    'add_health_declaration_fail' => 'Add health declaration fail',
 ];
