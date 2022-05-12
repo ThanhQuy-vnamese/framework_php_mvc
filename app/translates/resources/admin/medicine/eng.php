@@ -25,4 +25,9 @@ const LANGUAGES = [
     'add_medicine_fail' => 'Add medicine fail',
     'add_medicine_type_fail' => 'Add medicine fail',
     'add_medicine_type_success' => 'Add medicine type success',
+
+    'prefix_medicine_total' => 'You have total',
+    'medicine_type' => 'Medicine type',
+    'medicine_type_name' => 'Medicine type name',
+    'edit_medicine_type' => 'Edit medicine type',
 ];

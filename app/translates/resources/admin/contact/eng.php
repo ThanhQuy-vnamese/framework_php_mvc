@@ -24,4 +24,7 @@ const LANGUAGES = [
     'reply_fail' => 'Reply contact fail',
     'delete_fail' => 'Fail to delete contact',
     'delete_success' => 'Success to delete contact',
+
+    'prefix_contact_total' => 'You have total',
+    'contacts' => 'contact(s)'
 ];

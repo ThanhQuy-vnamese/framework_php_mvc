@@ -24,4 +24,7 @@ const LANGUAGES = [
     'reply_fail' => 'Trả lời không thành công',
     'delete_fail' => 'Xóa liên hệ không thành công',
     'delete_success' => 'Xóa liên hệ thành công',
+
+    'prefix_contact_total' => 'Bạn có tổng cộng',
+    'contacts' => 'liên hệ'
 ];

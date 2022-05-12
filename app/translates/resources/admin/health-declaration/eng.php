@@ -35,4 +35,6 @@ const LANGUAGES = [
 
     'add_health_declaration_success' => 'Add health declaration success',
     'add_health_declaration_fail' => 'Add health declaration fail',
+
+    'prefix_total' => 'You have total',
 ];
