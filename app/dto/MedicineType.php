@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\dto;
 
-class MedicineTypeListDto
+class MedicineType
 {
     private int $id;
     private string $name;
-    private ?string $description;
+    private string $description;
 
-    public function __construct(int $id, string $name, string $description = null)
+    public function __construct(int $id, string $name, string $description)
     {
         $this->id = $id;
         $this->name = $name;
@@ -33,13 +33,11 @@ class MedicineTypeListDto
         return $this->name;
     }
 
-
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
-
 }

@@ -24,5 +24,11 @@ const LANGUAGES = [
 
     'add_medicine_fail' => 'Thêm medicine thất bại',
     'add_medicine_type_fail' => 'Thêm loại thuốc không thành công',
-    'add_medicine_type_success' => 'Thêm loại thuốc thành công'
+    'add_medicine_type_success' => 'Thêm loại thuốc thành công',
+
+    'prefix_medicine_total' => 'Bạn có tổng cộng',
+    'medicine_type' => 'Loại thuốc',
+    'medicine_type_name' => 'Tên loại thuốc',
+    'edit_medicine_type' => 'Sửa loại thuốc',
+
 ];

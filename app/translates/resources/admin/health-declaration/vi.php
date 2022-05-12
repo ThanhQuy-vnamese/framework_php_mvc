@@ -35,4 +35,6 @@ const LANGUAGES = [
 
     'add_health_declaration_success' => 'Thêm khai báo thành công',
     'add_health_declaration_fail' => 'Thêm khai báo thất bại',
+
+    'prefix_total' => 'Bạn có tổng cộng',
 ];
