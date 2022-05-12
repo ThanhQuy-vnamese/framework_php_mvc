@@ -14,5 +14,6 @@ const COMMON_LANGUAGES = [
     // Button
     'delete' => 'Xóa',
     'cancel' => 'Hủy',
-    'back' => 'Trở về'
+    'back' => 'Trở về',
+    'log_out' => 'Đăng xuất'
 ];
