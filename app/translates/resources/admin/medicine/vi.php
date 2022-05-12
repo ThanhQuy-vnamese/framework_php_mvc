@@ -28,4 +28,7 @@ const LANGUAGES = [
 
     'prefix_medicine_total' => 'Bạn có tổng cộng',
     'medicine_type' => 'Loại thuốc',
+    'medicine_type_name' => 'Tên loại thuốc',
+    'edit_medicine_type' => 'Sửa loại thuốc',
+
 ];
