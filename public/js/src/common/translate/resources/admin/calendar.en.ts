@@ -16,5 +16,8 @@ export const calendar = {
         timeEnd: 'Time end',
         doctor: 'Doctor',
         description: 'Description'
+    },
+    message: {
+        addCalendarSuccess: 'Add calendar success!'
     }
 };

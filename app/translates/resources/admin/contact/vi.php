@@ -20,4 +20,8 @@ const LANGUAGES = [
     'alert' => 'Bạn có chắc muốn xóa liên hệ',
     'prefix_delete' => 'Liện hệ có email',
     'suffix_delete' => 'sau khi xóa sẽ không thể phục hồi.',
+
+    'reply_fail' => 'Trả lời không thành công',
+    'delete_fail' => 'Xóa liên hệ không thành công',
+    'delete_success' => 'Xóa liên hệ thành công',
 ];

@@ -22,5 +22,7 @@ const LANGUAGES = [
     'edit_medicine' => 'Edit medicine',
     'medicine_name' => 'Medicine name',
 
-    'add_medicine_fail' => 'Add medicine fail'
+    'add_medicine_fail' => 'Add medicine fail',
+    'add_medicine_type_fail' => 'Add medicine fail',
+    'add_medicine_type_success' => 'Add medicine type success',
 ];

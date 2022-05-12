@@ -9,18 +9,21 @@ use App\domain\entity\HealthDeclaration;
 use App\domain\repository\HealthDeclarationRepository;
 use App\domain\repository\HealthDeclarationRepositoryInterface;
 use App\legacy\Auth;
+use App\translates\Translate;
 
 class AddHealthDeclarationUseCase
 {
     private HealthDeclarationRepositoryInterface $healthDeclarationRepository;
     private Auth $auth;
     private Session $session;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->healthDeclarationRepository = new HealthDeclarationRepository();
         $this->auth = new Auth();
         $this->session = new Session();
+        $this->translate = new Translate();
     }
 
     public function execute(
@@ -36,7 +39,7 @@ class AddHealthDeclarationUseCase
         string $province,
         string $qr_image,
         string $health_declaration
-    ) {
+    ): int {
         $healDeclaration = $this->buildHealthDeclaration(
             $full_name,
             $gender,
@@ -54,9 +57,9 @@ class AddHealthDeclarationUseCase
         );
         $id = $this->healthDeclarationRepository->addHealthDeclaration($healDeclaration);
         if (!$id) {
-            $this->session->setFlash('errorAddHealthDeclaration', 'Add health declaration fail');
+            $this->session->setFlash('errorAddHealthDeclaration', $this->translate->getLanguage('add_health_declaration_fail'));
         }
-        $this->session->setFlash('successAddHealthDeclaration', 'Add health declaration success');
+        $this->session->setFlash('successAddHealthDeclaration', $this->translate->getLanguage('add_health_declaration_success'));
         return $id;
     }
 
