@@ -38,4 +38,18 @@ class MedicineTypeRepository implements MedicineTypeRepositoryInterface
         }
         return false;
     }
+
+    public function deleteMedicineTypeById(int $id): bool
+    {
+        $sql = "DELETE FROM `medical_medicines_types` WHERE id = %s";
+        $query = sprintf($sql, $id);
+        try {
+            if (!$this->db->query($query)) {
+                return false;
+            }
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
 }

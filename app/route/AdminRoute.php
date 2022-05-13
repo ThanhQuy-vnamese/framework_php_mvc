@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\route;
 
 use App\Controllers\admin\AddHealthDeclarationController;
+use App\Controllers\admin\DeleteMedicineTypeController;
 use App\Controllers\admin\EditMedicineTypeController;
 use App\Controllers\admin\GenerateQrController;
 use App\Controllers\admin\GetTotalBlogListController;
@@ -199,8 +200,13 @@ class AdminRoute
             AdminAuthMiddleware::class
         );
         $this->router->post(
-            '/admin/post-edit-medicine-type',
+            '/admin/post-medicine-type-delete',
             [EditMedicineTypeController::class, 'edit'],
+            AdminAuthMiddleware::class
+        );
+        $this->router->post(
+            '/admin/post-medicine-type-delete',
+            [DeleteMedicineTypeController::class, 'delete'],
             AdminAuthMiddleware::class
         );
         $this->router->post(
