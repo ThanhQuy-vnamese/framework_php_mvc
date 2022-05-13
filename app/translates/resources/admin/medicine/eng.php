@@ -30,4 +30,10 @@ const LANGUAGES = [
     'medicine_type' => 'Medicine type',
     'medicine_type_name' => 'Medicine type name',
     'edit_medicine_type' => 'Edit medicine type',
+
+    'edit_medicine_type_fail' => 'Edit medicine type fail',
+    'edit_medicine_type_success' => 'Edit medicine type success',
+    'alert_delete_medicine_type' => 'Are you sure delete medicine type?',
+    'suffix_delete_medicine_type' => 'after delete will not recovery',
+    'delete_fail' => 'Delete medicine type fail'
 ];

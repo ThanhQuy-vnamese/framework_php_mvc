@@ -31,4 +31,10 @@ const LANGUAGES = [
     'medicine_type_name' => 'Tên loại thuốc',
     'edit_medicine_type' => 'Sửa loại thuốc',
 
+
+    'edit_medicine_type_fail' => 'Cập nhật loại thuốc không thành công',
+    'edit_medicine_type_success' => 'Cập nhật loại thuốc thành công',
+    'alert_delete_medicine_type' => 'Bạn có chắc là muốn xóa loại thuốc',
+    'suffix_delete_medicine_type' => 'sau khi xóa sẽ không thể phục hồi',
+    'delete_fail' => 'Xóa loại thuốc không thành công'
 ];

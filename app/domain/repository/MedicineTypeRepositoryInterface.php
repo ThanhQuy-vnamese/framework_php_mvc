@@ -9,4 +9,8 @@ use App\domain\entity\MedicineType;
 interface MedicineTypeRepositoryInterface
 {
     public function addMedicineType(MedicineType $medicine_type): int;
+
+    public function editMedicineType(MedicineType $medicine_type): bool;
+
+    public function deleteMedicineTypeById(int $id): bool;
 }
