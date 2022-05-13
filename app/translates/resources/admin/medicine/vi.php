@@ -31,4 +31,7 @@ const LANGUAGES = [
     'medicine_type_name' => 'Tên loại thuốc',
     'edit_medicine_type' => 'Sửa loại thuốc',
 
+
+    'edit_medicine_type_fail' => 'Cập nhật loại thuốc không thành công',
+    'edit_medicine_type_success' => 'Cập nhật loại thuốc thành công',
 ];

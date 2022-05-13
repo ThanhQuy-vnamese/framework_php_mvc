@@ -19,11 +19,11 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    {% if(Session.hasFlash('successEditMedicine')) %}
-                        <div class="alert alert-success">{{ session.getFlash('successEditMedicine') }}</div>
+                    {% if(Session.hasFlash('errorEdit')) %}
+                        <div class="alert alert-success">{{ session.getFlash('errorEdit') }}</div>
                     {% endif %}
-                    {% if(Session.hasFlash('errorEditMedicine')) %}
-                        <div class="alert alert-danger">{{ session.getFlash('errorEditMedicine') }}</div>
+                    {% if(Session.hasFlash('successEdit')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('successEdit') }}</div>
                     {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
@@ -69,7 +69,7 @@
                                                     <h5 class="modal-title">{{ translate('edit_medicine_type') }}</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ redirect('admin/post-medicine-edit') }}" method="post">
+                                                    <form action="{{ redirect('admin/post-edit-medicine-type') }}" method="post">
                                                         <input type="text" hidden name="id" value="{{ medicine_type.id }}">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
@@ -96,7 +96,7 @@
                                                                                           class="form-control"
                                                                                           name="description"
                                                                                           id="description"
-                                                                                          placeholder="Enter Last Name">{{ medicine.description|raw }}</textarea>
+                                                                                          placeholder="Enter Last Name">{{ medicine_type.description|raw }}</textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
