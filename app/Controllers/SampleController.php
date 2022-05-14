@@ -111,24 +111,27 @@ class SampleController extends BaseController
         $request = new Request();
         $session = new Session();
         $user = new User();
-        $userid = $session->get('user')['id'];
+        $data_user = (array)$session->get('user');
 
         $fullname = $this->request->input->get('fullname');
         $email = $this->request->input->get('email');
         $message = $this->request->input->get('message');
         $phone = $this->request->input->get('phone');
-        
+        $age = $this->request->input->get('age');
+        $title = $this->request->input->get('title');
+
         $information = array(
+            'title'=>$title,
+            'age'=>$age,
             'phone'=>$phone,
-            'user_id'=>$userid,
+            'user_id'=>$data_user['id'],
             'full_name'=>$fullname,
             'email'=>$email,
-            'created_at'=>date("Y/m/d"),
             'message'=>$message
         );
-        // echo("<pre>");
-        // print_r($information);
-        // $user->InsertContact($information);
+
+
+        
         if($user->InsertContact($information))
         {
             $session->setFlash('successContact', 'Create contact success!');

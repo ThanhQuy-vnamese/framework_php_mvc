@@ -2775,7 +2775,7 @@ ul {
     top: 0;
     width: 100%;
     z-index: 999;
-    height: 27%;
+    height: 20%;
 }
 
 
@@ -2790,9 +2790,16 @@ ul {
     .main_menu .navbar-brand {
         max-width: 120px;
     }
+    .home_menu {
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        height: 15%;
+    }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (min-width: 576px) and (max-width: 1200px) {
     /* line 11, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_menu.scss */
     .main_menu .navbar-brand {
         max-width: 130px;

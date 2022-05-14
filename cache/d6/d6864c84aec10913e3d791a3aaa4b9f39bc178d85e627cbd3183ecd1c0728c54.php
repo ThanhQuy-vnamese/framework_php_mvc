@@ -39,7 +39,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t<div class=\"footer section_padding\">
 \t\t<div class=\"container\">
 \t\t\t<div class=\"row justify-content-between\">
-\t\t\t\t<div class=\"col-xl-2 col-md-4 col-sm-6 single-footer-widget\">
+\t\t\t\t<div class=\"col-xl-6 col-md-6 col-sm-6 single-footer-widget\">
 \t\t\t\t\t<a href=\"#\" class=\"footer_logo\">
 \t\t\t\t\t\t<img src=\"";
         // line 8
@@ -63,52 +63,12 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t\t\t\t\t\t</a>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Quick Links</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">About us</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Online payment</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Careers</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Explore</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">In the community</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">IU health foundation</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Family support</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Business solution</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Community clinic</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-6 single-footer-widget\">
-\t\t\t\t\t<h4>Resources</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Lights were season</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Their is let wherein</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">which given over</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Without given She</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Isn two signs think</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-3 col-sm-6 col-md-6 single-footer-widget\">
-\t\t\t\t\t<h4>Newsletter</h4>
-\t\t\t\t\t<p>Seed good winged wherein which night multiply midst does not fruitful</p>
-\t\t\t\t\t<div class=\"form-wrap\" id=\"mc_embed_signup\">
-\t\t\t\t\t\t<form target=\"_blank\" action=\"https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01\" method=\"get\" class=\"form-inline\">
-\t\t\t\t\t\t\t<input class=\"form-control\" name=\"EMAIL\" placeholder=\"Your Email Address\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Your Email Address '\" required=\"\" type=\"email\">
-\t\t\t\t\t\t\t<button class=\"click-btn btn btn-default text-uppercase\">
-\t\t\t\t\t\t\t\t<i class=\"ti-angle-right\"></i>
-\t\t\t\t\t\t\t</button>
-\t\t\t\t\t\t\t<div style=\"position: absolute; left: -5000px;\">
-\t\t\t\t\t\t\t\t<input name=\"b_36c4fd991d266f23781ded980_aefe40901a\" tabindex=\"-1\" value=\"\" type=\"text\">
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t<div class=\"info\"></div>
-\t\t\t\t\t\t</form>
-\t\t\t\t\t</div>
+\t\t\t\t<div class=\"col-xl-6 col-sm-6 col-md-6 single-footer-widget\">
+\t\t\t\t\t<h4>Contact</h4>
+\t\t\t\t\t<a href=\"";
+        // line 29
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('redirect')->getCallable(), ["contact"]), "html", null, true);
+        echo "\">Contact with us</a>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
@@ -152,57 +112,57 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 
 <!-- jquery plugins here-->
 <script src=\"";
-        // line 115
+        // line 72
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery-1.12.1.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- popper js -->
 <script src=\"";
-        // line 118
+        // line 75
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/popper.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- bootstrap js -->
 <script src=\"";
-        // line 121
+        // line 78
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/bootstrap.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- owl carousel js -->
 <script src=\"";
-        // line 124
+        // line 81
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/owl.carousel.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 125
+        // line 82
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.nice-select.min.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- contact js -->
 <script src=\"";
-        // line 128
+        // line 85
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.ajaxchimp.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 129
+        // line 86
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.form.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 130
+        // line 87
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/jquery.validate.min.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 131
+        // line 88
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/mail-script.js"]), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 132
+        // line 89
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/contact.js"]), "html", null, true);
         echo "\"></script>
 
 <!-- custom js -->
 <script src=\"";
-        // line 135
+        // line 92
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('createLink')->getCallable(), ["style/js/custom.js"]), "html", null, true);
         echo "\"></script>
 ";
@@ -220,7 +180,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 
     public function getDebugInfo()
     {
-        return array (  206 => 135,  200 => 132,  196 => 131,  192 => 130,  188 => 129,  184 => 128,  178 => 125,  174 => 124,  168 => 121,  162 => 118,  156 => 115,  46 => 8,  37 => 1,);
+        return array (  166 => 92,  160 => 89,  156 => 88,  152 => 87,  148 => 86,  144 => 85,  138 => 82,  134 => 81,  128 => 78,  122 => 75,  116 => 72,  70 => 29,  46 => 8,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -230,7 +190,7 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t<div class=\"footer section_padding\">
 \t\t<div class=\"container\">
 \t\t\t<div class=\"row justify-content-between\">
-\t\t\t\t<div class=\"col-xl-2 col-md-4 col-sm-6 single-footer-widget\">
+\t\t\t\t<div class=\"col-xl-6 col-md-6 col-sm-6 single-footer-widget\">
 \t\t\t\t\t<a href=\"#\" class=\"footer_logo\">
 \t\t\t\t\t\t<img src=\"{{ createLink('style/img/logo.png') }}\" alt=\"#\">
 \t\t\t\t\t</a>
@@ -251,52 +211,9 @@ class __TwigTemplate_e001a8aa895496e868ffb6337b45128a4bd8bba58a2d52056d4511d261f
 \t\t\t\t\t\t</a>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Quick Links</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">About us</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Online payment</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Careers</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Department</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-4 single-footer-widget\">
-\t\t\t\t\t<h4>Explore</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">In the community</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">IU health foundation</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Family support</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Business solution</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Community clinic</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-2 col-sm-6 col-md-6 single-footer-widget\">
-\t\t\t\t\t<h4>Resources</h4>
-\t\t\t\t\t<ul>
-\t\t\t\t\t\t<li><a href=\"#\">Lights were season</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Their is let wherein</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">which given over</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Without given She</a></li>
-\t\t\t\t\t\t<li><a href=\"#\">Isn two signs think</a></li>
-\t\t\t\t\t</ul>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col-xl-3 col-sm-6 col-md-6 single-footer-widget\">
-\t\t\t\t\t<h4>Newsletter</h4>
-\t\t\t\t\t<p>Seed good winged wherein which night multiply midst does not fruitful</p>
-\t\t\t\t\t<div class=\"form-wrap\" id=\"mc_embed_signup\">
-\t\t\t\t\t\t<form target=\"_blank\" action=\"https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01\" method=\"get\" class=\"form-inline\">
-\t\t\t\t\t\t\t<input class=\"form-control\" name=\"EMAIL\" placeholder=\"Your Email Address\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Your Email Address '\" required=\"\" type=\"email\">
-\t\t\t\t\t\t\t<button class=\"click-btn btn btn-default text-uppercase\">
-\t\t\t\t\t\t\t\t<i class=\"ti-angle-right\"></i>
-\t\t\t\t\t\t\t</button>
-\t\t\t\t\t\t\t<div style=\"position: absolute; left: -5000px;\">
-\t\t\t\t\t\t\t\t<input name=\"b_36c4fd991d266f23781ded980_aefe40901a\" tabindex=\"-1\" value=\"\" type=\"text\">
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t<div class=\"info\"></div>
-\t\t\t\t\t\t</form>
-\t\t\t\t\t</div>
+\t\t\t\t<div class=\"col-xl-6 col-sm-6 col-md-6 single-footer-widget\">
+\t\t\t\t\t<h4>Contact</h4>
+\t\t\t\t\t<a href=\"{{ redirect('contact') }}\">Contact with us</a>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
