@@ -119,9 +119,9 @@
                                                                                 <div class="form-control-select">
                                                                                     <select class="form-control"
                                                                                             name="type" id="type">
-                                                                                        <option value="1">Thuốc cảm</option>
-                                                                                        <option value="2">Kháng sinh</option>
-                                                                                        <option value="3">Kháng viêm</option>
+                                                                                        {% for medicine_type in medicine_type_list %}
+                                                                                            <option value="{{ medicine_type.id }}">{{ medicine_type.name }}</option>
+                                                                                        {% endfor %}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
