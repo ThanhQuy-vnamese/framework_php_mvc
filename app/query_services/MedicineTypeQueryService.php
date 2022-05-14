@@ -40,6 +40,23 @@ class MedicineTypeQueryService implements MedicineTypeQueryServiceInterface
         return $medicine_types;
     }
 
+    /**
+     * @return MedicineTypeListDto[]
+     */
+    public function getAllMedicineTypeNotByOffset(): array
+    {
+        $query = "SELECT * FROM medical_medicines_types";
+        $result = $this->db->query($query);
+        $medicine_types = [];
+        if ($result->num_rows === 0) {
+            return [];
+        }
+        while ($row = $result->fetch_assoc()) {
+            $medicine_types[(int)$row['id']] = new MedicineTypeListDto((int)$row['id'], $row['name']);
+        }
+        return $medicine_types;
+    }
+
     public function getTotalMedicineType(): int
     {
         $query = "SELECT count(*) AS total_medicines_types FROM medical_medicines_types;";

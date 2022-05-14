@@ -11,4 +11,6 @@ interface MedicineRepositoryInterface
     public function addMedicine(Medicine $medicine): int;
 
     public function updateMedicine(Medicine $medicine): bool;
+
+    public function deleteMedicineById(int $id): bool;
 }
