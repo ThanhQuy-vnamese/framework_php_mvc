@@ -214,13 +214,7 @@ class User extends DBModel
     public function InsertContact(array $information)
     {
         $query = new Query();
-        return $query->table('medical_contact_infomation')->insert([
-            'user_id' => 24,
-            'phone' => $information['phone'],
-            'email' => $information['email'],
-            'message' => $information['message'],
-            'full_name' => $information['full_name']
-        ]);
+        return $query->table('medical_contact_information')->insert($information);
     }
     public function insertAppointmentAttendees(array $information)
     {

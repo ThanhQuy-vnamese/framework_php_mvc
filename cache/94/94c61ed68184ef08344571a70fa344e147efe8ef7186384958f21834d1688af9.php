@@ -111,12 +111,22 @@ class __TwigTemplate_9b12464bb84e3dea8c296344860557eba4cc8ffea6a63b151d04cdc9591
         }
         // line 55
         echo "\t\t\t\t\t\t\t<div class=\"row\">
+\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
+\t\t\t\t\t\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"title\" id=\"title\" type=\"text\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter title'\" placeholder='Enter your title'>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-sm-6\">
 \t\t\t\t\t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"fullname\" id=\"name\" type=\"text\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter your name'\" placeholder='Enter your name'>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-sm-6\">
+\t\t\t\t\t\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"age\" id=\"age\" type=\"text\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter age'\" placeholder='Enter age'>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
 \t\t\t\t\t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"email\" id=\"email\" type=\"email\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter email address'\" placeholder='Enter email address'>
 \t\t\t\t\t\t\t\t\t</div>
@@ -128,7 +138,7 @@ class __TwigTemplate_9b12464bb84e3dea8c296344860557eba4cc8ffea6a63b151d04cdc9591
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-12\">
 \t\t\t\t\t\t\t\t\t<div class=\"form-group\">
-\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"description\" rows=\"5\" name=\"message\" placeholder=\"Description\"></textarea>
+\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"message\" rows=\"5\" name=\"message\" placeholder=\"Message\"></textarea>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
@@ -176,7 +186,7 @@ class __TwigTemplate_9b12464bb84e3dea8c296344860557eba4cc8ffea6a63b151d04cdc9591
 
 \t\t<!-- footer part end-->
 \t";
-        // line 120
+        // line 130
         echo twig_include($this->env, $context, "user/components/footer.twig");
         echo "
 \t\t<!-- jquery plugins here-->
@@ -200,7 +210,7 @@ class __TwigTemplate_9b12464bb84e3dea8c296344860557eba4cc8ffea6a63b151d04cdc9591
 
     public function getDebugInfo()
     {
-        return array (  180 => 120,  113 => 55,  107 => 53,  104 => 52,  98 => 50,  96 => 49,  92 => 48,  55 => 14,  47 => 9,  37 => 1,);
+        return array (  190 => 130,  113 => 55,  107 => 53,  104 => 52,  98 => 50,  96 => 49,  92 => 48,  55 => 14,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -260,12 +270,22 @@ class __TwigTemplate_9b12464bb84e3dea8c296344860557eba4cc8ffea6a63b151d04cdc9591
 \t\t\t\t\t\t\t\t<div class=\"alert alert-success\">{{ session.getFlash('successContact') }}</div>
 \t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t<div class=\"row\">
+\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
+\t\t\t\t\t\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"title\" id=\"title\" type=\"text\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter title'\" placeholder='Enter your title'>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-sm-6\">
 \t\t\t\t\t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"fullname\" id=\"name\" type=\"text\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter your name'\" placeholder='Enter your name'>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-sm-6\">
+\t\t\t\t\t\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"age\" id=\"age\" type=\"text\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter age'\" placeholder='Enter age'>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div class=\"col-sm-12\">
 \t\t\t\t\t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" name=\"email\" id=\"email\" type=\"email\" onfocus=\"this.placeholder = ''\" onblur=\"this.placeholder = 'Enter email address'\" placeholder='Enter email address'>
 \t\t\t\t\t\t\t\t\t</div>
@@ -277,7 +297,7 @@ class __TwigTemplate_9b12464bb84e3dea8c296344860557eba4cc8ffea6a63b151d04cdc9591
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"col-12\">
 \t\t\t\t\t\t\t\t\t<div class=\"form-group\">
-\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"description\" rows=\"5\" name=\"message\" placeholder=\"Description\"></textarea>
+\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"message\" rows=\"5\" name=\"message\" placeholder=\"Message\"></textarea>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
