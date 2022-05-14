@@ -19,11 +19,14 @@
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    {% if(Session.hasFlash('successEditMedicine')) %}
-                        <div class="alert alert-success">{{ session.getFlash('successEditMedicine') }}</div>
+                    {% if(Session.hasFlash('errorEdit')) %}
+                        <div class="alert alert-success">{{ session.getFlash('errorEdit') }}</div>
                     {% endif %}
-                    {% if(Session.hasFlash('errorEditMedicine')) %}
-                        <div class="alert alert-danger">{{ session.getFlash('errorEditMedicine') }}</div>
+                    {% if(Session.hasFlash('errorDelete')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDelete') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successEdit')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('successEdit') }}</div>
                     {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
@@ -32,9 +35,14 @@
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
                                             <h5 class="title">{{ translate('medicine_type_information') }}</h5>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#modalDefault">{{ translate('edit_medicine_type') }}
-                                            </button>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#modalDefault">{{ translate('edit_medicine_type') }}
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#modalDeleteMedicineType">{{ translate('delete') }}
+                                                </button>
+                                            </div>
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
@@ -69,7 +77,7 @@
                                                     <h5 class="modal-title">{{ translate('edit_medicine_type') }}</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ redirect('admin/post-medicine-edit') }}" method="post">
+                                                    <form action="{{ redirect('admin/post-medicine-type-edit') }}" method="post">
                                                         <input type="text" hidden name="id" value="{{ medicine_type.id }}">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
@@ -96,7 +104,7 @@
                                                                                           class="form-control"
                                                                                           name="description"
                                                                                           id="description"
-                                                                                          placeholder="Enter Last Name">{{ medicine.description|raw }}</textarea>
+                                                                                          placeholder="Enter Last Name">{{ medicine_type.description|raw }}</textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -109,6 +117,32 @@
                                                                         </button>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer bg-light"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" tabindex="-1" id="modalDeleteMedicineType">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <em class="icon ni ni-cross"></em>
+                                                </a>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">{{ translate('delete_medicine_type') }}</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>{{ translate('alert_delete_medicine_type') }}</h4>
+                                                    {{ translate('medicine_type') }} <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> {{ translate('suffix_delete_medicine_type') }}
+                                                    <form id="delete-contact-form" action="{{ redirect('admin/post-medicine-type-delete') }}" method="post">
+                                                        <input type="text" hidden value="{{ medicine_type.id }}" name="id">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">{{ translate('delete') }}</button>
+                                                                <button class="btn btn-xl btn-outline-secondary js-btn-cancel">{{ translate('cancel') }}</button>
                                                             </div>
                                                         </div>
                                                     </form>
