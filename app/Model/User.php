@@ -71,7 +71,8 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_users')->update($information, ['id' => $userID]);
     }
-    public function updateUserProfileForAdmin(string $user_id, array $information): bool {
+    public function updateUserProfileForAdmin(string $user_id, array $information): bool
+    {
         $query = new Query();
         return $query->table('medical_user_profiles')->update($information, ['user_id' => $user_id]);
     }
@@ -133,8 +134,8 @@ class User extends DBModel
     public function getProfileByUserId($userID)
     {
         $query = "SELECT mp.id, mp.gender, mp.user_id, mu.email, mp.address, mp.birthday, mp.phone,
-                mp.first_name, mp.last_name, mp.avatar FROM medical_user_profiles mp left join medical_users mu
-        on mp.user_id = mu.id where user_id = ".$userID;
+                mp.first_name, mp.last_name, mp.avatar, mp.avatar, mu.face_id FROM medical_user_profiles mp left join medical_users mu
+        on mp.user_id = mu.id where user_id = " . $userID;
         $result = $this->getDatabase()->mysql->query($query);
         $numRows = $result->num_rows;
         if ($numRows > 0) {
@@ -187,13 +188,13 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_appointments')->insert(
             [
-                'full_name'=>$information['full_name'],
+                'full_name' => $information['full_name'],
                 'user_id' => $information['user_id'],
                 'date_start' => $information['date_start'],
                 'time_start' => $information['time_start'],
                 'created_at' => $information['created_at'],
                 'subject' => $information['subject'],
-                'status'=>$information['status']
+                'status' => $information['status']
             ]
         );
     }
@@ -222,7 +223,8 @@ class User extends DBModel
         return $query->table('medical_appointment_attendees')->insert($information);
     }
 
-    public function getAllUsers($offset): array {
+    public function getAllUsers($offset): array
+    {
         $query = new Query();
         $sql = "SELECT U.id, U.email, U.status, U.role, UP.first_name, UP.last_name, UP.birthday, UP.gender, UP.avatar, UP.address, UP.phone
                 FROM medical_users AS U INNER JOIN medical_user_profiles AS UP ON U.id=UP.user_id LIMIT %s, %s";
@@ -282,7 +284,7 @@ class User extends DBModel
         $query = new Query();
         return $query->table('medical_medical_records')->insert($information);
     }
-    public function updateMedicianRecord($user_id ,$information)
+    public function updateMedicianRecord($user_id, $information)
     {
         $query = new Query();
         return $query->table('medical_medical_records')->update($information, ['user_id' => $user_id]);
@@ -290,8 +292,8 @@ class User extends DBModel
     public function getAppointmentByUser($user_id)
     {
         $query = new Query();
-        $sql ="SELECT ma.full_name, ma.status, ma.date_start, ma.description, ma.subject FROM `medical_appointments` ma join medical_users mu 
-        on ma.user_id = mu.id WHERE mu.id=".$user_id;
+        $sql = "SELECT ma.full_name, ma.status, ma.date_start, ma.description, ma.subject FROM `medical_appointments` ma join medical_users mu 
+        on ma.user_id = mu.id WHERE mu.id=" . $user_id;
         $result = $query->getDatabase()->mysql->query($sql);
         $data = [];
         if ($result->num_rows === 0) {
@@ -303,5 +305,19 @@ class User extends DBModel
         }
         return $data;
     }
-    
+    public function checkExistFaceId($id)
+    {
+        $query = new Query();
+        $sql = "SELECT *FROM medical_users mu join medical_user_profiles mp on mu.id = mp.user_id where mu.face_id=".$id;
+        $result = $query->getDatabase()->mysql->query($sql);
+        $data = [];
+        if ($result->num_rows === 0) {
+            return $data;
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 }
