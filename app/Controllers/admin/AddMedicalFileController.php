@@ -28,6 +28,7 @@ class AddMedicalFileController extends BaseController
             $input['covid_vaccination'],
             $input['health_insurance_number'],
             $input['expiration_date'],
+            $input['user_id']
         );
         if (!$id) {
             $this->response->redirect('/admin/medical-file-add');
@@ -55,6 +56,7 @@ class AddMedicalFileController extends BaseController
         $way = $this->request->input->get('way');
         $healthInsuranceNumber = $this->request->input->get('health-insurance-number');
         $expiration_date = $this->request->input->get('expiration-date');
+        $user_id = $this->request->input->getInt('user-id');
 
         $covidVaccination = [];
         for ($i = 1; $i <= 3; $i++) {
@@ -85,7 +87,8 @@ class AddMedicalFileController extends BaseController
             'way' => $way,
             'covid_vaccination' => $covidVaccination,
             'health_insurance_number' => $healthInsuranceNumber,
-            'expiration_date' => $expiration_date
+            'expiration_date' => $expiration_date,
+            'user_id' => $user_id
         ];
     }
 }

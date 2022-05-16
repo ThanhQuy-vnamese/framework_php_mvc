@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controllers\admin;
@@ -17,9 +18,11 @@ use Twig\Error\SyntaxError;
 
 class UserController extends BaseController
 {
-    public function getTranslate(): Translate {
+    public function getTranslate(): Translate
+    {
         return new Translate();
     }
+
     /**
      * @return string
      * @throws LoaderError
@@ -153,7 +156,8 @@ class UserController extends BaseController
         $this->response->redirect("/admin/user-detail?id=${userId}");
     }
 
-    public function updateUser() {
+    public function updateUser()
+    {
         $idUser = $this->request->input->get('id');
         $firstName = $this->request->input->get('first-name');
         $lastName = $this->request->input->get('last-name');
@@ -233,7 +237,8 @@ class UserController extends BaseController
         $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
     }
 
-    public function updateAvatar() {
+    public function updateAvatar()
+    {
         $userId = $this->request->input->get('user-id');
         $avatarFile = $this->request->input->get('avatar-file');
         $uploadFile = new UploadFile($avatarFile);
@@ -258,14 +263,16 @@ class UserController extends BaseController
         $this->response->redirect('/admin/user-detail', ['id' => $userId]);
     }
 
-    private function updateInfoUserLogin(int $user_id) {
+    private function updateInfoUserLogin(int $user_id)
+    {
         $auth = new Auth();
         if ($user_id === $auth->getUser()->getId()) {
             $auth->getAuthentication()->updateInfoUserLogin();
         }
     }
 
-    public function deleteUser() {
+    public function deleteUser()
+    {
         $userId = $this->request->input->get('user-id');
         $user = new User();
         $isDeleteSuccess = $user->deleteUser($userId);
@@ -279,7 +286,8 @@ class UserController extends BaseController
         $this->response->redirect('/admin/user-list');
     }
 
-    public function resetPassword() {
+    public function resetPassword()
+    {
         $userId = $this->request->input->get('user-id');
         $password = $this->request->input->get('password');
         $confirmPassword = $this->request->input->get('confirm-password');
