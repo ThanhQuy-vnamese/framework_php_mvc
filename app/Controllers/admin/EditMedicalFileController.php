@@ -30,9 +30,8 @@ class EditMedicalFileController extends BaseController
         $district = $this->request->input->get('district');
         $wards = $this->request->input->get('wards');
         $way = $this->request->input->get('house-number');
+        $user_id = $this->request->input->get('user-id');
         $covidVaccination = $this->parseCovidInjection();
-
-        $auth = new Auth();
 
         $information = [
             'first_name' => $firstName,
@@ -47,7 +46,7 @@ class EditMedicalFileController extends BaseController
             'wards' => $wards,
             'way' => $way,
             'covid_vaccination' => serialize($covidVaccination),
-            'user_id' => $auth->getUser()->getId(),
+            'user_id' => $user_id,
         ];
 
         $session = new Session();
