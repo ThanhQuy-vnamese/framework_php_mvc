@@ -74,6 +74,7 @@ const LANGUAGES = [
     'update_health_insurance' => 'Chỉnh sửa BHYT không thành công',
     'delete_medical_file_fail' => 'Xóa hồ sơ bệnh nhân không thành công',
     'delete_medical_file_success' => 'Xóa hồ sơ bệnh nhân thành công',
+    'require_user' => 'Vui lòng chọn bệnh nhân',
 
     'add_health_fail' => 'Thêm phiếu khám không thành công',
     'add_health_success' => 'Thêm phiếu khám thành công',

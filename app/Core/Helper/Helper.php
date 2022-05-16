@@ -24,6 +24,18 @@ class Helper
         return $http . $host . $pathPublic . '/' . $path;
     }
 
+    public function getHost(): string
+    {
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $pos = strpos($requestUrl, PREFIX_PUBLIC);
+        $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'];
+        if (!$pos) {
+            return $http . $host;
+        }
+        return $http . $host . 'public/';
+    }
+
     /**
      * @param string $path
      * @param array $params
@@ -96,7 +108,10 @@ class Helper
             return 'admin/user';
         } elseif (strpos($path, 'admin/medicine') || preg_match('/^\/admin\/post-medicine/', $path) === 1) {
             return 'admin/medicine';
-        } elseif (strpos($path, 'admin/medical-file') || preg_match('/^\/admin\/post-medical-file/', $path) === 1 || preg_match(
+        } elseif (strpos($path, 'admin/medical-file') || preg_match(
+                '/^\/admin\/post-medical-file/',
+                $path
+            ) === 1 || preg_match(
                 '/^\/admin\/prescription-/',
                 $path
             ) === 1 || preg_match('/^\/admin\/post-prescription/', $path) === 1) {
@@ -110,7 +125,10 @@ class Helper
                 $path
             ) === 1) {
             return 'admin/health-declaration';
-        } elseif (strpos($path, 'admin/calendar') || preg_match('/^\/admin\/post-calendar/', $path) === 1 || preg_match('/^\/admin\/ajax\/add-calendar/', $path) === 1) {
+        } elseif (strpos($path, 'admin/calendar') || preg_match('/^\/admin\/post-calendar/', $path) === 1 || preg_match(
+                '/^\/admin\/ajax\/add-calendar/',
+                $path
+            ) === 1) {
             return 'admin/calendar';
         } elseif (strpos($path, 'user/')) {
             return 'users/home';
@@ -129,4 +147,6 @@ class Helper
     {
         return unserialize($this->settings)['language'] ?? '';
     }
+
+
 }
