@@ -7,12 +7,15 @@ use App\Core\Controller\BaseController;
 use App\Core\Session;
 use App\legacy\Auth;
 use App\Model\MedicalFile;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
+use App\translates\Translate;
 
 class EditMedicalFileController extends BaseController
 {
+    public function getTranslate(): Translate
+    {
+        return new Translate();
+    }
+
     public function editMedicalFile() {
         $medicalFileId = $this->request->input->get('medical-file-id');
         $insuranceId = $this->request->input->get('insurance-id');
@@ -27,9 +30,8 @@ class EditMedicalFileController extends BaseController
         $district = $this->request->input->get('district');
         $wards = $this->request->input->get('wards');
         $way = $this->request->input->get('house-number');
+        $user_id = $this->request->input->get('user-id');
         $covidVaccination = $this->parseCovidInjection();
-
-        $auth = new Auth();
 
         $information = [
             'first_name' => $firstName,
@@ -44,20 +46,20 @@ class EditMedicalFileController extends BaseController
             'wards' => $wards,
             'way' => $way,
             'covid_vaccination' => serialize($covidVaccination),
-            'user_id' => $auth->getUser()->getId(),
+            'user_id' => $user_id,
         ];
 
         $session = new Session();
         $medicalFile = new MedicalFile();
         if ($medicalFile->getInfoByIdentityCardExceptCurrent($identityCard, $medicalFileId) > 0) {
-            $session->setFlash('errorEditMedicalFile', 'The identity card ....');
+            $session->setFlash('errorEditMedicalFile', $this->getTranslate()->getLanguage('identity_card_exist'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
         $isSuccessUpdateMedicalFileId = $medicalFile->updateMedicalFile($information, $medicalFileId);
 
         if (!$isSuccessUpdateMedicalFileId) {
-            $session->setFlash('errorEditMedicalFile', 'Add medical file fail');
+            $session->setFlash('errorEditMedicalFile', $this->getTranslate()->getLanguage('update_medical_file_fail'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
@@ -71,11 +73,10 @@ class EditMedicalFileController extends BaseController
         $isSuccess = $medicalFile->updateHealthInsurance($healthInsuranceData, $insuranceId);
 
         if (!$isSuccess) {
-            $session->setFlash('errorEditMedicalFile', 'Add medical file fail');
+            $session->setFlash('errorEditMedicalFile', $this->getTranslate()->getLanguage('update_health_insurance'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successEditMedicalFile', 'Add medical file success');
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
@@ -88,11 +89,12 @@ class EditMedicalFileController extends BaseController
         $covidVaccination = [];
         for ($i = 1; $i <= 3; $i++) {
             $temp = [];
-            $vaccineName = $this->request->input->get("name-${i}");
-            $date = $this->convertDate($this->request->input->get("date-${i}"));
-            if (empty($vaccineName) && empty($date)) {
+            $vaccineName = $this->request->input->get("name-${i}");;
+            $date = $this->request->input->get("date-${i}");
+            if (empty($vaccineName) || empty($date)) {
                 continue;
             }
+            $date = $this->convertDate($date);
             $temp['type_vaccine'] = $vaccineName;
             $temp['date'] = $date;
             $covidVaccination[] = $temp;

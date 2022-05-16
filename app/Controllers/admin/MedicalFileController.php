@@ -8,12 +8,17 @@ use App\Core\Controller\BaseController;
 use App\Core\Session;
 use App\Model\MedicalFile;
 use App\Repository\MedicalFileRepository;
+use App\translates\Translate;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 class MedicalFileController extends BaseController
 {
+    public function getTranslate(): Translate
+    {
+        return new Translate();
+    }
     /**
      * @return string
      * @throws LoaderError
@@ -102,11 +107,11 @@ class MedicalFileController extends BaseController
 
         $session = new Session();
         if (!$result) {
-            $session->setFlash('errorHealth', 'Add health fail');
+            $session->setFlash('errorHealth', $this->getTranslate()->getLanguage('edit_health_fail'));
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successHealth', 'Add health success');
+        $session->setFlash('successHealth', $this->getTranslate()->getLanguage('edit_health_success'));
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 

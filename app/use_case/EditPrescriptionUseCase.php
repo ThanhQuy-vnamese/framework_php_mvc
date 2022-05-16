@@ -8,16 +8,19 @@ use App\Core\Session;
 use App\domain\entity\Prescription;
 use App\domain\repository\PrescriptionRepository;
 use App\domain\repository\PrescriptionRepositoryInterface;
+use App\translates\Translate;
 
 class EditPrescriptionUseCase
 {
     private PrescriptionRepositoryInterface $prescriptionRepository;
     private Session $session;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->prescriptionRepository = new PrescriptionRepository();
         $this->session = new Session();
+        $this->translate = new Translate();
     }
 
     public function execute(
@@ -45,10 +48,10 @@ class EditPrescriptionUseCase
         $isSuccess = $this->prescriptionRepository->editPrescription($prescription);
 
         if (!$isSuccess) {
-            $this->session->setFlash('errorUpdatePrescription', 'Add prescription fail');
+            $this->session->setFlash('errorUpdatePrescription', $this->translate->getLanguage('edit_prescription_fail'));
             return;
         }
-        $this->session->setFlash('successUpdatePrescription', 'Add prescription success');
+        $this->session->setFlash('successUpdatePrescription', $this->translate->getLanguage('edit_prescription_success'));
     }
 
     public function buildPrescription(

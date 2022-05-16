@@ -91,7 +91,7 @@ class MedicalFileRepository
             $temp['birthday'] = $medicalFile['birthday'];
             $temp['phone'] = $medicalFile['phone'];
             $temp['identity_card'] = $medicalFile['identity_card'];
-            $temp['age'] = $this->calculateAge($temp['birthday']);
+            $temp['age'] = '';
             $data[] = $temp;
         }
         return $data;

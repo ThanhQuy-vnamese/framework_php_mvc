@@ -41,5 +41,7 @@ entry = {
     medicine_list: path.join(__dirname, 'public/js/src/pages/medicine_list', 'index.js'),
     medicine_type_list: path.join(__dirname, 'public/js/src/pages/medicine_type_list', 'index.js'),
     contact_list: path.join(__dirname, 'public/js/src/pages/contact_list', 'index.js'),
-    'user/detail_doctor': path.join(__dirname, 'public/js/src/pages/user/detail_doctor', 'index.js')
+    health_declaration_list: path.join(__dirname, 'public/js/src/pages/health_declaration_list', 'index.js'),
+    'user/detail_doctor': path.join(__dirname, 'public/js/src/pages/user/detail_doctor', 'index.js'),
+    'medical_file_add': path.join(__dirname, 'public/js/src/pages/medical_file_add', 'index.js')
 };

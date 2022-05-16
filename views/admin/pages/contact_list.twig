@@ -7,9 +7,9 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Contact List</h3>
+                            <h3 class="nk-block-title page-title">{{ translate('contact_list') }}</h3>
                             <div class="nk-block-des text-soft">
-                                <p>You have total {{ total }} contacts.</p>
+                                <p>{{ translate('prefix_contact_total') }} {{ total }} {{ translate('contacts') }}</p>
                             </div>
                         </div><!-- .nk-block-head-content -->
                     </div><!-- .nk-block-between -->
@@ -54,10 +54,10 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col"><span class="sub-text">Number</span></div>
-                                        <div class="nk-tb-col"><span class="sub-text">Full name</span></div>
-                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Email</span></div>
-                                        <div class="nk-tb-col tb-col-sm"><span class="sub-text">Phone</span></div>
-                                        <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
+                                        <div class="nk-tb-col"><span class="sub-text">{{ translate('full_name') }}</span></div>
+                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">{{ translate('email') }}</span></div>
+                                        <div class="nk-tb-col tb-col-sm"><span class="sub-text">{{ translate('phone') }}</span></div>
+                                        <div class="nk-tb-col nk-tb-col-tools text-right">{{ translate('action') }}</div>
                                     </div><!-- .nk-tb-item -->
                                     {% for contact in contact_list %}
                                     <div class="nk-tb-item">
@@ -93,9 +93,9 @@
                                                         <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
-                                                                <li><a href="{{ redirect('admin/contact-detail', {'email': contact.email}) }}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                <li><a href="{{ redirect('admin/contact-detail', {'email': contact.email}) }}"><em class="icon ni ni-eye"></em><span>{{ translate('view_detail') }}</span></a></li>
                                                                 <li class="divider"></li>
-                                                                <li><a href="javascript:void(0);" class="js-delete-contact" data-contact-email="{{ contact.email }}"><em class="icon fas fa-trash-alt"></em><span>Delete contact</span></a></li>
+                                                                <li><a href="javascript:void(0);" class="js-delete-contact" data-contact-email="{{ contact.email }}"><em class="icon fas fa-trash-alt"></em><span>{{ translate('delete_contact') }}</span></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -112,17 +112,17 @@
                                                 <em class="icon ni ni-cross"></em>
                                             </a>
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Delete contact</h5>
+                                                <h5 class="modal-title">{{ translate('delete_contact') }}</h5>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Are you sure delete contact?</h4>
-                                                Contact have email <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> after being deleted will not be able to recover.
-                                                <form id="delete-contact-form" action="{{ redirect('admin/post-delete-contact') }}" method="post">
+                                                <h4>{{ translate('alert') }}</h4>
+                                                {{ translate('prefix_delete') }} <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> {{ translate('suffix_delete') }}
+                                                <form id="delete-contact-form" action="{{ redirect('admin/post-contact-delete') }}" method="post">
                                                     <input type="text" hidden value="" name="email">
                                                     <div class="card-inner">
                                                         <div class="preview-block">
-                                                            <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">Delete</button>
-                                                            <button class="btn btn-xl btn-outline-secondary js-btn-cancel">Cancel</button>
+                                                            <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">{{ translate('delete') }}</button>
+                                                            <button class="btn btn-xl btn-outline-secondary js-btn-cancel">{{ translate('cancel') }}</button>
                                                         </div>
                                                     </div>
                                                 </form>

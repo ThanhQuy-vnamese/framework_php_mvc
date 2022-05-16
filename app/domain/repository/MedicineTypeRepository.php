@@ -28,4 +28,28 @@ class MedicineTypeRepository implements MedicineTypeRepositoryInterface
 
         return (int)$this->db->insert_id;
     }
+
+    public function editMedicineType(MedicineType $medicine_type): bool
+    {
+        $sql = "UPDATE medical_medicines_types SET name = '%s', description = '%s' WHERE id = %s";
+        $query = sprintf($sql, $medicine_type->getName(), $medicine_type->getDescription(), $medicine_type->getId());
+        if ($this->db->query($query)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function deleteMedicineTypeById(int $id): bool
+    {
+        $sql = "DELETE FROM `medical_medicines_types` WHERE id = %s";
+        $query = sprintf($sql, $id);
+        try {
+            if (!$this->db->query($query)) {
+                return false;
+            }
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
 }

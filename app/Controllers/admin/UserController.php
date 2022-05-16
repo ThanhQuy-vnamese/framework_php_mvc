@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controllers\admin;
@@ -10,12 +11,18 @@ use App\Core\Session;
 use App\legacy\Auth;
 use App\Model\User;
 use App\Repository\UserRepository;
+use App\translates\Translate;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 class UserController extends BaseController
 {
+    public function getTranslate(): Translate
+    {
+        return new Translate();
+    }
+
     /**
      * @return string
      * @throws LoaderError
@@ -75,36 +82,46 @@ class UserController extends BaseController
         $address = $this->request->input->get('address');
         $phone = $this->request->input->get('phone');
         $gender = $this->request->input->get('gender');
+        $way = $this->request->input->get('way');
+        $district = $this->request->input->get('district');
+        $wards = $this->request->input->get('wards');
+        $province = $this->request->input->get('province');
+        $identity_card = $this->request->input->get('identity-card');
 
         $session = new Session();
 
         if (empty($password) || empty($confirmPassword)) {
-            $session->setFlash('errorAddUser', 'Please enter password');
+            $session->setFlash('errorAddUser', $this->getTranslate()->getLanguage('please_enter_password'));
             $this->response->redirect('/admin/user-add');
         }
 
         if ($password != $confirmPassword) {
-            $session->setFlash('errorAddUser', 'Password not match');
+            $session->setFlash('errorAddUser', $this->getTranslate()->getLanguage('password_not_match'));
             $this->response->redirect('/admin/user-add');
         }
 
         if (!empty($this->validateExistEmail($email))) {
-            $session->setFlash('errorAddUser', 'Email already exists');
+            $session->setFlash('errorAddUser', $this->getTranslate()->getLanguage('email_already_exist'));
             $this->response->redirect('/admin/user-add');
         }
+
+        $default_setting = [
+            'language' => 'eng'
+        ];
 
         $dataUser = [
             'email' => $email,
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'status' => $status,
             'role' => $role,
+            'setting' => serialize($default_setting)
         ];
 
         $user = new User();
         $userId = $user->addUser($dataUser);
 
         if (!$userId) {
-            $session->setFlash('errorAddUser', 'Add user failed');
+            $session->setFlash('errorAddUser', $this->getTranslate()->getLanguage('add_user_fail'));
             $this->response->redirect('/admin/user-add');
         }
 
@@ -115,13 +132,18 @@ class UserController extends BaseController
             'gender' => $gender,
             'address' => $address,
             'phone' => $phone,
-            'user_id' => $userId
+            'user_id' => $userId,
+            'way' => $way,
+            'district' => $district,
+            'wards' => $wards,
+            'province' => $province,
+            'identity_card' => $identity_card
         ];
 
         $idUserProfile = $user->addUserProfile($dataUserProfile);
 
         if (!$idUserProfile) {
-            $session->setFlash('errorAddUser', 'Add user failed');
+            $session->setFlash('errorAddUser', $this->getTranslate()->getLanguage('add_user_profile_fail'));
             $this->response->redirect('/admin/user-add');
         }
 
@@ -131,11 +153,11 @@ class UserController extends BaseController
         $mail->setToAddress($email);
         $mail->send();
 
-        $session->setFlash('successAddUser', 'Add user success');
-        $this->response->redirect('/admin/user-list');
+        $this->response->redirect("/admin/user-detail?id=${userId}");
     }
 
-    public function updateUser() {
+    public function updateUser()
+    {
         $idUser = $this->request->input->get('id');
         $firstName = $this->request->input->get('first-name');
         $lastName = $this->request->input->get('last-name');
@@ -148,24 +170,35 @@ class UserController extends BaseController
         $address = $this->request->input->get('address');
         $phone = $this->request->input->get('phone');
         $gender = $this->request->input->get('gender');
+        $way = $this->request->input->get('way');
+        $district = $this->request->input->get('district');
+        $wards = $this->request->input->get('wards');
+        $province = $this->request->input->get('province');
+        $identity_card = $this->request->input->get('identity-card');
+        $language = $this->request->input->get('language');
 
         $session = new Session();
         $userRepository = new UserRepository();
         $isExistEmail = $userRepository->isExistEmail($idUser, $email);
         if ($isExistEmail) {
-            $session->setFlash('errorUpdateUser', 'Email already exists');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('email_already_exist'));
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
         }
+
+        $settings = [
+            'language' => $language
+        ];
 
         $dataUser = [
             'status' => $status,
             'role' => $role,
-            'email' => $email
+            'email' => $email,
+            'setting' => serialize($settings)
         ];
 
         if (!empty($password) && !empty($confirmPassword)) {
             if ($password !== $confirmPassword) {
-                $session->setFlash('errorUpdateUser', 'Password not match');
+                $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('password_not_match'));
                 $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
             }
 
@@ -175,7 +208,7 @@ class UserController extends BaseController
         $user = new User();
         $isUpdateUserSuccess = $user->updateUser($idUser, $dataUser);
         if (!$isUpdateUserSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_user_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
         }
 
@@ -186,19 +219,26 @@ class UserController extends BaseController
             'gender' => $gender,
             'address' => $address,
             'phone' => $phone,
+            'way' => $way,
+            'district' => $district,
+            'wards' => $wards,
+            'province' => $province,
+            'identity_card' => $identity_card
         ];
 
-        $isUpdateUserProfileSuccess = $user->updateUserProfile($idUser, $dataUserProfile);
+        $isUpdateUserProfileSuccess = $user->updateUserProfileForAdmin($idUser, $dataUserProfile);
+        $this->updateInfoUserLogin((int)$idUser);
         if (!$isUpdateUserProfileSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_user_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
         }
 
-        $session->setFlash('successUpdateUser', 'Update user success');
+        $session->setFlash('successUpdateUser', $this->getTranslate()->getLanguage('update_user_success'));
         $this->response->redirect('/admin/user-detail', ['id' => $idUser]);
     }
 
-    public function updateAvatar() {
+    public function updateAvatar()
+    {
         $userId = $this->request->input->get('user-id');
         $avatarFile = $this->request->input->get('avatar-file');
         $uploadFile = new UploadFile($avatarFile);
@@ -206,7 +246,7 @@ class UserController extends BaseController
 
         $session = new Session();
         if (!$isSuccess) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_avatar_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
         $data = [
@@ -216,46 +256,49 @@ class UserController extends BaseController
         $isSuccessUpdateAvatar = $user->updateUserProfileForAdmin($userId, $data);
         $this->updateInfoUserLogin((int)$userId);
         if (!$isSuccessUpdateAvatar) {
-            $session->setFlash('errorUpdateUser', 'Update user fail');
+            $session->setFlash('errorUpdateUser', $this->getTranslate()->getLanguage('update_avatar_fail'));
             $this->response->redirect('/admin/user-detail', ['id' => $userId]);
         }
-        $session->setFlash('successUpdateUser', 'Update user success');
+        $session->setFlash('successUpdateUser', $this->getTranslate()->getLanguage('update_avatar_success'));
         $this->response->redirect('/admin/user-detail', ['id' => $userId]);
     }
 
-    private function updateInfoUserLogin(int $user_id) {
+    private function updateInfoUserLogin(int $user_id)
+    {
         $auth = new Auth();
         if ($user_id === $auth->getUser()->getId()) {
             $auth->getAuthentication()->updateInfoUserLogin();
         }
     }
 
-    public function deleteUser() {
+    public function deleteUser()
+    {
         $userId = $this->request->input->get('user-id');
         $user = new User();
         $isDeleteSuccess = $user->deleteUser($userId);
         $session = new Session();
         if (!$isDeleteSuccess) {
-            $session->setFlash('errorDeleteUser', 'Delete user fail');
+            $session->setFlash('errorDeleteUser', $this->getTranslate()->getLanguage('delete_user_fail'));
             $this->response->redirect('/admin/user-list');
         }
 
-        $session->setFlash('successDeleteUser', 'Delete user success');
+        $session->setFlash('successDeleteUser', $this->getTranslate()->getLanguage('delete_user_success'));
         $this->response->redirect('/admin/user-list');
     }
 
-    public function resetPassword() {
+    public function resetPassword()
+    {
         $userId = $this->request->input->get('user-id');
         $password = $this->request->input->get('password');
         $confirmPassword = $this->request->input->get('confirm-password');
         $session = new Session();
         if (empty($password) || empty($confirmPassword)) {
-            $session->setFlash('errorResetPassword', 'Please enter password');
+            $session->setFlash('errorResetPassword', $this->getTranslate()->getLanguage('please_enter_password'));
             $this->response->redirect('/admin/user-list');
         }
 
         if ($password !== $confirmPassword) {
-            $session->setFlash('errorResetPassword', 'Password not match');
+            $session->setFlash('errorResetPassword', $this->getTranslate()->getLanguage('password_not_match'));
             $this->response->redirect('/admin/user-list');
         }
 
@@ -266,11 +309,11 @@ class UserController extends BaseController
         $user = new User();
         $isUpdateSuccess = $user->updatePassword($userId, $info);
         if (!$isUpdateSuccess) {
-            $session->setFlash('errorResetPassword', 'Reset password fail');
+            $session->setFlash('errorResetPassword', $this->getTranslate()->getLanguage('reset_password_fail'));
             $this->response->redirect('/admin/user-list');
         }
 
-        $session->setFlash('successResetPassword', 'Reset password success');
+        $session->setFlash('successResetPassword', $this->getTranslate()->getLanguage('reset_password_success'));
         $this->response->redirect('/admin/user-list');
     }
 

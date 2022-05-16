@@ -27,6 +27,7 @@ class Twig
 
         $twig->addFunction($this->addCreateLinkFunction());
         $twig->addFunction($this->addRedirectFunction());
+        $twig->addFunction($this->addTranslateFunction());
         $twig->addGlobal('helper', new Helper());
         $twig->addGlobal('Auth', new Authentication());
         $twig->addGlobal('Session', new Session());
@@ -57,7 +58,6 @@ class Twig
         return $function;
     }
 
-
     public function addRedirectFunction(): TwigFunction
     {
         $function = new TwigFunction('redirect', function ($path = '', $params = []) {
@@ -83,6 +83,14 @@ class Twig
             $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
             $host = $_SERVER['HTTP_HOST'];
             return $http . $host . $pathPublic;
+        });
+        return $function;
+    }
+
+    public function addTranslateFunction() {
+        $function = new TwigFunction('translate', function ($key = '') {
+            $languages = array_merge(LANGUAGES, COMMON_LANGUAGES);
+            return $languages[$key] ?? '';
         });
         return $function;
     }

@@ -1,0 +1,226 @@
+{% extends 'admin/components/base.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between g-3">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">{{ translate('add_health_declaration') }}</h3>
+                        </div>
+                        {% include('admin/components/back_button.twig') %}
+                    </div>
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <form action="{{ redirect('admin/post-health-declaration-add') }}" method="post">
+                        <div class="card-inner">
+                            <div class="preview-block">
+                                <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="full-name">{{ translate('full_name') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="full-name"
+                                                       id="full-name" placeholder="{{ translate('full_name') }}" value="{{ default_value.full_name }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">{{ translate('declare_other') }}</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ translate('gender') }}</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="nam" name="gender" value="Male"
+                                                           class="custom-control-input" {{ default_value.gender == 'Male' ? 'checked' : '' }}>
+                                                    <label class="custom-control-label" for="nam">{{ translate('male') }}</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="nu" name="gender" value="Female"
+                                                           class="custom-control-input" {{ default_value.gender == 'Female' ? 'checked' : '' }}>
+                                                    <label class="custom-control-label" for="nu">{{ translate('female') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="birthday">{{ translate('date_of_birth') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="date" class="form-control" name="birthday" id="birthday"
+                                                       placeholder="{{ translate('date_of_birth') }}" value="{{ default_value.birthday }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="city">{{ translate('province') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="province"
+                                                       id="city" placeholder="{{ translate('province') }}" value="{{ default_value.province }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="district">{{ translate('district') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="district"
+                                                       id="district" placeholder="{{ translate('district') }}" value="{{ default_value.district }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="wards">{{ translate('wards') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="wards"
+                                                       id="wards" placeholder="{{ translate('wards') }}" value="{{ default_value.wards }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="house-number">{{ translate('way') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="way"
+                                                       id="house-number" placeholder="{{ translate('way') }}" value="{{ default_value.way }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone">{{ translate('phone') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="phone" id="phone"
+                                                       placeholder="{{ translate('phone') }}" value="{{ default_value.phone }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">{{ translate('email') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                       placeholder="{{ translate('email') }}" value="{{ default_value.email }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="identity-card">{{ translate('identity_card') }}</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="identity-card"
+                                                       id="identity-card" placeholder="{{ translate('identity_card') }}" value="{{ default_value.identity_card }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">{{ translate('declare_information') }}</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ translate('go_description') }}</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-go" name="go" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-go">{{ translate('yes') }}</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-go" name="go" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-go">{{ translate('no') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ translate('signal_description') }}</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-signal" name="signal" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-signal">{{ translate('yes') }}</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-signal" name="signal" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-signal">{{ translate('no') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ translate('contact_description') }}</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-contact" name="contact" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-contact">{{ translate('yes') }}</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-contact" name="contact" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-contact">{{ translate('no') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ translate('country_description') }}</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-country-covid" name="country-covid" value="1"
+                                                           class="custom-control-input" >
+                                                    <label class="custom-control-label" for="yes-country-covid">{{ translate('yes') }}</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-country-covid" name="country-covid" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-country-covid">{{ translate('no') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="password">{{ translate('symptoms_description') }}</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="yes-symptoms" name="symptoms" value="1"
+                                                           class="custom-control-input">
+                                                    <label class="custom-control-label" for="yes-symptoms">{{ translate('yes') }}</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="no-symptoms" name="symptoms" value="0"
+                                                           class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="no-symptoms">{{ translate('no') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">{{ translate('add_health_declaration') }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

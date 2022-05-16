@@ -28,7 +28,7 @@ class ViewMedicineListUseCase
     public function execute(int $offset): MedicineForListViewDto
     {
         $medicine_list = $this->medicineQueryService->getListMedicine($offset);
-        $medicine_type_list = $this->medicineTypeQueryService->getAllMedicineType();
+        $medicine_type_list = $this->medicineTypeQueryService->getAllMedicineTypeNotByOffset();
         return new MedicineForListViewDto($medicine_list, $medicine_type_list);
     }
 }

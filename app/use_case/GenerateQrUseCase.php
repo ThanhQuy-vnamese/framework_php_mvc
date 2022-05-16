@@ -25,9 +25,9 @@ class GenerateQrUseCase
         $this->helper = new Helper();
     }
 
-    public function execute(int $medical_file_id): bool
+    public function execute(int $medical_file_id, int $user_id): bool
     {
-        $qr_name = $this->generateQrImage();
+        $qr_name = $this->generateQrImage($user_id);
         $is_success =  $this->medicalFileRepository->updateQrImageNameByMedicalFileId($medical_file_id, $qr_name);
         if (!$is_success) {
             $this->session->setFlash('errorUpdateQr', 'Update Qr fail');
@@ -37,10 +37,12 @@ class GenerateQrUseCase
         return false;
     }
 
-    private function generateQrImage(): string
+    private function generateQrImage(int $user_id): string
     {
         $qrName = $this->helper->generateRandomString(15);
-        $this->qrCode->create('content', $qrName);
+        $host = $this->helper->getHost();
+        $url = "${host}/user/medican-record?user_id=${user_id}";
+        $this->qrCode->create($url, $qrName);
         return $qrName . '.png';
     }
 }

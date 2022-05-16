@@ -24,7 +24,7 @@ class MedicineDetailQueryService implements MedicineDetailQueryServiceInterface
     {
         $sql = "SELECT M.id, M.name, M.unit, MT.name AS type_name, M.description
                 FROM `medical_medicines` AS M INNER JOIN `medical_medicines_types` AS MT
-                ON m.`medicine_type_id`=MT.id WHERE M.id = %s";
+                ON M.`medicine_type_id`=MT.id WHERE M.id = %s";
         $query = sprintf($sql, $id);
         $result = $this->db->query($query);
         if ($result->num_rows === 0) {

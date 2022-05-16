@@ -2,10 +2,14 @@
 
 namespace App\Core\Helper;
 
+use App\legacy\Auth;
+
 const PREFIX_PUBLIC = '/public';
 
 class Helper
 {
+    private string $settings = '';
+
     function custom_link(string $path): string
     {
         $requestUrl = $_SERVER['REQUEST_URI'];
@@ -18,6 +22,18 @@ class Helper
         $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
         $host = $_SERVER['HTTP_HOST'];
         return $http . $host . $pathPublic . '/' . $path;
+    }
+
+    public function getHost(): string
+    {
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $pos = strpos($requestUrl, PREFIX_PUBLIC);
+        $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'];
+        if (!$pos) {
+            return $http . $host;
+        }
+        return $http . $host . 'public/';
     }
 
     /**
@@ -78,4 +94,59 @@ class Helper
         }
         return $randomString;
     }
+
+    public function getPage(): string
+    {
+        $path = $_SERVER['REQUEST_URI'];
+        if ($path === '/public/' || $path === '/') {
+            return 'users/home';
+        }
+        if (strpos($path, 'admin/user-') || strpos($path, 'post-update-avatar') || preg_match(
+                '/^\/admin\/post-user/',
+                $path
+            ) === 1) {
+            return 'admin/user';
+        } elseif (strpos($path, 'admin/medicine') || preg_match('/^\/admin\/post-medicine/', $path) === 1) {
+            return 'admin/medicine';
+        } elseif (strpos($path, 'admin/medical-file') || preg_match(
+                '/^\/admin\/post-medical-file/',
+                $path
+            ) === 1 || preg_match(
+                '/^\/admin\/prescription-/',
+                $path
+            ) === 1 || preg_match('/^\/admin\/post-prescription/', $path) === 1) {
+            return 'admin/medical-file';
+        } elseif (strpos($path, 'admin/blog') || preg_match('/^\/admin\/post-blog/', $path) === 1) {
+            return 'admin/blog';
+        } elseif (strpos($path, 'admin/contact') || preg_match('/^\/admin\/post-contact/', $path) === 1) {
+            return 'admin/contact';
+        } elseif (strpos($path, 'admin/health-declaration') || preg_match(
+                '/^\/admin\/post-health-declaration/',
+                $path
+            ) === 1) {
+            return 'admin/health-declaration';
+        } elseif (strpos($path, 'admin/calendar') || preg_match('/^\/admin\/post-calendar/', $path) === 1 || preg_match(
+                '/^\/admin\/ajax\/add-calendar/',
+                $path
+            ) === 1) {
+            return 'admin/calendar';
+        } elseif (strpos($path, 'user/')) {
+            return 'users/home';
+        }
+        return 'users/home';
+    }
+
+    public function getSettings(): Helper
+    {
+        $auth = new Auth();
+        $this->settings = $auth->getAuthentication()->user()->setting ?? '';
+        return $this;
+    }
+
+    public function getLanguage()
+    {
+        return unserialize($this->settings)['language'] ?? '';
+    }
+
+
 }

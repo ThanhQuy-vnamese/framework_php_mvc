@@ -16,7 +16,7 @@ class ReplyContactController extends BaseController
         $email = $this->request->input->get('email');
 
         $useCase = new AddReplyContactUseCase();
-        $useCase->execute($contactId, $message);
+        $useCase->execute($contactId, $message, $email);
 
         $this->response->redirect('/admin/contact-detail', ['email' => $email]);
     }

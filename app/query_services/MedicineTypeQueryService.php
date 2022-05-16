@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\query_services;
 
 use App\Core\Database\Query;
+use App\dto\MedicineType;
 use App\dto\MedicineTypeListDto;
 
 class MedicineTypeQueryService implements MedicineTypeQueryServiceInterface
@@ -39,10 +40,40 @@ class MedicineTypeQueryService implements MedicineTypeQueryServiceInterface
         return $medicine_types;
     }
 
-    public function getTotalMedicineType(): int {
+    /**
+     * @return MedicineTypeListDto[]
+     */
+    public function getAllMedicineTypeNotByOffset(): array
+    {
+        $query = "SELECT * FROM medical_medicines_types";
+        $result = $this->db->query($query);
+        $medicine_types = [];
+        if ($result->num_rows === 0) {
+            return [];
+        }
+        while ($row = $result->fetch_assoc()) {
+            $medicine_types[(int)$row['id']] = new MedicineTypeListDto((int)$row['id'], $row['name']);
+        }
+        return $medicine_types;
+    }
+
+    public function getTotalMedicineType(): int
+    {
         $query = "SELECT count(*) AS total_medicines_types FROM medical_medicines_types;";
         $result = $this->db->query($query);
         $row = $result->fetch_assoc();
         return (int)$row['total_medicines_types'];
+    }
+
+    public function getMedicineTypeById(int $id): MedicineType
+    {
+        $sql = "SELECT * FROM medical_medicines_types WHERE id = %s";
+        $query = sprintf($sql, $id);
+        $result = $this->db->query($query);
+        if ($result->num_rows === 0) {
+            return new MedicineType(0, '', '');
+        }
+        $row = $result->fetch_assoc();
+        return new MedicineType((int)$row['id'], $row['name'], $row['description']);
     }
 }
