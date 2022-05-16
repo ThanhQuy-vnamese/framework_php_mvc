@@ -75,6 +75,7 @@ const LANGUAGES = [
     'update_health_insurance' => 'Add health insurance fail',
     'delete_medical_file_fail' => 'Delete medical file fail',
     'delete_medical_file_success' => 'Delete medical file success',
+    'require_user' => 'Please choose user',
 
     'add_health_fail' => 'Add medical examination fail',
     'add_health_success' => 'Add medical examination success',
