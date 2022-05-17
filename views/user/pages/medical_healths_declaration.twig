@@ -128,11 +128,11 @@
 						<input type="hidden" class="form-control" name="user_id" value="{{ data_user.id }}">
 						<div class="form-row mt-3">
 							<div class="col-md-6">
-								<label for="full-name">Full Name</label>
+								<label for="full-name">Họ tên</label>
 								<input type="text" id="full-name" placeholder="Full Name" class="form-control" name="full-name" value="{{ data_user.first_name }} {{ data_user.last_name }}">
 							</div>
 							<div class="col-md-6">
-								<label for="birthday">Birthday</label>
+								<label for="birthday">Ngày sinh</label>
 								<input type="date" id="birthday" class="form-control" name="birthday" value="{{data_user.birthday}}">
 							</div>
 						</div>
@@ -148,43 +148,43 @@
 						</div>
 						<div class="form-row mt-3 mt-3">
 							<div class="col-md-6">
-								<label for="phone">Phone</label>
+								<label for="phone">Điện thoại</label>
 								<input id="phone" type="text" placeholder="Phone" class="form-control" name="phone" value={{ data_user.phone }}>
 							</div>
 							<div class="col-md-6">
-								<label for="way">Way</label>
+								<label for="way">Đường</label>
 								<input id="way" type="text" placeholder="Way" class="form-control" name="way" value={{ data_user.address }}>
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-6">
-								<label for="district">District</label>
+								<label for="district">Quận</label>
 								<input id="district" type="text" placeholder="District" class="form-control" name="district">
 							</div>
 							<div class="col-md-6">
-								<label for="wards">Wards</label>
+								<label for="wards">Phường</label>
 								<input id="wards" type="text" placeholder="Wards" class="form-control" name="wards">
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-6">
-								<label for="province">Province</label>
+								<label for="province">Tỉnh</label>
 								<input id="province" type="text" placeholder="Province" class="form-control" name="province">
 							</div>
 							<div class="col-md-6">
-								<label for="gender">Gender</label>
+								<label for="gender">Giới tính</label>
 								{{ data_user.gender }}
 								{% if data_user.gender == 'male' %}
 									<div class="form-check">
 										<input id="gender" class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male" checked>
 										<label class="form-check-label" for="gridRadios1">
-											Male
+											Nam
 										</label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female">
 										<label class="form-check-label" for="gridRadios2">
-											Female
+											Nữ
 										</label>
 									</div>
 								{% endif %}
@@ -192,13 +192,13 @@
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male">
 										<label class="form-check-label" for="gridRadios1">
-											Male
+											Nam
 										</label>
 									</div>
 									<div class="form-check">
 										<input id="gender" class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female" checked>
 										<label class="form-check-label" for="gridRadios2">
-											Female
+											Nữ
 										</label>
 									</div>
 								{% endif %}
@@ -212,7 +212,7 @@
 						<h2 class="card-title mt-3">Thông tin khai báo</h2>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label for="sign" style="font-weight:bold">Within 14 of you, do you have signs of fever, cough, shortness of breath, sore throat</label>
+								<label for="sign" style="font-weight:bold">Trong vòng 14 người của bạn, bạn có dấu hiệu sốt, ho, khó thở, đau họng ?</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input id="sign" class="form-check-input" type="radio" name="sign" id="sign_1" value="yes_sign">
@@ -227,7 +227,7 @@
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label for="country" style="font-weight:bold">Did you pass through any country/territory withon 14 days</label>
+								<label for="country" style="font-weight:bold">Bạn đã đi qua bất kỳ quốc gia/lãnh thổ nào với 14 ngày?</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input id="country" class="form-check-input" type="radio" name="country" id="country_1" value="yes_country">
@@ -241,7 +241,7 @@
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label style="font-weight:bold">In the past 14, have you in contact with someone who is sick or suspected of having covid</label>
+								<label style="font-weight:bold">Trong 14 vừa qua, bạn đã liên lạc với một người bị bệnh hoặc bị nghi ngờ có covid ?</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="sick" id="sick_1" value="yes_sick">
@@ -255,7 +255,7 @@
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label style="font-weight:bold">In the past 14, have you been in contact with someone from a country with COVID-19</label>
+								<label style="font-weight:bold">Trong 14 vừa qua, bạn đã liên lạc với ai đó từ một quốc gia với Covid-19 ?</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="contact" id="contact_1" value="yes_contact">
@@ -269,7 +269,7 @@
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label style="font-weight:bold">With 14 days, have you been in contact with someone with symptoms(fever, cough, shortness of breath, sore throat)</label>
+								<label style="font-weight:bold">Với 14 ngày, bạn đã liên lạc với người có triệu chứng (sốt, ho, khó thở, đau họng) ?</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="symptoms" id="symptoms_1" value="yes_symptoms">

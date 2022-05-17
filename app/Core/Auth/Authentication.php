@@ -45,7 +45,8 @@ class Authentication
         return $this->validate($result, $info['password']);
     }
 
-    public function updateInfoUserLogin() {
+    public function updateInfoUserLogin()
+    {
         $user = new User();
         $auth = new Auth();
         $result = $user->getInfoUserLoginById($auth->getUser()->getId());
@@ -91,11 +92,13 @@ class Authentication
         return $this->user;
     }
 
-    public function setRememberPassword($isRememberPassword) {
+    public function setRememberPassword($isRememberPassword)
+    {
         $this->rememberPassword = $isRememberPassword;
     }
 
-    public function setUserInfo(array $info) {
+    public function setUserInfo(array $info)
+    {
         $this->setInfo((object) $info);
     }
 

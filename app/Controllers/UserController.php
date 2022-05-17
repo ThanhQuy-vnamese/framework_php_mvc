@@ -19,6 +19,7 @@ use PHPMailer\PHPMailer\Exception;
 use App\Core\Lib\Token;
 use App\Core\Helper\Helper;
 use App\Core\Auth\Authentication;
+use App\Core\Lib\fb;
 
 class UserController extends BaseController
 {
@@ -37,7 +38,9 @@ class UserController extends BaseController
     public function login(): string
     {
 
-        return $this->twig->render('user/pages/login');
+        $facebook = new fb();
+        $login_fb = $facebook->createLinkRedirect();
+        return $this->twig->render('user/pages/login', ['link_fb'=>$login_fb]);
     }
     public function postLogin()
     {
@@ -90,7 +93,6 @@ class UserController extends BaseController
             $getProfileById = (array)$user->getProfileByUserId($userId);
 
             $session = new Session();
-
             $session->set('userProfile', $getProfileById[0]);
         }
         return $this->twig->render('user/pages/profile');
@@ -106,6 +108,7 @@ class UserController extends BaseController
 
         $avatarFile = $this->generateRandomString(5) . '_' . $_FILES['avatar']['name'];
 
+   
         $avatarFile_tmp =  $_FILES['avatar']['tmp_name'];
 
         $user_id = trim($this->request->input->get('user_id'));
@@ -151,7 +154,6 @@ class UserController extends BaseController
         if ($updateUserAccount && $updateUserProfile) {
             $this->uploadAvatar($avatarFile, $avatarFile_tmp, $user_id);
             $session->setFlash('updateUser', "Cập nhật thành công rồi! ");
-
             $this->response->redirect('/user/profile?user_id=' . $user_id);
         } else {
             $session->setFlash('updateUserError', "Cập nhật thất bại! ");
@@ -170,7 +172,7 @@ class UserController extends BaseController
             $session->setFlash('errorImage', 'Chỉ được upload các định dạng JPG, PNG, JPEG, GIF');
             $this->response->redirect('/user/profile?user_id=' . $user_id);
         }
-        $target_dir = 'public/upload/avatars' . '/' . basename($avatarFile);
+        $target_dir = $_SERVER["DOCUMENT_ROOT"].'/phpmvc-user-test/public/upload/avatars' . '/' . basename($avatarFile);
         print_r($target_dir);
         move_uploaded_file($avatarFile_tmp, $target_dir);
     }

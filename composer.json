@@ -12,7 +12,8 @@
         "twig/twig": "^3.0",
         "firebase/php-jwt": "^5.4",
         "phpmailer/phpmailer": "^6.5",
-        "endroid/qr-code": "^4.4"
+        "endroid/qr-code": "^4.4",
+        "facebook/graph-sdk": "^5.7"
     },
     "autoload": {
         "psr-4": {
