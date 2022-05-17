@@ -26,6 +26,9 @@ class SampleController extends BaseController
         $getAllBlog = (array)$blog->getAllBlog();
         $user = new User();
         $getAllDoctor = $user->getAllDoctor();
+        $session = new Session();
+        // echo("<pre>");
+        // print_r($session->get('user'));
         return $this->twig->render('user/pages/home', ['getAllBlog'=>$getAllBlog, 'getAllDoctor'=>$getAllDoctor]);
     }
     public function about(): string

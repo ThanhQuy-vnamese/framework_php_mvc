@@ -14,30 +14,30 @@
 					<div class="collapse navbar-collapse main-menu-item justify-content-center" id="navbarSupportedContent">
 						<ul class="navbar-nav align-items-center">
 							<li class="nav-item active">
-								<a class="nav-link" href="{{ redirect('') }}">Home</a>
+								<a class="nav-link" href="{{ redirect('') }}">Trang chủ</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ redirect('about') }}">About</a>
+								<a class="nav-link" href="{{ redirect('about') }}">Về chúng tôi</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ redirect('user/blog') }}">Blog</a>
+								<a class="nav-link" href="{{ redirect('user/blog') }}">Bài viết</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ redirect('doctor') }}">Doctors</a>
+								<a class="nav-link" href="{{ redirect('doctor') }}">Danh sách bác sĩ</a>
 							</li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Service
+									Dịch vụ
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="{{ redirect('statistic-covid') }}">Thống kê covid</a>
-									<a class="dropdown-item" href="{{ redirect('book-clinic') }}">Xem lịch khám</a>
+									<a class="dropdown-item" href="{{ redirect('user/book-list-clinic') }}">Xem lịch khám</a>
 									<a class="dropdown-item" href="{{ redirect('user/medican-record') }}?user_id={{ session.get('user').user_id}}">Hồ sơ bệnh án</a>
 									<a class="dropdown-item" href="{{ redirect('user/medical-healths') }}">Khai báo y tế</a>
 								</div>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ redirect('contact') }}">Contact</a>
+								<a class="nav-link" href="{{ redirect('contact') }}">Liên hệ</a>
 							</li>
 							<li class="nav-item dropdown">
 								{% if(Session.get('user') != '') %}
@@ -46,8 +46,8 @@
 										{{ session.get('user').first_name}}
 									</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="{{ redirect('user/profile')}}?user_id={{ session.get('user').user_id}}">Profile</a>
-										<a class="dropdown-item" href="{{ redirect('user/logout') }}">Logout</a>
+										<a class="dropdown-item" href="{{ redirect('user/profile')}}?user_id={{ session.get('user').user_id}}">Hồ sơ cá nhân</a>
+										<a class="dropdown-item" href="{{ redirect('user/logout') }}">Đăng xuất</a>
 									</div>
 								{% else %}
 									<a class="btn_2 d-none d-lg-block" href="{{ redirect('user/login') }}">Login</a>
@@ -74,7 +74,7 @@
 					<div class="input-group rounded">
 						<input type="search" name="keyword" class="form-control rounded" placeholder="Nhập bác sĩ cần tìm" aria-label="Search" aria-describedby="search-addon"/>
 						<span id="search-addon" style="padding-left:10px">
-							<input class="btn btn-info" type="submit" value="Search"/>
+							<input class="btn btn-info" type="submit" value="Tìm kiếm"/>
 						</span>
 					</div>
 				</form>

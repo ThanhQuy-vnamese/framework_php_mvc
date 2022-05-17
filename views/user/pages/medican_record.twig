@@ -141,27 +141,27 @@
 									<div class="tab-pane fade active show" id="account-general">
 										<div class="card-body">
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">First Name</label>
+												<label class="form-label" style="font-weight:bold">Họ</label>
 												<input type="text" class="form-control mb-1" value="" name="first-name">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">First Name</label>
+												<label class="form-label" style="font-weight:bold">Tên</label>
 												<input type="text" class="form-control mb-1" value="" name="last-name">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Gender</label>
+												<label class="form-label" style="font-weight:bold">Giới tính</label>
 												<div class="col-sm-10">
 
 													<div class="form-check">
 														<input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male">
 														<label class="form-check-label" for="gridRadios1">
-															Male
+															Nam
 														</label>
 													</div>
 													<div class="form-check">
 														<input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female">
 														<label class="form-check-label" for="gridRadios2">
-															Female
+															Nữ
 														</label>
 													</div>
 
@@ -172,15 +172,15 @@
 												<input type="text" class="form-control mb-1" value="" name="email">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Birthday</label>
+												<label class="form-label" style="font-weight:bold">Ngày sinh</label>
 												<input type="date" class="form-control" value="" name="birthday">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Phone</label>
+												<label class="form-label" style="font-weight:bold">Số điện thoại</label>
 												<input type="text" class="form-control" value="" name="phone">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Way</label>
+												<label class="form-label" style="font-weight:bold">Đường</label>
 												<input type="text" class="form-control" value="" name="way">
 											</div>
 											<div class="form-group">
@@ -188,19 +188,19 @@
 												<input type="text" class="form-control" value="" name="identity_card">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Province</label>
+												<label class="form-label" style="font-weight:bold">Tỉnh</label>
 												<input type="text" class="form-control" value="" name="province">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Covid Vaccination</label>
+												<label class="form-label" style="font-weight:bold">Vắc-xin covid</label>
 												<input type="text" class="form-control" value="" name="covid_vaccination">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">District</label>
+												<label class="form-label" style="font-weight:bold">Quận</label>
 												<input type="text" class="form-control" value="" name="district">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Wards</label>
+												<label class="form-label" style="font-weight:bold">Phường</label>
 												<input type="text" class="form-control" value="" name="wards">
 											</div>
 											<div class="form-group">
@@ -221,7 +221,7 @@
 					<div class="row no-gutters row-bordered row-border-light">
 						<div class="col-md-3 pt-0">
 							<div class="list-group list-group-flush account-settings-links">
-								<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
+								<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Tổng quan</a>
 
 								<a class="list-group-item list-group-item-action" href="/{{helper.getDirectoryUpload()}}qr_images/{{data_user.qr_image}}" download>
 									<img class="rounded-circle mt-5" width="100%" src="/{{helper.getDirectoryUpload()}}qr_images/{{data_user.qr_image}}" width="90">
@@ -322,7 +322,7 @@
 												<input type="text" class="form-control" value="{{ data_user.wards}}" name="wards">
 											</div>
 											<div class="form-group">
-												<input type="submit" class="btn btn-primary" value="Save changes">
+												<input type="submit" class="btn btn-primary" value="lưu">
 											</div>
 										</div>
 									</div>

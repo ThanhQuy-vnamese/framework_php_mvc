@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\BlogController;
+use App\Controllers\LoginFacebookController;
 use App\Controllers\SearchController;
 use App\Controllers\MedicalHealthsController;
 use App\Controllers\MedicineController;
@@ -19,6 +20,7 @@ use App\Core\View\Twig;
 use App\Middleware\UserAuthMiddleware;
 use App\Model\User;
 use App\route\AdminRoute;
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -83,6 +85,9 @@ $app->router->get('/user/detail-blog', [BlogController::class, 'getViewBlogByUse
 $app->router->get('/user/login', [UserController::class, 'login']);
 $app->router->post('/user/post-login', [UserController::class, 'postLogin']);
 $app->router->get('/user/logout', [UserController::class, 'logout']);
+
+// Login facebook
+$app->router->get('/user/facebook-redirect', [LoginFacebookController::class, 'store']);
 
 $app->router->get('/user/profile', [UserController::class, 'getViewProfile']);
 $app->router->post('/user/post-profile', [UserController::class, 'postProfile']);
