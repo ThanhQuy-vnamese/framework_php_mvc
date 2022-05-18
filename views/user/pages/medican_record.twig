@@ -115,7 +115,7 @@
 
 			<center>
 				<h2 class="font-weight-bold py-3 mb-4">
-					Hồ sơ bệnh án
+					{{ translate('medical_file') }}
 				</h2>
 			</center>
 
@@ -141,15 +141,15 @@
 									<div class="tab-pane fade active show" id="account-general">
 										<div class="card-body">
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Họ</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('first_name') }}</label>
 												<input type="text" class="form-control mb-1" value="" name="first-name">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Tên</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('last_name') }}</label>
 												<input type="text" class="form-control mb-1" value="" name="last-name">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Giới tính</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('gender') }}</label>
 												<div class="col-sm-10">
 
 													<div class="form-check">
@@ -168,39 +168,39 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">E-mail</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('email_address') }}</label>
 												<input type="text" class="form-control mb-1" value="" name="email">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Ngày sinh</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('date_of_birth') }}</label>
 												<input type="date" class="form-control" value="" name="birthday">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Số điện thoại</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('phone') }}</label>
 												<input type="text" class="form-control" value="" name="phone">
 											</div>
+                                            <div class="form-group">
+                                                <label class="form-label" style="font-weight:bold">{{ translate('identity_card') }}</label>
+                                                <input type="text" class="form-control" value="" name="identity_card">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" style="font-weight:bold">{{ translate('covid_vaccination') }}</label>
+                                                <input type="text" class="form-control" value="" name="covid_vaccination">
+                                            </div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Đường</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('way') }}</label>
 												<input type="text" class="form-control" value="" name="way">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Identity Card</label>
-												<input type="text" class="form-control" value="" name="identity_card">
-											</div>
-											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Tỉnh</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('province') }}</label>
 												<input type="text" class="form-control" value="" name="province">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Vắc-xin covid</label>
-												<input type="text" class="form-control" value="" name="covid_vaccination">
-											</div>
-											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Quận</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('district') }}</label>
 												<input type="text" class="form-control" value="" name="district">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Phường</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('wards') }}</label>
 												<input type="text" class="form-control" value="" name="wards">
 											</div>
 											<div class="form-group">
@@ -221,13 +221,13 @@
 					<div class="row no-gutters row-bordered row-border-light">
 						<div class="col-md-3 pt-0">
 							<div class="list-group list-group-flush account-settings-links">
-								<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Tổng quan</a>
+								<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">{{ translate('overview') }}</a>
 
 								<a class="list-group-item list-group-item-action" href="/{{helper.getDirectoryUpload()}}qr_images/{{data_user.qr_image}}" download>
 									<img class="rounded-circle mt-5" width="100%" src="/{{helper.getDirectoryUpload()}}qr_images/{{data_user.qr_image}}" width="90">
 									<center>
 										<h5 style="font-weight:bold">
-											Download Qr Code
+											{{ translate('download_qr') }}
 										</h5>
 									</center>
 								</a>
@@ -245,15 +245,15 @@
 									<div class="tab-pane fade active show" id="account-general">
 										<div class="card-body">
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">First Name</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('first_name') }}</label>
 												<input type="text" class="form-control mb-1" value="{{ data_user.first_name }}" name="first-name">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">First Name</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('last_name') }}</label>
 												<input type="text" class="form-control mb-1" value="{{ data_user.last_name }}" name="last-name">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Gender</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('gender') }}</label>
 												<div class="col-sm-10">
 													{% if data_user.gender == 'male' %}
 														<div class="form-check">
@@ -286,39 +286,39 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">E-mail</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('email_address') }}</label>
 												<input type="text" class="form-control mb-1" value="{{ data_user.email }}" name="email">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Birthday</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('date_of_birth') }}</label>
 												<input type="date" class="form-control" value="{{ data_user.birthday }}" name="birthday">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Phone</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('phone') }}</label>
 												<input type="text" class="form-control" value="{{ data_user.phone }}" name="phone">
 											</div>
+                                            <div class="form-group">
+                                                <label class="form-label" style="font-weight:bold">{{ translate('identity_card') }}</label>
+                                                <input type="text" class="form-control" value="{{ data_user.identity_card }}" name="identity_card">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" style="font-weight:bold">{{ translate('covid_vaccination') }}</label>
+                                                <input type="text" class="form-control" value="{{ data_user.covid_vaccination }}" name="covid_vaccination">
+                                            </div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Way</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('way') }}</label>
 												<input type="text" class="form-control" value="{{ data_user.way }}" name="way">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Identity Card</label>
-												<input type="text" class="form-control" value="{{ data_user.identity_card }}" name="identity_card">
-											</div>
-											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Province</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('province') }}</label>
 												<input type="text" class="form-control" value="{{ data_user.province }}" name="province">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Covid Vaccination</label>
-												<input type="text" class="form-control" value="{{ data_user.covid_vaccination }}" name="covid_vaccination">
-											</div>
-											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">District</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('district') }}</label>
 												<input type="text" class="form-control" value="{{ data_user.district}}" name="district">
 											</div>
 											<div class="form-group">
-												<label class="form-label" style="font-weight:bold">Wards</label>
+												<label class="form-label" style="font-weight:bold">{{ translate('wards') }}</label>
 												<input type="text" class="form-control" value="{{ data_user.wards}}" name="wards">
 											</div>
 											<div class="form-group">
