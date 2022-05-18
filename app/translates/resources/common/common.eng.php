@@ -15,5 +15,9 @@ const COMMON_LANGUAGES = [
     'delete' => 'Delete',
     'cancel' => 'Cancel',
     'back' => 'Back',
-    'log_out' => 'Log out'
+    'log_out' => 'Logout',
+    'login' => 'Login',
+    'profile' => 'Profile',
+    'search_doctor' => 'Search doctor',
+    'search' => 'Search',
 ];
