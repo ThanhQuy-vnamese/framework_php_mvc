@@ -9,6 +9,7 @@ CREATE TABLE `medical_users`
     `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
     `token`      varchar(700),
     `setting`   text,
+    `face_id`    varchar(500),
     `role`       int(2)
 );
 

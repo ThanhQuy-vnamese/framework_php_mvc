@@ -114,7 +114,7 @@
 		<div class="container py-5">
 			<div class="card">
 				<div class="card-header bg-primary">
-					<h1 class="text-uppercase text-center text-white">Khai báo y tế</h1>
+					<h1 class="text-uppercase text-center text-white">{{ translate('health_declaration') }}</h1>
 				</div>
 				<div class="card-body">
 					<form method="post" action="{{ redirect('user/post-medical-healths') }}">
@@ -124,67 +124,67 @@
 						{% if(Session.hasFlash('addHealthSuccess')) %}
 							<div class="alert alert-success">{{ session.getFlash('addHealthSuccess') }}</div>
 						{% endif %}
-						<h2 class="card-title">Thông tin chính</h2>
+						<h2 class="card-title">{{ translate('main_information') }}</h2>
 						<input type="hidden" class="form-control" name="user_id" value="{{ data_user.id }}">
 						<div class="form-row mt-3">
 							<div class="col-md-6">
-								<label for="full-name">Họ tên</label>
+								<label for="full-name">{{ translate('full_name') }}</label>
 								<input type="text" id="full-name" placeholder="Full Name" class="form-control" name="full-name" value="{{ data_user.first_name }} {{ data_user.last_name }}">
 							</div>
 							<div class="col-md-6">
-								<label for="birthday">Ngày sinh</label>
+								<label for="birthday">{{ translate('email_address') }}</label>
 								<input type="date" id="birthday" class="form-control" name="birthday" value="{{data_user.birthday}}">
 							</div>
 						</div>
 						<div class="form-row mt-3 mt-3">
 							<div class="col-md-6">
-								<label for="identity_card">Identity Card</label>
+								<label for="identity_card">{{ translate('identity_card') }}</label>
 								<input id="identity_card" type="text" placeholder="Identity Card" class="form-control" name="identity_card">
 							</div>
 							<div class="col-md-6">
-								<label for="email">Email</label>
+								<label for="email">{{ translate('email_address') }}</label>
 								<input id="email" type="email" placeholder="Email" class="form-control" name="email" value="{{ data_user.email }}">
 							</div>
 						</div>
 						<div class="form-row mt-3 mt-3">
 							<div class="col-md-6">
-								<label for="phone">Điện thoại</label>
+								<label for="phone">{{ translate('phone') }}</label>
 								<input id="phone" type="text" placeholder="Phone" class="form-control" name="phone" value={{ data_user.phone }}>
 							</div>
 							<div class="col-md-6">
-								<label for="way">Đường</label>
+								<label for="way">{{ translate('way') }}</label>
 								<input id="way" type="text" placeholder="Way" class="form-control" name="way" value={{ data_user.address }}>
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-6">
-								<label for="district">Quận</label>
+								<label for="district">{{ translate('district') }}</label>
 								<input id="district" type="text" placeholder="District" class="form-control" name="district">
 							</div>
 							<div class="col-md-6">
-								<label for="wards">Phường</label>
+								<label for="wards">{{ translate('wards') }}</label>
 								<input id="wards" type="text" placeholder="Wards" class="form-control" name="wards">
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-6">
-								<label for="province">Tỉnh</label>
+								<label for="province">{{ translate('province') }}</label>
 								<input id="province" type="text" placeholder="Province" class="form-control" name="province">
 							</div>
 							<div class="col-md-6">
-								<label for="gender">Giới tính</label>
+								<label for="gender">{{ translate('gender') }}</label>
 								{{ data_user.gender }}
 								{% if data_user.gender == 'male' %}
 									<div class="form-check">
 										<input id="gender" class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male" checked>
 										<label class="form-check-label" for="gridRadios1">
-											Nam
+                                            {{ translate('male') }}
 										</label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female">
 										<label class="form-check-label" for="gridRadios2">
-											Nữ
+                                            {{ translate('female') }}
 										</label>
 									</div>
 								{% endif %}
@@ -192,13 +192,13 @@
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male">
 										<label class="form-check-label" for="gridRadios1">
-											Nam
+                                            {{ translate('male') }}
 										</label>
 									</div>
 									<div class="form-check">
 										<input id="gender" class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female" checked>
 										<label class="form-check-label" for="gridRadios2">
-											Nữ
+                                            {{ translate('female') }}
 										</label>
 									</div>
 								{% endif %}
@@ -209,75 +209,75 @@
 								<hr>
 							</div>
 						</div>
-						<h2 class="card-title mt-3">Thông tin khai báo</h2>
+						<h2 class="card-title mt-3">{{ translate('declare_information') }}</h2>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label for="sign" style="font-weight:bold">Trong vòng 14 người của bạn, bạn có dấu hiệu sốt, ho, khó thở, đau họng ?</label>
+								<label for="sign" style="font-weight:bold">{{ translate('signal_description') }}</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input id="sign" class="form-check-input" type="radio" name="sign" id="sign_1" value="yes_sign">
-									<label class="form-check-label" for="sign_1">Có</label>
+									<label class="form-check-label" for="sign_1">{{ translate('yes') }}</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input id="sign" class="form-check-input" type="radio" name="sign" id="sign_2" value="no_sign">
-									<label class="form-check-label" for="sign_2">Không</label>
+									<label class="form-check-label" for="sign_2">{{ translate('no') }}</label>
 								</div>
 							</div>
 
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label for="country" style="font-weight:bold">Bạn đã đi qua bất kỳ quốc gia/lãnh thổ nào với 14 ngày?</label>
+								<label for="country" style="font-weight:bold">{{ translate('go_description') }}</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input id="country" class="form-check-input" type="radio" name="country" id="country_1" value="yes_country">
-									<label class="form-check-label" for="country_1">Có</label>
+									<label class="form-check-label" for="country_1">{{ translate('yes') }}</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="country" id="country_2" value="no_country">
-									<label class="form-check-label" for="country_2">Không</label>
+									<label class="form-check-label" for="country_2">{{ translate('no') }}</label>
 								</div>
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label style="font-weight:bold">Trong 14 vừa qua, bạn đã liên lạc với một người bị bệnh hoặc bị nghi ngờ có covid ?</label>
+								<label style="font-weight:bold">{{ translate('contact_description') }}</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="sick" id="sick_1" value="yes_sick">
-									<label class="form-check-label" for="sick_1">Có</label>
+									<label class="form-check-label" for="sick_1">{{ translate('yes') }}</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="sick" id="sick_2" value="no_sick">
-									<label class="form-check-label" for="sick_2">Không</label>
+									<label class="form-check-label" for="sick_2">{{ translate('no') }}</label>
 								</div>
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label style="font-weight:bold">Trong 14 vừa qua, bạn đã liên lạc với ai đó từ một quốc gia với Covid-19 ?</label>
+								<label style="font-weight:bold">{{ translate('country_description') }}</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="contact" id="contact_1" value="yes_contact">
-									<label class="form-check-label" for="contact_1">Có</label>
+									<label class="form-check-label" for="contact_1">{{ translate('yes') }}</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="contact" id="contact_2" value="no_contact">
-									<label class="form-check-label" for="contact_2">Không</label>
+									<label class="form-check-label" for="contact_2">{{ translate('no') }}</label>
 								</div>
 							</div>
 						</div>
 						<div class="form-row mt-3">
 							<div class="col-md-12 mt-2">
-								<label style="font-weight:bold">Với 14 ngày, bạn đã liên lạc với người có triệu chứng (sốt, ho, khó thở, đau họng) ?</label>
+								<label style="font-weight:bold">{{ translate('symptoms_description') }}</label>
 								<br>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="symptoms" id="symptoms_1" value="yes_symptoms">
-									<label class="form-check-label" for="symptoms_1">Có</label>
+									<label class="form-check-label" for="symptoms_1">{{ translate('yes') }}</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="symptoms" id="symptoms_2" value="no_symptoms">
-									<label class="form-check-label" for="symptoms_2">Không</label>
+									<label class="form-check-label" for="symptoms_2">{{ translate('no') }}</label>
 								</div>
 							</div>
 						</div>
