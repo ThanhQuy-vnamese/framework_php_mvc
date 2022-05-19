@@ -62,4 +62,19 @@ const LANGUAGES = [
     'symptoms_description' => 'Trong vòng 14 ngày, bạn có tiếp xúc với một người nào đó có các triệu chứng (sốt, ho, khó thở, đau họng) không?',
     'yes' => 'Có',
     'no' => 'Không',
+
+    //Contact
+    'get_in_touch' => 'Liên lạc',
+    'title' => 'Nhập titel',
+    'name' => 'Nhập họ tên',
+    'age' => 'Nhập tuổi',
+    'email' => 'Nhập địa chỉ email',
+    'phone_contact' => 'Nhập số điện thoại',
+    'message' => 'Nhập nội dung',
+    'send' => 'Gửi',
+
+    //Profile
+    'personal_information' => 'Thông tin cá nhân',
+    'avatar' => 'Ảnh đại diện',
+    'save' => 'Lưu'
 ];

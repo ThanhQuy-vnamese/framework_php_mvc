@@ -62,4 +62,19 @@ const LANGUAGES = [
     'symptoms_description' => 'Within 14 days, have you been in contact with someone with symptoms (fever, cough, shortness of breath, sore throat)?',
     'yes' => 'Yes',
     'no' => 'No',
+
+    //Contact
+    'get_in_touch' => 'Get in Touch',
+    'title' => 'Enter your title',
+    'name' => 'Enter your full name',
+    'age' => 'Enter age',
+    'email' => 'Enter email address',
+    'phone_contact' => 'Enter phone',
+    'message' => 'Enter message',
+    'send' => 'Send',
+
+    //Profile
+    'personal_information' => 'Personal information',
+    'avatar' => 'Avatar',
+    'save' => 'Save'
 ];
