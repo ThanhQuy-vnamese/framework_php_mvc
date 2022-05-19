@@ -20,7 +20,7 @@
 					<div class="col-lg-12">
 						<div class="breadcrumb_iner">
 							<div class="breadcrumb_iner_item">
-								<h2>Liên hệ</h2>
+								<h2>{{ translate('contact') }}</h2>
 							</div>
 						</div>
 					</div>
@@ -42,7 +42,7 @@
 
 				<div class="row">
 					<div class="col-12">
-						<h2 class="contact-title">Get in Touch</h2>
+						<h2 class="contact-title">{{ translate('get_in_touch') }}</h2>
 					</div>
 					<div class="col-lg-8">
 						<form class="form-contact contact_form" action="{{ redirect('post-contact') }}" method="post">
@@ -55,37 +55,37 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="form-group">
-										<input class="form-control" name="title" id="title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title'" placeholder='Enter your title'>
+										<input class="form-control" name="title" id="title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title'" placeholder='{{ translate('title') }}'>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
-										<input class="form-control" name="fullname" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name'>
+										<input class="form-control" name="fullname" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='{{ translate('name') }}'>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
-										<input class="form-control" name="age" id="age" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter age'" placeholder='Enter age'>
+										<input class="form-control" name="age" id="age" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter age'" placeholder='{{ translate('age') }}'>
 									</div>
 								</div>
 								<div class="col-sm-12">
 									<div class="form-group">
-										<input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
+										<input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder='{{ translate('email') }}'>
 									</div>
 								</div>
 								<div class="col-sm-12">
 									<div class="form-group">
-										<input class="form-control" name="phone" id="phone" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter phone'" placeholder='Enter phone'>
+										<input class="form-control" name="phone" id="phone" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter phone'" placeholder='{{ translate('phone_contact') }}'>
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-group">
-										<textarea class="form-control" id="message" rows="5" name="message" placeholder="Message"></textarea>
+										<textarea class="form-control" id="message" rows="5" name="message" placeholder="{{ translate('message') }}"></textarea>
 									</div>
 								</div>
 							</div>
 							<div class="form-group mt-3">
-								<input type="submit" class="button button-contactForm btn_1" value="Send Message">
+								<input type="submit" class="button button-contactForm btn_1" value="{{ translate('send') }}">
 							</div>
 						</form>
 					</div>
