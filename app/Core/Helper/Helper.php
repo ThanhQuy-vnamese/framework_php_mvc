@@ -2,10 +2,14 @@
 
 namespace App\Core\Helper;
 
+use App\legacy\Auth;
+
 const PREFIX_PUBLIC = '/public';
 
 class Helper
 {
+    private string $settings = '';
+
     function custom_link(string $path): string
     {
         $requestUrl = $_SERVER['REQUEST_URI'];
@@ -77,5 +81,41 @@ class Helper
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function getPage(): string
+    {
+        $path = $_SERVER['REQUEST_URI'];
+        if ($path === '/public/' || $path === '/') {
+            return 'users/home';
+        }
+        if (strpos($path, 'admin/user-')) {
+            return 'admin/user';
+        } elseif (strpos($path, 'admin/medicine')) {
+            return 'admin/medicine';
+        } elseif (strpos($path, 'admin/medical-file')) {
+            return 'admin/medical-file';
+        } elseif (strpos($path, 'admin/blog')) {
+            return 'admin/blog';
+        } elseif (strpos($path, 'admin/contact')) {
+            return 'admin/contact';
+        } elseif (strpos($path, 'admin/health-declaration')) {
+            return 'admin/health-declaration';
+        } elseif (strpos($path, 'admin/calendar')) {
+            return 'admin/calendar';
+        } elseif (strpos($path, 'user/')) {
+            return 'users/home';
+        }
+        return 'users/home';
+    }
+
+    public function getSettings(): Helper {
+        $auth = new Auth();
+        $this->settings = $auth->getAuthentication()->user()->setting ?? '';
+        return $this;
+    }
+
+    public function getLanguage() {
+        return unserialize($this->settings)['language'] ?? '';
     }
 }

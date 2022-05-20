@@ -55,6 +55,10 @@ class AddMedicalFileUseCase
             $this->session->setFlash('errorAddMedicalFile', 'The identity card ....');
             return 0;
         }
+        if (empty($birthday)) {
+            $this->session->setFlash('errorAddMedicalFile', 'Please enter birthday');
+            return 0;
+        }
         $qrName = $this->generateQrImage();
         $medicalFileToInsert = $this->buildMedicalFile(
             $first_name,
@@ -81,8 +85,8 @@ class AddMedicalFileUseCase
         $healthInsurance = $this->validateHealthInsurance($health_insurance_number, $expiration_date);
         $healthInsuranceForInsert = $this->buildHealthInsurance(
             $healthInsurance['health_insurance'],
-            (string)$healthInsurance['health_insurance_number'],
-            (string)$healthInsurance['expiration_date'],
+            (string)($healthInsurance['health_insurance_number'] ?? ''),
+            (string)($healthInsurance['expiration_date'] ?? null),
             $idMedicalFile
         );
 
@@ -91,7 +95,6 @@ class AddMedicalFileUseCase
             $this->session->setFlash('errorAddMedicalFile', 'Add medical file fail');
             return 0;
         }
-        $this->session->setFlash('successAddMedicalFile', 'Add medical file success');
         return $idMedicalFile;
     }
 
@@ -139,7 +142,7 @@ class AddMedicalFileUseCase
             $first_name,
             $last_name,
             $gender,
-            $birthday,
+            empty($birthday) ? null : $birthday,
             $identity_card,
             $email,
             $phone,
@@ -156,7 +159,7 @@ class AddMedicalFileUseCase
     private function buildHealthInsurance(
         int $health_insurance,
         string $health_insurance_number,
-        string $expiration_date,
+        ?string $expiration_date,
         int $medical_records_id
     ): HealthInsurance {
         return new HealthInsurance($health_insurance, $health_insurance_number, $expiration_date, $medical_records_id);

@@ -7,7 +7,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Medical Files / <strong
+                            <h3 class="nk-block-title page-title">{{ translate('medical_file') }} / <strong
                                     class="text-primary small">{{ medicalFile.first_name }} {{ medicalFile.last_name }}</strong>
                             </h3>
                             <div class="nk-block-des text-soft">
@@ -62,96 +62,103 @@
                                 <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card" id="nav-tab">
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab" href="#nav-personal">
-                                            <em class="icon ni ni-user-circle"></em><span>Personal</span></a>
+                                            <em class="icon ni ni-user-circle"></em><span>{{ translate('personal') }}</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#nav-health">
-                                            <em class="icon fas fa-hand-holding-medical"></em><span>Health</span></a>
+                                            <em class="icon fas fa-hand-holding-medical"></em><span>{{ translate('health') }}</span></a>
                                     </li>
                                 </ul><!-- .nav-tabs -->
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="card-inner tab-pane fade show active" id="nav-personal">
                                         <div class="nk-block">
                                             <div class="nk-block-head nk-block-head-sm nk-block-between">
-                                                <h5 class="title">Main Information</h5>
+                                                <h5 class="title">{{ translate('main_information') }}</h5>
                                                 <div>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                            data-target="#modalDefault">Edit Information
+                                                            data-target="#modalDefault">{{ translate('edit_information') }}
                                                     </button>
                                                     <button type="button"
                                                             class="btn btn-warning" data-toggle="modal"
                                                             data-target="#modalReGenerateQRImage">
-                                                        Re-generate QR image
+                                                        {{ translate('re_generate_qr_image') }}
                                                     </button>
                                                 </div>
                                             </div><!-- .nk-block-head -->
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">First Name</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('first_name') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.first_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Last Name</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('last_name') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.last_name }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Birthday</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('birthday') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.birthday }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Gender</span>
+                                                        <span class="profile-ud-label">{{ translate('gender') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.gender }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Phone</span>
+                                                        <span class="profile-ud-label">{{ translate('phone') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.phone }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Email</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('email_address') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.email }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Identity card</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('identity_card') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.identity_card }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Province/City</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('province') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.province }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">District</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('district') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.district }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Wards</span>
+                                                        <span class="profile-ud-label">{{ translate('wards') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.wards }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">House number/Way</span>
+                                                        <span class="profile-ud-label">{{ translate('way') }}</span>
                                                         <span class="profile-ud-value">{{ medicalFile.way }}</span>
                                                     </div>
                                                 </div>
@@ -159,36 +166,39 @@
                                         </div><!-- .nk-block -->
                                         <div class="nk-block">
                                             <div class="nk-block-head nk-block-head-line">
-                                                <h6 class="title overline-title text-base">Other Information</h6>
+                                                <h6 class="title overline-title text-base">{{ translate('other_information') }}</h6>
                                             </div><!-- .nk-block-head -->
                                             <div class="profile-ud-list">
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Have Health Insurance</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('have_health_insurance') }}</span>
                                                         <span class="profile-ud-value">
                                                         <span
-                                                            class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? 'Not Health Insurance' : 'Health Insurance' }}</span>
+                                                            class="badge badge-{{ medicalFile.health_insurance == '0' ? 'danger' : 'success' }}">{{ medicalFile.health_insurance == '0' ? translate('not_health_insurance') : translate('health_insurance') }}</span>
                                                     </span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item"></div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Health Insurance number</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('health_insurance_number') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.health_insurance_number }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">Expiration date</span>
+                                                        <span
+                                                            class="profile-ud-label">{{ translate('expiration_date') }}</span>
                                                         <span
                                                             class="profile-ud-value">{{ medicalFile.expiration_date }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="profile-ud-item">
                                                     <div class="profile-ud wider">
-                                                        <span class="profile-ud-label">QR</span>
+                                                        <span class="profile-ud-label">{{ translate('qr_code') }}</span>
                                                         <span class="profile-ud-value"><img
                                                                 src="{{ createLink('upload/qr_images/') }}{{ medicalFile.qr_image }}"
                                                                 alt="Qr image"/></span>
@@ -205,7 +215,7 @@
                                                         <em class="icon ni ni-cross"></em>
                                                     </a>
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Edit Information</h5>
+                                                        <h5 class="modal-title">{{ translate('edit_information') }}</h5>
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="{{ redirect('admin/post-medical-file-edit') }}"
@@ -216,13 +226,13 @@
                                                                    value="{{ medicalFile.insurance_id }}">
                                                             <div class="card-inner">
                                                                 <div class="preview-block">
-                                                                    <span class="preview-title-lg overline-title">Main Information</span>
+                                                                    <span
+                                                                        class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                                                                     <div class="row gy-4">
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="first-name">First
-                                                                                    Name</label>
+                                                                                       for="first-name">{{ translate('first_name') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -236,7 +246,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="last-name">Last Name</label>
+                                                                                       for="last-name">{{ translate('last_name') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -250,7 +260,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="password">Gender</label>
+                                                                                       for="password">{{ translate('gender') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <div
                                                                                         class="custom-control custom-radio">
@@ -278,7 +288,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="birthday">Birthday</label>
+                                                                                       for="birthday">{{ translate('birthday') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="date"
                                                                                            class="form-control"
@@ -290,7 +300,8 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="phone">Phone</label>
+                                                                                <label class="form-label"
+                                                                                       for="phone">{{ translate('phone') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -302,7 +313,8 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="email">Email</label>
+                                                                                <label class="form-label"
+                                                                                       for="email">{{ translate('email_address') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="email"
                                                                                            class="form-control"
@@ -315,8 +327,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="identity-card">Identity
-                                                                                    card</label>
+                                                                                       for="identity-card">{{ translate('identity_card') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -330,7 +341,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="province">Province/City</label>
+                                                                                       for="province">{{ translate('province') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -344,7 +355,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="district">District</label>
+                                                                                       for="district">{{ translate('district') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -357,7 +368,8 @@
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <label class="form-label" for="wards">Wards</label>
+                                                                                <label class="form-label"
+                                                                                       for="wards">{{ translate('wards') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -371,8 +383,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="house-number">House
-                                                                                    number/Way</label>
+                                                                                       for="house-number">{{ translate('way') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -385,13 +396,13 @@
                                                                         </div>
                                                                     </div>
                                                                     <hr class="preview-hr">
-                                                                    <span class="preview-title-lg overline-title">Other information</span>
+                                                                    <span
+                                                                        class="preview-title-lg overline-title">{{ translate('other_information') }}</span>
                                                                     <div class="row gy-4">
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="health-insurance-number">Health
-                                                                                    Insurance number</label>
+                                                                                       for="health-insurance-number">{{ translate('health_insurance_number') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="text"
                                                                                            class="form-control"
@@ -405,8 +416,7 @@
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label class="form-label"
-                                                                                       for="expiration-date">Expiration
-                                                                                    date</label>
+                                                                                       for="expiration-date">{{ translate('expiration_date') }}</label>
                                                                                 <div class="form-control-wrap">
                                                                                     <input type="date"
                                                                                            class="form-control"
@@ -419,14 +429,15 @@
                                                                         </div>
                                                                     </div>
                                                                     <hr class="preview-hr">
-                                                                    <span class="preview-title-lg overline-title">Covid vaccine information</span>
+                                                                    <span
+                                                                        class="preview-title-lg overline-title">{{ translate('covid_vaccination') }}</span>
                                                                     {% for covid_injection in medicalFile.covid_injections %}
                                                                         <div class="row gy-4">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-label"
-                                                                                           for="name-{{ loop.index }}">Injection {{ loop.index }}
-                                                                                        - Name vaccine</label>
+                                                                                           for="name-{{ loop.index }}">{{ translate('injection') }} {{ loop.index }}
+                                                                                        - {{ translate('name_vaccine') }}</label>
                                                                                     <div class="form-control-wrap">
                                                                                         <input type="text"
                                                                                                class="form-control"
@@ -440,8 +451,8 @@
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
                                                                                     <label class="form-label"
-                                                                                           for="date-{{ loop.index }}">Injection {{ loop.index }}
-                                                                                        - Date</label>
+                                                                                           for="date-{{ loop.index }}">{{ translate('injection') }} {{ loop.index }}
+                                                                                        - {{ translate('vaccination_date') }}</label>
                                                                                     <div class="form-control-wrap">
                                                                                         <input type="date"
                                                                                                class="form-control"
@@ -454,11 +465,180 @@
                                                                             </div>
                                                                         </div>
                                                                     {% endfor %}
+                                                                    <div class="row gy-4">
+                                                                        {% if medicalFile.covid_injections|length == 0 %}
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-1">{{ translate('injection') }}
+                                                                                        1
+                                                                                        - {{ translate('name_vaccine') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-1" id="name-1"
+                                                                                               placeholder="{{ translate('name_vaccine') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-1">{{ translate('injection') }}
+                                                                                        1
+                                                                                        - {{ translate('vaccination_date') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-1" id="date-1"
+                                                                                               placeholder="Enter {{ translate('vaccination_date') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-2">{{ translate('injection') }}
+                                                                                        2
+                                                                                        - {{ translate('name_vaccine') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-2" id="name-2"
+                                                                                               placeholder="{{ translate('name_vaccine') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-2">{{ translate('injection') }}
+                                                                                        2- {{ translate('vaccination_date') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-2" id="date-2"
+                                                                                               placeholder="{{ translate('vaccination_date') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-3">{{ translate('injection') }}
+                                                                                        3
+                                                                                        - {{ translate('name_vaccine') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-3" id="name-3"
+                                                                                               placeholder="{{ translate('name_vaccine') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-3">{{ translate('injection') }}
+                                                                                        3- {{ translate('vaccination_date') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-3" id="date-3"
+                                                                                               placeholder="{{ translate('vaccination_date') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        {% elseif medicalFile.covid_injections|length == 1 %}
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-2">{{ translate('injection') }}
+                                                                                        2
+                                                                                        - {{ translate('name_vaccine') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-2" id="name-2"
+                                                                                               placeholder="{{ translate('name_vaccine') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-2">{{ translate('injection') }}
+                                                                                        2- {{ translate('vaccination_date') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-2" id="date-2"
+                                                                                               placeholder="{{ translate('vaccination_date') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-3">{{ translate('injection') }}
+                                                                                        3
+                                                                                        - {{ translate('name_vaccine') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-3" id="name-3"
+                                                                                               placeholder="{{ translate('name_vaccine') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-3">{{ translate('injection') }}
+                                                                                        3- {{ translate('vaccination_date') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-3" id="date-3"
+                                                                                               placeholder="{{ translate('vaccination_date') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        {% elseif medicalFile.covid_injections|length == 2 %}
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="name-3">{{ translate('injection') }}
+                                                                                        3
+                                                                                        - {{ translate('name_vaccine') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="name-3" id="name-3"
+                                                                                               placeholder="{{ translate('name_vaccine') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label"
+                                                                                           for="date-3">{{ translate('injection') }}
+                                                                                        3- {{ translate('vaccination_date') }}</label>
+                                                                                    <div class="form-control-wrap">
+                                                                                        <input type="date"
+                                                                                               class="form-control"
+                                                                                               name="date-3" id="date-3"
+                                                                                               placeholder="{{ translate('vaccination_date') }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
                                                                     <hr class="preview-hr">
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
                                                                             <button type="submit"
-                                                                                    class="btn btn-success">Edit
+                                                                                    class="btn btn-success">{{ translate('edit') }}
                                                                             </button>
                                                                         </div>
                                                                     </div>
@@ -467,7 +647,6 @@
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer bg-light">
-                                                        <span class="sub-text">Modal Footer Text</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -491,24 +670,24 @@
                     <em class="icon ni ni-cross"></em>
                 </a>
                 <div class="modal-header">
-                    <h5 class="modal-title">Re-generate QR image</h5>
+                    <h5 class="modal-title">{{ translate('re_generate_qr_image') }}</h5>
                 </div>
                 <div class="modal-body">
-                    <h4>Are you sure re-generate QR image?</h4>
+                    <h4>{{ translate('title_generate_qr') }}</h4>
                     <form action="{{ redirect('admin/re-generate-qr') }}" method="post">
                         <input type="text" hidden value="{{ medicalFile.id }}" name="medical-file-id">
                         <div class="card-inner">
                             <div class="preview-block">
                                 <button type="submit" class="btn btn-xl btn-warning" style="margin-right: 10px">
-                                    Generate
+                                    {{ translate('generate') }}
                                 </button>
-                                <button class="btn btn-xl btn-secondary js-btn-cancel">Cancel</button>
+                                <button
+                                    class="btn btn-xl btn-secondary js-btn-cancel">{{ translate('cancel') }}</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer bg-light">
-                    <span class="sub-text">Modal Footer Text</span>
                 </div>
             </div>
         </div>

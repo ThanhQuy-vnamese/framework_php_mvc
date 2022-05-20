@@ -75,7 +75,6 @@ class EditMedicalFileController extends BaseController
             $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
         }
 
-        $session->setFlash('successEditMedicalFile', 'Add medical file success');
         $this->response->redirect('/admin/medical-file-detail', ['id' => $medicalFileId]);
     }
 
@@ -88,11 +87,12 @@ class EditMedicalFileController extends BaseController
         $covidVaccination = [];
         for ($i = 1; $i <= 3; $i++) {
             $temp = [];
-            $vaccineName = $this->request->input->get("name-${i}");
-            $date = $this->convertDate($this->request->input->get("date-${i}"));
-            if (empty($vaccineName) && empty($date)) {
+            $vaccineName = $this->request->input->get("name-${i}");;
+            $date = $this->request->input->get("date-${i}");
+            if (empty($vaccineName) || empty($date)) {
                 continue;
             }
+            $date = $this->convertDate($date);
             $temp['type_vaccine'] = $vaccineName;
             $temp['date'] = $date;
             $covidVaccination[] = $temp;

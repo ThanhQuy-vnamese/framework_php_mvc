@@ -56,9 +56,9 @@ class CalendarRepository implements CalendarRepositoryInterface
 
     public function getNumsCalendarByStartTimeAndEndTime(Calendar $calendar): int
     {
-        $sql = "SELECT COUNT(*) AS count FROM `medical_appointments` 
-                WHERE ((date_start >= '%s' AND date_start < '%s') 
-                   OR (date_start <> date_end AND date_end > '%s' AND date_end <= '%s') 
+        $sql = "SELECT COUNT(*) AS count FROM `medical_appointments`
+                WHERE ((date_start >= '%s' AND date_start < '%s')
+                   OR (date_start <> date_end AND date_end > '%s' AND date_end <= '%s')
                    OR (date_start < '%s' AND date_end > '%s'))
                    AND status <> %s";
         $query = sprintf(
@@ -101,7 +101,7 @@ class CalendarRepository implements CalendarRepositoryInterface
 
     public function editCalendar(Calendar $calendar): bool
     {
-        $sql = "UPDATE medical_appointments 
+        $sql = "UPDATE medical_appointments
                 SET subject = '%s', full_name = '%s', date_start = '%s', date_end = '%s', time_start = '%s', time_end = '%s', description = '%s'
                 WHERE id = %s AND user_id = %s";
         $query = sprintf(
@@ -124,9 +124,9 @@ class CalendarRepository implements CalendarRepositoryInterface
 
     public function getNumsCalendarByStartTimeAndEndTimeExceptCurrentCalendar(Calendar $calendar): int
     {
-        $sql = "SELECT COUNT(*) AS count FROM `medical_appointments` 
-                WHERE ((date_start >= '%s' AND date_start < '%s') 
-                   OR (date_start <> date_end AND date_end > '%s' AND date_end <= '%s') 
+        $sql = "SELECT COUNT(*) AS count FROM `medical_appointments`
+                WHERE ((date_start >= '%s' AND date_start < '%s')
+                   OR (date_start <> date_end AND date_end > '%s' AND date_end <= '%s')
                    OR (date_start < '%s' AND date_end > '%s'))
                    AND id <> %s";
         $query = sprintf(

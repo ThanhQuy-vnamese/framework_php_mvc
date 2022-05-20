@@ -7,10 +7,10 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Users / <strong class="text-primary small">{{ user.full_name }}</strong></h3>
+                            <h3 class="nk-block-title page-title">{{ translate('users') }} / <strong class="text-primary small">{{ user.full_name }}</strong></h3>
                             <div class="nk-block-des text-soft">
                                 <ul class="list-inline">
-                                    <li>User ID: <span class="text-base">{{ user.id }}</span></li>
+                                    <li>{{ translate('user_id') }}: <span class="text-base">{{ user.id }}</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -30,43 +30,43 @@
                                 <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#">
-                                            <em class="icon ni ni-user-circle"></em><span>Personal</span></a>
+                                            <em class="icon ni ni-user-circle"></em><span>{{ translate('personal') }}</span></a>
                                     </li>
                                 </ul><!-- .nav-tabs -->
                                 <div class="card-inner">
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
-                                            <h5 class="title">Login Information</h5>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDefault">Edit user</button>
+                                            <h5 class="title">{{ translate('login_information') }}</h5>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDefault">{{ translate('edit_user') }}</button>
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">First Name</span>
+                                                    <span class="profile-ud-label">{{ translate('first_name') }}</span>
                                                     <span class="profile-ud-value">{{ user.first_name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Last Name</span>
+                                                    <span class="profile-ud-label">{{ translate('last_name') }}</span>
                                                     <span class="profile-ud-value">{{ user.last_name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Email Address</span>
+                                                    <span class="profile-ud-label">{{ translate('email_address') }}</span>
                                                     <span class="profile-ud-value">{{ user.email }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Role</span>
+                                                    <span class="profile-ud-label">{{ translate('role') }}</span>
                                                     <span class="profile-ud-value">{{ user.role.name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Status</span>
+                                                    <span class="profile-ud-label">{{ translate('status') }}</span>
                                                     <span class="profile-ud-value">
                                                         <span class="badge badge-{{ user.status.code == '0' ? 'danger' : 'success' }}">{{ user.status.name }}</span>
                                                     </span>
@@ -76,31 +76,55 @@
                                     </div><!-- .nk-block -->
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-line">
-                                            <h6 class="title overline-title text-base">Personal Information</h6>
+                                            <h6 class="title overline-title text-base">{{ translate('personal_information') }}</h6>
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Address</span>
-                                                    <span class="profile-ud-value">{{ user.address }}</span>
+                                                    <span class="profile-ud-label">{{ translate('way') }}</span>
+                                                    <span class="profile-ud-value">{{ user.way }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Date of Birth</span>
+                                                    <span class="profile-ud-label">{{ translate('district') }}</span>
+                                                    <span class="profile-ud-value">{{ user.district }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">{{ translate('wards') }}</span>
+                                                    <span class="profile-ud-value">{{ user.wards }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">{{ translate('province') }}</span>
+                                                    <span class="profile-ud-value">{{ user.province }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">{{ translate('identity_card') }}</span>
+                                                    <span class="profile-ud-value">{{ user.identity_card }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">{{ translate('date_of_birth') }}</span>
                                                     <span class="profile-ud-value">{{ user.birthday }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Gender</span>
+                                                    <span class="profile-ud-label">{{ translate('gender') }}</span>
                                                     <span class="profile-ud-value">{{ user.gender }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Phone</span>
-                                                    <span class="profile-ud-value">0123456789</span>
+                                                    <span class="profile-ud-label">{{ translate('phone') }}</span>
+                                                    <span class="profile-ud-value">{{ user.phone }}</span>
                                                 </div>
                                             </div>
                                         </div><!-- .profile-ud-list -->
@@ -114,18 +138,18 @@
                                                     <em class="icon ni ni-cross"></em>
                                                 </a>
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Edit user</h5>
+                                                    <h5 class="modal-title">{{ translate('edit_user') }}</h5>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{ redirect('admin/post-user-update') }}" method="post">
                                                         <input type="text" hidden name="id" value="{{ user.id }}">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
-                                                                <span class="preview-title-lg overline-title">Login Information</span>
+                                                                <span class="preview-title-lg overline-title">{{ translate('login_information') }}</span>
                                                                 <div class="row gy-4">
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="first-name">First Name</label>
+                                                                            <label class="form-label" for="first-name">{{ translate('first_name') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="first-name"
                                                                                        id="first-name" placeholder="Enter First Name" value="{{ user.first_name }}">
@@ -134,7 +158,7 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="last-name">Last Name</label>
+                                                                            <label class="form-label" for="last-name">{{ translate('last_name') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="last-name" id="last-name"
                                                                                        placeholder="Enter Last Name" value="{{ user.last_name }}">
@@ -143,7 +167,7 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="email">Email</label>
+                                                                            <label class="form-label" for="email">{{ translate('email') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="email" class="form-control" name="email" id="email"
                                                                                        placeholder="Enter Email" value="{{ user.email }}">
@@ -152,7 +176,7 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="password">Password</label>
+                                                                            <label class="form-label" for="password">{{ translate('password') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="password" class="form-control" name="password"
                                                                                        id="password" placeholder="Enter Password">
@@ -161,24 +185,24 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="password">Status</label>
+                                                                            <label class="form-label" for="password">{{ translate('status') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <div class="custom-control custom-radio" >
                                                                                     <input type="radio" id="inactive" name="status" value="0"
                                                                                            class="custom-control-input" {{ user.status.code == '0' ? 'checked' : '' }}>
-                                                                                    <label class="custom-control-label" for="inactive">Inactive</label>
+                                                                                    <label class="custom-control-label" for="inactive">{{ translate('inactive') }}</label>
                                                                                 </div>
                                                                                 <div class="custom-control custom-radio">
                                                                                     <input type="radio" id="active" name="status" value="1"
                                                                                            class="custom-control-input" {{ user.status.code == '1' ? 'checked' : '' }}>
-                                                                                    <label class="custom-control-label" for="active">Active</label>
+                                                                                    <label class="custom-control-label" for="active">{{ translate('active') }}</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="confirm-password">Confirm Password</label>
+                                                                            <label class="form-label" for="confirm-password">{{ translate('confirm_password') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="password" class="form-control" name="confirm-password"
                                                                                        id="confirm-password" placeholder="Enter Confirm Password">
@@ -187,13 +211,26 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="role">Role</label>
+                                                                            <label class="form-label" for="role">{{ translate('role') }}</label>
                                                                             <div class="form-control-wrap ">
                                                                                 <div class="form-control-select">
                                                                                     <select class="form-control" name="role" id="role">
-                                                                                        <option value="3" {{ user.role.code == '3' ? 'selected' : '' }}>User</option>
-                                                                                        <option value="2" {{ user.role.code == '2' ? 'selected' : '' }}>Doctor</option>
-                                                                                        <option value="1" {{ user.role.code == '1' ? 'selected' : '' }}>Administrator</option>
+                                                                                        <option value="3" {{ user.role.code == '3' ? 'selected' : '' }}>{{ translate('user_permission') }}</option>
+                                                                                        <option value="2" {{ user.role.code == '2' ? 'selected' : '' }}>{{ translate('doctor_permission') }}</option>
+                                                                                        <option value="1" {{ user.role.code == '1' ? 'selected' : '' }}>{{ translate('administrator_permission') }}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="language">{{ translate('language') }}</label>
+                                                                            <div class="form-control-wrap ">
+                                                                                <div class="form-control-select">
+                                                                                    <select class="form-control" name="language" id="language">
+                                                                                        <option value="eng">{{ translate('english') }}</option>
+                                                                                        <option value="vi">{{ translate('vietnamese') }}</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -201,11 +238,11 @@
                                                                     </div>
                                                                 </div>
                                                                 <hr class="preview-hr">
-                                                                <span class="preview-title-lg overline-title">Personal information</span>
+                                                                <span class="preview-title-lg overline-title">{{ translate('personal_information') }}</span>
                                                                 <div class="row gy-4">
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="birthday">Birthday</label>
+                                                                            <label class="form-label" for="birthday">{{ translate('birthday') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="date" class="form-control" name="birthday" id="birthday"
                                                                                        placeholder="Enter Birthday" value="{{ user.birthday }}">
@@ -214,16 +251,52 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="address">Address</label>
+                                                                            <label class="form-label" for="way">{{ translate('way') }}</label>
                                                                             <div class="form-control-wrap">
-                                                                                <input type="text" class="form-control" name="address" id="address"
-                                                                                       placeholder="Enter Address" value="{{ user.address }}">
+                                                                                <input type="text" class="form-control" name="way" id="way"
+                                                                                       placeholder="Enter way" value="{{ user.way }}">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="phone">Phone</label>
+                                                                            <label class="form-label" for="district">{{ translate('district') }}</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="district" id="district"
+                                                                                       placeholder="Enter district" value="{{ user.district }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="wards">{{ translate('wards') }}</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="wards" id="wards"
+                                                                                       placeholder="Enter wards" value="{{ user.wards }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="province">{{ translate('province') }}</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="province" id="province"
+                                                                                       placeholder="Enter province" value="{{ user.province }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="identity-card">{{ translate('identity_card') }}</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control" name="identity-card" id="identity-card"
+                                                                                       placeholder="Enter identity card" value="{{ user.identity_card }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="phone">{{ translate('phone') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <input type="text" class="form-control" name="phone" id="phone"
                                                                                        placeholder="Enter Phone" value="{{ user.phone }}">
@@ -232,17 +305,17 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group">
-                                                                            <label class="form-label" for="password">Gender</label>
+                                                                            <label class="form-label" for="password">{{ translate('gender') }}</label>
                                                                             <div class="form-control-wrap">
                                                                                 <div class="custom-control custom-radio">
                                                                                     <input type="radio" id="nam" name="gender" value="Male"
                                                                                            class="custom-control-input" {{ user.gender == 'Male' ? 'checked' : '' }}>
-                                                                                    <label class="custom-control-label" for="nam">Male</label>
+                                                                                    <label class="custom-control-label" for="nam">{{ translate('male') }}</label>
                                                                                 </div>
                                                                                 <div class="custom-control custom-radio">
                                                                                     <input type="radio" id="nu" name="gender" value="Female"
                                                                                            class="custom-control-input" {{ user.gender == 'Female' ? 'checked' : '' }}>
-                                                                                    <label class="custom-control-label" for="nu">Female</label>
+                                                                                    <label class="custom-control-label" for="nu">{{ translate('female') }}</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -251,7 +324,7 @@
                                                                 <hr class="preview-hr">
                                                                 <div class="col-sm-6">
                                                                     <div class="form-group">
-                                                                        <button type="submit" class="btn btn-success">Edit user</button>
+                                                                        <button type="submit" class="btn btn-success">{{ translate('edit_user') }}</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -259,7 +332,6 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer bg-light">
-                                                    <span class="sub-text">Modal Footer Text</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,17 +370,17 @@
                                                             <form action="{{ redirect('admin/post-update-avatar') }}" method="post" enctype="multipart/form-data">
                                                                 <input type="text" hidden name="user-id" value="{{ user.id }}">
                                                                 <div class="form-group">
-                                                                    <label class="form-label" for="customFileLabel">Change avatar</label>
+                                                                    <label class="form-label" for="customFileLabel">{{ translate('change_avatar') }}</label>
                                                                     <div class="form-control-wrap">
                                                                         <div class="custom-file">
                                                                             <input type="file" class="custom-file-input" id="customFile" name="avatar-file">
-                                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                                            <label class="custom-file-label" for="customFile">{{ translate('choose_file') }}</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group" align="center">
                                                                     <div class="form-control-wrap">
-                                                                        <button type="submit" name="btn-submit" class="btn btn-secondary">Change Avatar</button>
+                                                                        <button type="submit" name="btn-submit" class="btn btn-secondary">{{ translate('change_avatar') }}</button>
                                                                     </div>
                                                                 </div>
                                                             </form>
