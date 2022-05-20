@@ -7,7 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Login</title>
 		{{ include('user/components/head.twig') }}
-		<style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
+        <style>
 			body {
 				background-image: -webkit-gradient(linear, left top, right top, from(#4e63d7), to(#76bfe9)) !important;
 				background-image: linear-gradient(to right, #4e63d7 0%, #76bfe9 100%) !important;
@@ -109,25 +110,6 @@
 				padding: 45px;
 			}
 
-			.form-group .zmdi {
-				position: absolute;
-				z-index: 1;
-				color: #fff;
-				background-color: #4e63d7;
-				border-radius: 5px;
-				height: 100%;
-				width: 45px;
-				text-align: center;
-				font-size: 20px;
-				padding-top: 13px;
-			}
-
-			.form-group input[type='text'],
-			.form-group input[type='email'],
-			.form-group input[type='password'] {
-				padding-left: 60px;
-			}
-
 			.form-control {
 				border: 1px solid #e1e1e1;
 				-webkit-box-shadow: none;
@@ -165,7 +147,6 @@
 	</head>
 
 	<body>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-11 mt-60 mx-md-auto">
@@ -182,18 +163,18 @@
 									{% if(Session.hasFlash('errorLogin'))%}
 										<div class="alert alert-danger">{{ session.getFlash('errorLogin') }}</div>
 									{% endif %}
-									<h4 class="btm-sep pb-3 mb-5">Login</h4>
+									<h2 class="btm-sep pb-3 mb-5" style="text-align: center">Login</h2>
 									<form class="form" method="post" action="{{ redirect('user/post-login') }}">
 										<div class="row">
 											<div class="col-12">
-												<div class="form-group position-relative">
-													<span class="zmdi zmdi-account"></span>
+												<div class="form-group">
+                                                    <label for="email" class="form-label">Email</label>
 													<input type="email" id="email" class="form-control" placeholder="Email Address" name="email">
 												</div>
 											</div>
 											<div class="col-12">
-												<div class="form-group position-relative">
-													<span class="zmdi zmdi-email"></span>
+												<div class="form-group">
+                                                    <label for="password">Password</label>
 													<input type="password" id="password" class="form-control" placeholder="Password" name="password">
 												</div>
 											</div>
@@ -216,10 +197,7 @@
 									</div>
 									<h5 class="c-black mb-4 mt-n1">Or Sign In With</h5>
 									<div class="socials">
-										<a href="{{ link_fb }}" class="zmdi zmdi-facebook"></a>
-										<a href="#" class="zmdi zmdi-twitter"></a>
-										<a href="#" class="zmdi zmdi-google"></a>
-										<a href="#" class="zmdi zmdi-instagram"></a>
+										<a href="{{ link_fb }}" class="zmdi zmdi-facebook" aria-label="Login with Facebook"></a>
 									</div>
 								</div>
 							</div>
