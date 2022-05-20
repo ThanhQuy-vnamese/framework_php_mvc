@@ -283,7 +283,10 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<h5 class=\"c-black mb-4 mt-n1\">Or Sign In With</h5>
 \t\t\t\t\t\t\t\t\t<div class=\"socials\">
-\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-facebook\"></a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"";
+        // line 219
+        echo twig_escape_filter($this->env, ($context["link_fb"] ?? null), "html", null, true);
+        echo "\" class=\"zmdi zmdi-facebook\"></a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-twitter\"></a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-google\"></a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-instagram\"></a>
@@ -312,7 +315,7 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 
     public function getDebugInfo()
     {
-        return array (  281 => 215,  264 => 201,  246 => 186,  243 => 185,  237 => 183,  234 => 182,  228 => 180,  225 => 179,  219 => 177,  217 => 176,  47 => 9,  37 => 1,);
+        return array (  288 => 219,  281 => 215,  264 => 201,  246 => 186,  243 => 185,  237 => 183,  234 => 182,  228 => 180,  225 => 179,  219 => 177,  217 => 176,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -535,7 +538,7 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<h5 class=\"c-black mb-4 mt-n1\">Or Sign In With</h5>
 \t\t\t\t\t\t\t\t\t<div class=\"socials\">
-\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-facebook\"></a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"{{ link_fb }}\" class=\"zmdi zmdi-facebook\"></a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-twitter\"></a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-google\"></a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"zmdi zmdi-instagram\"></a>
@@ -549,6 +552,6 @@ class __TwigTemplate_954ec3b91ff97bf67e69dbe80b39c635f13ac5cb488980a866c02c0b2e5
 \t\t</div>
 \t</body>
 </html>
-", "user/pages/login.twig", "D:\\HKII-Year4\\DoAn\\Code\\phpmvc-user-test\\views\\user\\pages\\login.twig");
+", "user/pages/login.twig", "C:\\xampp\\htdocs\\phpmvc-user-test\\views\\user\\pages\\login.twig");
     }
 }
