@@ -47,9 +47,7 @@ class LoginFacebookController extends BaseController
         if (!empty($checkUserByFaceId)) {
             $user_info = (array)$checkUserByFaceId;
             $session->set('user', $user_info[0]);
-            print_r("alskjdhfakljsdhfkaljdsh");
-            echo("Đăng nhập lần ");
-            // return $this->response->redirect('/');
+            return $this->response->redirect('/');
         } else {
             $userId = $user->addUser($dataUser);
             $dataUserProfile =  array(

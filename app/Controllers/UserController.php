@@ -46,13 +46,10 @@ class UserController extends BaseController
     {
         $email = $this->request->input->get('email');
         $password = $this->request->input->get('password');
-        $information = array(
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
-        );
         $authentication = new Authentication();
-        $user = new User();
+
         $is_login = $authentication->login(['email' => $email, 'password' => $password]);
+
         if (!$is_login) {
             $session = new Session();
             $session->setFlash('errorLogin', "Tài khoản không hợp lệ");
@@ -62,8 +59,6 @@ class UserController extends BaseController
             // $data = (array)$user->userLogin($information);
           
             $session = new Session();
-
-            $getProfileById = (array)$session->get('user');
             $this->response->redirect('/');
         }
 
@@ -221,7 +216,7 @@ class UserController extends BaseController
         // $qrCode->create('content', $qrName);
         $dataUser = array(
             'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
+            'password' => password_hash($password,  PASSWORD_DEFAULT),
             'role' => $role,
             // 'qr_image' => $qrName . '.png'
         );
@@ -284,6 +279,7 @@ class UserController extends BaseController
             $session->setFlash('message', 'Your account have been active success!');
             $this->response->redirect('/user/login');
         } else {
+
             $session->setFlash('message', 'Something went wrong! Try later!');
             $this->response->redirect('/user/register');
         }
@@ -354,7 +350,7 @@ class UserController extends BaseController
                 $user = new User();
                 $data = (array)$user->getUserIdByMail($email);
 
-                $param = "http://localhost:8888/user/reset-password?id=" . $data[0]->id;
+                $param = "https://quangmap.dev/phpmvc-user-test/public/user/reset-password?id=" . $data[0]->id;
                 $url_authen = "<a href='" . $param . "'> Rest password </a>";
                 $this->authenticateMail($email, $url_authen);
                 // return $this->response->redirect('/user/reset-password');
@@ -408,7 +404,7 @@ class UserController extends BaseController
             }
 
             $user = new User();
-            $password = md5($password);
+            $password = password_hash($password,  PASSWORD_DEFAULT);
             if ($user->updatePassword($userId, $password)) {
                 $session->setFlash('updatePass', 'Update password success');
                 $this->response->redirect('/user/login');
