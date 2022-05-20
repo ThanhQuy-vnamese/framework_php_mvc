@@ -10,6 +10,7 @@ import {
 import { ItemDataType } from 'rsuite/esm/@types/common';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import i18n from '../../common/translate/i18n';
 
 interface AddModalProps {
     isShow: boolean;
@@ -115,9 +116,12 @@ export const AddModal: VFC<AddModalProps> = ({
                 if (error.hasError) {
                     handleShowError(error);
                 } else {
-                    toast.success('Add calendar success!', {
-                        position: toast.POSITION.TOP_RIGHT
-                    });
+                    toast.success(
+                        i18n.t('admin.calendar.message.addCalendarSuccess'),
+                        {
+                            position: toast.POSITION.TOP_RIGHT
+                        }
+                    );
                     onClickClose();
                 }
             })
@@ -144,7 +148,9 @@ export const AddModal: VFC<AddModalProps> = ({
                 }}
             >
                 <Modal.Header>
-                    <Modal.Title>Add calendar</Modal.Title>
+                    <Modal.Title>
+                        {i18n.t('admin.calendar.popup.title')}
+                    </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -165,10 +171,10 @@ export const AddModal: VFC<AddModalProps> = ({
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => onClickClose()}>
-                        Close
+                        {i18n.t('admin.calendar.button.close')}
                     </Button>
                     <Button variant="primary" onClick={() => handleSubmit()}>
-                        Save changes
+                        {i18n.t('admin.calendar.button.save')}
                     </Button>
                 </Modal.Footer>
             </Modal>

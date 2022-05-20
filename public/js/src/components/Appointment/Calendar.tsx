@@ -109,9 +109,9 @@ export const Calendar = () => {
                     handleNext: 'chevron-right'
                 }}
                 buttonText={{
-                    today: 'Today',
-                    week: 'Week view',
-                    day: 'Day view'
+                    today: i18n.t('admin.calendar.button.toDay'),
+                    week: i18n.t('admin.calendar.button.weekView'),
+                    day: i18n.t('admin.calendar.button.dayView')
                 }}
                 select={info => {
                     handleSelect(info.startStr, info.endStr);

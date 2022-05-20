@@ -7,9 +7,9 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Blog List</h3>
+                            <h3 class="nk-block-title page-title">{{ translate('blog_list') }}</h3>
                             <div class="nk-block-des text-soft">
-                                <p>You have total {{ total }} blogs.</p>
+                                <p>{{ translate('prefix_total') }} {{ total }} {{ translate('blogs') }}</p>
                             </div>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
@@ -25,7 +25,7 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
                                                         <li>
-                                                            <a href="{{ redirect('admin/blog-add') }}"><span>Add Blog</span></a>
+                                                            <a href="{{ redirect('admin/blog-add') }}"><span>{{ translate('add_blog') }}</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -81,10 +81,10 @@
                                             </div>
                                         </div>
                                         <div class="nk-tb-col"><span class="sub-text">Id</span></div>
-                                        <div class="nk-tb-col"><span class="sub-text">Title</span></div>
-                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Updated date</span>
+                                        <div class="nk-tb-col"><span class="sub-text">{{ translate('title') }}</span></div>
+                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">{{ translate('updated_date') }}</span>
                                         </div>
-                                        <div class="nk-tb-col nk-tb-col-tools text-right">Action</div>
+                                        <div class="nk-tb-col nk-tb-col-tools text-right">{{ translate('action') }}</div>
                                     </div><!-- .nk-tb-item -->
                                     {% for blog in blogs %}
                                         <div class="nk-tb-item">
@@ -115,18 +115,14 @@
                                                                 <ul class="link-list-opt no-bdr">
                                                                     <li>
                                                                         <a href="{{ redirect('admin/blog-detail', {id: blog.id}) }}"><em
-                                                                                    class="icon ni ni-eye"></em><span>View Details</span></a>
-                                                                    </li>
-                                                                    <li class="divider"></li>
-                                                                    <li><a href="#"><em
-                                                                                    class="icon ni ni-shield-star"></em><span>Reset Pass</span></a>
+                                                                                    class="icon ni ni-eye"></em><span>{{ translate('view_detail') }}</span></a>
                                                                     </li>
                                                                     <li class="divider"></li>
                                                                     <li><a href="javascript:void(0)"
                                                                            class="js-delete-blog-link"
                                                                            data-blog-id="{{ blog.id }}"
                                                                            data-blog-title="{{ blog.title }}"><em
-                                                                                    class="icon fas fa-trash-alt"></em><span>Delete file</span></a>
+                                                                                    class="icon fas fa-trash-alt"></em><span>{{ translate('delete_blog') }}</span></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -154,29 +150,26 @@
                     <em class="icon ni ni-cross"></em>
                 </a>
                 <div class="modal-header">
-                    <h5 class="modal-title">Delete blog</h5>
+                    <h5 class="modal-title">{{ translate('delete_blog') }}</h5>
                 </div>
                 <div class="modal-body">
-                    <h4>Are you sure delete blog?</h4>
-                    Blog <span class="js-blog-title"
-                               style="font-weight: bold; font-size: 15px"></span> after being deleted will
-                    not be able to recover.
-                    <form id="delete-blog-form" action="{{ redirect('admin/post-edit-delete') }}"
+                    <h4>{{ translate('alert') }}</h4>
+                    {{ translate('blog') }} <span class="js-blog-title"
+                               style="font-weight: bold; font-size: 15px"></span> {{ translate('suffix_delete') }}
+                    <form id="delete-blog-form" action="{{ redirect('admin/post-blog-delete') }}"
                           method="post">
                         <input type="text" hidden value="" name="blog-id">
                         <div class="card-inner">
                             <div class="preview-block">
                                 <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">
-                                    Delete
+                                    {{ translate('delete') }}
                                 </button>
-                                <button class="btn btn-xl btn-outline-secondary js-btn-cancel">Cancel</button>
+                                <button class="btn btn-xl btn-outline-secondary js-btn-cancel">{{ translate('cancel') }}</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer bg-light">
-                    <span class="sub-text">Modal Footer Text</span>
-                </div>
+                <div class="modal-footer bg-light"></div>
             </div>
         </div>
     </div>

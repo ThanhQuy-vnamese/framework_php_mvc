@@ -428,7 +428,7 @@
                 <h4>{{ translate('alert_delete_health') }}</h4>
                 {{ translate('prefix_content_delete') }} <span class="js-health-id" style="font-weight: bold; font-size: 15px"></span>
                 {{ translate('suffix_content_delete') }}
-                <form id="delete-health-form" action="{{ redirect('admin/post-delete-health') }}" method="post">
+                <form id="delete-health-form" action="{{ redirect('admin/post-health-delete') }}" method="post">
                     <input type="text" hidden value="" name="health-id">
                     <input type="text" hidden value="" name="medical-file-id">
                     <div class="card-inner">

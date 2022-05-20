@@ -14,6 +14,7 @@ use App\domain\repository\HealthInsuranceRepositoryInterface;
 use App\domain\repository\MedicalFileRepository;
 use App\domain\repository\MedicalFileRepositoryInterface;
 use App\legacy\Auth;
+use App\translates\Translate;
 
 class AddMedicalFileUseCase
 {
@@ -23,6 +24,7 @@ class AddMedicalFileUseCase
     private Auth $auth;
     private QrCode $qrCode;
     private Helper $helper;
+    private Translate $translate;
 
     public function __construct()
     {
@@ -32,6 +34,7 @@ class AddMedicalFileUseCase
         $this->auth = new Auth();
         $this->qrCode = new QrCode();
         $this->helper = new Helper();
+        $this->translate = new Translate();
     }
 
     public function execute(
@@ -48,18 +51,23 @@ class AddMedicalFileUseCase
         string $way,
         array $covid_vaccination,
         string $health_insurance_number,
-        string $expiration_date
+        string $expiration_date,
+        int $user_id
     ): int {
         $medicalFile = $this->medicalFileRepository->getMedicalFileByIdentityCard($identity_card);
         if (!is_null($medicalFile->getId())) {
-            $this->session->setFlash('errorAddMedicalFile', 'The identity card ....');
+            $this->session->setFlash('errorAddMedicalFile', $this->translate->getLanguage('identity_card_exist'));
             return 0;
         }
         if (empty($birthday)) {
-            $this->session->setFlash('errorAddMedicalFile', 'Please enter birthday');
+            $this->session->setFlash('errorAddMedicalFile', $this->translate->getLanguage('require_birthday'));
             return 0;
         }
-        $qrName = $this->generateQrImage();
+        if (empty($user_id)) {
+            $this->session->setFlash('errorAddMedicalFile', $this->translate->getLanguage('require_user'));
+            return 0;
+        }
+        $qrName = $this->generateQrImage($user_id);
         $medicalFileToInsert = $this->buildMedicalFile(
             $first_name,
             $last_name,
@@ -73,12 +81,12 @@ class AddMedicalFileUseCase
             $wards,
             $way,
             $covid_vaccination,
-            $this->auth->getUser()->getId(),
+            $user_id,
             $qrName
         );
         $idMedicalFile = $this->medicalFileRepository->addMedicalFile($medicalFileToInsert);
         if (!$idMedicalFile) {
-            $this->session->setFlash('errorAddMedicalFile', 'Add medical file fail');
+            $this->session->setFlash('errorAddMedicalFile', $this->translate->getLanguage('add_medical_file_fail'));
             return 0;
         }
 
@@ -92,15 +100,21 @@ class AddMedicalFileUseCase
 
         $idHealthInsurance = $this->healthInsuranceRepository->addHealthInsurance($healthInsuranceForInsert);
         if (!$idHealthInsurance) {
-            $this->session->setFlash('errorAddMedicalFile', 'Add medical file fail');
+            $this->session->setFlash('errorAddMedicalFile', $this->translate->getLanguage('add_health_insurance'));
             return 0;
         }
         return $idMedicalFile;
     }
 
-    private function generateQrImage(): string {
+    private function generateQrImage(int $user_id): string
+    {
         $qrName = $this->helper->generateRandomString(15);
-        $this->qrCode->create('content', $qrName);
+        $host = $this->helper->getHost();
+        $url = "${host}/user/medican-record?user_id=${user_id}";
+        $this->qrCode->create(
+            $url,
+            $qrName
+        );
         return $qrName . '.png';
     }
 

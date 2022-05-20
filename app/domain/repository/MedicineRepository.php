@@ -57,4 +57,15 @@ class MedicineRepository implements MedicineRepositoryInterface
 
         return false;
     }
+
+    public function deleteMedicineById(int $id): bool
+    {
+        $sql = "DELETE FROM `medical_medicines` WHERE id = %s";
+        $query = sprintf($sql, $id);
+        if ($this->db->query($query)) {
+            return true;
+        }
+
+        return false;
+    }
 }

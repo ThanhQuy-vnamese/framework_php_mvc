@@ -7,7 +7,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Health Declaration / <strong class="text-primary small">{{ info.full_name }}</strong></h3>
+                            <h3 class="nk-block-title page-title">{{ translate('health_declaration') }} / <strong class="text-primary small">{{ info.full_name }}</strong></h3>
                             <div class="nk-block-des text-soft">
                                 <ul class="list-inline">
                                     <li>ID: <span class="text-base">{{ info.id }}</span></li>
@@ -24,73 +24,72 @@
                                 <div class="card-inner">
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
-                                            <h5 class="title">Personal Information</h5>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDefault">Edit user</button>
+                                            <h5 class="title">{{ translate('personal_information') }}</h5>
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Full Name</span>
+                                                    <span class="profile-ud-label">{{ translate('full_name') }}</span>
                                                     <span class="profile-ud-value">{{ info.full_name }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Gender</span>
+                                                    <span class="profile-ud-label">{{ translate('gender') }}</span>
                                                     <span class="profile-ud-value">{{ info.gender }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Birthday</span>
+                                                    <span class="profile-ud-label">{{ translate('date_of_birth') }}</span>
                                                     <span class="profile-ud-value">{{ info.birthday }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Identity card</span>
+                                                    <span class="profile-ud-label">{{ translate('identity_card') }}</span>
                                                     <span class="profile-ud-value">{{ info.identity_card }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Email</span>
+                                                    <span class="profile-ud-label">{{ translate('email') }}</span>
                                                     <span class="profile-ud-value">{{ info.email }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Phone</span>
+                                                    <span class="profile-ud-label">{{ translate('phone') }}</span>
                                                     <span class="profile-ud-value">{{ info.phone }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Way</span>
+                                                    <span class="profile-ud-label">{{ translate('way') }}</span>
                                                     <span class="profile-ud-value">{{ info.way }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">District</span>
+                                                    <span class="profile-ud-label">{{ translate('district') }}</span>
                                                     <span class="profile-ud-value">{{ info.district }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Ward</span>
+                                                    <span class="profile-ud-label">{{ translate('wards') }}</span>
                                                     <span class="profile-ud-value">{{ info.ward }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Province</span>
+                                                    <span class="profile-ud-label">{{ translate('province') }}</span>
                                                     <span class="profile-ud-value">{{ info.province }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Time</span>
+                                                    <span class="profile-ud-label">{{ translate('time') }}</span>
                                                     <span class="profile-ud-value">{{ info.created_at }}</span>
                                                 </div>
                                             </div>
@@ -98,40 +97,36 @@
                                     </div><!-- .nk-block -->
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-line">
-                                            <h6 class="title overline-title text-base">Health Declaration</h6>
+                                            <h6 class="title overline-title text-base">{{ translate('health_declaration') }}</h6>
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Did you pass through any
-                                                country/territory within 14 days?</span>
+                                                    <span class="profile-ud-label">{{ translate('go_description') }}</span>
                                                     <span class="profile-ud-value">{{ info.health_declaration.go }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Within 14 of you, do you have any signs of fever, cough, shortness of
-                                                breath, sore throat?</span>
+                                                    <span class="profile-ud-label">{{ translate('signal_description') }}</span>
                                                     <span class="profile-ud-value">{{ info.health_declaration.signal }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">In the past 14, have you been in contact with someone who is sick or
-                                                suspected of having covid?</span>
+                                                    <span class="profile-ud-label">{{ translate('contact_description') }}</span>
                                                     <span class="profile-ud-value">{{ info.health_declaration.contact }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">In the past 14 days, have you been in contact with someone from a
-                                                country with COVID-19?</span>
+                                                    <span class="profile-ud-label">{{ translate('country_description') }}</span>
                                                     <span class="profile-ud-value">{{ info.health_declaration.country_covid }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Within 14 days, have you been in contact with someone with symptoms (fever, cough, shortness of breath, sore throat)?</span>
+                                                    <span class="profile-ud-label">{{ translate('symptoms_description') }}</span>
                                                     <span class="profile-ud-value">{{ info.health_declaration.symptoms }}</span>
                                                 </div>
                                             </div>

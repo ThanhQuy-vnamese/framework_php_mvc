@@ -71,7 +71,7 @@ class UserRepository
             return ['code' => $role, 'name' => $this->translate->getLanguage('administrator_permission')];
         }
         if ($role === '2') {
-            return ['code' => $role, 'name' => $this->translate->getLanguage('user_permission')];
+            return ['code' => $role, 'name' => $this->translate->getLanguage('doctor_permission')];
         } else {
             return ['code' => '3', 'name' => $this->translate->getLanguage('user_permission')];
         }

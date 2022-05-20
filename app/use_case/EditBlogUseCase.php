@@ -8,16 +8,19 @@ use App\Core\Session;
 use App\domain\entity\Blog;
 use App\domain\repository\BlogRepository;
 use App\domain\repository\BlogRepositoryInterface;
+use App\translates\Translate;
 
 class EditBlogUseCase
 {
     private BlogRepositoryInterface $blogRepository;
     private Session $session;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->blogRepository = new BlogRepository();
         $this->session = new Session();
+        $this->translate = new Translate();
     }
 
     public function execute(string $id, string $title, string $content, array $file): bool
@@ -31,18 +34,18 @@ class EditBlogUseCase
 
         if (!is_null($blogInfo->getAvatar())) {
             if (!$this->uploadAvatar($file)) {
-                $this->session->setFlash('errorUpdateBlog', 'Upload avatar fail');
+                $this->session->setFlash('errorUpdateBlog', $this->translate->getLanguage('upload_avatar_fail'));
                 return false;
             }
         }
 
         $isSuccess = $this->blogRepository->editBlog($blogInfo);
         if (!$isSuccess) {
-            $this->session->setFlash('errorUpdateBlog', 'Edit blog fail');
+            $this->session->setFlash('errorUpdateBlog', $this->translate->getLanguage('edit_fail'));
             return false;
         }
 
-        $this->session->setFlash('successUpdateBlog', 'Edit blog success');
+        $this->session->setFlash('successUpdateBlog', $this->translate->getLanguage('edit_success'));
         return true;
     }
 
@@ -52,7 +55,7 @@ class EditBlogUseCase
         $isSuccess = $upload->upload('blog/avatars/');
 
         if (!$isSuccess) {
-            $this->session->setFlash('errorAddBlog', 'Upload avatar fail');
+            $this->session->setFlash('errorAddBlog', $this->translate->getLanguage('upload_avatar_fail'));
             return false;
         }
 

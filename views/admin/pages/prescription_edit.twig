@@ -7,72 +7,72 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Prescription / <strong
-                                        class="text-primary small">Edit</strong></h3>
+                            <h3 class="nk-block-title page-title">{{ translate('prescription') }} / <strong
+                                        class="text-primary small">{{ translate('edit') }}</strong></h3>
                         </div>
                         {% include('admin/components/back_button.twig') %}
                     </div>
                 </div><!-- .nk-block-head -->
                 <div class="nk-block">
-                    <form id="edit-prescription-form" action="{{ redirect('admin/post-edit-prescription') }}" method="post">
+                    <form id="edit-prescription-form" action="{{ redirect('admin/post-prescription-edit') }}" method="post">
                         <input type="text" name="id" hidden value="{{ prescriptions.id }}">
                         <input type="text" name="user-id" hidden value="{{ prescriptions.user_id }}">
                         <input type="text" name="medical-file-id" hidden value="{{ medical_file_id }}">
                         <div class="card-inner">
                             <div class="preview-block">
-                                <span class="preview-title-lg overline-title">Main Information</span>
+                                <span class="preview-title-lg overline-title">{{ translate('main_information') }}</span>
                                 <div class="row gy-4">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="full-name">Full name</label>
+                                            <label class="form-label" for="full-name">{{ translate('full_name') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="full-name" id="full-name"
-                                                       placeholder="Enter full-name"
+                                                       placeholder="{{ translate('full_name') }}"
                                                        value="{{ prescriptions.full_name }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="password">Gender</label>
+                                            <label class="form-label" for="password">{{ translate('gender') }}</label>
                                             <div class="form-control-wrap">
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="male" name="gender"
                                                            class="custom-control-input" value="Male" {{ prescriptions.gender == 'Male' ? 'checked' : '' }}>
-                                                    <label class="custom-control-label" for="male">Male</label>
+                                                    <label class="custom-control-label" for="male">{{ translate('male') }}</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="female" name="gender"
                                                            class="custom-control-input" value="Female" {{ prescriptions.gender == 'Female' ? 'checked' : '' }}>
-                                                    <label class="custom-control-label" for="female">Female</label>
+                                                    <label class="custom-control-label" for="female">{{ translate('female') }}</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="age">Age</label>
+                                            <label class="form-label" for="age">{{ translate('age') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="age" id="age"
-                                                       placeholder="Enter Age" value="{{ prescriptions.age }}">
+                                                       placeholder="E{{ translate('age') }}" value="{{ prescriptions.age }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="address">Address</label>
+                                            <label class="form-label" for="address">{{ translate('address') }}</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="address" id="address"
-                                                       placeholder="Enter address" value="{{ prescriptions.address }}">
+                                                       placeholder="{{ translate('address') }}" value="{{ prescriptions.address }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="note">Description</label>
+                                            <label class="form-label" for="note">{{ translate('description') }}</label>
                                             <div class="form-control-wrap">
                                             <textarea type="text" class="form-control" name="note" id="note"
-                                                      placeholder="Enter Last Name">11111111</textarea>
+                                                      placeholder="{{ translate('description') }}"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                                             <div class="row gy-4">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="select-name-{{ count }}">Name {{ count }}</label>
+                                                        <label class="form-label" for="select-name-{{ count }}">{{ translate('name') }} {{ count }}</label>
                                                         <div class="form-control-wrap">
                                                             <select class="form-control selectpicker" id="select-name-{{ count }}" data-live-search="true" name="name-{{ count }}">
                                                                 <option data-tokens="{{prescriptions.medicine_list[count].name}}">{{prescriptions.medicine_list[count].name}}</option>
@@ -97,24 +97,24 @@
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label class="form-label"
-                                                               for="quantity-{{ count }}">Quantity {{ count }}</label>
+                                                               for="quantity-{{ count }}">{{ translate('quantity') }} {{ count }}</label>
                                                         <div class="form-control-wrap">
                                                             <input type="text" class="form-control" name="quantity-{{ count }}"
                                                                    id="quantity-{{ count }}"
                                                                    value="{{prescriptions.medicine_list[count].quantity}}"
-                                                                   placeholder="Enter Quantity {{ count }}">
+                                                                   placeholder="{{ translate('quantity') }} {{ count }}">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label class="form-label"
-                                                               for="dosage-{{ count }}">Dosage {{ count }}</label>
+                                                               for="dosage-{{ count }}">{{ translate('dosage') }} {{ count }}</label>
                                                         <div class="form-control-wrap">
                                                             <input type="text" class="form-control" name="dosage-{{ count }}"
                                                                    id="dosage-{{ count }}"
                                                                    value="{{prescriptions.medicine_list[count].dosage}}"
-                                                                   placeholder="Enter Dosage {{ count }}">
+                                                                   placeholder="{{ translate('dosage') }} {{ count }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -123,7 +123,7 @@
                                             <div class="row gy-4">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="select-name-{{ count }}">Name {{ count }}</label>
+                                                        <label class="form-label" for="select-name-{{ count }}">{{ translate('name') }} {{ count }}</label>
                                                         <div class="form-control-wrap">
                                                             <select class="form-control selectpicker" id="select-name-{{ count }}" data-live-search="true" name="name-{{ count }}">
                                                                 <option data-tokens="---">----</option>
@@ -137,22 +137,22 @@
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label class="form-label"
-                                                               for="quantity-{{ count }}">Quantity {{ count }}</label>
+                                                               for="quantity-{{ count }}">{{ translate('quantity') }} {{ count }}</label>
                                                         <div class="form-control-wrap">
                                                             <input type="text" class="form-control" name="quantity-{{ count }}"
                                                                    id="quantity-{{ count }}"
-                                                                   placeholder="Enter Quantity {{ count }}">
+                                                                   placeholder="{{ translate('quantity') }} {{ count }}">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label class="form-label"
-                                                               for="dosage-{{ count }}">Dosage {{ count }}</label>
+                                                               for="dosage-{{ count }}">{{ translate('dosage') }} {{ count }}</label>
                                                         <div class="form-control-wrap">
                                                             <input type="text" class="form-control" name="dosage-{{ count }}"
                                                                    id="dosage-{{ count }}"
-                                                                   placeholder="Enter Dosage {{ count }}">
+                                                                   placeholder="{{ translate('dosage') }} {{ count }}">
                                                         </div>
                                                     </div>
                                                 </div>

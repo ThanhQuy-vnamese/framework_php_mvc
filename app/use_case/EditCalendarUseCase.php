@@ -8,16 +8,19 @@ use App\Core\Session;
 use App\domain\entity\Calendar;
 use App\domain\repository\CalendarRepository;
 use App\domain\repository\CalendarRepositoryInterface;
+use App\translates\Translate;
 
 class EditCalendarUseCase
 {
     private CalendarRepositoryInterface $calendarRepository;
     private Session $session;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->calendarRepository = new CalendarRepository();
         $this->session = new Session();
+        $this->translate = new Translate();
     }
 
     public function execute(
@@ -43,34 +46,38 @@ class EditCalendarUseCase
             $user_id
         );
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTimeExceptCurrentCalendar($calendar) > 0) {
-            $this->session->setFlash('errorEditCalendar', 'Calendar is conflicted!');
+            $this->session->setFlash('errorEditCalendar', $this->translate->getLanguage('conflict_calendar'));
             return false;
         }
 
         if (empty($current_doctor_id)) {
-            $this->session->setFlash('errorEditCalendar', 'Please choose a doctor!');
+            $this->session->setFlash('errorEditCalendar', $this->translate->getLanguage('choose_doctor'));
             return false;
         }
 
         if (is_null($this->calendarRepository->findUserByUserIdAndRole($selected_doctor_id, 2)->getId())) {
-            $this->session->setFlash('errorEditCalendar', 'Doctor is chosen not valid!');
+            $this->session->setFlash('errorEditCalendar', $this->translate->getLanguage('valid_doctor'));
             return false;
         }
         $isSuccess = $this->calendarRepository->editCalendar($calendar);
 
         if (!$isSuccess) {
-            $this->session->setFlash('errorEditCalendar', 'Update calendar fail!');
+            $this->session->setFlash('errorEditCalendar', $this->translate->getLanguage('update_calendar_fail'));
             return false;
         }
 
         if ($current_doctor_id !== $selected_doctor_id) {
-            $successUpdateAttendees = $this->calendarRepository->updateAttendees($selected_doctor_id, $current_doctor_id, $calendar_id);
+            $successUpdateAttendees = $this->calendarRepository->updateAttendees(
+                $selected_doctor_id,
+                $current_doctor_id,
+                $calendar_id
+            );
             if (!$successUpdateAttendees) {
-                $this->session->setFlash('errorEditCalendar', 'Update attendees fail!');
+                $this->session->setFlash('errorEditCalendar', $this->translate->getLanguage('update_attendees_fail'));
                 return false;
             }
         }
-        $this->session->setFlash('successEditCalendar', 'Update calendar fail!');
+        $this->session->setFlash('successEditCalendar', $this->translate->getLanguage('update_calendar_fail'));
         return true;
     }
 

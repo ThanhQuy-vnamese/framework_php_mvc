@@ -29,6 +29,15 @@
                                         <div class="form-group">
                                             <label class="form-label" for="first-name">{{ translate('first_name') }}</label>
                                             <div class="form-control-wrap">
+                                                <div id="select-user"></div>
+                                                <input type="text" id="user-id" name="user-id" hidden value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="first-name">{{ translate('first_name') }}</label>
+                                            <div class="form-control-wrap">
                                                 <input type="text" class="form-control" name="first-name"
                                                        id="first-name" placeholder="{{ translate('first_name') }}e">
                                             </div>
@@ -226,4 +235,7 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ createLink('js/dist/medical_file_add.js')}}"></script>
 {% endblock %}

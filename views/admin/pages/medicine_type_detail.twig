@@ -1,0 +1,162 @@
+{% extends 'admin/components/base.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between g-3">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">{{ translate('medicine_type') }} / <strong
+                                    class="text-primary small">{{ medicine_type.name }}</strong></h3>
+                            <div class="nk-block-des text-soft">
+                                <ul class="list-inline">
+                                    <li>{{ translate('medicine_type') }} ID: <span class="text-base">{{ medicine_type.id }}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% include('admin/components/back_button.twig') %}
+                    </div>
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    {% if(Session.hasFlash('errorEdit')) %}
+                        <div class="alert alert-success">{{ session.getFlash('errorEdit') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('errorDelete')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDelete') }}</div>
+                    {% endif %}
+                    {% if(Session.hasFlash('successEdit')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('successEdit') }}</div>
+                    {% endif %}
+                    <div class="card card-bordered">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                <div class="card-inner">
+                                    <div class="nk-block">
+                                        <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                            <h5 class="title">{{ translate('medicine_type_information') }}</h5>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#modalDefault">{{ translate('edit_medicine_type') }}
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#modalDeleteMedicineType">{{ translate('delete') }}
+                                                </button>
+                                            </div>
+                                        </div><!-- .nk-block-head -->
+                                        <div class="profile-ud-list">
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">{{ translate('medicine_type_name') }}</span>
+                                                    <span class="profile-ud-value">{{ medicine_type.name }}</span>
+                                                </div>
+                                            </div>
+                                        </div><!-- .profile-ud-list -->
+                                    </div><!-- .nk-block -->
+                                    <div class="nk-divider divider md"></div>
+                                    <div class="nk-block">
+                                        <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                            <h5 class="title">{{ translate('description') }}</h5>
+                                        </div><!-- .nk-block-head -->
+                                        <div class="bq-note">
+                                            <div class="bq-note-item">
+                                                <div class="bq-note-text">
+                                                        {{medicine_type.description}}
+                                                </div>
+                                            </div><!-- .bq-note-item -->
+                                        </div><!-- .bq-note -->
+                                    </div>
+                                    <!-- Modal Content Code -->
+                                    <div class="modal fade" tabindex="-1" id="modalDefault">
+                                        <div class="modal-dialog modal-xl" role="document">
+                                            <div class="modal-content">
+                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <em class="icon ni ni-cross"></em>
+                                                </a>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">{{ translate('edit_medicine_type') }}</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ redirect('admin/post-medicine-type-edit') }}" method="post">
+                                                        <input type="text" hidden name="id" value="{{ medicine_type.id }}">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <span class="preview-title-lg overline-title">{{ translate('medicine_type_information') }}</span>
+                                                                <div class="row gy-4">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label"
+                                                                                   for="name">{{ translate('medicine_type_name') }}</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <input type="text" class="form-control"
+                                                                                       name="name"
+                                                                                       id="name"
+                                                                                       value="{{ medicine_type.name }}"
+                                                                                       placeholder="Enter Name">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label" for="description">{{ translate('description') }}</label>
+                                                                            <div class="form-control-wrap">
+                                                                                <textarea type="text"
+                                                                                          class="form-control"
+                                                                                          name="description"
+                                                                                          id="description"
+                                                                                          placeholder="Enter Last Name">{{ medicine_type.description|raw }}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="preview-hr">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <button type="submit" class="btn btn-success">
+                                                                            {{ translate('edit_medicine_type') }}
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer bg-light"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" tabindex="-1" id="modalDeleteMedicineType">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <em class="icon ni ni-cross"></em>
+                                                </a>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">{{ translate('delete_medicine_type') }}</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>{{ translate('alert_delete_medicine_type') }}</h4>
+                                                    {{ translate('medicine_type') }} <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> {{ translate('suffix_delete_medicine_type') }}
+                                                    <form id="delete-contact-form" action="{{ redirect('admin/post-medicine-type-delete') }}" method="post">
+                                                        <input type="text" hidden value="{{ medicine_type.id }}" name="id">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">{{ translate('delete') }}</button>
+                                                                <button class="btn btn-xl btn-outline-secondary js-btn-cancel">{{ translate('cancel') }}</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer bg-light"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- .card-inner -->
+                            </div><!-- .card-content -->
+                        </div><!-- .card-aside-wrap -->
+                    </div><!-- .card -->
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

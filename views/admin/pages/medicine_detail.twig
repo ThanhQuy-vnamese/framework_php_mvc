@@ -25,6 +25,9 @@
                     {% if(Session.hasFlash('errorEditMedicine')) %}
                         <div class="alert alert-danger">{{ session.getFlash('errorEditMedicine') }}</div>
                     {% endif %}
+                    {% if(Session.hasFlash('errorDelete')) %}
+                        <div class="alert alert-danger">{{ session.getFlash('errorDelete') }}</div>
+                    {% endif %}
                     <div class="card card-bordered">
                         <div class="card-aside-wrap">
                             <div class="card-content">
@@ -32,9 +35,15 @@
                                     <div class="nk-block">
                                         <div class="nk-block-head nk-block-head-sm nk-block-between">
                                             <h5 class="title">{{ translate('medicine_information') }}</h5>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#modalDefault">{{ translate('edit_medicine') }}
-                                            </button>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#modalDefault">{{ translate('edit_medicine') }}
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#modalDeleteMedicine">{{ translate('delete_medicine') }}
+                                                </button>
+                                            </div>
+
                                         </div><!-- .nk-block-head -->
                                         <div class="profile-ud-list">
                                             <div class="profile-ud-item">
@@ -83,7 +92,7 @@
                                                     <h5 class="modal-title">{{ translate('edit_medicine') }}</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ redirect('admin/post-edit-medicine') }}" method="post">
+                                                    <form action="{{ redirect('admin/post-medicine-edit') }}" method="post">
                                                         <input type="text" hidden name="id" value="{{ medicine.id }}">
                                                         <div class="card-inner">
                                                             <div class="preview-block">
@@ -110,9 +119,9 @@
                                                                                 <div class="form-control-select">
                                                                                     <select class="form-control"
                                                                                             name="type" id="type">
-                                                                                        <option value="1">Thuốc cảm</option>
-                                                                                        <option value="2">Kháng sinh</option>
-                                                                                        <option value="3">Kháng viêm</option>
+                                                                                        {% for medicine_type in medicine_type_list %}
+                                                                                            <option value="{{ medicine_type.id }}">{{ medicine_type.name }}</option>
+                                                                                        {% endfor %}
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -168,6 +177,34 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer bg-light"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" tabindex="-1" id="modalDeleteMedicine">
+                                        <div class="modal-dialog modal-xl" role="document">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <em class="icon ni ni-cross"></em>
+                                                    </a>
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">{{ translate('delete_medicine') }}</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4>{{ translate('alert_delete_medicine') }}</h4>
+                                                        {{ translate('medicine') }} <span class="js-contact-email" style="font-weight: bold; font-size: 15px"></span> {{ translate('suffix_delete_medicine_type') }}
+                                                        <form id="delete-contact-form" action="{{ redirect('admin/post-medicine-delete') }}" method="post">
+                                                            <input type="text" hidden value="{{ medicine.id }}" name="id">
+                                                            <div class="card-inner">
+                                                                <div class="preview-block">
+                                                                    <button type="submit" class="btn btn-xl btn-outline-danger" style="margin-right: 10px">{{ translate('delete') }}</button>
+                                                                    <button class="btn btn-xl btn-outline-secondary js-btn-cancel">{{ translate('cancel') }}</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer bg-light"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

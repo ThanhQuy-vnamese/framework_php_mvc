@@ -10,6 +10,7 @@ use App\domain\entity\CalendarAttendees;
 use App\domain\repository\CalendarRepository;
 use App\domain\repository\CalendarRepositoryInterface;
 use App\legacy\Auth;
+use App\translates\Translate;
 
 class AddCalendarUseCase
 {
@@ -18,12 +19,14 @@ class AddCalendarUseCase
     private CalendarRepositoryInterface $calendarRepository;
     private Session $session;
     private Auth $auth;
+    private Translate $translate;
 
     public function __construct()
     {
         $this->calendarRepository = new CalendarRepository();
         $this->session = new Session();
         $this->auth = new Auth();
+        $this->translate = new Translate();
     }
 
     /**
@@ -46,27 +49,27 @@ class AddCalendarUseCase
         int $doctor_id
     ) {
         if (empty($date)) {
-            $this->session->setFlash('errorAddCalendar', 'Please enter date');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('enter_date'));
             return false;
         }
 
         if (empty($time_start)) {
-            $this->session->setFlash('errorAddCalendar', 'Please enter time start');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('enter_time_start'));
             return false;
         }
 
         if (empty($time_end)) {
-            $this->session->setFlash('errorAddCalendar', 'Please enter time end');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('enter_time_end'));
             return false;
         }
 
         if (empty($full_name)) {
-            $this->session->setFlash('errorAddCalendar', 'Please enter full name');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('enter_full_name'));
             return false;
         }
 
         if (empty($doctor_id)) {
-            $this->session->setFlash('errorAddCalendar', 'Please chose a doctor');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('choose_doctor'));
             return false;
         }
 
@@ -81,12 +84,12 @@ class AddCalendarUseCase
         );
 
         if ($this->calendarRepository->getNumsCalendarByStartTimeAndEndTime($calendar) > 0) {
-            $this->session->setFlash('errorAddCalendar', 'Calendar is conflict');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('conflict_calendar'));
             return false;
         }
 
         if (is_null($this->calendarRepository->findUserByUserIdAndRole($doctor_id, 2)->getId())) {
-            $this->session->setFlash('errorAddCalendar', 'Please chose a doctor');
+            $this->session->setFlash('errorAddCalendar', $this->translate->getLanguage('choose_doctor'));
             return false;
         }
 
